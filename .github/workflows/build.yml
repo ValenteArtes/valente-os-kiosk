@@ -19,16 +19,24 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Instalar Gradle
+      - name: Instalar Gradle 7.6.1
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: '7.6'
+          gradle-version: '7.6.1'
+
+      - name: Corrigir Build Tools (dx ausente nas versoes recentes)
+        run: |
+          for DIR in $ANDROID_HOME/build-tools/*/; do
+            if [ -f "${DIR}d8" ] && [ ! -f "${DIR}dx" ]; then
+              echo "Criando dx -> d8 em ${DIR}"
+              ln -sf "${DIR}d8" "${DIR}dx"
+            fi
+          done
+          echo "Build tools disponiveis:"
+          ls $ANDROID_HOME/build-tools/
 
       - name: Build APK
-        run: |
-          export ANDROID_HOME=/usr/local/lib/android/sdk
-          export PATH=$PATH:$ANDROID_HOME/build-tools/34.0.0
-          gradle assembleRelease
+        run: gradle assembleRelease
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
 

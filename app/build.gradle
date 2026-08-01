@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion "33.0.2"
+    namespace 'com.valenteartes.terminal'
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.valenteartes.terminal"
-        minSdkVersion 14
-        targetSdkVersion 19
+        minSdk 14
+        targetSdk 21
         versionCode 1
         versionName "1.0"
     }
