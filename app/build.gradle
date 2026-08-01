@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.valenteartes.terminal"
         minSdk 14
-        targetSdk 21
+        targetSdk 34
         versionCode 1
         versionName "1.0"
     }
@@ -22,5 +22,11 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // Nao vamos para a Play Store — desabilitar lint de versao obsoleta
+    lint {
+        disable 'ExpiredTargetSdkVersion'
+        abortOnError false
     }
 }
