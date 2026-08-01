@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.2"
 
     defaultConfig {
         applicationId "com.valenteartes.terminal"
@@ -13,15 +13,14 @@ android {
     }
 
     buildTypes {
-        debug   { signingConfig signingConfigs.debug }
         release {
             minifyEnabled false
-            // Assina com debug key para facilitar — não precisa de keystore
             signingConfig signingConfigs.debug
         }
     }
-}
 
-dependencies {
-    // App mínimo — sem dependências externas
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
