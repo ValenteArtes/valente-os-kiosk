@@ -1,14 +1,14 @@
 package com.valenteartes.terminal;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.webkit.*;
 import android.graphics.Color;
 import java.io.File;
 import java.security.Security;
@@ -23,19 +23,16 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Instalar Conscrypt como provider principal — habilita TLS 1.2 no Android 4.x
+        // Conscrypt: habilita TLS 1.2 no Android 4.x
         try {
             org.conscrypt.Conscrypt.checkAvailability();
             Security.insertProviderAt(org.conscrypt.Conscrypt.newProvider(), 1);
-        } catch (Throwable t) {
-            // fallback silencioso se Conscrypt nao disponivel
-        }
+        } catch (Throwable t) { /* silencioso */ }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         webView = new WebView(this);
@@ -49,8 +46,35 @@ public class MainActivity extends Activity {
         s.setCacheMode(WebSettings.LOAD_DEFAULT);
         s.setLoadsImagesAutomatically(true);
 
-        // Bridge Java — chamadas HTTP/TLS 1.2 pelo lado nativo
+        // Bridge nativa: OkHttp + TLS 1.2 (resolve PATCH e conexao)
         webView.addJavascriptInterface(new NativeBridge(webView), "NativeBridge");
+
+        // WebChromeClient: habilita alert/confirm/prompt no WebView
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsAlert(WebView v, String url, String msg, final JsResult r) {
+                new AlertDialog.Builder(MainActivity.this)
+                    .setMessage(msg)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface d, int w) { r.confirm(); }
+                    })
+                    .setCancelable(false).show();
+                return true;
+            }
+            @Override
+            public boolean onJsConfirm(WebView v, String url, String msg, final JsResult r) {
+                new AlertDialog.Builder(MainActivity.this)
+                    .setMessage(msg)
+                    .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface d, int w) { r.confirm(); }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface d, int w) { r.cancel(); }
+                    })
+                    .setCancelable(false).show();
+                return true;
+            }
+        });
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -66,7 +90,6 @@ public class MainActivity extends Activity {
         });
 
         setContentView(webView);
-
         File f = new File("/sdcard/ValenteOS_Terminal.html");
         webView.loadUrl(f.exists() ? LOCAL_URL : REMOTE_URL);
     }
