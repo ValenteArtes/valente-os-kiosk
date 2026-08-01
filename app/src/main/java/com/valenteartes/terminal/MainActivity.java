@@ -22,13 +22,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Tela cheia — sem barra de título
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
-        // Mantém a tela ligada enquanto o app está aberto
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         webView = new WebView(this);
@@ -42,14 +40,15 @@ public class MainActivity extends Activity {
         s.setCacheMode(WebSettings.LOAD_DEFAULT);
         s.setLoadsImagesAutomatically(true);
 
+        // Bridge Java — resolve TLS 1.2 no Android 4.x
+        webView.addJavascriptInterface(new NativeBridge(webView), "NativeBridge");
+
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onReceivedError(WebView view, int code, String desc, String url) {
                 if (url != null && url.startsWith("file://")) {
-                    // Arquivo local não encontrado → usar URL remota
                     view.loadUrl(REMOTE_URL);
                 } else {
-                    // Sem internet → tentar de novo em 8 segundos
                     new Handler().postDelayed(new Runnable() {
                         public void run() { webView.reload(); }
                     }, 8000);
@@ -59,14 +58,12 @@ public class MainActivity extends Activity {
 
         setContentView(webView);
 
-        // Prioridade: arquivo local (offline-friendly) → URL remota
         File f = new File("/sdcard/ValenteOS_Terminal.html");
         webView.loadUrl(f.exists() ? LOCAL_URL : REMOTE_URL);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // Bloquear Voltar e Menu — colaborador não pode sair acidentalmente
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_MENU) {
             return true;
         }
