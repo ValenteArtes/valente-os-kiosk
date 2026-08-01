@@ -8,8 +8,8 @@ android {
         applicationId "com.valenteartes.terminal"
         minSdk 14
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
     }
 
     buildTypes {
@@ -24,9 +24,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // Nao vamos para a Play Store — desabilitar lint de versao obsoleta
     lint {
         disable 'ExpiredTargetSdkVersion'
         abortOnError false
     }
+
+    // Incluir .so do Conscrypt para ARM (tablets MEC AML8726-M)
+    packagingOptions {
+        pickFirst '**/*.so'
+    }
+}
+
+dependencies {
+    // Conscrypt: adiciona TLS 1.2 no Android 4.x sem Google Play Services
+    implementation 'org.conscrypt:conscrypt-android:2.5.2'
 }

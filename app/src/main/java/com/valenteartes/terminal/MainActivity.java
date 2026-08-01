@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.graphics.Color;
 import java.io.File;
+import java.security.Security;
 
 public class MainActivity extends Activity {
 
@@ -21,6 +22,14 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Instalar Conscrypt como provider principal — habilita TLS 1.2 no Android 4.x
+        try {
+            org.conscrypt.Conscrypt.checkAvailability();
+            Security.insertProviderAt(org.conscrypt.Conscrypt.newProvider(), 1);
+        } catch (Throwable t) {
+            // fallback silencioso se Conscrypt nao disponivel
+        }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
@@ -40,7 +49,7 @@ public class MainActivity extends Activity {
         s.setCacheMode(WebSettings.LOAD_DEFAULT);
         s.setLoadsImagesAutomatically(true);
 
-        // Bridge Java — resolve TLS 1.2 no Android 4.x
+        // Bridge Java — chamadas HTTP/TLS 1.2 pelo lado nativo
         webView.addJavascriptInterface(new NativeBridge(webView), "NativeBridge");
 
         webView.setWebViewClient(new WebViewClient() {
@@ -64,9 +73,7 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_MENU) {
-            return true;
-        }
+        if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_MENU) return true;
         return super.onKeyDown(keyCode, event);
     }
 
