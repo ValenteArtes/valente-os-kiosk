@@ -46,6 +46,97 @@ html, body {
 }
 .header-btn:active { background: #334155; }
 
+/* ─── CENTRO DE CAPACITAÇÃO (prefixo trein-, nunca colide com o resto) ─── */
+.trein-identificacao, .trein-inicio, .trein-aula { max-width: 640px; margin: 0 auto; }
+.trein-header {
+  display: -webkit-box; display: -webkit-flex; display: flex;
+  -webkit-box-pack: justify; -webkit-justify-content: space-between; justify-content: space-between;
+  -webkit-box-align: flex-start; -webkit-align-items: flex-start; align-items: flex-start;
+  gap: 12px; margin-bottom: 14px;
+}
+.trein-titulo-principal { font-size: 1.1rem; font-weight: 700; color: #f97316; }
+.trein-logo { font-weight: 700; color: #f97316; margin-bottom: 8px; }
+.hint { color: #94a3b8; font-size: 0.82rem; }
+.trein-progresso-wrap { margin: 12px 0 18px; }
+.trein-progresso-label { font-size: 0.85rem; margin-bottom: 6px; }
+.trein-progresso-barra { height: 12px; background: #1e293b; border-radius: 999px; overflow: hidden; }
+.trein-progresso-fill { height: 100%; background: #f97316; }
+.trein-cards-grid {
+  display: -webkit-box; display: -webkit-flex; display: flex;
+  -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 12px;
+}
+.trein-card {
+  background: #1e293b; border: 1px solid #334155; border-radius: 10px;
+  padding: 12px; cursor: pointer; min-height: 100px; width: 46%;
+  display: -webkit-box; display: -webkit-flex; display: flex;
+  -webkit-box-orient: vertical; -webkit-flex-direction: column; flex-direction: column; gap: 4px;
+}
+.trein-card:active { background: #334155; }
+.trein-card--bloqueado { opacity: 0.5; }
+.trein-card--concluido { border-color: #22c55e; }
+.trein-card--em_andamento { border-color: #f97316; }
+.trein-card-topo {
+  display: -webkit-box; display: -webkit-flex; display: flex;
+  -webkit-box-pack: justify; -webkit-justify-content: space-between; justify-content: space-between;
+}
+.trein-card-dia { font-size: 0.75rem; font-weight: 700; color: #f97316; text-transform: uppercase; }
+.trein-card-titulo { font-weight: 600; font-size: 0.95rem; }
+.trein-card-sub { font-size: 0.8rem; color: #94a3b8; -webkit-box-flex: 1; -webkit-flex: 1; flex: 1; }
+.trein-card-label { font-size: 0.75rem; color: #64748b; }
+.trein-placeholder { background: #1e293b; border: 1px dashed #334155; border-radius: 10px; padding: 16px; margin: 14px 0; }
+.trein-concluido-msg { color: #22c55e; font-weight: 700; }
+.trein-pergunta-enunciado { font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+.trein-opcoes {
+  display: -webkit-box; display: -webkit-flex; display: flex;
+  -webkit-box-orient: vertical; -webkit-flex-direction: column; flex-direction: column; gap: 8px;
+}
+.trein-opcao-btn {
+  text-align: left; font-size: 0.95rem; padding: 12px 14px; border-radius: 8px;
+  border: 1px solid #334155; background: #1e293b; color: #e2e8f0; cursor: pointer; min-height: 44px;
+}
+.trein-opcao-btn:active { background: #334155; }
+.trein-feedback { margin-top: 12px; padding: 10px 12px; border-radius: 8px; font-size: 0.88rem; }
+.trein-feedback--ok { background: #052e16; color: #22c55e; border: 1px solid #22c55e; }
+.trein-feedback--erro { background: #1a0a0a; color: #ef4444; border: 1px solid #ef4444; }
+.trein-balao-cliente { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+.trein-balao-tag { display: block; font-size: 0.65rem; font-weight: 700; color: #f97316; margin-bottom: 4px; }
+.trein-check-item {
+  display: -webkit-box; display: -webkit-flex; display: flex;
+  -webkit-box-align: center; -webkit-align-items: center; align-items: center;
+  gap: 10px; padding: 10px 12px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; min-height: 44px;
+}
+.trein-check-item input[type="checkbox"] { width: 18px; height: 18px; }
+.trein-ordenar-escolhidos ol { margin: 0 0 12px; padding-left: 20px; }
+.trein-ordenar-acoes { display: -webkit-box; display: -webkit-flex; display: flex; gap: 10px; margin-top: 10px; -webkit-flex-wrap: wrap; flex-wrap: wrap; }
+.trein-etapa-missao { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 14px; }
+.trein-missao-titulo { font-weight: 700; color: #f97316; margin-bottom: 8px; }
+.trein-etapa-missao ul { margin: 4px 0 10px; padding-left: 18px; }
+.trein-missao-anotacao { margin-bottom: 10px; }
+.trein-textarea {
+  width: 100%; box-sizing: border-box; font: inherit; padding: 10px; border-radius: 8px;
+  border: 1px solid #334155; background: #0f172a; color: #e2e8f0; resize: vertical; margin-bottom: 10px;
+}
+.trein-resultado-competencias, .trein-resultado-resumo {
+  background: #1e293b; border: 1px solid #334155; border-radius: 10px; margin: 12px 0; overflow: hidden;
+}
+.trein-resultado-linha {
+  display: -webkit-box; display: -webkit-flex; display: flex;
+  -webkit-box-pack: justify; -webkit-justify-content: space-between; justify-content: space-between;
+  padding: 10px 12px; border-bottom: 1px solid #334155; font-size: 0.88rem;
+}
+.trein-resultado-linha:last-child { border-bottom: none; }
+.trein-resultado-classificacao { text-align: center; font-weight: 700; padding: 14px; border-radius: 10px; margin: 12px 0; }
+.trein-resultado-classificacao--liberado { background: #052e16; color: #22c55e; border: 1px solid #22c55e; }
+.trein-resultado-classificacao--funcional_supervisao { background: #2e2608; color: #eab308; border: 1px solid #eab308; }
+.trein-resultado-classificacao--precisa_acompanhamento { background: #1a0a0a; color: #ef4444; border: 1px solid #ef4444; }
+.trein-acoes-trilha-concluida { display: -webkit-box; display: -webkit-flex; display: flex; gap: 10px; -webkit-flex-wrap: wrap; flex-wrap: wrap; margin: 4px 0 16px; }
+.btn-icon, .btn-primary {
+  padding: 10px 16px; border-radius: 8px; border: 1px solid #334155; background: #1e293b; color: #e2e8f0;
+  font-size: 0.9rem; cursor: pointer; margin: 4px 4px 4px 0; -webkit-tap-highlight-color: transparent;
+}
+.btn-primary { background: #f97316; color: #0f172a; border-color: #f97316; font-weight: 700; }
+.btn-primary[disabled] { opacity: 0.5; }
+
 /* ─── CONTENT ─── */
 .content {
   -webkit-box-flex: 1; -webkit-flex: 1; flex: 1;
@@ -261,6 +352,7 @@ html, body {
 </head>
 <body>
 <div id="app"></div>
+<div id="treinoApp" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#0f172a;color:#e2e8f0;overflow-y:auto;-webkit-overflow-scrolling:touch;z-index:500;padding:16px;box-sizing:border-box;"></div>
 <div id="toast"></div>
 
 <script>
@@ -421,11 +513,23 @@ function render() {
   var header = '<div class="header">' +
     '<div class="header-logo">⚙️ Valente OS</div>' +
     '<div class="header-user">👤 ' + esc(nome) + '</div>' +
+    '<button class="header-btn" onclick="abrirTreinamento()">🎓 Capacitação</button>' +
     '<button class="header-btn" onclick="sair()">Sair</button>' +
     '</div>';
   app.innerHTML = header + '<div class="content" id="cont"></div>';
   if (S.view === 'inbox') renderInbox();
   else if (S.view === 'detalhe') renderDetalhe();
+}
+
+/* ─────────────────────────────────────────
+   CENTRO DE CAPACITAÇÃO (treino-engine-es5.js)
+───────────────────────────────────────── */
+function abrirTreinamento() {
+  if (typeof TreinoAbrir !== 'function') { toast('Treinamento indisponível neste terminal.', true); return; }
+  TreinoAbrir(S.colaborador, function() {
+    /* ao fechar, volta pra tela em que estava (inbox por padrão) */
+    render();
+  });
 }
 
 /* ─────────────────────────────────────────
@@ -1006,5 +1110,7 @@ function sair() {
 ───────────────────────────────────────── */
 render();
 </script>
+<script src="treino-conteudo-es5.js"></script>
+<script src="treino-engine-es5.js"></script>
 </body>
 </html>
