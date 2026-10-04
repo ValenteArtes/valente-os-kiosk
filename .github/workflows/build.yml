@@ -35,6 +35,13 @@ jobs:
           echo "Build tools disponiveis:"
           ls $ANDROID_HOME/build-tools/
 
+      - name: Chave de assinatura fixa
+        run: |
+          mkdir -p ~/.android
+          echo "$KEYSTORE_B64" | base64 -d > ~/.android/debug.keystore
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+
       - name: Build APK
         run: gradle assembleRelease
         env:
