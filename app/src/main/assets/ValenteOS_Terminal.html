@@ -408,6 +408,7 @@ var S = {
   g:             null,
   semFoto:       [],
   pedido:        null,
+  coresPeca:     [],
   msgExtra:      '',
   nav:           { mod: null, sub: null, lim: 15 },
 };
@@ -965,7 +966,8 @@ function renderDetalhe() {
     fotoHtml =
       '<div class="card">' +
       '<div class="card-label">🖼️ Confira a peça correta</div>' +
-      '<img src="' + peca.foto_base64 + '" alt="peca" class="foto-img">' +
+      '<img src="' + peca.foto_base64 + '" alt="peca" class="foto-img" onclick="ampliarFoto(this.src)">' +
+      '<div class="ot-meta" style="margin-bottom:8px">Toque na imagem para ampliar.</div>' +
       '<div class="foto-check">' +
       '<input type="checkbox" id="chkFoto" onchange="confirmarFoto(this)">' +
       '<label for="chkFoto">Confirmo que a peça corresponde à foto' +
@@ -1032,7 +1034,7 @@ function renderDetalhe() {
       ? '<div class="qtd-sub">Concluídas: ' + conc + ' · Perdidas: ' + perd + ' · Faltam: ' + falt + '</div>'
       : '') +
     '</div>' +
-    fotoHtml + fichaHtmlBloco() + envioHtmlBloco() + posCompraHtmlBloco() + instrHtml + checkHtml + botoesHtml;
+    fotoHtml + pinturaHtmlBloco() + fichaHtmlBloco() + envioHtmlBloco() + posCompraHtmlBloco() + instrHtml + checkHtml + botoesHtml;
 }
 
 function confirmarFoto(el) {
@@ -1360,6 +1362,14 @@ function fmtMoeda(v) { return 'R$ ' + Number(v || 0).toFixed(2).replace('.', ','
 function carregarPedidoEDetalhe() {
   var cod = S.tipo ? S.tipo.codigo : '';
   S.pedido = null;
+  S.coresPeca = [];
+  if (cod === 'pintura' && S.ot && S.ot.peca_id) {
+    sbGet('pecas_cores', 'peca_id=eq.' + S.ot.peca_id + '&order=ordem&select=parte,cor_numero,ordem,cores(nome,familia,hex,prateleira)', function(err, d) {
+      S.coresPeca = (!err && d) ? d : [];
+      renderDetalhe();
+    });
+    return;
+  }
   if (S.ot && S.ot.pedido_id && (cod === 'expedicao' || cod === 'pos_compra')) {
     sbGet('pedidos', 'id=eq.' + S.ot.pedido_id +
       '&select=id,cliente,contato,valor_total,valor_entrada,status,transportadora,codigo_rastreio,enviado_em',
@@ -1457,6 +1467,34 @@ function posCompraProblema(etapa) {
     S.msgExtra = 'Ocorrência aberta.';
     fecharOT('sucesso', 1, 0, 'Pós-compra com problema: ' + txt + ' (terminal)');
   });
+}
+
+
+/* ─────────────────────────────────────────
+   PINTURA: cores da peça por parte (Cor 01 a Cor 33) + ampliar foto de referência
+───────────────────────────────────────── */
+function ampliarFoto(src) {
+  var ov = document.createElement('div');
+  ov.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:9998;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;padding:10px;';
+  ov.innerHTML = '<img src="' + src + '" style="max-width:100%;max-height:100%;border-radius:8px"><div style="position:absolute;top:12px;right:16px;color:#f1f5f9;font-size:1.6rem">✕</div>';
+  ov.onclick = function() { document.body.removeChild(ov); };
+  document.body.appendChild(ov);
+}
+function corCodigo(n) { return 'Cor ' + (n < 10 ? '0' : '') + n; }
+function pinturaHtmlBloco() {
+  if (!S.tipo || S.tipo.codigo !== 'pintura' || !S.ot || !S.ot.peca_id) return '';
+  var l = S.coresPeca || [], h = '<div class="card"><div class="card-label">🎨 Cores desta peça</div>', i, c, k;
+  if (!l.length) {
+    return h + '<div class="ficha-pend">Esta peça ainda não tem cores cadastradas. Use a imagem de referência e avise o supervisor.</div></div>';
+  }
+  for (i = 0; i < l.length; i++) {
+    c = l[i]; k = c.cores || {};
+    h += '<div style="display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;margin-bottom:12px">' +
+      '<div style="width:34px;height:34px;border-radius:50%;border:2px solid #475569;margin-right:12px;-webkit-flex-shrink:0;flex-shrink:0;background:' + esc(k.hex || '#1e293b') + '"></div>' +
+      '<div style="-webkit-flex:1;flex:1"><div style="font-weight:700;color:#f1f5f9">' + esc(c.parte) + ' → ' + corCodigo(c.cor_numero) + '</div>' +
+      '<div class="ot-meta">' + esc((k.nome || '') + (k.familia ? ' · ' + k.familia : '') + (k.prateleira ? ' · prateleira ' + k.prateleira : '')) + '</div></div></div>';
+  }
+  return h + '<div class="ficha-pend">Confira o número escrito no pote. A cor da tela é só uma aproximação.</div></div>';
 }
 
 /* ─────────────────────────────────────────
