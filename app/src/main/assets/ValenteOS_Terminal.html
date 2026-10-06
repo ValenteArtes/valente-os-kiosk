@@ -1024,8 +1024,10 @@ function renderDetalhe() {
   if (isExec(s)) {
     botoesHtml += '<button class="btn btn-conc" onclick="confirmarConcluir()">✅ Concluir Tarefa</button>';
     botoesHtml += '<button class="btn btn-paus" onclick="acaoOT(\'pausada\',\'pausa\')">⏸ Pausar</button>';
+    if (ehPorTurno()) { botoesHtml += '<button class="btn btn-ref" onclick="producaoDoDia()">📝 Produção do dia</button>'; }
   }
   if (s === 'pausada') {
+    if (ehPorTurno()) { botoesHtml += '<button class="btn btn-ref" onclick="producaoDoDia()">📝 Produção do dia</button>'; }
     botoesHtml += '<button class="btn btn-ret" onclick="acaoOT(\'retomada\',\'retomada\')">▶ Retomar Tarefa</button>';
   }
   botoesHtml += '<button class="btn btn-vol" onclick="voltarInbox()">← Voltar</button>';
@@ -1045,7 +1047,7 @@ function renderDetalhe() {
       ? '<div class="qtd-sub">Concluídas: ' + conc + ' · Perdidas: ' + perd + ' · Faltam: ' + falt + '</div>'
       : '') +
     '</div>' +
-    opcoesPecaHtml() + fotoHtml + pinturaHtmlBloco() + fichaHtmlBloco() + envioHtmlBloco() + posCompraHtmlBloco() + instrHtml + checkHtml + botoesHtml;
+    missaoHtml() + opcoesPecaHtml() + fotoHtml + pinturaHtmlBloco() + fichaHtmlBloco() + envioHtmlBloco() + posCompraHtmlBloco() + instrHtml + checkHtml + botoesHtml;
 }
 
 function confirmarFoto(el) {
@@ -1109,7 +1111,278 @@ function acaoOT(novoStatus, tipoEvento) {
 }
 
 /* ── FECHAMENTO COMPLETO DA OT (igual ao PC) ─────────────────────────── */
+function fmtDataT(d){var p=String(d||"").slice(0,10).split("-");return p.length===3?p[2]+"/"+p[1]+"/"+p[0]:"";}
+/* ─────────────────────────────────────────
+   v151 — Janelas por tipo de tarefa (comum aos dois tablets, ES5)
+   Missão em destaque · Produção do dia (pintura) · Concluir etapa ·
+   Conferência/Embalagem · Envio · liberar tarefas bloqueadas
+───────────────────────────────────────── */
+var TIPOS_ETAPA = ['lavagem', 'cura', 'pintura', 'montagem', 'separacao', 'escultura', 'modelagem'];
+
+function nInt(v) { var n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
+function uuidT() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+function codTipo() { return S.tipo ? S.tipo.codigo : ''; }
+function ehPorTurno() {
+  var ot = S.ot;
+  if (!ot || !(ot.quantidade > 1)) return false;
+  var cod = codTipo();
+  if (cod === 'impressao') return false;
+  return /^\s*pintar/i.test(ot.titulo || '') || (S.tipo && /pint/i.test(S.tipo.nome || ''));
+}
+
+/* Busca o pedido da OT; se as colunas novas ainda não existem no banco, tenta de novo só com as antigas. */
+function buscarPedidoT(id, cb) {
+  var base = 'id,cliente,contato,valor_total,valor_entrada,status,transportadora,codigo_rastreio,enviado_em,data_entrega,modelo_nome,quantidade';
+  var extra = ',cnpj_tomador,numero_processo,numero_empenho,forma_pagamento,pagamento_previsto,acordo_comercial,responsavel_decisao,observacoes,valor_unitario';
+  sbGet('pedidos', 'id=eq.' + id + '&select=' + base + extra, function(err, d) {
+    if (err || !d) {
+      sbGet('pedidos', 'id=eq.' + id + '&select=' + base, function(err2, d2) {
+        cb((!err2 && d2 && d2.length) ? d2[0] : null);
+      });
+      return;
+    }
+    cb(d.length ? d[0] : null);
+  });
+}
+
+/* ── janela (overlay escuro, mesmo estilo do fechamento) ── */
+var JF_LBL = 'font-size:.75rem;font-weight:700;color:#94a3b8;margin:12px 0 6px;letter-spacing:.06em;';
+var JF_IN  = 'width:100%;padding:10px;font-size:1.1rem;text-align:center;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;box-sizing:border-box;';
+function janelaFim(titulo, sub, corpo, okTxt, okFn) {
+  var velho = document.getElementById('fech-overlay');
+  if (velho && velho.parentNode) velho.parentNode.removeChild(velho);
+  var overlay = document.createElement('div');
+  overlay.id = 'fech-overlay';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:9999;overflow-y:auto;display:flex;align-items:flex-start;justify-content:center;padding:20px 0;';
+  overlay.innerHTML =
+    '<div style="background:#0f172a;border:1px solid #334155;border-radius:12px;max-width:380px;width:92%;margin:auto;">' +
+      '<div style="background:#1e293b;border-radius:12px 12px 0 0;padding:16px 20px;">' +
+        '<div style="font-size:.7rem;font-weight:700;color:#94a3b8;letter-spacing:.1em;">' + titulo + '</div>' +
+        '<div style="font-size:1rem;font-weight:700;color:#f1f5f9;margin-top:4px;">' + sub + '</div>' +
+      '</div>' +
+      '<div style="padding:16px 20px;">' + corpo +
+        '<div style="display:flex;gap:12px;margin-top:18px;">' +
+          '<button id="jf-cancel" style="flex:1;padding:14px;background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:8px;font-size:1rem;cursor:pointer;">Cancelar</button>' +
+          '<button id="jf-ok" style="flex:2;padding:14px;background:#22c55e;color:#fff;border:none;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;">' + okTxt + '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  document.getElementById('jf-cancel').onclick = fecharJanelaFim;
+  document.getElementById('jf-ok').onclick = okFn;
+  return overlay;
+}
+function fecharJanelaFim() {
+  var o = document.getElementById('fech-overlay');
+  if (o && o.parentNode) o.parentNode.removeChild(o);
+}
+function jfVal(id) { var el = document.getElementById(id); return el ? el.value : ''; }
+
+/* ── Missão em destaque ── */
+function missaoHtml() {
+  var ot = S.ot;
+  if (!ot) return '';
+  var m = String(ot.titulo || '').match(/^\s*(Imprimir|Pintar)\s+(.+?)\s*[×xX]\s*(\d+)\s*$/i);
+  if (!m) return '';
+  var verbo = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+  var total = nInt(m[3]) || ot.quantidade || 0;
+  var feito = ot.quantidade_concluida || 0, perd = ot.quantidade_perdida_acumulada || 0;
+  var falta = Math.max(0, (ot.quantidade || total) - feito - perd);
+  var instr = String(ot.instrucoes || '');
+  var mNec = instr.match(/Necess[áa]rio:\s*(\d+)/i);
+  var mPint = instr.match(/Pintados?:\s*(\d+)/i);
+  var mImp = instr.match(/(?:Impressos dispon[íi]veis|impressos):\s*(\d+)/i);
+  var linhas = [];
+  if (mNec) linhas.push('Para fechar o pedido são necessárias <b>' + mNec[1] + '</b> un. de ' + esc(m[2]));
+  if (mPint && verbo === 'Pintar') linhas.push('Já pintadas antes: <b>' + mPint[1] + '</b>');
+  if (mImp && verbo === 'Pintar') linhas.push('Impressas disponíveis: <b>' + mImp[1] + '</b>');
+  if (feito > 0 || perd > 0) linhas.push('Registrado nesta tarefa: <b>' + feito + '</b> feitas' + (perd ? ' · <b>' + perd + '</b> perdidas' : ''));
+  var h = '<div class="card" style="text-align:center;border:2px solid #7c3aed;background:#1e1b4b;">' +
+    '<div style="font-size:.7rem;letter-spacing:.14em;font-weight:700;color:#a78bfa;margin-bottom:6px">SUA MISSÃO</div>' +
+    '<div style="font-size:1.4rem;font-weight:800;line-height:1.35;color:#f1f5f9">' + verbo +
+    ' <span style="background:#7c3aed;border-radius:8px;padding:0 10px">' + total + '</span> unidade' + (total === 1 ? '' : 's') +
+    ' de <span style="color:#c4b5fd">' + esc(m[2]) + '</span>' +
+    (S.peca && S.peca.modelo ? ' da peça <span style="color:#c4b5fd">' + esc(S.peca.modelo) + '</span>' : '') + '</div>' +
+    (falta !== total ? '<div style="margin-top:8px;color:#cbd5e1">Faltam <b>' + falta + '</b> de ' + total + ' nesta tarefa</div>' : '') +
+    (linhas.length ? '<div style="margin-top:10px;padding-top:8px;border-top:1px dashed #6d28d9;font-size:.85rem;color:#cbd5e1;line-height:1.6">' + linhas.join('<br>') + '</div>' : '') +
+    '</div>';
+  return h;
+}
+function qtdCardHtml() {
+  var ot = S.ot, conc = ot.quantidade_concluida || 0, perd = ot.quantidade_perdida_acumulada || 0, total = ot.quantidade || 0;
+  var falt = Math.max(0, total - conc - perd);
+  return '<div class="card"><div class="card-label">Quantidade</div>' +
+    '<span class="qtd-num">' + total + '</span><span class="qtd-unit">unidades</span>' +
+    (conc > 0 || perd > 0 ? '<div class="qtd-sub">Concluídas: ' + conc + ' · Perdidas: ' + perd + ' · Faltam: ' + falt + '</div>' : '') + '</div>';
+}
+
+/* ── tarefas bloqueadas por esta (ex.: aprovação aguardando ajuste da modelagem) ── */
+function liberarBloqueadas(otId) {
+  sbGet('ordens_trabalho', 'ot_desbloqueadora_id=eq.' + otId + '&status=eq.bloqueada&select=id', function(err, d) {
+    if (err || !d) return;
+    var i;
+    for (i = 0; i < d.length; i++) {
+      sbPatch('ordens_trabalho', 'id=eq.' + d[i].id, { status: 'pendente', ot_desbloqueadora_id: null, bloqueio_motivo: null }, function() {});
+      sbPost('ot_eventos', { ot_id: d[i].id, tipo: 'desbloqueio', descricao: 'Liberada automaticamente após conclusão da OT ' + otId + ' (terminal)', estacao_id: null, motivo: null }, function() {});
+    }
+  });
+}
+
+/* ── próxima etapa do plano ── */
+function proximaEtapaT(cb) {
+  var ot = S.ot;
+  if (!ot || !ot.plano_id || ot.ordem_execucao == null) { cb(''); return; }
+  sbGet('ordens_trabalho', 'plano_id=eq.' + ot.plano_id + '&ordem_execucao=gt.' + ot.ordem_execucao +
+    '&status=not.in.(concluida,cancelada)&order=ordem_execucao&limit=1&select=tipo_ot_id', function(err, d) {
+    if (err || !d) { cb(''); return; }
+    if (!d.length) { cb('Esta é a última etapa do pedido.'); return; }
+    var t = S.tipos ? S.tipos[d[0].tipo_ot_id] : null;
+    cb('Próxima etapa: ' + (t && t.nome ? t.nome : 'a próxima etapa') + '.');
+  });
+}
+
+/* ── Pintura: produção do dia (não fecha; soma ao acumulado e pausa) ── */
+function producaoDoDia() {
+  var ot = S.ot; if (!ot) return;
+  var ja = ot.quantidade_concluida || 0, ap = ot.quantidade_perdida_acumulada || 0;
+  var rest = Math.max(0, ot.quantidade - ja - ap);
+  var box = '<div style="display:flex;gap:8px;text-align:center;margin-bottom:6px">' +
+    '<div style="flex:1;background:#1e293b;border-radius:8px;padding:8px"><div style="font-size:1.2rem;font-weight:700;color:#f1f5f9">' + ot.quantidade + '</div><div style="font-size:.65rem;color:#94a3b8">meta</div></div>' +
+    '<div style="flex:1;background:#1e293b;border-radius:8px;padding:8px"><div style="font-size:1.2rem;font-weight:700;color:#f1f5f9">' + ja + '</div><div style="font-size:.65rem;color:#94a3b8">já pintadas</div></div>' +
+    '<div style="flex:1;background:#1e293b;border-radius:8px;padding:8px"><div style="font-size:1.2rem;font-weight:700;color:#f1f5f9">' + rest + '</div><div style="font-size:.65rem;color:#94a3b8">faltam</div></div></div>' +
+    '<div style="' + JF_LBL + '">QUANTAS PEÇAS VOCÊ PINTOU HOJE?</div><input id="pd-f" type="number" min="0" max="' + rest + '" placeholder="0" style="' + JF_IN + 'font-size:1.5rem;">' +
+    '<div style="' + JF_LBL + '">ALGUMA PEÇA ESTRAGOU NA PINTURA?</div><input id="pd-e" type="number" min="0" value="0" style="' + JF_IN + '">' +
+    '<div style="font-size:.7rem;color:#64748b;margin-top:3px">Conte só as que precisam ser repintadas ou descartadas.</div>' +
+    '<div style="' + JF_LBL + '">ANOTAÇÕES PARA AMANHÃ (OPCIONAL)</div><textarea id="pd-o" rows="2" placeholder="Ex: faltou tinta Cor 07, 12 peças secando" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #334155;border-radius:8px;font-size:.9rem;resize:none;box-sizing:border-box;"></textarea>' +
+    '<div id="pd-r" style="margin-top:10px;background:#1e1b4b;color:#c4b5fd;border-radius:8px;padding:8px 10px;font-size:.85rem"></div>';
+  janelaFim('PRODUÇÃO DO DIA', esc(ot.titulo || ''), box, 'Salvar produção do dia', salvarProducaoDoDia);
+  var calc = function() {
+    var f = nInt(jfVal('pd-f')), e = nInt(jfVal('pd-e')), r = rest - f - e;
+    document.getElementById('pd-r').innerHTML = r > 0 ? 'Ao salvar, faltam ' + r + '. A tarefa fica pausada e volta amanhã.' :
+      (r === 0 ? 'Com isso, tudo fica pronto. Você segue para fechar a pintura.' : 'Essa soma passa do que falta (' + rest + ').');
+  };
+  document.getElementById('pd-f').oninput = calc; document.getElementById('pd-e').oninput = calc; calc();
+}
+function salvarProducaoDoDia() {
+  var ot = S.ot; if (!ot) return;
+  var ja = ot.quantidade_concluida || 0, ap = ot.quantidade_perdida_acumulada || 0;
+  var rest = Math.max(0, ot.quantidade - ja - ap);
+  var f = nInt(jfVal('pd-f')), e = nInt(jfVal('pd-e')), obs = String(jfVal('pd-o')).replace(/^\s+|\s+$/g, '');
+  if (f + e === 0) { toast('Informe quantas peças você pintou hoje.', true); return; }
+  if (f + e > rest) { toast('Essa soma (' + (f + e) + ') passa do que falta (' + rest + ').', true); return; }
+  var novaC = ja + f, novaP = ap + e, resta = ot.quantidade - novaC - novaP;
+  var colab = S.colaborador ? S.colaborador.id : null;
+  var upd = { quantidade_concluida: novaC, quantidade_perdida_acumulada: novaP };
+  if (colab) upd.responsavel_id = colab;
+  if (obs) upd.instrucoes = String((ot.instrucoes || '') + '\n[' + fmtDataT(new Date().toISOString()) + '] Fim do dia: ' + obs).replace(/^\s+/, '');
+  sbPatch('ordens_trabalho', 'id=eq.' + ot.id, upd, function(err) {
+    if (err) { toast('Erro: ' + err.message, true); return; }
+    ot.quantidade_concluida = novaC; ot.quantidade_perdida_acumulada = novaP;
+    if (upd.instrucoes) ot.instrucoes = upd.instrucoes;
+    sbPost('ot_eventos', { ot_id: ot.id, tipo: 'fornada', descricao: 'Produção do dia — pintadas: ' + f + ', estragadas: ' + e + ' (acumulado ' + novaC + '/' + ot.quantidade + ')' + (obs ? ' · ' + obs : '') + ' (terminal)', estacao_id: null, motivo: null }, function() {});
+    fecharJanelaFim();
+    if (resta > 0) {
+      sbPatch('ordens_trabalho', 'id=eq.' + ot.id, { status: 'pausada' }, function() {
+        sbPost('ot_eventos', { ot_id: ot.id, tipo: 'pausada', descricao: 'Fim do dia — pausada. Faltam ' + resta + ' (terminal)', estacao_id: null, motivo: null }, function() {});
+        toast('Produção do dia salva: ' + f + ' pintadas. Faltam ' + resta + ' — continue amanhã.');
+        voltarInbox();
+      });
+      return;
+    }
+    toast('Tudo pintado! Agora feche a pintura.');
+    S.ot.status = ot.status;
+    fimEtapa();
+  });
+}
+
+/* ── Etapas de produção: concluir etapa ── */
+function fimEtapa() {
+  var ot = S.ot; if (!ot) return;
+  var ehPint = codTipo() === 'pintura';
+  var qtd = ot.quantidade || 1, perdAc = ot.quantidade_perdida_acumulada || 0;
+  var corpo =
+    '<div style="' + JF_LBL + '">' + (ehPint ? 'QUANTAS PEÇAS FICARAM PRONTAS NO TOTAL?' : 'QUANTAS FICARAM PRONTAS?') + '</div>' +
+    '<input id="fe-b" type="number" min="0" max="' + qtd + '" value="' + Math.max(0, qtd - perdAc) + '" style="' + JF_IN + 'font-size:1.5rem;">' +
+    '<div style="' + JF_LBL + '">ALGUMA PRECISA VOLTAR PARA A FASE ANTERIOR?</div>' +
+    '<input id="fe-v" type="number" min="0" max="' + qtd + '" value="' + perdAc + '" style="' + JF_IN + '">' +
+    '<div id="fe-mbox" style="display:none"><div style="' + JF_LBL + '">MOTIVO</div>' +
+    '<select id="fe-m" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;font-size:1rem"><option>Peça com defeito</option><option>Faltou material</option><option>Outro</option></select></div>' +
+    '<div style="' + JF_LBL + '">ANOTAÇÕES (OPCIONAL)</div><textarea id="fe-o" rows="2" placeholder="' + (ehPint ? 'Ex: 2 peças com respingo na base' : 'Ex: 2 peças com rebarba') + '" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #334155;border-radius:8px;font-size:.9rem;resize:none;box-sizing:border-box;"></textarea>' +
+    '<div id="fe-p" style="margin-top:10px;font-size:.8rem;color:#94a3b8"></div>';
+  janelaFim(ehPint ? 'FECHAR A PINTURA' : 'CONCLUIR ETAPA', esc(ot.titulo || ''), corpo, ehPint ? 'Fechar pintura' : 'Concluir etapa', function() {
+    var boa = nInt(jfVal('fe-b')), volta = nInt(jfVal('fe-v')), obs = String(jfVal('fe-o')).replace(/^\s+|\s+$/g, '');
+    if (boa + volta !== qtd) { toast('As prontas (' + boa + ') mais as que voltam (' + volta + ') precisam somar ' + qtd + '.', true); return; }
+    if (volta > 0) obs = ('Voltam para a fase anterior: ' + volta + ' (' + jfVal('fe-m') + '). ' + obs).replace(/\s+$/, '');
+    fecharJanelaFim();
+    fecharOT(volta > 0 ? 'parcial' : 'sucesso', boa, volta, obs);
+  });
+  var ib = document.getElementById('fe-b'), iv = document.getElementById('fe-v');
+  var mostra = function() { document.getElementById('fe-mbox').style.display = nInt(iv.value) > 0 ? '' : 'none'; };
+  ib.oninput = function() { iv.value = Math.max(0, qtd - nInt(ib.value)); mostra(); };
+  iv.oninput = function() { ib.value = Math.max(0, qtd - nInt(iv.value)); mostra(); };
+  mostra();
+  proximaEtapaT(function(t) { var el = document.getElementById('fe-p'); if (el) el.innerHTML = esc(t); });
+}
+
+/* ── Conferência e Embalagem ── */
+function fimConferencia() {
+  var ot = S.ot; if (!ot) return;
+  var ehEmb = codTipo() === 'embalagem', qtd = ot.quantidade || 1;
+  S.confOk = true;
+  var corpo =
+    '<div style="' + JF_LBL + '">RESULTADO</div>' +
+    '<div style="display:flex;gap:8px">' +
+      '<button id="fc-ok" style="flex:1;padding:12px 6px;border:2px solid #22c55e;background:#052e16;color:#22c55e;border-radius:8px;font-size:.9rem;font-weight:700">' + (ehEmb ? 'Tudo certo, pronto para envio' : 'Tudo certo, liberar') + '</button>' +
+      '<button id="fc-pb" style="flex:1;padding:12px 6px;border:2px solid #334155;background:#0f172a;color:#94a3b8;border-radius:8px;font-size:.9rem;font-weight:700">Encontrei problema</button>' +
+    '</div>' +
+    '<div id="fc-box" style="display:none"><div style="' + JF_LBL + '">QUAL O PROBLEMA?</div>' +
+    '<select id="fc-m" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;font-size:1rem"><option>Peça errada</option><option>Item faltando</option><option>Defeito visual</option><option>Embalagem danificada</option><option>Outro</option></select>' +
+    '<div style="' + JF_LBL + '">QUANTAS ESTÃO COM PROBLEMA?</div><input id="fc-n" type="number" min="1" max="' + qtd + '" value="1" style="' + JF_IN + '"></div>' +
+    '<div style="' + JF_LBL + '">ANOTAÇÕES (OPCIONAL)</div><textarea id="fc-o" rows="2" placeholder="Ex: faltou o suporte da base" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #334155;border-radius:8px;font-size:.9rem;resize:none;box-sizing:border-box;"></textarea>' +
+    '<div id="fc-i" style="margin-top:10px;font-size:.8rem;color:#94a3b8">O pedido segue para a próxima etapa.</div>';
+  janelaFim(ehEmb ? 'EMBALAGEM FINAL' : 'CONFERÊNCIA FINAL', esc(ot.titulo || ''), corpo, 'Confirmar', function() {
+    var obs = String(jfVal('fc-o')).replace(/^\s+|\s+$/g, '');
+    fecharJanelaFim();
+    if (S.confOk) { fecharOT('sucesso', qtd, ot.quantidade_perdida_acumulada || 0, obs); return; }
+    var n = Math.min(qtd, Math.max(1, nInt(jfVal('fc-n'))));
+    obs = ('Problema na ' + (ehEmb ? 'embalagem' : 'conferência') + ': ' + jfVal('fc-m') + ' (' + n + '). ' + obs).replace(/\s+$/, '');
+    fecharOT(n >= qtd ? 'falha' : 'parcial', Math.max(0, qtd - n), n, obs);
+  });
+  var alterna = function(v) {
+    S.confOk = v;
+    var a = document.getElementById('fc-ok'), b = document.getElementById('fc-pb');
+    a.style.borderColor = v ? '#22c55e' : '#334155'; a.style.background = v ? '#052e16' : '#0f172a'; a.style.color = v ? '#22c55e' : '#94a3b8';
+    b.style.borderColor = v ? '#334155' : '#f59e0b'; b.style.background = v ? '#0f172a' : '#1c1403'; b.style.color = v ? '#94a3b8' : '#f59e0b';
+    document.getElementById('fc-box').style.display = v ? 'none' : '';
+    document.getElementById('fc-i').innerHTML = v ? 'O pedido segue para a próxima etapa.' : 'Marca o retrabalho das peças com problema. O pedido não segue enquanto não for resolvido.';
+  };
+  document.getElementById('fc-ok').onclick = function() { alterna(true); };
+  document.getElementById('fc-pb').onclick = function() { alterna(false); };
+}
+
+/* ── despacho do botão Concluir por tipo de tarefa ── */
+function concluirPorTipo() {
+  var cod = codTipo(), ot = S.ot;
+  if (!ot || !cod) return false;
+  var i, pend = false;
+  for (i = 0; i < S.checklist.length; i++) { if (S.checklist[i].obrigatorio && !S.checklist[i].concluido) pend = true; }
+  if (pend) { toast('Complete os itens obrigatórios (*) antes de concluir.', true); return true; }
+  var rest = Math.max(0, (ot.quantidade || 0) - (ot.quantidade_concluida || 0) - (ot.quantidade_perdida_acumulada || 0));
+  if (ehPorTurno() && rest > 0) { producaoDoDia(); return true; }
+  if (cod === 'conferencia' || cod === 'embalagem') { fimConferencia(); return true; }
+  if (cod === 'expedicao' && S.pedido && S.pedido.status !== 'enviado') { toast('Use o botão "Marcar como enviado", mais acima.', true); return true; }
+  for (i = 0; i < TIPOS_ETAPA.length; i++) { if (TIPOS_ETAPA[i] === cod) { fimEtapa(); return true; } }
+  return false;
+}
+
+
 function confirmarConcluir() {
+  if (concluirPorTipo()) { return; }
   for (var i = 0; i < S.checklist.length; i++) {
     var c = S.checklist[i];
     if (c.obrigatorio && !c.concluido) {
@@ -1257,6 +1530,7 @@ function fecharOT(resultado, qtdBoa, qtdPerd, obs) {
       return;
     }
     S.ot.status = novoStatus;
+    if (novoStatus === 'concluida') { liberarBloqueadas(ot.id); }
 
     var descEvento = 'Fechamento: ' + resultado +
       ' · Boas: ' + payload.qtd_boa +
