@@ -131,7 +131,7 @@ public class MainActivity extends Activity {
         // Se nao existir, usa asset embutido (sempre funciona no boot)
         File sdcardFile = new File("/sdcard/ValenteOS_Terminal.html");
         File mntFile    = new File("/mnt/sdcard/ValenteOS_Terminal.html");
-        if (sdcardFile.exists() || mntFile.exists()) {
+        if (false && (sdcardFile.exists() || mntFile.exists())) { // v1.6: sempre usa o HTML embutido no APK (copia antiga no sdcard escondia as telas novas)
             webView.loadUrl(SDCARD_URL);
         } else {
             webView.loadUrl(ASSET_URL);
