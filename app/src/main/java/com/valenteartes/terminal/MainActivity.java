@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Build;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.Window;
@@ -19,6 +20,7 @@ import java.security.Security;
 public class MainActivity extends Activity {
 
     private WebView webView;
+    private LessonVoice lessonVoice;
     // Prioridade: sdcard (atualizações OTA) → asset (sempre disponível) → remoto (fallback)
     private static final String SDCARD_URL = "file:///sdcard/ValenteOS_Terminal.html";
     private static final String ASSET_URL  = "file:///android_asset/ValenteOS_Terminal.html";
@@ -69,12 +71,16 @@ public class MainActivity extends Activity {
         WebSettings s = webView.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
-        s.setAllowFileAccessFromFileURLs(true);
-        s.setAllowUniversalAccessFromFileURLs(true);
+        if (Build.VERSION.SDK_INT >= 16) {
+            s.setAllowFileAccessFromFileURLs(true);
+            s.setAllowUniversalAccessFromFileURLs(true);
+        }
         s.setCacheMode(WebSettings.LOAD_DEFAULT);
         s.setLoadsImagesAutomatically(true);
 
         webView.addJavascriptInterface(new NativeBridge(webView), "NativeBridge");
+        lessonVoice = new LessonVoice(this, webView);
+        webView.addJavascriptInterface(lessonVoice, "ValenteVoice");
 
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -145,5 +151,17 @@ public class MainActivity extends Activity {
     }
 
     @Override protected void onResume() { super.onResume(); webView.onResume(); }
-    @Override protected void onPause()  { super.onPause();  webView.onPause();  }
+    @Override protected void onPause()  {
+        if (lessonVoice != null) lessonVoice.stop();
+        super.onPause(); webView.onPause();
+    }
+    @Override protected void onDestroy() {
+        if (lessonVoice != null) lessonVoice.shutdown();
+        if (webView != null) {
+            webView.removeJavascriptInterface("ValenteVoice");
+            webView.stopLoading();
+            webView.destroy();
+        }
+        super.onDestroy();
+    }
 }

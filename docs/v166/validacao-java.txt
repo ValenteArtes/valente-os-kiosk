@@ -1,0 +1,82 @@
+----------
+1. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\LessonVoice.java (at line 41)
+	engine.setOnUtteranceCompletedListener(new TextToSpeech.OnUtteranceCompletedListener() {
+                    @Override public void onUtteranceCompleted(final String token) {
+                        activity.runOnUiThread(new Runnable() {
+                            @Override public void run() {
+                                if (!closed && token.equals(currentToken)) {
+                                    currentToken = null;
+                                    notifyPage(token, "done");
+                                }
+                            }
+                        });
+                    }
+                });
+	       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method setOnUtteranceCompletedListener(TextToSpeech.OnUtteranceCompletedListener) from the type TextToSpeech is deprecated
+----------
+2. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\LessonVoice.java (at line 41)
+	engine.setOnUtteranceCompletedListener(new TextToSpeech.OnUtteranceCompletedListener() {
+	                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The type TextToSpeech.OnUtteranceCompletedListener is deprecated
+----------
+3. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\LessonVoice.java (at line 68)
+	int result = engine.speak(text, TextToSpeech.QUEUE_FLUSH, params);
+	                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method speak(String, int, HashMap<String,String>) from the type TextToSpeech is deprecated
+----------
+----------
+4. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 59)
+	pm.addPreferredActivity(filtro, IntentFilter.MATCH_CATEGORY_EMPTY, set, self);
+	   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method addPreferredActivity(IntentFilter, int, ComponentName[], ComponentName) from the type PackageManager is deprecated
+----------
+5. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 64)
+	WindowManager.LayoutParams.FLAG_FULLSCREEN,
+	                           ^^^^^^^^^^^^^^^
+The field WindowManager.LayoutParams.FLAG_FULLSCREEN is deprecated
+----------
+6. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 65)
+	WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	                           ^^^^^^^^^^^^^^^
+The field WindowManager.LayoutParams.FLAG_FULLSCREEN is deprecated
+----------
+7. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 75)
+	s.setAllowFileAccessFromFileURLs(true);
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method setAllowFileAccessFromFileURLs(boolean) from the type WebSettings is deprecated
+----------
+8. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 76)
+	s.setAllowUniversalAccessFromFileURLs(true);
+	  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The method setAllowUniversalAccessFromFileURLs(boolean) from the type WebSettings is deprecated
+----------
+9. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 112)
+	private boolean triedSdcard = false;
+	                ^^^^^^^^^^^
+The value of the field new WebViewClient(){}.triedSdcard is not used
+----------
+10. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 127)
+	new Handler().postDelayed(new Runnable() {
+	    ^^^^^^^^^
+The constructor Handler() is deprecated
+----------
+11. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 140)
+	if (false && (sdcardFile.exists() || mntFile.exists())) { // v1.6: sempre usa o HTML embutido no APK (copia antiga no sdcard escondia as telas novas)
+	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dead code
+----------
+12. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\MainActivity.java (at line 140)
+	if (false && (sdcardFile.exists() || mntFile.exists())) { // v1.6: sempre usa o HTML embutido no APK (copia antiga no sdcard escondia as telas novas)
+            webView.loadUrl(SDCARD_URL);
+        } else {
+	                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dead code
+----------
+----------
+13. WARNING in C:\Users\MEUPC\Documents\ChatGPT\Desenvolver gest�o do est�dio\kiosk-v166\app\src\main\java\com\valenteartes\terminal\NativeBridge.java (at line 6)
+	import java.io.IOException;
+	       ^^^^^^^^^^^^^^^^^^^
+The import java.io.IOException is never used
+----------
+13 problems (13 warnings)

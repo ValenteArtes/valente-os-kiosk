@@ -37,19 +37,35 @@ jobs:
 
       - name: Chave de assinatura fixa
         run: |
+          if [ -z "$KEYSTORE_B64" ]; then
+            echo "KEYSTORE_B64 ausente. Build interrompido para nao gerar uma chave diferente da instalada."
+            exit 1
+          fi
           mkdir -p ~/.android
           echo "$KEYSTORE_B64" | base64 -d > ~/.android/debug.keystore
+          chmod 600 ~/.android/debug.keystore
+          ACTUAL_CERT=$(keytool -exportcert -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android | sha256sum | cut -d ' ' -f 1)
+          if [ "$ACTUAL_CERT" != "$EXPECTED_CERT_SHA256" ]; then
+            echo "A assinatura configurada nao corresponde ao p17.apk dos Positivo. Build interrompido."
+            exit 1
+          fi
         env:
           KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          EXPECTED_CERT_SHA256: 9c6c9b62484fc2aac440b4106857eabb680991db87f3ecde55f29ea3112ce924
 
       - name: Build APK
         run: gradle assembleRelease
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
 
+      - name: Preparar p18.apk
+        run: |
+          mkdir -p entrega
+          cp app/build/outputs/apk/release/app-release.apk entrega/p18.apk
+
       - name: Publicar APK
         uses: actions/upload-artifact@v4
         with:
-          name: ValenteOS-Terminal-APK
-          path: app/build/outputs/apk/release/*.apk
+          name: ValenteOS-Terminal-p18
+          path: entrega/p18.apk
           retention-days: 30

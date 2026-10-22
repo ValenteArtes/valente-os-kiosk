@@ -1,0 +1,17 @@
+[
+  {
+    "arquivo": "ValenteOS_Terminal.html",
+    "identico": true,
+    "sha256": "B68926A45C18A806D5FE46EB85E31FE7DE5D8699E8AD050308F277E464A9F488"
+  },
+  {
+    "arquivo": "treino-conteudo-es5.js",
+    "identico": true,
+    "sha256": "F9DD8459BBB6B203ED9F51683AC1180AA5E977E5CC6B0B6FD0A56C306F540B21"
+  },
+  {
+    "arquivo": "treino-engine-es5.js",
+    "identico": true,
+    "sha256": "640D236F65411DB6E13462C03B0839A82D53A7673F5EB51A28CD476642CC883B"
+  }
+]

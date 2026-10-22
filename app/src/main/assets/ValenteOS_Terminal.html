@@ -371,6 +371,13 @@ html, body {
   font-size: 0.72rem; color: #475569; text-align: center;
   padding: 6px 0 0; margin-top: -4px;
 }
+/* v166:  controles simples de áudio e reforço, com alvos confortáveis no tablet. */
+.trein-audio,.trein-reforco{padding:16px;margin:12px 0;border:1px solid #b9cfdd;border-radius:8px;background:#f3f8fc;color:#20384b}
+.trein-audio audio{display:block;width:100%;max-width:580px;margin:12px 0}
+.trein-audio button,.trein-reforco button{min-height:48px;padding:10px 16px;margin:5px;font-size:16px;white-space:normal}
+.trein-audio a{display:inline-block;min-height:40px;color:#16557b}
+
+.trein-reforco .hint,.trein-audio .hint{color:#405b70}.trein-reforco p{margin:12px 0;line-height:1.5}.trein-reforco h3{margin:14px 0 8px}
 </style>
 </head>
 <body>
@@ -2083,6 +2090,7 @@ function voltarInbox() {
 }
 
 function sair() {
+  if(typeof TreinoFechar==='function' && T.ativo)TreinoFechar();
   pararTimer();
   S.view = 'pin';
   S.colaborador = null; S.pinDigits = []; S.pinErro = false;
@@ -2099,6 +2107,7 @@ function sair() {
 render();
 </script>
 <script src="treino-conteudo-es5.js"></script>
+<script src="treino-apoio-es5.js"></script>
 <script src="treino-engine-es5.js"></script>
 </body>
 </html>

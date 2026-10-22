@@ -1,0 +1,131 @@
+{
+  "data": "2026-10-22",
+  "total": 31,
+  "ambiente": "Chromium real 1024x600; voz nativa e rede simuladas; nenhum tablet ou banco de produção acessado",
+  "testes": [
+    {
+      "teste": "Assets de treinamento e terminal do anexo são iguais aos incorporados no p17",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Motor, apoio, conteúdo e scripts do terminal usam sintaxe ES5",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Oito trilhas originais são preservadas, com adição da Academia v3",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Bridge de rede e inicialização automática não foram alteradas",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "APIs de WebView posteriores ao Android 4.0 estão protegidas por versão",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Workflow exige a mesma assinatura do p17 e não cria outra chave",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Terminal inicial abre o PIN sem acesso à rede real",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Treinamento continua integrado ao colaborador e às trilhas do sistema",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Voz nativa não começa sozinha e usa o texto da etapa sem gabarito",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Conclusão de um trecho inicia o próximo; pausa retoma o trecho atual",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Parar impede que callback atrasado reinicie a voz",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Falta de voz portuguesa gera orientação e mantém a aula acessível",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Primeira tentativa errada é registrada e indica o assunto correto",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Revisão sugerida não altera o progresso e volta à pergunta",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Mais de uma tentativa errada reforça a sugestão de revisão",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Nova questão e feedback ficam separados da tentativa original",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Acertar e depois errar remove o avanço",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Falha de gravação não aprova resposta nem altera registro confirmado",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Escrita inicial usa POST e seguintes usam PATCH sem duplicar o dia",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Rascunho de texto persiste e retorna ao reabrir a aula",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Texto é recebido sem aprovação automática e pode ser reescrito",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Checklist registra realização sem pontuar domínio",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Ordenação não libera avanço após falha ao salvar e reiniciar",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Cargo sem permissão não lê nem grava a Academia",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Falha de leitura descarta dados antigos e não confirma a abertura",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Sair durante gravação não reabre a aula com uma resposta atrasada",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Todas as 601 etapas constroem a interface com apoio habilitado",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Etapa desconhecida e aula sem conteúdo não liberam conclusão",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Fechar capacitação interrompe voz e retorna ao trabalho",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "Nenhuma escrita de teste atingiu dados de operação",
+      "resultado": "aprovado"
+    },
+    {
+      "teste": "HTML autocontido abre sem depender de arquivos JavaScript separados",
+      "resultado": "aprovado"
+    }
+  ]
+}
