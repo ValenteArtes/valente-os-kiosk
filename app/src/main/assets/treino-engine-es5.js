@@ -372,7 +372,7 @@ function treinoRenderEtapaAtual(box,trilha,dia,info,etapaIndex,respostas,revisao
     revisar:function(idx){if(!revisao)T._etapaViva=etapaIndex;treinoRenderEtapaAtual(box,trilha,dia,info,idx,respostas,true);},
     voltar:function(){treinoRenderEtapaAtual(box,trilha,dia,info,etapaIndex,respostas,revisao);}};
   treinoRenderCorpoEtapa(box.querySelector('#treinCorpo'),etapa,salva,avancar,registrar,salvar,apoio);
-  ValenteApoio.voz(box.querySelector('#treinAudio'),etapa.tipo==='cenario'?box.querySelector('#treinCorpo').textContent:ValenteApoio.narracao(etapa),null);
+  ValenteApoio.voz(box.querySelector('#treinAudio'),etapa.tipo==='cenario'?box.querySelector('#treinCorpo').textContent:ValenteApoio.narracao(etapa),ValenteApoio.arquivo(trilha.id,dia,etapaIndex));
   box.scrollTop=0;
 }
 

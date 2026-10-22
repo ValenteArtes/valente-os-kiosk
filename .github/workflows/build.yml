@@ -58,14 +58,14 @@ jobs:
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
 
-      - name: Preparar p19.apk
+      - name: Preparar p20.apk
         run: |
           mkdir -p entrega
-          cp app/build/outputs/apk/release/app-release.apk entrega/p19.apk
+          cp app/build/outputs/apk/release/app-release.apk entrega/p20.apk
 
       - name: Publicar APK
         uses: actions/upload-artifact@v4
         with:
-          name: ValenteOS-Terminal-p19
-          path: entrega/p19.apk
+          name: ValenteOS-Terminal-p20
+          path: entrega/p20.apk
           retention-days: 30

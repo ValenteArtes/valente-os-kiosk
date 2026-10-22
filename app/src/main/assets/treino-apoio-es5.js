@@ -76,7 +76,7 @@
     if(!container) return;
     container.innerHTML='<div class="trein-audio"><strong>Ouvir esta etapa</strong><div id="treinPlayer"></div><p id="treinVozStatus" role="status"></p></div>';
     var area=container.querySelector('#treinPlayer'),status=container.querySelector('#treinVozStatus');
-    if(root.ValenteVoice && root.ValenteVoice.speak && root.ValenteVoice.status) {
+    if(!arquivo && root.ValenteVoice && root.ValenteVoice.speak && root.ValenteVoice.status) {
       area.innerHTML='<button type="button" id="treinOuvir">Ouvir</button><button type="button" id="treinPausar">Pausar</button><button type="button" id="treinRetomar">Retomar trecho</button><button type="button" id="treinParar">Parar</button>';
       status.textContent='Leitura pelo Android. Ao retomar, o trecho interrompido é lido desde o início.';
       var enviar=function(){
@@ -101,7 +101,7 @@
       return;
     }
     if(arquivo) {
-      area.innerHTML='<audio controls preload="none" src="'+arquivo+'"></audio><p><a href="'+arquivo+'" target="_blank" rel="noopener">Abrir áudio no reprodutor do tablet</a></p>';
+      area.innerHTML='<audio controls preload="none" src="'+arquivo+'"></audio>';
       ativo=area.querySelector('audio');
       ativo.addEventListener('error',function(){status.textContent='Não foi possível abrir o áudio. Confira se a pasta audios foi copiada junto. O texto continua disponível.';});
       status.textContent='Toque em reproduzir. A narração não inclui o gabarito.';
@@ -133,7 +133,7 @@
     for(var i=indice-1;i>=0;i--) if(etapas[i].tipo==='conteudo') {if(alvo<0)alvo=i;if(/exemplo/i.test(etapas[i].titulo||'')){alvo=i;break;}}
     return {etapa:alvo,repetido:(r.tentativas||0)>=2};
   }
-  root.ValenteApoio={planos:planos,texto:texto,narracao:narracao,voz:voz,parar:parar,sugestao:sugestao,ordemApresentacao:ordemApresentacao};
+  root.ValenteApoio={arquivo:function(t,d,i){var m=root.VALENTE_AUDIOS,k=t+'_d'+d+'_e'+(i+1);return m&&m[k]?'audios/'+k+'.mp3':null;},planos:planos,texto:texto,narracao:narracao,voz:voz,parar:parar,sugestao:sugestao,ordemApresentacao:ordemApresentacao};
   if(root.addEventListener) {root.addEventListener('pagehide',parar,false);root.addEventListener('blur',parar,false);}
   if(root.document && root.document.addEventListener) {
     root.document.addEventListener('visibilitychange',function(){if(root.document.hidden)parar();},false);
@@ -146,3 +146,4 @@
     },false);
   }
 })(typeof window !== 'undefined' ? window : this);
+(typeof window!=='undefined'?window:this).VALENTE_AUDIOS={"integracao_d1_e1":1,"integracao_d1_e2":1,"integracao_d1_e3":1,"integracao_d1_e4":1,"integracao_d1_e5":1,"integracao_d1_e6":1,"integracao_d1_e7":1,"integracao_d2_e1":1,"integracao_d2_e2":1,"integracao_d2_e3":1,"integracao_d2_e4":1,"integracao_d2_e5":1,"integracao_d2_e6":1,"integracao_d2_e7":1,"integracao_d3_e1":1,"integracao_d3_e2":1,"integracao_d3_e3":1,"integracao_d3_e4":1,"integracao_d3_e5":1,"integracao_d3_e6":1,"integracao_d3_e7":1,"integracao_d4_e1":1,"integracao_d4_e2":1,"integracao_d4_e3":1,"integracao_d4_e4":1,"integracao_d4_e5":1,"integracao_d4_e6":1,"integracao_d4_e7":1,"integracao_d5_e1":1,"integracao_d5_e2":1,"integracao_d5_e3":1,"integracao_d5_e4":1,"integracao_d5_e5":1,"integracao_d5_e6":1,"integracao_d6_e1":1,"integracao_d6_e2":1,"integracao_d6_e3":1,"integracao_d6_e4":1,"integracao_d6_e5":1,"integracao_d6_e6":1,"integracao_d6_e7":1,"integracao_d6_e8":1,"integracao_d7_e1":1,"integracao_d7_e2":1,"integracao_d7_e3":1,"integracao_d7_e4":1,"integracao_d7_e5":1,"integracao_d7_e6":1,"integracao_d7_e7":1,"integracao_d7_e8":1,"integracao_d8_e1":1,"integracao_d8_e2":1,"integracao_d8_e3":1,"integracao_d8_e4":1,"integracao_d8_e5":1,"integracao_d8_e6":1,"integracao_d9_e1":1,"integracao_d9_e2":1,"integracao_d9_e3":1,"integracao_d9_e4":1,"integracao_d9_e6":1,"integracao_d10_e1":1,"integracao_d10_e2":1,"integracao_d10_e3":1,"integracao_d10_e5":1};
