@@ -79,12 +79,12 @@
     if(root.ValenteVoice && root.ValenteVoice.speak && root.ValenteVoice.status) {
       area.innerHTML='<button type="button" id="treinOuvir">Ouvir</button><button type="button" id="treinPausar">Pausar</button><button type="button" id="treinRetomar">Retomar trecho</button><button type="button" id="treinParar">Parar</button>';
       status.textContent='Leitura pelo Android. Ao retomar, o trecho interrompido é lido desde o início.';
-      function enviar(){
+      var enviar=function(){
         if(!leituraNativa || leituraNativa.pausada)return;
         if(leituraNativa.indice>=leituraNativa.trechos.length){status.textContent='Leitura concluída.';leituraNativa=null;return;}
         leituraNativa.token='v'+fila+'_'+(++contadorNativo);
         try{root.ValenteVoice.speak(leituraNativa.trechos[leituraNativa.indice],leituraNativa.token);}catch(e){status.textContent='Não foi possível iniciar a voz. A aula continua por texto.';leituraNativa=null;}
-      }
+      };
       area.querySelector('#treinOuvir').onclick=function(){
         parar();var disponivel;
         try{disponivel=root.ValenteVoice.status();}catch(e){disponivel='unavailable';}

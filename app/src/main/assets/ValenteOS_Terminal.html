@@ -61,16 +61,16 @@ html, body {
 .trein-progresso-label { font-size: 0.85rem; margin-bottom: 6px; }
 .trein-progresso-barra { height: 12px; background: #1e293b; border-radius: 999px; overflow: hidden; }
 .trein-progresso-fill { height: 100%; background: #f97316; }
-.trein-cards-grid {
-  display: -webkit-box; display: -webkit-flex; display: flex;
-  -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 12px;
-}
+.trein-cards-grid { display: block; font-size: 0; }
 .trein-card {
   background: #1e293b; border: 1px solid #334155; border-radius: 10px;
-  padding: 12px; cursor: pointer; min-height: 100px; width: 46%;
-  display: -webkit-box; display: -webkit-flex; display: flex;
-  -webkit-box-orient: vertical; -webkit-flex-direction: column; flex-direction: column; gap: 4px;
+  padding: 12px; cursor: pointer; min-height: 100px;
+  display: inline-block; vertical-align: top; font-size: 1rem;
+  -webkit-box-sizing: border-box; box-sizing: border-box;
+  width: 48%; margin: 0 2% 12px 0;
 }
+.trein-card > div { margin-bottom: 4px; }
+@media (max-width: 700px) { .trein-card { width: 100%; margin-right: 0; } }
 .trein-card:active { background: #334155; }
 .trein-card--bloqueado { opacity: 0.5; }
 .trein-card--concluido { border-color: #22c55e; }
