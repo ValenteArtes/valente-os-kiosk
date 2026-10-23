@@ -2346,7 +2346,7 @@ var qrcode = function() {
         for (k = 0; k < linhas.length; k++) {
           if (desenhar) {
             ctx.fillStyle = '#000'; ctx.textBaseline = 'top'; ctx.font = fonte(b.b, px, b.mono);
-            if (b.t === 'check' && k === 0) { ctx.lineWidth = 3; ctx.strokeStyle = '#000'; ctx.strokeRect(pad + 2, y + 3, px - 4, px - 4); }
+            if (b.t === 'check' && k === 0) { ctx.lineWidth = 3; ctx.strokeStyle = '#000'; ctx.strokeRect(pad + 2, y + 3, px - 4, px - 4); if (b.ok) { ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(pad + 7, y + px / 2 + 2); ctx.lineTo(pad + px / 2 - 1, y + px - 9); ctx.lineTo(pad + px - 9, y + 9); ctx.stroke(); } }
             if (b.a === 'c') { ctx.textAlign = 'center'; x = LARG / 2; } else if (b.a === 'r') { ctx.textAlign = 'right'; x = LARG - pad; } else { ctx.textAlign = 'left'; x = pad + quadr; }
             ctx.fillText(linhas[k], x, y);
           }
@@ -2496,6 +2496,73 @@ var qrcode = function() {
     return b;
   }
 
+  function dataBR(v) {
+    if (!v) return '';
+    var m = String(v).match(/^(\d{4})-(\d{2})-(\d{2})/);
+    return m ? m[3] + '/' + m[2] + '/' + m[1] : String(v);
+  }
+  function fmtCep(c) { var d = String(c || '').replace(/\D/g, ''); return d.length === 8 ? d.substr(0, 5) + '-' + d.substr(5) : String(c || ''); }
+  // d: { remetente:{nome,end1,end2,tel}, dest:{nome,tel,logradouro,numero,complemento,bairro,cidade,uf,cep}, pedido, volume, volumes, fragil }
+  function especEnvio(d) {
+    var r = d.remetente || {}, e = d.dest || {}, b = [], rua = [e.logradouro || '', e.numero ? ', ' + e.numero : ''].join('') + (e.complemento ? ' — ' + e.complemento : '');
+    b.push({ t: 'txt', s: 'REMETENTE', px: 18, b: 1, mb: 0 }, { t: 'txt', s: r.nome || '', px: 22, b: 1, mb: 0 });
+    if (r.end1) b.push({ t: 'txt', s: r.end1, px: 19, mb: 0 });
+    if (r.end2) b.push({ t: 'txt', s: r.end2, px: 19, mb: 0 });
+    if (r.tel) b.push({ t: 'txt', s: r.tel, px: 19 });
+    b.push({ t: 'linha' }, { t: 'txt', s: 'DESTINATÁRIO', px: 22, b: 1, mb: 2 }, { t: 'txt', s: e.nome || '', px: 40, b: 1, mb: 6 });
+    if (rua.replace(/[\s,—]/g, '')) b.push({ t: 'txt', s: rua, px: 30, mb: 2 });
+    if (e.bairro) b.push({ t: 'txt', s: e.bairro, px: 28, mb: 2 });
+    b.push({ t: 'txt', s: [e.cidade || '', e.uf || ''].filter(function (x) { return x; }).join(' - '), px: 34, b: 1, mb: 6 });
+    if (e.cep) b.push({ t: 'txt', s: 'CEP ' + fmtCep(e.cep), px: 48, b: 1, mb: 6 });
+    if (e.tel) b.push({ t: 'txt', s: 'Tel.: ' + e.tel, px: 26, mb: 4 });
+    b.push({ t: 'linha' });
+    if (d.fragil) b.push({ t: 'txt', s: '*** FRÁGIL ***', px: 40, b: 1, a: 'c', mb: 4 });
+    b.push({ t: 'txt', s: (d.volumes > 1 ? 'Volume ' + d.volume + ' de ' + d.volumes : 'Volume único') + (d.pedido ? '  ·  Pedido ' + d.pedido : ''), px: 24, b: 1, a: 'c' });
+    return b;
+  }
+  // d: { pedido, cliente, contato, modelo, qtd, entrega, prioridade, obs, etapas:[{titulo, qtd, feitas, status}], operador, data }
+  function especFichaPedido(d) {
+    var b = [{ t: 'txt', s: 'FICHA DO PEDIDO', px: 22, a: 'c', mb: 0 }, { t: 'txt', s: d.pedido || '', px: 32, b: 1, a: 'c', mb: 2 }, { t: 'txt', s: d.cliente || '', px: 34, b: 1, a: 'c', mb: 6 }, { t: 'linha' }], i, e, linhaQtd;
+    if (d.modelo) b.push({ t: 'txt', s: 'Peça: ' + d.modelo, px: 26, b: 1, mb: 2 });
+    if (d.qtd != null) b.push({ t: 'txt', s: 'Quantidade do pedido: ' + d.qtd, px: 30, b: 1, mb: 2 });
+    if (d.entrega) b.push({ t: 'txt', s: 'Entrega prometida: ' + dataBR(d.entrega), px: 24, mb: 2 });
+    if (d.prioridade && d.prioridade !== 'normal') b.push({ t: 'txt', s: 'PRIORIDADE: ' + String(d.prioridade).toUpperCase(), px: 24, b: 1, mb: 2 });
+    if (d.contato) b.push({ t: 'txt', s: 'Contato: ' + d.contato, px: 22, mb: 2 });
+    if (d.obs) b.push({ t: 'txt', s: 'Obs.: ' + d.obs, px: 22, mb: 2 });
+    b.push({ t: 'linha' }, { t: 'txt', s: 'PROCESSO — marque ao concluir', px: 22, b: 1, mb: 6 });
+    for (i = 0; i < (d.etapas || []).length; i++) {
+      e = d.etapas[i];
+      b.push({ t: 'check', s: (i + 1) + '. ' + e.titulo, px: 26, b: 1, ok: e.status === 'concluida', mb: 2 });
+      linhaQtd = 'Qtd ' + (e.qtd != null ? e.qtd : '—') + (e.feitas ? ' · já feitas ' + e.feitas : '');
+      b.push({ t: 'txt', s: linhaQtd, px: 22, mb: 0 }, { t: 'txt', s: 'Feitas ______  Perdas ____  Visto ____', px: 22, mb: 10 });
+    }
+    b.push({ t: 'linha' }, { t: 'check', s: 'Conferido: quantidades e peças do pedido', px: 24, mb: 8 }, { t: 'check', s: 'Embalado e etiquetado', px: 24, mb: 8 },
+      { t: 'txt', s: 'Volumes ____   Rastreio ______________', px: 22, mb: 8 }, { t: 'linha' });
+    if (d.pedido) b.push({ t: 'qr', s: d.pedido, tam: 200 });
+    b.push({ t: 'txt', s: [d.operador ? 'Impresso por ' + d.operador : '', d.data || ''].filter(function (x) { return x; }).join(' · '), px: 18, a: 'c' });
+    return b;
+  }
+  // pergunta quantos volumes (uma etiqueta por volume) e se é frágil; cb(volumes, fragil)
+  function perguntarVolumes(cb) {
+    var doc = root.document, ov = doc.createElement('div');
+    ov.style.cssText = 'position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,.75);z-index:100001;display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;padding:16px';
+    ov.innerHTML = '<div style="background:#fff;color:#111;border-radius:12px;padding:18px;max-width:360px;width:100%;font:15px sans-serif"><b style="font-size:17px">Etiqueta de envio</b><p style="margin:8px 0 6px;color:#444">Quantos volumes (caixas) tem este pedido?</p><input id="vpVol" type="number" min="1" max="20" value="1" style="width:100%;box-sizing:border-box;padding:12px;font-size:20px;border:1px solid #999;border-radius:8px;text-align:center"><label style="display:block;margin-top:12px;font-size:16px"><input id="vpFr" type="checkbox" style="width:20px;height:20px;vertical-align:middle"> Frágil</label><div style="display:-webkit-box;display:flex;gap:8px;margin-top:14px"><button id="vpC" style="-webkit-box-flex:1;flex:1;padding:12px;font-size:15px;border:1px solid #999;background:#eee;border-radius:8px">Cancelar</button><button id="vpOk" style="-webkit-box-flex:1;flex:1;padding:12px;font-size:15px;border:none;background:#2e5a1e;color:#fff;border-radius:8px">Imprimir</button></div></div>';
+    doc.body.appendChild(ov);
+    ov.querySelector('#vpC').onclick = function () { ov.parentNode.removeChild(ov); };
+    ov.querySelector('#vpOk').onclick = function () {
+      var n = parseInt(ov.querySelector('#vpVol').value, 10) || 1, fr = ov.querySelector('#vpFr').checked;
+      if (n < 1) n = 1; if (n > 20) n = 20;
+      ov.parentNode.removeChild(ov); cb(n, fr);
+    };
+  }
+  // fluxo completo: pergunta volumes e imprime uma etiqueta por volume
+  function imprimirEnvio(d) {
+    perguntarVolumes(function (n, fr) {
+      var l = [], i;
+      for (i = 1; i <= n; i++) l.push(especEnvio({ remetente: d.remetente, dest: d.dest, pedido: d.pedido, volume: i, volumes: n, fragil: fr }));
+      imprimir(l);
+    });
+  }
   root.VPrint = { desenhar: desenharEtiqueta, bytes: bytesEscPos, base64: base64, imprimir: imprimir, configurar: configurar, ip: lerIp, temPonte: temPonte,
-    especTeste: especTeste, especEndereco: especEndereco, especItem: especItem, especOT: especOT, qr: qrMatriz };
+    especTeste: especTeste, especEndereco: especEndereco, especEnvio: especEnvio, especFichaPedido: especFichaPedido, imprimirEnvio: imprimirEnvio, perguntarVolumes: perguntarVolumes, fmtCep: fmtCep, dataBR: dataBR, especItem: especItem, especOT: especOT, qr: qrMatriz };
 })(typeof window !== 'undefined' ? window : this);
