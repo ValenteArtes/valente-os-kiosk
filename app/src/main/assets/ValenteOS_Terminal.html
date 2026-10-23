@@ -602,7 +602,9 @@ function renderPin(app) {
     '<button class="pin-btn vazio"></button>' +
     '<button class="pin-btn" onclick="dPin(0)">0</button>' +
     '<button class="pin-btn del" onclick="delPin()">⌫</button>' +
-    '</div></div>';
+    '</div>' +
+    '<div style="text-align:center;margin-top:10px"><a onclick="configImpressora()" style="color:#64748b;font-size:.9rem;padding:12px;display:inline-block">🖨 Impressora</a></div>' +
+    '</div>';
 }
 
 function dPin(n) {
@@ -1066,6 +1068,7 @@ function renderDetalhe() {
     botoesHtml += '<button class="btn btn-ret" onclick="acaoOT(\'retomada\',\'retomada\')">▶ Retomar Tarefa</button>';
   }
   if (podeRetirarEstoque() && (isExec(s) || s === 'pausada')) { botoesHtml += '<button class="btn btn-ref" onclick="abrirOndePegar()">📦 Retirar do estoque</button>'; }
+  botoesHtml += '<button class="btn btn-vol" onclick="imprimirFichaOT()">🖨 Imprimir ficha</button>';
   botoesHtml += '<button class="btn btn-vol" onclick="voltarInbox()">← Voltar</button>';
   botoesHtml += '</div>';
 
@@ -1540,6 +1543,7 @@ function abrirOndePegar(qtdManual) {
             }
           }
           var plano = [], total = 0, h = '';
+          S._opPlano = plano; S._opQtd = qtd; S._opCod = cod;
           for (i = 0; i < comps.length; i++) {
             var falta = qtd, pegar = [], pass, j;
             var ordem = ehPint ? [brut, pint] : [pint, brut];
@@ -1555,7 +1559,7 @@ function abrirOndePegar(qtdManual) {
               }
             }
             plano.push({ comp: comps[i], pegar: pegar, falta: falta });
-            h += '<div style="padding:8px 0;border-bottom:1px solid #1e293b"><div style="font-weight:700;color:#f1f5f9"><span id="cp_' + comps[i].id + '"></span>' + esc(String(comps[i].nome || '').replace(/\s+$/, '')) + ' — ' + qtd + ' un.</div>';
+            h += '<div style="padding:8px 0;border-bottom:1px solid #1e293b"><div style="font-weight:700;color:#f1f5f9"><span id="cp_' + comps[i].id + '"></span>' + esc(String(comps[i].nome || '').replace(/\s+$/, '')) + ' — ' + qtd + ' un. <a onclick="imprimirEtiquetaComp(' + i + ')" style="float:right;color:#7ab8f5;font-size:.85rem;padding:6px">🏷 Etiqueta</a></div>';
             if (!pegar.length) { h += '<div style="color:#fbbf24;font-size:.85rem">Sem endereço registrado. Procure e avise o supervisor.</div>'; }
             for (j = 0; j < pegar.length; j++) {
               h += '<div style="color:#cbd5e1;font-size:.95rem">📍 <b style="color:#4ade80">' + esc(cod[pegar[j].row.endereco_id] || '?') + '</b> · pegue <b>' + pegar[j].qtd + '</b> <span style="color:#64748b;font-size:.75rem">(' + (pegar[j].pintado ? 'pintado' : 'sem pintura') + ')</span></div>';
@@ -1873,6 +1877,38 @@ function salvarFicha() {
 ───────────────────────────────────────── */
 function fmtMoeda(v) { return 'R$ ' + Number(v || 0).toFixed(2).replace('.', ','); }
 
+/* ── Impressão térmica (Epson TM-T20, rede) — usa etiquetas.js ── */
+function dataHoraAgora() {
+  var d = new Date();
+  function p(n) { return (n < 10 ? '0' : '') + n; }
+  return p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function configImpressora() {
+  if (!window.VPrint) { toast('Impressão indisponível nesta versão.', true); return; }
+  VPrint.configurar();
+}
+function imprimirFichaOT() {
+  if (!window.VPrint) { toast('Impressão indisponível nesta versão.', true); return; }
+  var ot = S.ot, chk = [], i;
+  if (!ot) { return; }
+  for (i = 0; i < S.checklist.length; i++) { chk.push(S.checklist[i].texto); }
+  VPrint.imprimir(VPrint.especOT({
+    codigo: ot.codigo_publico || '', titulo: ot.titulo || '', tipo: (S.tipo && S.tipo.nome) || '', peca: (S.peca && S.peca.modelo) || '',
+    cliente: (S.pedido && S.pedido.cliente) || '', qtd: ot.quantidade, instrucoes: ot.instrucoes || '', checklist: chk,
+    operador: (S.colaborador && S.colaborador.nome) || '', data: dataHoraAgora()
+  }));
+}
+function imprimirEtiquetaComp(i) {
+  if (!window.VPrint) { toast('Impressão indisponível nesta versão.', true); return; }
+  var p = S._opPlano && S._opPlano[i], end = [], k;
+  if (!p) { return; }
+  for (k = 0; k < p.pegar.length; k++) { end.push(((S._opCod || {})[p.pegar[k].row.endereco_id] || '?') + ' (' + p.pegar[k].qtd + ')'); }
+  VPrint.imprimir(VPrint.especItem({
+    nome: String(p.comp.nome || '').replace(/\s+$/, ''), subtitulo: (S.peca && S.peca.modelo) || '', qtd: S._opQtd,
+    codigo: (S.peca && S.peca.codigo_publico) || '', enderecos: end
+  }));
+}
+
 function carregarPedidoEDetalhe() {
   var cod = S.tipo ? S.tipo.codigo : '';
   S.pedido = null;
@@ -2106,6 +2142,7 @@ function sair() {
 ───────────────────────────────────────── */
 render();
 </script>
+<script src="etiquetas.js"></script>
 <script src="treino-conteudo-es5.js"></script>
 <script src="treino-apoio-es5.js"></script>
 <script src="treino-engine-es5.js"></script>

@@ -58,14 +58,14 @@ jobs:
         env:
           ANDROID_HOME: /usr/local/lib/android/sdk
 
-      - name: Preparar p22.apk
+      - name: Preparar p23.apk
         run: |
           mkdir -p entrega
-          cp app/build/outputs/apk/release/app-release.apk entrega/p22.apk
+          cp app/build/outputs/apk/release/app-release.apk entrega/p23.apk
 
       - name: Publicar APK
         uses: actions/upload-artifact@v4
         with:
-          name: ValenteOS-Terminal-p22
-          path: entrega/p22.apk
+          name: ValenteOS-Terminal-p23
+          path: entrega/p23.apk
           retention-days: 30
