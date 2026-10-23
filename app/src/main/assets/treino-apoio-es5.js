@@ -100,6 +100,16 @@
       area.querySelector('#treinParar').onclick=function(){parar();status.textContent='Leitura interrompida.';};
       return;
     }
+    if(arquivo && root.ValenteVoice && root.ValenteVoice.playAudio !== undefined) {
+      var nomeAud=arquivo.replace(/^.*\//,'').replace(/\.mp3$/,'');
+      area.innerHTML='<button type="button" id="treinOuvir">Ouvir</button><button type="button" id="treinPausar">Pausar</button><button type="button" id="treinRetomar">Continuar</button><button type="button" id="treinParar">Parar</button>';
+      status.textContent='Narração gravada em português.';
+      area.querySelector('#treinOuvir').onclick=function(){root.ValenteVoice.playAudio(nomeAud);status.textContent='Tocando a narração.';};
+      area.querySelector('#treinPausar').onclick=function(){root.ValenteVoice.pauseAudio();status.textContent='Narração pausada.';};
+      area.querySelector('#treinRetomar').onclick=function(){root.ValenteVoice.resumeAudio();status.textContent='Tocando a narração.';};
+      area.querySelector('#treinParar').onclick=function(){root.ValenteVoice.stop();status.textContent='Narração interrompida.';};
+      return;
+    }
     if(arquivo) {
       area.innerHTML='<audio controls preload="none" src="'+arquivo+'"></audio>';
       ativo=area.querySelector('audio');
@@ -118,6 +128,12 @@
     area.querySelector('#treinRetomar').onclick=function(){synth.resume();};
     area.querySelector('#treinParar').onclick=parar;
   }
+  root.ValenteAudioEvent=function(nome,evento){
+    var el=root.document&&root.document.getElementById('treinVozStatus');
+    if(!el)return;
+    if(evento==='ended')el.textContent='Narração concluída.';
+    else if(evento==='error')el.textContent='Não foi possível tocar o áudio. O texto continua disponível.';
+  };
   root.ValenteNativeVoiceEvent=function(token,event){
     if(!leituraNativa || token!==leituraNativa.token || leituraNativa.pausada)return;
     if(event==='done'){leituraNativa.indice++;leituraNativa.continuar();}

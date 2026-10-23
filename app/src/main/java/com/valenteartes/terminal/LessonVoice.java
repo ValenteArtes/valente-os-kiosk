@@ -1,6 +1,8 @@
 package com.valenteartes.terminal;
 
 import android.app.Activity;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.speech.tts.TextToSpeech;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,6 +21,7 @@ public final class LessonVoice implements TextToSpeech.OnInitListener {
     private volatile String state = "initializing";
     private volatile boolean closed;
     private String currentToken;
+    private MediaPlayer player;
 
     public LessonVoice(Activity activity, WebView webView) {
         this.activity = activity;
@@ -77,8 +80,60 @@ public final class LessonVoice implements TextToSpeech.OnInitListener {
         });
     }
 
+    @JavascriptInterface public void playAudio(final String name) {
+        if (name == null || !name.matches("[a-zA-Z0-9_]{1,64}")) return;
+        activity.runOnUiThread(new Runnable() {
+            @Override public void run() {
+                if (closed) return;
+                releasePlayer();
+                try {
+                    AssetFileDescriptor fd = activity.getAssets().openFd("audios/" + name + ".mp3");
+                    MediaPlayer p = new MediaPlayer();
+                    p.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+                    fd.close();
+                    p.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override public void onCompletion(MediaPlayer mp) { notifyAudio(name, "ended"); }
+                    });
+                    p.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+                        @Override public boolean onError(MediaPlayer mp, int what, int extra) { notifyAudio(name, "error"); return true; }
+                    });
+                    p.prepare();
+                    p.start();
+                    player = p;
+                } catch (Exception error) { releasePlayer(); notifyAudio(name, "error"); }
+            }
+        });
+    }
+
+    @JavascriptInterface public void pauseAudio() {
+        activity.runOnUiThread(new Runnable() {
+            @Override public void run() { try { if (player != null && player.isPlaying()) player.pause(); } catch (RuntimeException ignored) {} }
+        });
+    }
+
+    @JavascriptInterface public void resumeAudio() {
+        activity.runOnUiThread(new Runnable() {
+            @Override public void run() { try { if (player != null && !player.isPlaying()) player.start(); } catch (RuntimeException ignored) {} }
+        });
+    }
+
+    private void releasePlayer() {
+        if (player != null) {
+            try { player.stop(); } catch (RuntimeException ignored) {}
+            try { player.release(); } catch (RuntimeException ignored) {}
+            player = null;
+        }
+    }
+
+    private void notifyAudio(String name, String event) {
+        if (closed) return;
+        webView.loadUrl("javascript:(function(){if(typeof window.ValenteAudioEvent==='function'){window.ValenteAudioEvent("
+                + JSONObject.quote(name) + "," + JSONObject.quote(event) + ");}})()");
+    }
+
     private void stopOnUiThread() {
         currentToken = null;
+        releasePlayer();
         if (engine != null && !closed) engine.stop();
     }
 
