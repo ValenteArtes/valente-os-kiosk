@@ -2305,6 +2305,8 @@ var qrcode = function() {
   var CHAVE_IP = 'valente_print_ip';
 
   /* ---------- QR ---------- */
+  /* QR que abre o item no sistema: ?q=<codigo> (o app resolve pedido/tarefa/peça/endereço) */
+  function linkQR(codigo) { return (root.VALENTE_URL || 'https://calculadora-3d-valente-artes.netlify.app/') + '?q=' + encodeURIComponent(codigo); }
   function qrMatriz(texto) {
     var q = root.qrcode(0, 'M');
     q.addData(String(texto));
@@ -2458,14 +2460,14 @@ var qrcode = function() {
   /* ---------- modelos de etiqueta ---------- */
   function especTeste() {
     return [{ t: 'txt', s: 'VALENTE OS', px: 44, b: 1, a: 'c' }, { t: 'txt', s: 'Teste de impressão', px: 28, a: 'c' }, { t: 'linha' },
-      { t: 'txt', s: 'Acentos: ação, pé, coração, ÓÍÚ', px: 24, a: 'c' }, { t: 'qr', s: 'VALENTE-OS-TESTE', tam: 220 }, { t: 'txt', s: 'Se leu isto, está funcionando.', px: 22, a: 'c' }];
+      { t: 'txt', s: 'Acentos: ação, pé, coração, ÓÍÚ', px: 24, a: 'c' }, { t: 'qr', s: linkQR('TESTE'), tam: 260 }, { t: 'txt', s: 'Se leu isto, está funcionando.', px: 22, a: 'c' }];
   }
   function especEndereco(e) {
     var l1 = [], l2 = [];
     if (e.galpao) l1.push('Galpão ' + e.galpao); if (e.estante) l1.push('Estante ' + e.estante);
     if (e.prateleira) l2.push('Prateleira ' + e.prateleira); if (e.caixa) l2.push('Caixa ' + e.caixa);
     var linhas = [l1.join(' · '), l2.join(' · ')].filter(function (x) { return x; }).join('\n');
-    return [{ t: 'txt', s: e.codigo, px: 52, b: 1, a: 'c', mb: 6 }, { t: 'qr', s: e.codigo, tam: 300 }, { t: 'txt', s: linhas, px: 26, a: 'c', mb: 2 }]
+    return [{ t: 'txt', s: e.codigo, px: 52, b: 1, a: 'c', mb: 6 }, { t: 'qr', s: linkQR(e.codigo), tam: 300 }, { t: 'txt', s: linhas, px: 26, a: 'c', mb: 2 }]
       .concat(e.descricao ? [{ t: 'txt', s: e.descricao, px: 22, a: 'c' }] : []);
   }
   // it: { nome, subtitulo, codigo (QR), qtd, enderecos:[texto], obs }
@@ -2473,7 +2475,7 @@ var qrcode = function() {
     var b = [{ t: 'txt', s: it.nome, px: 36, b: 1, a: 'c', mb: 4 }];
     if (it.subtitulo) b.push({ t: 'txt', s: it.subtitulo, px: 26, a: 'c' });
     if (it.qtd != null) b.push({ t: 'txt', s: 'Quantidade: ' + it.qtd, px: 26, b: 1, a: 'c' });
-    if (it.codigo) b.push({ t: 'qr', s: it.codigo, tam: 240 }, { t: 'txt', s: it.codigo, px: 20, a: 'c', mono: 1 });
+    if (it.codigo) b.push({ t: 'qr', s: linkQR(it.codigo), tam: 260 }, { t: 'txt', s: it.codigo, px: 20, a: 'c', mono: 1 });
     if (it.enderecos && it.enderecos.length) b.push({ t: 'linha' }, { t: 'txt', s: 'Guardado em:', px: 22, a: 'c' }, { t: 'txt', s: it.enderecos.join('\n'), px: 28, b: 1, a: 'c' });
     if (it.obs) b.push({ t: 'txt', s: it.obs, px: 22, a: 'c' });
     return b;
@@ -2491,7 +2493,7 @@ var qrcode = function() {
       for (var i = 0; i < ot.checklist.length; i++) b.push({ t: 'check', s: ot.checklist[i], px: 24, mb: 8 });
     }
     b.push({ t: 'linha' });
-    if (ot.codigo) b.push({ t: 'qr', s: ot.codigo, tam: 200 });
+    if (ot.codigo) b.push({ t: 'qr', s: linkQR(ot.codigo), tam: 260 });
     b.push({ t: 'txt', s: [ot.operador ? 'Impresso por ' + ot.operador : '', ot.data || ''].filter(function (x) { return x; }).join(' · '), px: 18, a: 'c' });
     return b;
   }
@@ -2538,7 +2540,7 @@ var qrcode = function() {
     }
     b.push({ t: 'linha' }, { t: 'check', s: 'Conferido: quantidades e peças do pedido', px: 24, mb: 8 }, { t: 'check', s: 'Embalado e etiquetado', px: 24, mb: 8 },
       { t: 'txt', s: 'Volumes ____   Rastreio ______________', px: 22, mb: 8 }, { t: 'linha' });
-    if (d.pedido) b.push({ t: 'qr', s: d.pedido, tam: 200 });
+    if (d.pedido) b.push({ t: 'qr', s: linkQR(d.pedido), tam: 260 });
     b.push({ t: 'txt', s: [d.operador ? 'Impresso por ' + d.operador : '', d.data || ''].filter(function (x) { return x; }).join(' · '), px: 18, a: 'c' });
     return b;
   }
@@ -2564,5 +2566,5 @@ var qrcode = function() {
     });
   }
   root.VPrint = { desenhar: desenharEtiqueta, bytes: bytesEscPos, base64: base64, imprimir: imprimir, configurar: configurar, ip: lerIp, temPonte: temPonte,
-    especTeste: especTeste, especEndereco: especEndereco, especEnvio: especEnvio, especFichaPedido: especFichaPedido, imprimirEnvio: imprimirEnvio, perguntarVolumes: perguntarVolumes, fmtCep: fmtCep, dataBR: dataBR, especItem: especItem, especOT: especOT, qr: qrMatriz };
+    especTeste: especTeste, linkQR: linkQR, especEndereco: especEndereco, especEnvio: especEnvio, especFichaPedido: especFichaPedido, imprimirEnvio: imprimirEnvio, perguntarVolumes: perguntarVolumes, fmtCep: fmtCep, dataBR: dataBR, especItem: especItem, especOT: especOT, qr: qrMatriz };
 })(typeof window !== 'undefined' ? window : this);
