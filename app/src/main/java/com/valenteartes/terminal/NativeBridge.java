@@ -24,11 +24,21 @@ public class NativeBridge {
                         final String apiKey, final String bodyJson,
                         final String cbId) {
         new Thread(new Runnable() {
-            public void run() { doRequest(method, url, apiKey, bodyJson, cbId); }
+            public void run() { doRequest(method, url, apiKey, apiKey, bodyJson, cbId); }
         }).start();
     }
 
-    private void doRequest(String method, String url, String apiKey,
+    /** Igual ao request, mas o Authorization leva o token do usuário logado (Supabase Auth). */
+    @JavascriptInterface
+    public void requestAuth(final String method, final String url,
+                            final String apiKey, final String bearer,
+                            final String bodyJson, final String cbId) {
+        new Thread(new Runnable() {
+            public void run() { doRequest(method, url, apiKey, bearer, bodyJson, cbId); }
+        }).start();
+    }
+
+    private void doRequest(String method, String url, String apiKey, String bearer,
                            String bodyJson, String cbId) {
         try {
             boolean hasBody = bodyJson != null && !bodyJson.isEmpty()
@@ -41,7 +51,7 @@ public class NativeBridge {
             Request.Builder rb = new Request.Builder()
                 .url(url)
                 .header("apikey",         apiKey)
-                .header("Authorization",  "Bearer " + apiKey)
+                .header("Authorization",  "Bearer " + bearer)
                 .header("Accept",         "application/json");
 
             if (hasBody) {
