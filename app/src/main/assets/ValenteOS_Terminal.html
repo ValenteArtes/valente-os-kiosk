@@ -1788,6 +1788,140 @@ function levarParaMesa(fila, mesaId, idx) {
 }
 
 
+/* ─────────────────────────────────────────
+   Guardar onde? (v179, ES5) — ao concluir Impressão ou Pintura, sugere o endereço
+   da prateleira (grade G1-E01..E04 × P01..P06 × C01..C06) e registra no estoque físico.
+   Sugestão: 1) caixa onde esse componente já está; 2) caixa de outro componente da mesma peça;
+   3) primeira caixa vazia. Uma caixa pode ser dividida por até 3 itens diferentes.
+───────────────────────────────────────── */
+var GO = null;
+function goNorm(s) {
+  var m = { 'á':'a','à':'a','â':'a','ã':'a','ä':'a','é':'e','è':'e','ê':'e','ë':'e','í':'i','ì':'i','î':'i','ï':'i','ó':'o','ò':'o','ô':'o','õ':'o','ö':'o','ú':'u','ù':'u','û':'u','ü':'u','ç':'c' };
+  return String(s || '').toLowerCase().replace(/[^\u0000-\u007f]/g, function(ch) { return m[ch] || ch; }).replace(/^\s+|\s+$/g, '');
+}
+function guardarOndeAposFechar(ot, codigo, qtdBoa) {
+  if (!ot || !(qtdBoa > 0) || (codigo !== 'impressao' && codigo !== 'pintura')) { return; }
+  var pecaId = (S.peca && S.peca.id) || ot.peca_id;
+  if (!pecaId && !ot.componente_id) { return; }
+  var ehPint = codigo === 'pintura';
+  var qs = ot.componente_id ? 'id=eq.' + ot.componente_id + '&select=id,nome,peca_id' : 'peca_id=eq.' + pecaId + '&select=id,nome,peca_id&order=created_at';
+  sbGet('peca_componentes', qs, function(e1, comps) {
+    if (e1 || !comps || !comps.length) { toast('Componente não identificado: guarde na prateleira e avise o supervisor.', true); return; }
+    var comp = comps[0], i;
+    if (!ot.componente_id) {
+      var alvo = goNorm(ot.titulo), best = 0;
+      for (i = 0; i < comps.length; i++) { var n = goNorm(comps[i].nome); if (n && alvo.indexOf(n) >= 0 && n.length > best) { best = n.length; comp = comps[i]; } }
+      if (!best && comps.length > 1) { toast('Componente não identificado: guarde na prateleira e avise o supervisor.', true); return; }
+    }
+    sbGet('peca_componentes', 'peca_id=eq.' + comp.peca_id + '&select=id', function(e2, irmaos) {
+      sbGet('enderecos', 'ativo=eq.true&select=id,codigo&order=codigo&limit=1000', function(e3, ends) {
+        sbGet('inventario_fisico', 'quantidade=gt.0&select=id,endereco_id,entity_type,entity_id,quantidade,etapa_id&limit=3000', function(e4, inv) {
+          sbGet('etapas_processo', 'select=id,codigo,processos_produtivos(codigo)', function(e5, ets) {
+            if (e3 || e4 || !ends || !inv) { toast('Estoque guiado indisponível agora. Guarde e avise o supervisor.', true); return; }
+            var brut = null, pint = null, k;
+            for (k = 0; k < (ets || []).length; k++) {
+              if (ets[k].processos_produtivos && ets[k].processos_produtivos.codigo === 'pintura') {
+                if (ets[k].codigo === 'pintado') { pint = ets[k].id; }
+                if (ets[k].codigo === 'bruto') { brut = ets[k].id; }
+              }
+            }
+            var etapaAlvo = ehPint ? pint : brut;
+            var irm = {}; for (k = 0; k < (irmaos || []).length; k++) { irm[irmaos[k].id] = true; }
+            var porEnd = {}, mesaId = null;
+            for (k = 0; k < ends.length; k++) { porEnd[ends[k].id] = { end: ends[k], itens: {}, nItens: 0, mesmo: false, mesmoOutraEtapa: false, irmao: false }; if (ends[k].codigo === 'MESA-SEPARACAO') { mesaId = ends[k].id; } }
+            for (k = 0; k < inv.length; k++) {
+              var b = porEnd[inv[k].endereco_id]; if (!b) { continue; }
+              var chave = inv[k].entity_type + ':' + inv[k].entity_id;
+              if (!b.itens[chave]) { b.itens[chave] = true; b.nItens++; }
+              if (inv[k].entity_type === 'componente') {
+                if (inv[k].entity_id === comp.id) { if ((inv[k].etapa_id || null) === (etapaAlvo || null)) { b.mesmo = true; } else { b.mesmoOutraEtapa = true; } }
+                else if (irm[inv[k].entity_id]) { b.irmao = true; }
+              }
+            }
+            var lista = [];
+            for (k = 0; k < ends.length; k++) {
+              var e = porEnd[ends[k].id];
+              if (ends[k].id === mesaId || String(ends[k].codigo).indexOf('G1-') !== 0) { continue; }
+              var score = e.mesmo ? 0 : (e.mesmoOutraEtapa && e.nItens < 3) ? 1 : (e.irmao && e.nItens < 3) ? 2 : (e.nItens === 0) ? 3 : (e.nItens < 3) ? 4 : 9;
+              var why = e.mesmo ? 'já tem este componente' : e.mesmoOutraEtapa ? 'mesmo componente (outra fase)' : e.irmao ? 'mesma peça' : e.nItens === 0 ? 'caixa vazia' : e.nItens + ' item(ns) lá';
+              lista.push({ id: ends[k].id, codigo: ends[k].codigo, score: score, why: why, n: e.nItens });
+            }
+            lista.sort(function(a, b2) { return a.score !== b2.score ? a.score - b2.score : (a.codigo < b2.codigo ? -1 : 1); });
+            GO = { ot: ot, comp: comp, qtd: qtdBoa, ehPint: ehPint, etapa: etapaAlvo, brut: brut, mesaId: mesaId, lista: lista, sel: lista.length ? lista[0].id : null, inv: inv, codPorId: {} };
+            for (k = 0; k < ends.length; k++) { GO.codPorId[ends[k].id] = ends[k].codigo; }
+            if (!lista.length) { toast('Nenhum endereço G1 cadastrado. Rode o SQL da grade.', true); return; }
+            abrirGuardarOnde();
+          });
+        });
+      });
+    });
+  });
+}
+function abrirGuardarOnde() {
+  var g = GO, h = '', i, o;
+  h += '<div style="font-size:1.05rem;color:#f1f5f9;margin-bottom:4px"><b>' + g.qtd + ' un.</b> · ' + esc(String(g.comp.nome || '').replace(/\s+$/, '')) + ' <span style="color:#94a3b8;font-size:.8rem">(' + (g.ehPint ? 'pintado' : 'sem pintura') + ')</span></div>';
+  h += '<div style="' + JF_LBL + '">GUARDE EM</div><div id="go-op">';
+  for (i = 0; i < g.lista.length && i < 4; i++) {
+    o = g.lista[i];
+    h += '<div class="go-it" data-id="' + o.id + '" style="padding:12px;margin-bottom:6px;border-radius:8px;border:2px solid ' + (o.id === g.sel ? '#22c55e' : '#334155') + ';background:' + (o.id === g.sel ? '#052e16' : '#0f172a') + ';color:#f1f5f9;font-size:1.05rem"><b>' + esc(o.codigo) + '</b> <span style="color:#94a3b8;font-size:.8rem">· ' + esc(o.why) + '</span></div>';
+  }
+  h += '</div><div style="' + JF_LBL + '">OU OUTRO ENDEREÇO</div><select id="go-sel" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;font-size:1rem"><option value="">— escolher —</option>';
+  for (i = 0; i < g.lista.length; i++) { h += '<option value="' + g.lista[i].id + '">' + esc(g.lista[i].codigo) + ' (' + (g.lista[i].n ? g.lista[i].n + ' item(ns)' : 'vazia') + ')</option>'; }
+  h += '</select><div style="font-size:.72rem;color:#64748b;margin-top:8px">' + (g.ehPint ? 'Ao guardar, as peças sem pintura desta tarefa saem do estoque bruto.' : 'Cole a etiqueta da caixa se ainda não tiver.') + '</div>';
+  janelaFim('GUARDAR ONDE?', esc(g.ot.titulo || ''), h, 'Guardar aqui', guardarOndeConfirmar);
+  document.getElementById('jf-cancel').innerHTML = 'Guardar depois';
+  var its = document.querySelectorAll('.go-it'), j;
+  var marca = function(id) {
+    GO.sel = id;
+    for (j = 0; j < its.length; j++) { var on = its[j].getAttribute('data-id') === id; its[j].style.borderColor = on ? '#22c55e' : '#334155'; its[j].style.background = on ? '#052e16' : '#0f172a'; }
+  };
+  for (j = 0; j < its.length; j++) { its[j].onclick = function() { marca(this.getAttribute('data-id')); document.getElementById('go-sel').value = ''; }; }
+  document.getElementById('go-sel').onchange = function() { if (this.value) { marca(this.value); } };
+}
+function guardarOndeConfirmar() {
+  var g = GO; if (!g || !g.sel) { toast('Escolha o endereço.', true); return; }
+  var ok = document.getElementById('jf-ok'); if (ok) { ok.disabled = true; }
+  var resp = S.colaborador ? S.colaborador.nome : null;
+  var dest = g.sel;
+  var guardar = function() {
+    var existente = null, i;
+    for (i = 0; i < g.inv.length; i++) {
+      if (g.inv[i].endereco_id === dest && g.inv[i].entity_type === 'componente' && g.inv[i].entity_id === g.comp.id && (g.inv[i].etapa_id || null) === (g.etapa || null)) { existente = g.inv[i]; }
+    }
+    var fim = function(err) {
+      if (err) { toast('Erro: ' + err.message, true); if (ok) { ok.disabled = false; } return; }
+      sbPost('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: null, endereco_destino_id: dest, quantidade: g.qtd,
+        etapa_origem_id: null, etapa_destino_id: g.etapa || null, motivo: 'entrada_producao', responsavel: resp, observacao: 'Guardado ao concluir ' + (g.ehPint ? 'pintura' : 'impressão') + ' (terminal)' }, function() {});
+      fecharJanelaFim();
+      toast('Guardado em ' + (g.codPorId[dest] || '?') + ' ✅');
+      GO = null;
+    };
+    if (existente) { sbPatch('inventario_fisico', 'id=eq.' + existente.id, { quantidade: (parseFloat(existente.quantidade) || 0) + g.qtd }, fim); }
+    else { sbPost('inventario_fisico', { id: uuidT(), endereco_id: dest, entity_type: 'componente', entity_id: g.comp.id, quantidade: g.qtd, etapa_id: g.etapa || null }, fim); }
+  };
+  if (!g.ehPint || !g.brut) { guardar(); return; }
+  /* pintura: baixa o mesmo tanto do estoque "sem pintura" (mesa primeiro, depois prateleira) */
+  var rows = [], k;
+  for (k = 0; k < g.inv.length; k++) { if (g.inv[k].entity_type === 'componente' && g.inv[k].entity_id === g.comp.id && g.inv[k].etapa_id === g.brut) { rows.push(g.inv[k]); } }
+  rows.sort(function(a, b) { var am = a.endereco_id === g.mesaId ? 0 : 1, bm = b.endereco_id === g.mesaId ? 0 : 1; return am !== bm ? am - bm : b.quantidade - a.quantidade; });
+  var falta = g.qtd, passos = [];
+  for (k = 0; k < rows.length && falta > 0; k++) {
+    var t = Math.min(falta, parseFloat(rows[k].quantidade) || 0);
+    if (t > 0) { passos.push({ row: rows[k], t: t }); falta -= t; }
+  }
+  var proximo = function(ix) {
+    if (ix >= passos.length) { guardar(); return; }
+    var p = passos[ix], resta = Math.round(((parseFloat(p.row.quantidade) || 0) - p.t) * 1000) / 1000;
+    sbPatch('inventario_fisico', 'id=eq.' + p.row.id, { quantidade: resta < 0 ? 0 : resta }, function(err) {
+      if (err) { toast('Erro: ' + err.message, true); if (ok) { ok.disabled = false; } return; }
+      sbPost('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: p.row.endereco_id, endereco_destino_id: null, quantidade: p.t,
+        etapa_origem_id: g.brut, etapa_destino_id: null, motivo: 'consumo_pintura', responsavel: resp, observacao: 'Consumido na pintura (terminal)' }, function() {});
+      proximo(ix + 1);
+    });
+  };
+  proximo(0);
+}
+
 function confirmarConcluir() {
   if (concluirPorTipo()) { return; }
   for (var i = 0; i < S.checklist.length; i++) {
@@ -1938,6 +2072,7 @@ function fecharOTBase(resultado, qtdBoa, qtdPerd, obs) {
     }
     S.ot.status = novoStatus;
     if (novoStatus === 'concluida') { liberarBloqueadas(ot.id); }
+    if (novoStatus === 'concluida') { var _cdGO = codTipo(), _qbGO = payload.qtd_boa; setTimeout(function() { try { guardarOndeAposFechar(ot, _cdGO, _qbGO); } catch (eGO) {} }, 500); }
 
     var descEvento = 'Fechamento: ' + resultado +
       ' · Boas: ' + payload.qtd_boa +
