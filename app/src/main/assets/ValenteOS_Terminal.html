@@ -530,9 +530,72 @@ function authToken(cb) {
     authPost('refresh_token', { refresh_token: AUTH.refresh }, function(err) { if (err) { porSenha(); } else { fim(true); } });
   } else { porSenha(); }
 }
-function xhr(method, table, qs, body, cb) {
-  authToken(function(tk) { xhrRaw(method, table, qs, body, cb, tk); });
+/* ─────────────────────────────────────────
+   Rede (v180, ES5): aviso de "sem conexão", nova tentativa nas leituras e
+   fila de reenvio para registros que antes se perdiam em silêncio.
+───────────────────────────────────────── */
+var REDE = { off: false, fila: null, enviando: false };
+function ehSemRede(err) { return !!(err && (err.message === 'Sem conexão' || err.message === 'Erro HTTP 0')); }
+function redeFila() {
+  if (REDE.fila) { return REDE.fila; }
+  try { REDE.fila = JSON.parse(localStorage.getItem('valente_fila') || '[]') || []; } catch (e) { REDE.fila = []; }
+  return REDE.fila;
 }
+function redeSalvar() { try { localStorage.setItem('valente_fila', JSON.stringify(REDE.fila || [])); } catch (e) {} }
+function redeAviso() {
+  var el = document.getElementById('redeAviso'), n = redeFila().length;
+  if (!REDE.off && !n) { if (el && el.parentNode) { el.parentNode.removeChild(el); } return; }
+  if (!document.body) { return; }
+  if (!el) {
+    el = document.createElement('div'); el.id = 'redeAviso';
+    el.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:100001;background:#b45309;color:#fff;font:14px sans-serif;padding:8px 12px;text-align:center;';
+    document.body.appendChild(el);
+  }
+  el.innerHTML = REDE.off
+    ? '📡 Sem conexão com o servidor. Confira o Wi-Fi.' + (n ? ' ' + n + ' registro(s) guardado(s) para enviar depois.' : '')
+    : 'Enviando ' + n + ' registro(s) guardado(s)…';
+}
+function redeResultado(err) {
+  var era = REDE.off;
+  REDE.off = ehSemRede(err);
+  if (era !== REDE.off || redeFila().length) { redeAviso(); }
+  if (!REDE.off && redeFila().length) { redeEnviar(); }
+}
+function redeGuardar(m, t, qs, b) {
+  var f = redeFila();
+  if (f.length >= 200) { f.shift(); }
+  f.push({ m: m, t: t, qs: qs || null, b: b });
+  redeSalvar(); redeAviso();
+}
+function redeEnviar() {
+  var f = redeFila();
+  if (REDE.enviando) { return; }
+  if (!f.length) { redeAviso(); return; }
+  REDE.enviando = true;
+  var it = f[0];
+  authToken(function(tk) {
+    xhrRaw(it.m, it.t, it.qs, it.b, function(err) {
+      REDE.enviando = false;
+      if (ehSemRede(err)) { REDE.off = true; redeAviso(); return; }
+      f.shift(); redeSalvar(); REDE.off = false; redeAviso(); /* enviado (ou recusado em definitivo): sai da fila */
+      if (f.length) { setTimeout(redeEnviar, 300); }
+    }, tk);
+  });
+}
+/* gravações "de registro" (eventos, movimentações): se cair a rede, ficam guardadas e vão depois */
+function sbPostSeguro(t, b) { xhr('POST', t, null, b, function(err) { if (ehSemRede(err)) { redeGuardar('POST', t, null, b); } }); }
+function sbPatchSeguro(t, qs, b) { xhr('PATCH', t, qs, b, function(err) { if (ehSemRede(err)) { redeGuardar('PATCH', t, qs, b); } }); }
+function xhrTenta(method, table, qs, body, cb, tk, n) {
+  xhrRaw(method, table, qs, body, function(err, d) {
+    if (ehSemRede(err) && method === 'GET' && n < 1) { setTimeout(function() { xhrTenta(method, table, qs, body, cb, tk, n + 1); }, 2000); return; }
+    redeResultado(err);
+    cb(err, d);
+  }, tk);
+}
+function xhr(method, table, qs, body, cb) {
+  authToken(function(tk) { xhrTenta(method, table, qs, body, cb, tk, 0); });
+}
+setInterval(function() { if (redeFila().length) { redeEnviar(); } }, 30000);
 function configConta() {
   var doc = document, ov = doc.createElement('div'), cred = authCred();
   ov.style.cssText = 'position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:100002;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;padding:14px';
@@ -1311,7 +1374,7 @@ function acaoOTBase(novoStatus, tipoEvento) {
       estacao_id: null,
       motivo:     null
     };
-    sbPost('ot_eventos', evento, function() {});
+    sbPostSeguro('ot_eventos', evento);
 
     var msgs = {
       iniciada: 'Tarefa iniciada! ▶',
@@ -1440,8 +1503,8 @@ function liberarBloqueadas(otId) {
     if (err || !d) return;
     var i;
     for (i = 0; i < d.length; i++) {
-      sbPatch('ordens_trabalho', 'id=eq.' + d[i].id, { status: 'pendente', ot_desbloqueadora_id: null, bloqueio_motivo: null }, function() {});
-      sbPost('ot_eventos', { ot_id: d[i].id, tipo: 'desbloqueio', descricao: 'Liberada automaticamente após conclusão da OT ' + otId + ' (terminal)', estacao_id: null, motivo: null }, function() {});
+      sbPatchSeguro('ordens_trabalho', 'id=eq.' + d[i].id, { status: 'pendente', ot_desbloqueadora_id: null, bloqueio_motivo: null });
+      sbPostSeguro('ot_eventos', { ot_id: d[i].id, tipo: 'desbloqueio', descricao: 'Liberada automaticamente após conclusão da OT ' + otId + ' (terminal)', estacao_id: null, motivo: null });
     }
   });
 }
@@ -1497,11 +1560,11 @@ function salvarProducaoDoDia() {
     if (err) { toast('Erro: ' + err.message, true); return; }
     ot.quantidade_concluida = novaC; ot.quantidade_perdida_acumulada = novaP;
     if (upd.instrucoes) ot.instrucoes = upd.instrucoes;
-    sbPost('ot_eventos', { ot_id: ot.id, tipo: 'fornada', descricao: 'Produção do dia — pintadas: ' + f + ', estragadas: ' + e + ' (acumulado ' + novaC + '/' + ot.quantidade + ')' + (obs ? ' · ' + obs : '') + ' (terminal)', estacao_id: null, motivo: null }, function() {});
+    sbPostSeguro('ot_eventos', { ot_id: ot.id, tipo: 'fornada', descricao: 'Produção do dia — pintadas: ' + f + ', estragadas: ' + e + ' (acumulado ' + novaC + '/' + ot.quantidade + ')' + (obs ? ' · ' + obs : '') + ' (terminal)', estacao_id: null, motivo: null });
     fecharJanelaFim();
     if (resta > 0) {
       sbPatch('ordens_trabalho', 'id=eq.' + ot.id, { status: 'pausada' }, function() {
-        sbPost('ot_eventos', { ot_id: ot.id, tipo: 'pausada', descricao: 'Fim do dia — pausada. Faltam ' + resta + ' (terminal)', estacao_id: null, motivo: null }, function() {});
+        sbPostSeguro('ot_eventos', { ot_id: ot.id, tipo: 'pausada', descricao: 'Fim do dia — pausada. Faltam ' + resta + ' (terminal)', estacao_id: null, motivo: null });
         toast('Produção do dia salva: ' + f + ' pintadas. Faltam ' + resta + ' — continue amanhã.');
         voltarInbox();
       });
@@ -1890,8 +1953,8 @@ function guardarOndeConfirmar() {
     }
     var fim = function(err) {
       if (err) { toast('Erro: ' + err.message, true); if (ok) { ok.disabled = false; } return; }
-      sbPost('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: null, endereco_destino_id: dest, quantidade: g.qtd,
-        etapa_origem_id: null, etapa_destino_id: g.etapa || null, motivo: 'entrada_producao', responsavel: resp, observacao: 'Guardado ao concluir ' + (g.ehPint ? 'pintura' : 'impressão') + ' (terminal)' }, function() {});
+      sbPostSeguro('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: null, endereco_destino_id: dest, quantidade: g.qtd,
+        etapa_origem_id: null, etapa_destino_id: g.etapa || null, motivo: 'entrada_producao', responsavel: resp, observacao: 'Guardado ao concluir ' + (g.ehPint ? 'pintura' : 'impressão') + ' (terminal)' });
       fecharJanelaFim();
       toast('Guardado em ' + (g.codPorId[dest] || '?') + ' ✅');
       GO = null;
@@ -1914,8 +1977,8 @@ function guardarOndeConfirmar() {
     var p = passos[ix], resta = Math.round(((parseFloat(p.row.quantidade) || 0) - p.t) * 1000) / 1000;
     sbPatch('inventario_fisico', 'id=eq.' + p.row.id, { quantidade: resta < 0 ? 0 : resta }, function(err) {
       if (err) { toast('Erro: ' + err.message, true); if (ok) { ok.disabled = false; } return; }
-      sbPost('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: p.row.endereco_id, endereco_destino_id: null, quantidade: p.t,
-        etapa_origem_id: g.brut, etapa_destino_id: null, motivo: 'consumo_pintura', responsavel: resp, observacao: 'Consumido na pintura (terminal)' }, function() {});
+      sbPostSeguro('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: p.row.endereco_id, endereco_destino_id: null, quantidade: p.t,
+        etapa_origem_id: g.brut, etapa_destino_id: null, motivo: 'consumo_pintura', responsavel: resp, observacao: 'Consumido na pintura (terminal)' });
       proximo(ix + 1);
     });
   };
@@ -2078,13 +2141,13 @@ function fecharOTBase(resultado, qtdBoa, qtdPerd, obs) {
       ' · Boas: ' + payload.qtd_boa +
       ' · Perdas: ' + payload.qtd_perdida +
       (obs ? ' · ' + obs : '') + ' (terminal)';
-    sbPost('ot_eventos', {
+    sbPostSeguro('ot_eventos', {
       ot_id:      ot.id,
       tipo:       novoStatus,
       descricao:  descEvento,
       estacao_id: null,
       motivo:     null
-    }, function() {});
+    });
 
     var msg = resultado === 'sucesso'   ? 'Tarefa concluída com sucesso! ✅' :
               resultado === 'parcial'   ? 'Fechamento parcial registrado. ⚠️' :
