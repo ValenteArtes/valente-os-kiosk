@@ -2586,6 +2586,279 @@ function sair() {
    INIT
 ───────────────────────────────────────── */
 render();
+/* ─────────────────────────────────────────
+   Bandeja de impressão (v182, ES5) — "+" para juntar várias impressões na mesma bandeja.
+   Um início, um fechamento, tempo medido uma vez e rateado pela quantidade (no banco: passo 21).
+   Aparece só em tarefas de Impressão. Se o SQL do passo 21 não foi rodado, o bloco some sozinho.
+───────────────────────────────────────── */
+var BDJ = { off: false, fila: [], nomes: {}, sel: {} };
+function bdjRpc(nome, args, cb) { sbPost('rpc/' + nome, args, cb); }
+function bdjCol() { return S.colaborador ? S.colaborador.id : null; }
+function bdjDur(iso) {
+  var m = Math.max(0, Math.round((new Date().getTime() - new Date(iso).getTime()) / 60000));
+  return (m >= 60 ? Math.floor(m / 60) + ' h ' : '') + (m % 60) + ' min';
+}
+function bdjHora(iso) {
+  var d = new Date(iso);
+  return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+}
+function bdjRecarrega() { if (S.ot && S.ot.id) { abrirDetalhe(S.ot.id); } }
+function bdjErro(e) { toast('Erro: ' + (e && e.message ? e.message : e), true); }
+function bdjNomes(ids, cb) {
+  var falta = [], i, vistos = {};
+  for (i = 0; i < ids.length; i++) { if (ids[i] && !BDJ.nomes[ids[i]] && !vistos[ids[i]]) { vistos[ids[i]] = 1; falta.push(ids[i]); } }
+  if (!falta.length) { cb(); return; }
+  sbGet('pedidos', 'id=in.(' + falta.join(',') + ')&select=id,cliente', function(e, d) {
+    var k; if (!e && d) { for (k = 0; k < d.length; k++) { BDJ.nomes[d[k].id] = d[k].cliente || ''; } }
+    cb();
+  });
+}
+function bdjNome(pid) { return BDJ.nomes[pid] || ''; }
+
+/* depois de desenhar a tarefa: acrescenta o quadro da bandeja nas tarefas de impressão */
+var _bdjBase = renderDetalheBase;
+renderDetalheBase = function() { _bdjBase(); try { bdjPos(); } catch (eB) {} };
+var _bdjFJ = fecharJanelaFim;
+fecharJanelaFim = function() { _bdjFJ(); if (BDJ.fila.length) { setTimeout(bdjProxGuardar, 400); } };
+function bdjProxGuardar() {
+  var it = BDJ.fila.shift();
+  if (!it) { return; }
+  try { guardarOndeAposFechar(it.ot, 'impressao', it.boa); } catch (eG) {}
+}
+
+function bdjPos() {
+  var ot = S.ot, cont = document.getElementById('cont');
+  if (!ot || !cont || BDJ.off || codTipo() !== 'impressao') { return; }
+  if (ot.status === 'concluida' || ot.status === 'cancelada') { return; }
+  if (S.trava && S.travaOt === ot.id) { return; }
+  if (ot.bandeja_id === undefined) {
+    sbGet('ordens_trabalho', 'id=eq.' + ot.id + '&select=bandeja_id', function(err, d) {
+      if (err) { if (/bandeja|column/i.test(err.message || '')) { BDJ.off = true; } return; }
+      if (!S.ot || S.ot.id !== ot.id) { return; }
+      S.ot.bandeja_id = (d && d.length && d[0].bandeja_id) ? d[0].bandeja_id : null;
+      renderDetalheBase();
+    });
+    return;
+  }
+  if (ot.bandeja_id) {
+    var rm = cont.querySelectorAll('.btn-ini, .btn-conc, .btn-paus, .btn-ret'), i;
+    for (i = 0; i < rm.length; i++) { rm[i].parentNode.removeChild(rm[i]); }
+  }
+  var box = document.createElement('div');
+  box.className = 'card'; box.id = 'bdjBox';
+  box.style.cssText = 'border:2px solid #0ea5e9;background:#082f49';
+  var acoes = cont.querySelector('.acoes');
+  if (acoes) { cont.insertBefore(box, acoes); } else { cont.appendChild(box); }
+  if (!ot.bandeja_id) {
+    box.innerHTML = '<div class="card-label" style="color:#7dd3fc">🖨 Bandeja de impressão</div>' +
+      '<div class="ot-meta" style="margin-bottom:8px">Vai imprimir outras peças junto na mesma bandeja? Junte aqui: o tempo da máquina é medido uma vez só.</div>' +
+      '<button class="btn btn-ref" onclick="bdjPicker(\'novo\',null)">＋ Montar bandeja com outras peças</button>';
+    return;
+  }
+  box.innerHTML = '<div class="loading"><div class="spin"></div>Carregando a bandeja…</div>';
+  bdjCarregar(box);
+}
+
+function bdjCarregar(box) {
+  var bid = S.ot.bandeja_id, atual = S.ot.id;
+  sbGet('bandejas_impressao', 'id=eq.' + bid + '&select=id,codigo,status,inicio_real,qtd_tarefas,qtd_pecas', function(e1, bs) {
+    sbGet('ordens_trabalho', 'bandeja_id=eq.' + bid + '&select=id,titulo,quantidade,status,pedido_id,componente_id,peca_id&order=titulo', function(e2, ots) {
+      if (e1 || e2 || !bs || !bs.length) {
+        if (box.parentNode) { box.innerHTML = '<div class="ot-meta">Não consegui abrir a bandeja agora. Tente de novo.</div>'; }
+        return;
+      }
+      var b = bs[0], ids = [], i;
+      ots = ots || [];
+      for (i = 0; i < ots.length; i++) { ids.push(ots[i].pedido_id); }
+      bdjNomes(ids, function() {
+        if (!S.ot || S.ot.id !== atual || !box.parentNode) { return; }
+        BDJ.atual = { b: b, ots: ots };
+        var h = '<div class="card-label" style="color:#7dd3fc">🖨 Bandeja ' + esc(b.codigo || '') + '</div>', pecas = 0, mont = (b.status === 'montando');
+        for (i = 0; i < ots.length; i++) { pecas += ots[i].quantidade || 0; }
+        if (b.status === 'imprimindo' && b.inicio_real) {
+          h += '<div style="font-size:1.05rem;color:#f1f5f9;margin-bottom:6px">Imprimindo desde <b>' + bdjHora(b.inicio_real) + '</b> · já são <b>' + bdjDur(b.inicio_real) + '</b></div>';
+        } else {
+          h += '<div style="font-size:.95rem;color:#bae6fd;margin-bottom:6px">Montando: <b>' + ots.length + '</b> tarefa(s) · <b>' + pecas + '</b> peça(s)</div>';
+        }
+        for (i = 0; i < ots.length; i++) {
+          h += '<div style="display:flex;align-items:center;gap:8px;padding:8px;margin-bottom:4px;background:#0c4a6e;border-radius:8px;color:#f1f5f9;font-size:.9rem">' +
+            '<div style="flex:1"><b>' + esc(bdjNome(ots[i].pedido_id) || 'Pedido') + '</b> · ' + esc(ots[i].titulo || '') + (ots[i].id === atual ? ' <span style="color:#7dd3fc">(esta)</span>' : '') + '</div>' +
+            (mont ? '<button style="padding:6px 10px;background:#7f1d1d;color:#fff;border:0;border-radius:6px;font-size:.8rem" onclick="bdjTirar(\'' + ots[i].id + '\')">tirar</button>' : '') + '</div>';
+        }
+        if (mont) {
+          h += '<div class="acoes" style="margin-top:8px">' +
+            '<button class="btn btn-ref" onclick="bdjPicker(\'add\',\'' + b.id + '\')">＋ Adicionar mais peças</button>' +
+            '<button class="btn btn-ini" onclick="bdjIniciar()">▶ Iniciar bandeja</button>' +
+            '<button class="btn btn-vol" onclick="bdjDesmontar()">Desmontar bandeja</button></div>';
+        } else if (b.status === 'imprimindo') {
+          h += '<div class="acoes" style="margin-top:8px">' +
+            '<button class="btn btn-conc" onclick="bdjConcluir()">✅ Concluir bandeja</button>' +
+            '<button class="btn btn-vol" onclick="bdjFalhou()">⚠ A bandeja falhou</button></div>';
+        } else {
+          h += '<div class="ot-meta">Bandeja ' + esc(b.status) + '.</div>';
+        }
+        box.innerHTML = h;
+      });
+    });
+  });
+}
+
+/* ── "+" : escolher quais outras impressões entram ── */
+function bdjPicker(modo, bid) {
+  var ot = S.ot;
+  sbGet('ordens_trabalho', 'tipo_ot_id=eq.' + ot.tipo_ot_id + '&status=in.(pendente,aceita)&bandeja_id=is.null&id=neq.' + ot.id +
+    '&select=id,titulo,quantidade,pedido_id,plano_id,ordem_execucao&order=ordem_execucao,titulo&limit=60', function(e, lista) {
+    if (e) { bdjErro(e); return; }
+    lista = lista || [];
+    var planos = [], vistos = {}, i;
+    for (i = 0; i < lista.length; i++) { if (lista[i].plano_id && !vistos[lista[i].plano_id]) { vistos[lista[i].plano_id] = 1; planos.push(lista[i].plano_id); } }
+    var seguir = function(bloq) {
+      var livres = [], k, o, trav;
+      for (i = 0; i < lista.length; i++) {
+        o = lista[i]; trav = false;
+        for (k = 0; k < bloq.length; k++) {
+          if (o.ordem_execucao != null && bloq[k].plano_id === o.plano_id && bloq[k].ordem_execucao != null && bloq[k].ordem_execucao < o.ordem_execucao) { trav = true; }
+        }
+        if (!trav) { livres.push(o); }
+      }
+      var ids = []; for (i = 0; i < livres.length; i++) { ids.push(livres[i].pedido_id); }
+      bdjNomes(ids, function() { bdjMostrarPicker(modo, bid, livres); });
+    };
+    if (!planos.length) { seguir([]); return; }
+    sbGet('ordens_trabalho', 'plano_id=in.(' + planos.join(',') + ')&status=not.in.(concluida,cancelada)&select=id,plano_id,ordem_execucao', function(e2, bl) { seguir(e2 ? [] : (bl || [])); });
+  });
+}
+function bdjMostrarPicker(modo, bid, livres) {
+  var ot = S.ot, h = '', i, o;
+  BDJ.sel = {};
+  if (modo === 'novo') {
+    h += '<div style="padding:10px;margin-bottom:8px;border-radius:8px;border:2px solid #22c55e;background:#052e16;color:#f1f5f9;font-size:.95rem">✓ <b>' + esc(bdjNome(ot.pedido_id) || 'Esta tarefa') + '</b> · ' + esc(ot.titulo || '') + '</div>';
+  }
+  h += '<div style="' + JF_LBL + '">' + (livres.length ? 'TOQUE NAS PEÇAS QUE VÃO JUNTO' : 'NÃO HÁ OUTRAS IMPRESSÕES ESPERANDO') + '</div><div id="bdj-lista">';
+  for (i = 0; i < livres.length; i++) {
+    o = livres[i];
+    h += '<div class="bdj-it" data-id="' + o.id + '" style="padding:10px;margin-bottom:6px;border-radius:8px;border:2px solid #334155;background:#0f172a;color:#f1f5f9;font-size:.95rem"><b>' + esc(bdjNome(o.pedido_id) || 'Pedido') + '</b> · ' + esc(o.titulo || '') + '</div>';
+  }
+  h += '</div>';
+  janelaFim(modo === 'novo' ? 'MONTAR BANDEJA' : 'ADICIONAR À BANDEJA', esc(ot.titulo || ''), h, modo === 'novo' ? 'Criar bandeja' : 'Adicionar', function() {
+    var ids = [], k;
+    for (k in BDJ.sel) { if (BDJ.sel.hasOwnProperty(k) && BDJ.sel[k]) { ids.push(k); } }
+    if (modo === 'add' && !ids.length) { toast('Toque nas peças que vão junto.', true); return; }
+    var ok = document.getElementById('jf-ok'); if (ok) { ok.disabled = true; }
+    if (modo === 'novo') {
+      bdjRpc('bandeja_criar', { p_ots: [ot.id].concat(ids), p_resp: bdjCol() }, function(err) {
+        if (err) { bdjErro(err); if (ok) { ok.disabled = false; } return; }
+        fecharJanelaFim(); toast('Bandeja criada. 🖨'); S.ot.bandeja_id = undefined; bdjRecarrega();
+      });
+    } else {
+      bdjRpc('bandeja_adicionar', { p_bandeja: bid, p_ots: ids }, function(err) {
+        if (err) { bdjErro(err); if (ok) { ok.disabled = false; } return; }
+        fecharJanelaFim(); toast('Peças adicionadas. ✓'); bdjRecarrega();
+      });
+    }
+  });
+  var its = document.querySelectorAll('.bdj-it'), j;
+  for (j = 0; j < its.length; j++) {
+    its[j].onclick = function() {
+      var id = this.getAttribute('data-id'), on = !BDJ.sel[id];
+      BDJ.sel[id] = on;
+      this.style.borderColor = on ? '#22c55e' : '#334155';
+      this.style.background = on ? '#052e16' : '#0f172a';
+    };
+  }
+}
+
+function bdjTirar(otId) {
+  bdjRpc('bandeja_remover', { p_ot: otId }, function(err) {
+    if (err) { bdjErro(err); return; }
+    if (S.ot && S.ot.id === otId) { S.ot.bandeja_id = undefined; }
+    toast('Tirada da bandeja.'); bdjRecarrega();
+  });
+}
+function bdjDesmontar() {
+  var b = BDJ.atual && BDJ.atual.b; if (!b) { return; }
+  bdjRpc('bandeja_cancelar', { p_bandeja: b.id }, function(err) {
+    if (err) { bdjErro(err); return; }
+    S.ot.bandeja_id = undefined; toast('Bandeja desmontada.'); bdjRecarrega();
+  });
+}
+
+/* ── iniciar: um relógio para todas ── */
+function bdjIniciar() {
+  var b = BDJ.atual && BDJ.atual.b; if (!b) { return; }
+  sbGet('impressoras', 'select=id,nome&order=nome', function(e, imps) {
+    var h = '<div style="font-size:.95rem;color:#f1f5f9">Vai começar a imprimir <b>' + (BDJ.atual.ots.length) + '</b> tarefa(s) juntas. O tempo começa a contar agora.</div>';
+    if (!e && imps && imps.length) {
+      var i; h += '<div style="' + JF_LBL + '">IMPRESSORA</div><select id="bdj-imp" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;font-size:1rem"><option value="">— não informar —</option>';
+      for (i = 0; i < imps.length; i++) { h += '<option value="' + imps[i].id + '">' + esc(imps[i].nome || '') + '</option>'; }
+      h += '</select>';
+    }
+    janelaFim('INICIAR BANDEJA', esc(b.codigo || ''), h, '▶ Iniciar', function() {
+      var ok = document.getElementById('jf-ok'); if (ok) { ok.disabled = true; }
+      var imp = jfVal('bdj-imp') || null;
+      bdjRpc('bandeja_iniciar', { p_bandeja: b.id, p_impressora: imp, p_resp: bdjCol() }, function(err) {
+        if (err) { bdjErro(err); if (ok) { ok.disabled = false; } return; }
+        fecharJanelaFim(); toast('Bandeja iniciada! ▶'); bdjRecarrega();
+      });
+    });
+  });
+}
+
+/* ── concluir: boas e perdidas de cada tarefa ── */
+function bdjConcluir() {
+  var b = BDJ.atual && BDJ.atual.b, ots = BDJ.atual && BDJ.atual.ots; if (!b || !ots) { return; }
+  var h = '<div style="font-size:.9rem;color:#bae6fd;margin-bottom:8px">Tempo de máquina: <b>' + (b.inicio_real ? bdjDur(b.inicio_real) : '—') + '</b>. Confira o que saiu bom em cada item.</div>', i, qtd, st = 'width:100%;padding:8px;font-size:1.1rem;font-weight:700;text-align:center;border-radius:6px;box-sizing:border-box;';
+  for (i = 0; i < ots.length; i++) {
+    qtd = ots[i].quantidade || 0;
+    h += '<div style="margin-bottom:10px;padding:8px;background:#1e293b;border-radius:8px"><div style="color:#f1f5f9;font-size:.85rem;margin-bottom:6px"><b>' + esc(bdjNome(ots[i].pedido_id) || 'Pedido') + '</b> · ' + esc(ots[i].titulo || '') + '</div>' +
+      '<div style="display:flex;gap:8px"><div style="flex:1"><div style="font-size:.65rem;color:#22c55e;margin-bottom:2px">BOAS ✓</div><input id="bdj-b-' + i + '" type="number" min="0" value="' + qtd + '" style="' + st + 'background:#052e16;color:#22c55e;border:1px solid #22c55e"></div>' +
+      '<div style="flex:1"><div style="font-size:.65rem;color:#ef4444;margin-bottom:2px">PERDIDAS ✗</div><input id="bdj-p-' + i + '" type="number" min="0" value="0" style="' + st + 'background:#1a0a0a;color:#ef4444;border:1px solid #ef4444"></div></div></div>';
+  }
+  janelaFim('CONCLUIR BANDEJA', esc(b.codigo || ''), h, '✅ Concluir bandeja', function() {
+    var itens = [], k, bo, pe;
+    for (k = 0; k < ots.length; k++) {
+      bo = nInt(jfVal('bdj-b-' + k)); pe = nInt(jfVal('bdj-p-' + k));
+      if (bo < 0 || pe < 0 || bo + pe > (ots[k].quantidade || 0)) { toast('Boas + perdidas não pode passar de ' + (ots[k].quantidade || 0) + ' em "' + (ots[k].titulo || '') + '".', true); return; }
+      itens.push({ ot_id: ots[k].id, boa: bo, perdida: pe });
+    }
+    var ok = document.getElementById('jf-ok'); if (ok) { ok.disabled = true; }
+    bdjRpc('bandeja_fechar', { p_bandeja: b.id, p_itens: itens, p_obs: null }, function(err) {
+      if (err) { bdjErro(err); if (ok) { ok.disabled = false; } return; }
+      BDJ.fila = [];
+      var j, x, atual = S.ot ? S.ot.id : null;
+      for (j = 0; j < ots.length; j++) {
+        x = itens[j];
+        try { liberarBloqueadas(ots[j].id); } catch (eL) {}
+        sbPostSeguro('ot_eventos', { ot_id: ots[j].id, tipo: 'concluida', descricao: 'Fechamento em bandeja ' + (b.codigo || '') + ' · Boas: ' + x.boa + ' · Perdas: ' + x.perdida + ' (terminal)', estacao_id: null, motivo: null });
+        if (x.boa > 0 && (ots[j].componente_id || ots[j].id === atual)) { BDJ.fila.push({ ot: { id: ots[j].id, titulo: ots[j].titulo, componente_id: ots[j].componente_id, peca_id: ots[j].peca_id }, boa: x.boa }); }
+      }
+      var fila0 = BDJ.fila.length;
+      var guardar = BDJ.fila;
+      BDJ.fila = [];
+      fecharJanelaFim();
+      toast('Bandeja concluída! ✅');
+      S.ot.bandeja_id = undefined; bdjRecarrega();
+      BDJ.fila = guardar;
+      if (fila0) { setTimeout(bdjProxGuardar, 900); }
+    });
+  });
+}
+
+/* ── falha da bandeja inteira: tudo volta para a fila ── */
+function bdjFalhou() {
+  var b = BDJ.atual && BDJ.atual.b; if (!b) { return; }
+  var h = '<div style="font-size:.95rem;color:#fca5a5;margin-bottom:8px">A bandeja inteira falhou? Todas as tarefas voltam para a fila e o tempo gasto fica registrado como perda.</div>' +
+    '<div style="' + JF_LBL + '">O QUE ACONTECEU (OPCIONAL)</div><textarea id="bdj-obs" rows="2" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #334155;border-radius:8px;font-size:.9rem;box-sizing:border-box"></textarea>';
+  janelaFim('BANDEJA FALHOU', esc(b.codigo || ''), h, 'Sim, falhou', function() {
+    var ok = document.getElementById('jf-ok'); if (ok) { ok.disabled = true; }
+    bdjRpc('bandeja_falha', { p_bandeja: b.id, p_obs: jfVal('bdj-obs') || null }, function(err) {
+      if (err) { bdjErro(err); if (ok) { ok.disabled = false; } return; }
+      fecharJanelaFim(); S.ot.bandeja_id = undefined; toast('Falha registrada. As tarefas voltaram para a fila.'); bdjRecarrega();
+    });
+  });
+}
+
+
 </script>
 <script src="etiquetas.js"></script>
 <script src="treino-conteudo-es5.js"></script>
