@@ -2859,6 +2859,121 @@ function bdjFalhou() {
 }
 
 
+/* ─────────────────────────────────────────
+   Boas-vindas (v183, ES5) — ao entrar com o PIN: saudação, "sua tarefa de hoje" e ajuda opcional.
+   A ajuda mostra SÓ o texto das aulas já cadastradas no Centro de Capacitação (nada é inventado).
+   Tipo de tarefa sem aula correspondente abre direto, sem pergunta.
+   Quem já pediu "Sei fazer" 3 vezes naquele tipo (nos últimos 30 dias) não vê a pergunta: só "Abrir tarefa".
+───────────────────────────────────────── */
+var BV = { vista: false, ativo: false, ot: null, aula: null, i: 0 };
+/* tipo de tarefa -> [trilha, dia] da aula que ensina aquele trabalho */
+var BV_AJUDA = {
+  impressao: ['impressao_3d', 6], lavagem: ['pos_impressao', 3], cura: ['pos_impressao', 3], montagem: ['pos_impressao', 7],
+  pintura: ['pintura', 5], modelagem: ['modelagem_3d', 5],
+  conferencia: ['expedicao', 3], embalagem: ['expedicao', 5], expedicao: ['expedicao', 8]
+};
+function bvMem() { try { return JSON.parse(localStorage.getItem('valente_bv') || '{}') || {}; } catch (e) { return {}; } }
+function bvSalvarMem(m) { try { localStorage.setItem('valente_bv', JSON.stringify(m)); } catch (e) {} }
+function bvReg(tipo) { var m = bvMem(), c = S.colaborador ? S.colaborador.id : ''; return (m[c] && m[c][tipo]) || { n: 0, ult: 0 }; }
+function bvSetReg(tipo, reg) { var m = bvMem(), c = S.colaborador ? S.colaborador.id : ''; if (!m[c]) { m[c] = {}; } m[c][tipo] = reg; bvSalvarMem(m); }
+function bvJaSabe(tipo) { var r = bvReg(tipo); return r.n >= 3 && (new Date().getTime() - r.ult) < 30 * 86400000; }
+function bvSaudacao() { var h = new Date().getHours(); return h < 12 ? 'Bom dia' : (h < 18 ? 'Boa tarde' : 'Boa noite'); }
+function bvAula(tipo) {
+  var ref = BV_AJUDA[tipo], tr, d, i, et = [];
+  if (!ref || typeof TREINAMENTO_TRILHAS === 'undefined') { return null; }
+  tr = TREINAMENTO_TRILHAS[ref[0]]; if (!tr || !tr.dias) { return null; }
+  for (i = 0; i < tr.dias.length; i++) { if (tr.dias[i].dia === ref[1]) { d = tr.dias[i]; } }
+  if (!d) { return null; }
+  for (i = 0; i < d.etapas.length; i++) { if (d.etapas[i].tipo === 'conteudo' && d.etapas[i].texto) { et.push(d.etapas[i]); } }
+  if (!et.length) { return null; }
+  return { trilha: ref[0], trilhaNome: tr.nome, dia: d.dia, titulo: d.titulo, etapas: et };
+}
+
+/* a tarefa de hoje: 1) em execução minha, 2) pausada minha, 3) primeira liberada da fila da minha função */
+function bvEscolher() {
+  var g = S.g || {}, i, l;
+  if (g.exec && g.exec.length) { return { ot: g.exec[0], motivo: 'Você já está com esta tarefa em andamento.' }; }
+  if (g.paus && g.paus.length) { return { ot: g.paus[0], motivo: 'Esta tarefa ficou pausada com você.' }; }
+  if (!(S.meusSubs && S.meusSubs.length)) { return null; }
+  l = listaDaModalidade('prod');
+  for (i = 0; i < l.length; i++) { if (!bloqueioOT(l[i])) { return { ot: l[i], motivo: 'É a primeira da fila da sua função.' }; } }
+  return null;
+}
+
+var _bvRM = renderModalidades;
+renderModalidades = function() {
+  if (BV.ativo) { return; }
+  if (!BV.vista && S.colaborador && S.g && S.view === 'inbox' && !(S.nav && S.nav.mod)) {
+    BV.vista = true;
+    var ok = false;
+    try { ok = bvMostrar(); } catch (eB) { ok = false; }
+    if (ok) { return; }
+  }
+  _bvRM();
+};
+var _bvSair = sair;
+sair = function() { BV.vista = false; BV.ativo = false; _bvSair(); };
+
+function bvBotao(cls, txt, acao, extra) { return '<button class="btn ' + cls + '" style="' + (extra || '') + '" onclick="' + acao + '">' + txt + '</button>'; }
+function bvMostrar() {
+  var cont = document.getElementById('cont'), esc1 = esc, nome = S.colaborador ? String(S.colaborador.nome || '').split(' ')[0] : '';
+  var esc0 = bvEscolher();
+  if (!cont) { return false; }
+  var h = '<div class="card" style="text-align:center;border:2px solid #7c3aed;background:#1e1b4b">' +
+    '<div style="font-size:1.6rem;font-weight:800;color:#f1f5f9">' + bvSaudacao() + ', ' + esc1(nome) + '! 👋</div></div>';
+  if (!esc0) {
+    h += '<div class="card"><div class="card-label">Sua tarefa de hoje</div><div class="ot-meta">Não há tarefa liberada para a sua função agora. Veja suas funções e as tarefas disponíveis.</div></div>' +
+      bvBotao('btn-ini', 'Minhas funções e tarefas disponíveis', 'bvLista()');
+    BV.ativo = true; BV.ot = null;
+    cont.innerHTML = h; return true;
+  }
+  var ot = esc0.ot, t = tipoDe(ot), conc = ot.quantidade_concluida || 0, tot = ot.quantidade || 0;
+  BV.ativo = true; BV.ot = ot; BV.aula = bvAula(t.codigo); BV.i = 0;
+  h += '<div class="card"><div class="card-label">Sua tarefa de hoje</div>' +
+    '<div class="ot-row"><div class="ot-icone">' + icoTipo(t) + '</div><div style="flex:1;-webkit-flex:1"><div class="ot-titulo" style="font-size:1.15rem">' + esc1(ot.titulo || 'Sem título') + '</div>' +
+    '<div class="ot-meta">' + esc1(t.nome) + (tot ? ' · ' + (conc > 0 ? conc + ' de ' + tot : tot + ' un.') : '') + '</div></div></div>' +
+    '<div class="ot-meta" style="margin-top:6px">' + esc1(esc0.motivo) + '</div></div>';
+  if (BV.aula && !bvJaSabe(t.codigo)) {
+    h += '<div class="card" style="text-align:center"><div style="font-size:1.1rem;color:#f1f5f9;margin-bottom:10px">Você sabe como executar esta tarefa?</div>' +
+      bvBotao('btn-ini', '✅ Sei fazer — abrir a tarefa', 'bvSei()') +
+      bvBotao('btn-ref', '💡 Quero uma ajuda antes', 'bvAjuda()') + '</div>';
+  } else {
+    h += bvBotao('btn-ini', '▶ Abrir a tarefa', 'bvSei()') + (BV.aula ? bvBotao('btn-ref', '💡 Ver a ajuda', 'bvAjuda()') : '');
+  }
+  h += bvBotao('btn-vol', 'Minhas funções e tarefas disponíveis', 'bvLista()');
+  cont.innerHTML = h;
+  return true;
+}
+
+function bvLista() { BV.ativo = false; _bvRM(); window.scrollTo(0, 0); }
+function bvAbrir() { var id = BV.ot ? BV.ot.id : null; BV.ativo = false; if (id) { abrirDetalhe(id); } }
+function bvSei() {
+  if (BV.ot) { var t = tipoDe(BV.ot).codigo, r = bvReg(t); if (BV.aula) { bvSetReg(t, { n: r.n + 1, ult: new Date().getTime() }); } }
+  bvAbrir();
+}
+function bvAjuda() {
+  var t = tipoDe(BV.ot).codigo;
+  bvSetReg(t, { n: 0, ult: new Date().getTime() });
+  sbPostSeguro('ajuda_tarefa', { colaborador_id: S.colaborador ? S.colaborador.id : null, ot_id: BV.ot ? BV.ot.id : null, tipo_codigo: t, trilha: BV.aula.trilha, dia: BV.aula.dia });
+  BV.i = 0; bvSlide();
+}
+function bvSlide() {
+  var cont = document.getElementById('cont'), a = BV.aula, e = a.etapas[BV.i], ult = BV.i >= a.etapas.length - 1;
+  var h = '<div class="card" style="border:2px solid #0ea5e9;background:#082f49"><div class="card-label" style="color:#7dd3fc">💡 Ajuda · ' + esc(a.titulo) + '</div>' +
+    '<div class="ot-meta" style="margin-bottom:8px">Do Centro de Capacitação (' + esc(a.trilhaNome) + ', dia ' + a.dia + ') · ' + (BV.i + 1) + ' de ' + a.etapas.length + '</div>' +
+    '<div style="font-size:1.05rem;font-weight:700;color:#f1f5f9;margin-bottom:6px">' + esc(e.titulo || '') + '</div>' +
+    '<div class="instrucoes" style="font-size:1rem;line-height:1.5">' + esc(e.texto) + '</div></div>';
+  if (!ult) { h += bvBotao('btn-ref', 'Próxima ›', 'bvProx(1)'); }
+  if (BV.i > 0) { h += bvBotao('btn-vol', '‹ Anterior', 'bvProx(-1)'); }
+  h += bvBotao('btn-ini', ult ? '▶ Entendi — abrir a tarefa' : '▶ Já entendi — abrir a tarefa', 'bvAbrir()');
+  h += bvBotao('btn-vol', '🎓 Abrir o Centro de Capacitação', 'bvCapacitacao()');
+  h += bvBotao('btn-vol', 'Minhas funções e tarefas disponíveis', 'bvLista()');
+  cont.innerHTML = h; window.scrollTo(0, 0);
+}
+function bvProx(d) { BV.i = Math.max(0, Math.min(BV.aula.etapas.length - 1, BV.i + d)); bvSlide(); }
+function bvCapacitacao() { BV.ativo = false; abrirTreinamento(); }
+
+
 </script>
 <script src="etiquetas.js"></script>
 <script src="treino-conteudo-es5.js"></script>
