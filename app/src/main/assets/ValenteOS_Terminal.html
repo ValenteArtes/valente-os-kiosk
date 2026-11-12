@@ -2921,27 +2921,27 @@ renderModalidades = function() {
 var _bvSair = sair;
 sair = function() { BV.vista = false; BV.ativo = false; _bvSair(); };
 
-function bvBotao(cls, txt, acao, extra) { return '<button class="btn ' + cls + '" style="' + (extra || '') + '" onclick="' + acao + '">' + txt + '</button>'; }
+function bvBotao(cls, txt, acao, extra) { return '<button class="btn ' + cls + '" style="font-size:1.25rem;padding-top:18px;padding-bottom:18px;' + (extra || '') + '" onclick="' + acao + '">' + txt + '</button>'; }
 function bvMostrar() {
   var cont = document.getElementById('cont'), esc1 = esc, nome = bvNome();
   var esc0 = bvEscolher();
   if (!cont) { return false; }
   var h = '<div class="card" style="text-align:center;border:2px solid #7c3aed;background:#1e1b4b">' +
-    '<div style="font-size:1.6rem;font-weight:800;color:#f1f5f9">' + bvSaudacao() + ', ' + esc1(nome) + '! 👋</div></div>';
+    '<div style="font-size:2.1rem;font-weight:800;color:#f1f5f9">' + bvSaudacao() + ', ' + esc1(nome) + '! 👋</div></div>';
   if (!esc0) {
-    h += '<div class="card"><div class="card-label">Sua tarefa de hoje</div><div class="ot-meta">Não há tarefa liberada para a sua função agora. Veja suas funções e as tarefas disponíveis.</div></div>' +
+    h += '<div class="card"><div style="font-size:1.5rem;font-weight:800;color:#c4b5fd;letter-spacing:.04em;margin-bottom:10px">SUA TAREFA DE HOJE</div><div style="font-size:1.25rem;color:#e2e8f0;line-height:1.4">Não há tarefa liberada para a sua função agora. Veja suas funções e as tarefas disponíveis.</div></div>' +
       bvBotao('btn-ini', 'Minhas funções e tarefas disponíveis', 'bvLista()');
     BV.ativo = true; BV.ot = null;
     cont.innerHTML = h; return true;
   }
   var ot = esc0.ot, t = tipoDe(ot), conc = ot.quantidade_concluida || 0, tot = ot.quantidade || 0;
   BV.ativo = true; BV.ot = ot; BV.aula = bvAula(t.codigo); BV.i = 0;
-  h += '<div class="card"><div class="card-label">Sua tarefa de hoje</div>' +
-    '<div class="ot-row"><div class="ot-icone">' + icoTipo(t) + '</div><div style="flex:1;-webkit-flex:1"><div class="ot-titulo" style="font-size:1.15rem">' + esc1(ot.titulo || 'Sem título') + '</div>' +
-    '<div class="ot-meta">' + esc1(t.nome) + (tot ? ' · ' + (conc > 0 ? conc + ' de ' + tot : tot + ' un.') : '') + '</div></div></div>' +
-    '<div class="ot-meta" style="margin-top:6px">' + esc1(esc0.motivo) + '</div></div>';
+  h += '<div class="card" style="border:2px solid #7c3aed"><div style="font-size:1.5rem;font-weight:800;color:#c4b5fd;letter-spacing:.04em;margin-bottom:10px">SUA TAREFA DE HOJE</div>' +
+    '<div class="ot-row"><div class="ot-icone" style="font-size:2.6rem">' + icoTipo(t) + '</div><div style="flex:1;-webkit-flex:1"><div class="ot-titulo" style="font-size:1.7rem;line-height:1.25">' + esc1(ot.titulo || 'Sem título') + '</div>' +
+    '<div class="ot-meta" style="font-size:1.15rem;margin-top:4px">' + esc1(t.nome) + (tot ? ' · ' + (conc > 0 ? conc + ' de ' + tot : tot + ' un.') : '') + '</div></div></div>' +
+    '<div class="ot-meta" style="margin-top:8px;font-size:1.05rem">' + esc1(esc0.motivo) + '</div></div>';
   if (BV.aula && !bvJaSabe(t.codigo)) {
-    h += '<div class="card" style="text-align:center"><div style="font-size:1.1rem;color:#f1f5f9;margin-bottom:10px">Você sabe como executar esta tarefa?</div>' +
+    h += '<div class="card" style="text-align:center"><div style="font-size:1.5rem;font-weight:700;color:#f1f5f9;margin-bottom:12px">Você sabe como executar esta tarefa?</div>' +
       bvBotao('btn-ini', '✅ Sei fazer — abrir a tarefa', 'bvSei()') +
       bvBotao('btn-ref', '💡 Quero uma ajuda antes', 'bvAjuda()') + '</div>';
   } else {
