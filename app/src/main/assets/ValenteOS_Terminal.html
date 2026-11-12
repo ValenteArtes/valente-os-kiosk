@@ -2877,6 +2877,12 @@ function bvSalvarMem(m) { try { localStorage.setItem('valente_bv', JSON.stringif
 function bvReg(tipo) { var m = bvMem(), c = S.colaborador ? S.colaborador.id : ''; return (m[c] && m[c][tipo]) || { n: 0, ult: 0 }; }
 function bvSetReg(tipo, reg) { var m = bvMem(), c = S.colaborador ? S.colaborador.id : ''; if (!m[c]) { m[c] = {}; } m[c][tipo] = reg; bvSalvarMem(m); }
 function bvJaSabe(tipo) { var r = bvReg(tipo); return r.n >= 3 && (new Date().getTime() - r.ult) < 30 * 86400000; }
+/* nome para cumprimentar: "Dona Maria Silva" -> "Dona Maria"; "João Silva" -> "João" */
+function bvNome() {
+  var p = String(S.colaborador ? S.colaborador.nome : '').replace(/^\s+|\s+$/g, '').split(/\s+/), trat = /^(dona|seu|sr|sra|sr\.|sra\.|senhor|senhora|dr|dra|dr\.|dra\.)$/i;
+  if (p.length > 1 && trat.test(p[0])) { return p[0] + ' ' + p[1]; }
+  return p[0] || '';
+}
 function bvSaudacao() { var h = new Date().getHours(); return h < 12 ? 'Bom dia' : (h < 18 ? 'Boa tarde' : 'Boa noite'); }
 function bvAula(tipo) {
   var ref = BV_AJUDA[tipo], tr, d, i, et = [];
@@ -2903,6 +2909,7 @@ function bvEscolher() {
 var _bvRM = renderModalidades;
 renderModalidades = function() {
   if (BV.ativo) { return; }
+  var hu = document.querySelector('.header-user'); if (hu && S.colaborador) { hu.innerHTML = '👤 ' + esc(bvNome()); }
   if (!BV.vista && S.colaborador && S.g && S.view === 'inbox' && !(S.nav && S.nav.mod)) {
     BV.vista = true;
     var ok = false;
@@ -2916,7 +2923,7 @@ sair = function() { BV.vista = false; BV.ativo = false; _bvSair(); };
 
 function bvBotao(cls, txt, acao, extra) { return '<button class="btn ' + cls + '" style="' + (extra || '') + '" onclick="' + acao + '">' + txt + '</button>'; }
 function bvMostrar() {
-  var cont = document.getElementById('cont'), esc1 = esc, nome = S.colaborador ? String(S.colaborador.nome || '').split(' ')[0] : '';
+  var cont = document.getElementById('cont'), esc1 = esc, nome = bvNome();
   var esc0 = bvEscolher();
   if (!cont) { return false; }
   var h = '<div class="card" style="text-align:center;border:2px solid #7c3aed;background:#1e1b4b">' +
