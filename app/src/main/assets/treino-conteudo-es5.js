@@ -94,15 +94,20 @@
 //   feedbackPorOpcao      — (só multipla_escolha) array paralelo a `opcoes`,
 //                           feedback específico pra cada alternativa errada
 // ═══════════════════════════════════════════════════════════════════════════
+//
+// v186 — TEXTOS REESCRITOS em linguagem simples (frases curtas, "tarefa" no lugar de "OT"),
+// respostas escritas (texto_livre) trocadas por múltipla escolha ou ordenar, orientação sobre
+// miniatura de resina (colecionável, não brinquedo) e redação de empenho revisada.
+// Estrutura e gabaritos das questões originais preservados. Todas as trilhas subiram de versao
+// (o progresso anterior fica guardado e o colaborador recomeça).
 
 var TREINAMENTO_TRILHAS = {
-  // ── Cursos do Centro de Capacitação Valente (v159 — conteúdo atualizado em 06/10/2026) ──
-  integracao: {
+  "integracao": {
     "id": "integracao",
     "nome": "Integração Valente",
     "descricao": "Formação comum de entrada: o fluxo do pedido, o Kanban e as perguntas que guiam o seu trabalho.",
     "icone": "🧭",
-    "versao": 2,
+    "versao": 3,
     "cargosPermitidos": null,
     "competencias": [
       "Visão do processo",
@@ -112,102 +117,104 @@ var TREINAMENTO_TRILHAS = {
       "Responsabilidade",
       "Qualidade e segurança"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Explicar o caminho de um pedido; identificar um problema e avisar; demonstrar consulta de tarefa em ambiente de treino; confirmar que entendeu a diferença entre colecionável de resina e brinquedo. A conclusão depende de conferência do responsável.",
     "dias": [
       {
         "dia": 1,
         "titulo": "Onde estou trabalhando",
-        "subtitulo": "A Valente vista de ponta a ponta",
+        "subtitulo": "A Valente do começo ao fim",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Do pedido à entrega",
-            "texto": "A Valente Artes é um estúdio de impressão 3D. Ela transforma a necessidade de um cliente em um produto ou serviço. Entre o pedido e a entrega, o trabalho passa por várias pessoas. Cada uma cuida de uma parte, mas todas respondem pelo mesmo resultado: aquilo que foi prometido ao cliente. Mesmo que você trabalhe em uma única etapa, precisa entender o conjunto para saber por que a sua parte importa."
+            "texto": "A Valente Artes é um estúdio de impressão 3D. O cliente pede uma peça. A Valente faz a peça e entrega. Entre o pedido e a entrega, a peça passa por várias pessoas. Cada pessoa cuida de uma parte. Mas todos têm a mesma meta: entregar o que foi prometido ao cliente. Mesmo que você faça só uma parte, precisa conhecer o caminho inteiro. Assim você entende por que a sua parte é importante."
           },
           {
             "tipo": "conteudo",
             "titulo": "Três tipos de trabalho",
-            "texto": "Produto próprio é algo que a empresa já tem na sua linha, pronto para ser produzido e vendido. Produto personalizado nasce de uma necessidade específica do cliente, como uma miniatura feita a partir de fotos. Serviço é quando a Valente executa uma etapa para o cliente, como modelagem, impressão, acabamento ou pintura. Cada tipo pode seguir um caminho diferente dentro da empresa."
+            "texto": "A Valente faz três tipos de trabalho. Produto próprio: é uma peça que a Valente já tem na sua linha, pronta para produzir e vender. Produto personalizado: é feito para um cliente, do jeito que ele pediu. Exemplo: uma miniatura feita a partir de fotos. Serviço: a Valente faz só uma parte do trabalho para o cliente. Exemplo: só modelar, só imprimir, só dar acabamento ou só pintar. Cada tipo pode seguir um caminho diferente dentro da empresa."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Qualidade nasce no começo",
-            "texto": "Muita gente pensa que qualidade é conferir a peça no fim. Na prática, ela depende de informação correta desde o primeiro contato. Imagine que o pedido entra com o tamanho errado. A modelagem, a impressão e a pintura podem trabalhar muito bem e, ainda assim, entregar a peça errada. Todos executaram certo uma instrução errada. Por isso, informação correta no início economiza tempo, material e a confiança do cliente."
+            "titulo": "A qualidade começa no início",
+            "texto": "Muita gente acha que qualidade é conferir a peça no final. Não é só isso. A qualidade começa com a informação certa, desde a primeira conversa com o cliente. Veja um exemplo. O pedido é anotado com o tamanho errado. A modelagem, a impressão e a pintura trabalham com capricho. Mesmo assim, a peça sai errada. Todos fizeram bem feito, mas seguiram uma informação errada. Informação certa no começo poupa tempo e material. E mantém a confiança do cliente."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como agir",
-            "texto": "Antes de executar qualquer tarefa, faça duas perguntas. Primeiro: qual resultado a empresa prometeu entregar neste trabalho? Segundo: qual é a minha participação nesse resultado? Se você não souber responder, não precisa fingir. Consulte a fonte, como o Valente OS ou a ficha do pedido, e, se necessário, o responsável. Dizer que não sabe não é erro. Inventar é."
+            "texto": "Antes de começar qualquer tarefa, faça duas perguntas. Primeira: o que a empresa prometeu entregar neste trabalho? Segunda: qual é a minha parte nisso? Não sabe responder? Não finja que sabe. Procure a informação no Valente OS ou na ficha do pedido. Se ainda tiver dúvida, pergunte ao responsável. Dizer que não sabe não é erro. Inventar é erro."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "visao_processo",
-            "pergunta": "Um pedido chega com o tamanho da miniatura anotado errado. A impressão e a pintura são feitas com muito cuidado. Qual é o resultado mais provável?",
+            "pergunta": "O pedido foi anotado com o tamanho errado da miniatura. A impressão e a pintura foram feitas com muito cuidado. O que deve acontecer?",
             "opcoes": [
-              "A peça sai correta, porque a boa execução compensa a informação errada",
-              "A peça sai bem feita, mas errada em relação ao que o cliente queria",
-              "O erro aparece sozinho na impressão e o pedido é corrigido a tempo",
-              "Só o setor de envio é afetado, porque ele fala com o cliente"
+              "A peça sai certa, porque o trabalho bem feito conserta a informação errada.",
+              "A peça sai bem feita, mas diferente do que o cliente pediu.",
+              "O erro aparece sozinho na impressão e dá tempo de corrigir.",
+              "Só o setor de envio tem problema, porque é ele que fala com o cliente."
             ],
             "correta": 1,
-            "feedbackCerto": "Isso mesmo. Várias pessoas trabalham bem sobre uma instrução errada, e o erro só aparece no final.",
+            "feedbackCerto": "Isso mesmo. Todos trabalharam bem, mas com a informação errada. O erro só aparece no final.",
             "feedbackPorOpcao": [
-              "Boa execução não corrige uma instrução errada. Ela apenas entrega o erro com mais capricho.",
+              "Trabalho bem feito não conserta informação errada. A peça sai caprichada, mas errada.",
               null,
-              "A máquina imprime o que recebe. Ela não sabe qual era a intenção do cliente.",
-              "O erro nasceu no começo e atinge todas as etapas, não só o envio."
+              "A máquina imprime o que recebe. Ela não sabe o que o cliente queria.",
+              "O erro começou no início e passa por todas as etapas, não só pelo envio."
             ]
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "visao_processo",
-            "afirmacao": "A qualidade de uma peça depende só da conferência feita no último setor antes do envio.",
+            "afirmacao": "A qualidade da peça depende só da conferência feita no último setor, antes do envio.",
             "correta": false,
-            "feedbackCerto": "Correto. A qualidade depende de informação certa desde o começo e de cuidado em cada etapa.",
-            "feedbackErrado": "Na verdade, a conferência final não conserta uma informação errada que entrou no início e atravessou todas as etapas."
+            "feedbackCerto": "Certo. A qualidade depende da informação certa desde o começo e do cuidado em cada etapa.",
+            "feedbackErrado": "Não é assim. A conferência do final não conserta uma informação que entrou errada no começo."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "visao_processo",
-            "pergunta": "Pense na função que você vai exercer na Valente. Qual resultado a empresa promete ao cliente e onde a sua parte entra nele?",
-            "pontosEsperados": [
-              "Cita o resultado prometido ao cliente, como a peça certa, no prazo combinado e em boas condições",
-              "Identifica a etapa em que a sua função atua",
-              "Diz de quem ele recebe o trabalho e para quem entrega",
-              "Reconhece que, se faltar informação, consulta a fonte em vez de supor"
-            ]
+            "pergunta": "Você recebeu uma tarefa. Você não sabe o que a empresa prometeu ao cliente nesse trabalho. O que você faz?",
+            "opcoes": [
+              "Faço do jeito mais comum, que quase sempre dá certo.",
+              "Começo logo e pergunto depois, se aparecer algum problema.",
+              "Procuro no Valente OS ou na ficha do pedido. Se a dúvida continuar, pergunto ao responsável."
+            ],
+            "correta": 2,
+            "feedbackCerto": "Isso mesmo. Primeiro você procura a informação. Se não achar, pergunta ao responsável. Não saber não é erro.",
+            "feedbackErrado": "Não é assim. Fazer sem saber é inventar. Procure no Valente OS ou na ficha do pedido. Se a dúvida continuar, pergunte ao responsável."
           }
         ]
       },
       {
         "dia": 2,
-        "titulo": "Como um trabalho atravessa a empresa",
-        "subtitulo": "O fluxo do pedido, etapa por etapa",
+        "titulo": "Como um trabalho passa pela empresa",
+        "subtitulo": "O caminho do pedido, etapa por etapa",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "O fluxo em um olhar",
-            "texto": "No Valente OS, o caminho de um pedido aparece em etapas. Tudo começa no Cliente, que traz a necessidade. Depois vêm: Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. Ver o fluxo de forma visual ajuda qualquer pessoa a saber onde um trabalho está e o que falta para ele chegar ao cliente."
+            "titulo": "O caminho do pedido",
+            "texto": "No Valente OS, o caminho de um pedido aparece em etapas. Tudo começa com o cliente, que traz o que precisa. Depois vêm as etapas: Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. Ver esse caminho na tela ajuda qualquer pessoa a saber onde o trabalho está e o que falta para ele chegar ao cliente."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que cada etapa quer dizer",
-            "texto": "Negociação: o pedido está sendo combinado com o cliente. Pago: o pagamento foi confirmado e o trabalho pode seguir. Em pedido de instituição pública com empenho, o número do empenho precisa estar registrado antes de iniciar o trabalho. Modelando: o modelo 3D está sendo criado ou preparado. Imprimindo: a peça está sendo fabricada na impressora. Pós-impressão: a peça é tratada depois de impressa, por exemplo com limpeza e remoção de suportes. Pintura: a peça recebe acabamento de cor. Preparar p/ envio: conferência e embalagem. Enviado: a peça saiu para o cliente."
+            "texto": "Negociação: o pedido está sendo combinado com o cliente. Pago: o pagamento foi confirmado e o trabalho pode seguir. Em pedido de instituição pública com empenho, o número do empenho precisa estar registrado antes de o trabalho começar. Empenho é o documento que reserva o dinheiro do pagamento. Modelando: o modelo 3D está sendo criado ou preparado. Imprimindo: a impressora está fazendo a peça. Pós-impressão: a peça é tratada depois de impressa, por exemplo com limpeza e retirada dos suportes. Pintura: a peça recebe a cor. Preparar p/ envio: conferir e embalar. Enviado: a peça saiu para o cliente."
           },
           {
             "tipo": "conteudo",
             "titulo": "Nem todo trabalho usa todas as etapas",
-            "texto": "Uma miniatura feita a partir de fotos precisa de modelagem antes de imprimir. Já um arquivo STL pronto e aprovado, que é o arquivo do modelo 3D, pode pular essa etapa. Uma peça sem pintura também não passa por Pintura. O importante é que o fluxo represente o que realmente aconteceu. Cada mudança de etapa informa à equipe uma mudança real de situação, e não apenas faz o cartão andar."
+            "texto": "Uma miniatura feita a partir de fotos precisa ser modelada antes de imprimir. Já um arquivo STL pronto e aprovado pode pular essa etapa. STL é o arquivo do modelo 3D. Uma peça sem pintura não passa por Pintura. O importante é o sistema mostrar o que aconteceu de verdade. Mudar o pedido de etapa avisa a equipe que a situação mudou. Não é só fazer o cartão andar na tela."
           },
           {
             "tipo": "conteudo",
-            "titulo": "As cinco perguntas mentais",
-            "texto": "Ao receber um trabalho, pergunte de qual etapa ele veio e qual será a próxima. Além disso, use cinco perguntas ao longo do seu dia. O que estou recebendo? O que preciso saber antes de começar? O que é minha responsabilidade fazer? Como sei que fiz corretamente? O que a próxima pessoa precisa receber de mim? Você vai praticar uma por vez nas próximas aulas."
+            "titulo": "As cinco perguntas",
+            "texto": "Quando receber um trabalho, pergunte de qual etapa ele veio e qual é a próxima. Use também cinco perguntas durante o dia. O que estou recebendo? O que preciso saber antes de começar? O que é minha responsabilidade fazer? Como sei que fiz certo? O que a próxima pessoa precisa receber de mim? Você vai treinar uma de cada vez nas próximas aulas."
           },
           {
             "tipo": "ordenar",
             "competencia": "fluxo_kanban",
-            "instrucao": "Coloque as etapas do Kanban na ordem em que um pedido completo normalmente avança.",
+            "instrucao": "Coloque as etapas do Kanban, o quadro de pedidos, na ordem em que um pedido completo costuma andar.",
             "itens": [
               "Negociação",
               "Pago",
@@ -218,103 +225,103 @@ var TREINAMENTO_TRILHAS = {
               "Preparar p/ envio",
               "Enviado"
             ],
-            "feedbackCerto": "Perfeito. Essa é a sequência completa. Lembre que nem todo pedido passa por todas as etapas.",
-            "feedbackErrado": "Revise a sequência: o pedido é combinado e pago, depois modelado, impresso, tratado, pintado, preparado e só então enviado."
+            "feedbackCerto": "Muito bem. Essa é a ordem completa. Lembre: nem todo pedido passa por todas as etapas.",
+            "feedbackErrado": "Veja a ordem de novo. O pedido é combinado e pago. Depois é modelado, impresso, tratado, pintado e preparado. Só então é enviado."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "fluxo_kanban",
-            "pergunta": "Quais destes trabalhos podem dispensar a etapa Modelando?",
+            "pergunta": "Quais destes trabalhos podem pular a etapa Modelando?",
             "itens": [
               "Peça com arquivo STL pronto e já aprovado",
               "Miniatura que precisa ser criada a partir de fotos do cliente",
-              "Reimpressão de um modelo que já existe e está aprovado",
-              "Personagem que o cliente descreveu só por texto"
+              "Nova impressão de um modelo que já existe e está aprovado",
+              "Personagem que o cliente só descreveu por escrito"
             ],
             "corretos": [
               0,
               2
             ],
-            "feedbackCerto": "Isso mesmo. Quando o modelo já existe e está aprovado, não há o que modelar. Se o modelo precisa ser criado, a etapa é necessária.",
-            "feedbackErrado": "A etapa Modelando é necessária quando o modelo 3D ainda precisa ser criado. Se o arquivo já existe e está aprovado, ela pode ser dispensada."
+            "feedbackCerto": "Isso mesmo. Se o modelo já existe e está aprovado, não há o que modelar. Se o modelo ainda precisa ser criado, a etapa é necessária.",
+            "feedbackErrado": "A etapa Modelando é necessária quando o modelo 3D ainda precisa ser criado. Se o arquivo já existe e está aprovado, o pedido pode pular essa etapa."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "fluxo_kanban",
-            "local": "Valente OS > aba Pedidos (Kanban)",
-            "instrucao": "Abra a aba Pedidos e apenas observe as colunas. Leia o nome de cada uma e confira se reconhece Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. Não mova nenhum cartão. Depois, escolha um cartão e diga a si mesmo de qual etapa ele veio e qual é a próxima."
+            "local": "No computador ou no tablet Samsung, com o responsável",
+            "instrucao": "Peça ao responsável para abrir a aba Pedidos com você. Só olhe. Leia o nome de cada coluna: Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. Não mova nenhum cartão. Depois escolha um cartão e diga de qual etapa ele veio e qual é a próxima."
           }
         ]
       },
       {
         "dia": 3,
         "titulo": "Conhecendo o Valente OS",
-        "subtitulo": "A fonte de informação da equipe",
+        "subtitulo": "Onde a equipe busca informação",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Para que serve o sistema",
-            "texto": "O Valente OS organiza as informações para que a equipe não dependa só de memória, mensagens soltas ou perguntas de corredor. As abas principais são Pedidos, que mostra o Kanban, Peças Próprias, Caixa, Orçamento (a calculadora de custo), Propostas (onde se monta o orçamento para o cliente), Estoque, Missão (a caixa de entrada das suas tarefas) e o Centro de Capacitação, onde você faz este curso. No PC existe também a aba Tarefas, que lista as tarefas designadas a você, útil para quem não usa tablet. Cada cargo enxerga as abas liberadas para a sua função, então é normal que o seu usuário não mostre todas."
+            "texto": "O Valente OS guarda as informações da equipe. Assim ninguém depende só da memória, de mensagens soltas ou de perguntas no corredor. As abas principais são: Pedidos, que mostra o Kanban, o quadro de pedidos. Peças Próprias. Caixa. Orçamento, que é a calculadora de custo. Propostas, onde se monta o orçamento para o cliente. Estoque. Tarefas, que mostra no computador as tarefas passadas para você. E o Centro de Capacitação, onde você faz este curso. No tablet, as suas tarefas ficam em Minhas funções. Cada cargo vê só as abas liberadas para a sua função. Por isso é normal você não ver todas."
           },
           {
             "tipo": "conteudo",
             "titulo": "Onde as peças ficam guardadas",
-            "texto": "A aba Estoque mostra onde cada peça está guardada fisicamente. O local é um endereço por galpão, estante, prateleira e, às vezes, caixa, como G1-E01-P02-C03. Ela tem partes para guardar peças, ver o que há em cada lugar e fazer a retirada guiada, que diz em qual endereço pegar cada componente. Atenção: o estoque físico, que diz onde a peça está, é diferente da contagem de produção, que diz quantas peças existem. Uma não substitui a outra."
+            "texto": "A aba Estoque mostra onde cada peça está guardada. O lugar tem um endereço com galpão, estante, prateleira e, às vezes, caixa. Exemplo: G1-E01-P02-C03. Nessa aba você pode guardar peças, ver o que há em cada lugar e fazer a retirada guiada. A retirada guiada diz em qual endereço pegar cada componente. Atenção: o estoque diz onde a peça está. A contagem de produção diz quantas peças existem. Uma não substitui a outra."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Consulte antes de presumir",
-            "texto": "Regra de ouro: consulte o sistema antes de supor uma informação. Se você precisa saber o estado de um pedido, abra a aba correspondente antes de interromper outro setor. Só consulte uma pessoa se a informação não estiver disponível, estiver contraditória ou envolver uma decisão que não é sua. Assim você economiza o tempo de todos e evita decidir em cima de um palpite."
+            "titulo": "Consulte antes de supor",
+            "texto": "Regra de ouro: olhe no sistema antes de supor uma informação. Quer saber como está um pedido? Abra a aba certa antes de interromper outro setor. Só pergunte a uma pessoa se a informação não estiver no sistema, se as informações não baterem ou se a decisão não for sua. Assim você poupa o tempo de todos e não decide com base em palpite."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Treinamento não altera dados",
-            "texto": "Durante o treinamento, o sistema é fonte de trabalho, não enfeite administrativo. Por isso, as práticas aqui são de consulta e observação. Não altere dados reais, não mova cartões e não finalize tarefas de verdade, a menos que exista uma prática supervisionada e autorizada pelo responsável. Se abrir algo por engano, saia sem salvar e avise o responsável."
+            "titulo": "Treinamento não muda dados",
+            "texto": "No treinamento, o sistema é ferramenta de trabalho, não enfeite. Por isso, as práticas aqui são só para consultar e observar. Não mude dados reais, não mova cartões e não conclua tarefas de verdade. Só faça isso em prática acompanhada e autorizada pelo responsável. Abriu algo por engano? Saia sem salvar e avise o responsável."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "uso_valente_os",
-            "cliente": "Colega do pós-impressão: 'Você sabe em que etapa está o pedido da Marina? Preciso saber se já posso separar espaço para a peça.'",
+            "cliente": "Colega da pós-impressão: 'Você sabe em que etapa está o pedido da Marina? Preciso saber se já posso separar espaço para a peça.'",
             "opcoes": [
               {
                 "label": "Respondo que acho que está em Pintura, mas não tenho certeza.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Responder com palpite como se fosse informação pode gerar decisões erradas. Dizer o que não se sabe é melhor do que supor."
+                "feedback": "Palpite não é informação. Ele pode levar o colega a decidir errado. É melhor dizer que não sabe do que supor."
               },
               {
-                "label": "Abro a aba Pedidos, procuro o cartão da Marina e informo a etapa que aparece.",
+                "label": "Abro a aba Pedidos, procuro o cartão da Marina e digo a etapa que aparece.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Isso. O sistema é a primeira fonte. Você responde com um dado verificado."
+                "feedback": "Isso. O sistema é o primeiro lugar para olhar. Você responde com uma informação conferida."
               },
               {
                 "label": "Peço para ele perguntar ao líder, que deve saber.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Você tem acesso à informação. Interromper o líder sem consultar antes gera trabalho desnecessário."
+                "feedback": "Você tem acesso à informação. Interromper o líder sem olhar antes dá trabalho sem necessidade."
               },
               {
-                "label": "Digo que pedidos assim sempre estão na etapa de Imprimindo.",
+                "label": "Digo que pedidos assim sempre estão em Imprimindo.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Generalizar é inventar. Cada pedido tem o seu próprio andamento."
+                "feedback": "Dizer que é sempre assim é inventar. Cada pedido anda do seu jeito."
               }
             ]
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "uso_valente_os",
-            "afirmacao": "Se a informação do sistema estiver contraditória ou ausente, o certo é consultar o responsável em vez de escolher a versão que parece mais provável.",
+            "afirmacao": "Se a informação do sistema estiver faltando ou não bater, o certo é perguntar ao responsável, e não escolher a versão que parece mais provável.",
             "correta": true,
-            "feedbackCerto": "Correto. Quando a fonte falha, consulte o responsável. Escolher a versão mais provável é suposição.",
-            "feedbackErrado": "Quando as informações se contradizem, escolher uma delas por intuição é suposição. A atitude correta é consultar o responsável."
+            "feedbackCerto": "Certo. Quando o sistema não resolve, pergunte ao responsável. Escolher a versão mais provável é supor.",
+            "feedbackErrado": "Quando as informações não batem, escolher uma delas por palpite é supor. O certo é perguntar ao responsável."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "uso_valente_os",
             "local": "Valente OS > todas as abas liberadas no seu usuário",
-            "instrucao": "Faça um tour pelas abas que aparecem para você. Leia o nome de cada uma, abra e observe que tipo de informação aparece. Não altere, não salve e não mova nada. Se alguma aba que você esperava não aparecer, anote para perguntar ao responsável depois, pois ela pode não estar liberada para a sua função."
+            "instrucao": "Passe pelas abas que aparecem para você. Leia o nome de cada uma, abra e veja que tipo de informação ela mostra. Não mude, não salve e não mova nada. Se faltar uma aba que você esperava, anote e pergunte ao responsável depois. Ela pode não estar liberada para a sua função."
           }
         ]
       },
@@ -326,27 +333,27 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Kanban em três ideias",
-            "texto": "Kanban é uma forma visual de acompanhar trabalho. A palavra vem do japonês e lembra um cartão sinalizador. Ele tem três ideias simples. Um cartão representa um trabalho ou pedido. Uma coluna representa uma situação, ou etapa. Mover o cartão de uma coluna para outra significa informar que a situação mudou. No Valente OS, a aba Pedidos funciona assim."
+            "texto": "Kanban é um jeito de acompanhar o trabalho olhando um quadro. A palavra vem do japonês e lembra um cartão de aviso. Ele tem três ideias simples. Um cartão é um trabalho ou pedido. Uma coluna é uma situação, ou etapa. Mover o cartão de uma coluna para outra avisa que a situação mudou. No Valente OS, a aba Pedidos funciona assim."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Mover é comunicar",
-            "texto": "Mover um cartão não é arrumar a tela. É dar uma notícia para toda a equipe. Se o cartão está em Imprimindo, todos entendem que a impressão está em execução ou naquela etapa. Se alguém move para Pintura sem a peça ter sido liberada, o sistema passa a dizer uma coisa falsa. Isso pode gerar uma promessa errada ao cliente e fazer outra pessoa esperar por uma peça que ainda não está pronta."
+            "titulo": "Mover é avisar",
+            "texto": "Mover um cartão não é arrumar a tela. É dar uma notícia para toda a equipe. Se o cartão está em Imprimindo, todos entendem que a peça está nessa etapa. Se alguém move para Pintura antes de a peça ser liberada, o sistema passa a dizer uma coisa falsa. Isso pode gerar uma promessa errada ao cliente. E pode fazer outra pessoa esperar uma peça que ainda não está pronta."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como agir",
-            "texto": "Antes de mover qualquer cartão, confirme qual fato real autoriza aquela mudança. A peça terminou de imprimir? Foi conferida? O pagamento foi confirmado? Mover vem depois do fato, nunca antes, e não serve para parecer que o trabalho está andando. Quem pode mover cada etapa e quais condições liberam a movimentação seguem o procedimento definido pela Valente. Em caso de dúvida, consulte o responsável."
+            "texto": "Antes de mover um cartão, veja qual fato real permite essa mudança. A peça terminou de imprimir? Foi conferida? O pagamento foi confirmado? Primeiro o fato acontece, depois você move. Nunca mova só para parecer que o trabalho está andando. Quem pode mover cada etapa, e em que condição, segue o procedimento da Valente. Se tiver dúvida, pergunte ao responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "O cartão hoje no Valente OS",
-            "texto": "Cada cartão mostra a etapa atual da produção, por exemplo modelagem, impressão ou pintura, e a tela se atualiza sozinha a cada 60 segundos. Pedido novo aparece como Aguardando liberação. No cartão há o botão Liberar, que gera a ordem de produção, o plano e as tarefas. Se faltar pagamento ou empenho, o botão avisa a pendência. Também não é possível mover para uma etapa de produção com empenho pendente: o empenho precisa estar registrado primeiro."
+            "texto": "Cada cartão mostra a etapa atual da produção, como modelagem, impressão ou pintura. A tela se atualiza sozinha a cada 60 segundos. Pedido novo aparece como Aguardando liberação. No cartão há o botão Liberar. Ele cria a ordem de produção, o plano e as tarefas. Se faltar pagamento ou empenho, o botão avisa o que falta. Empenho é o documento que reserva o dinheiro do pagamento. Com empenho pendente, não dá para mover o cartão para uma etapa de produção. O empenho precisa estar registrado primeiro."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "fluxo_kanban",
-            "pergunta": "Você terminou a limpeza de uma peça, mas ainda não conferiu se ficou boa. Seu cartão está em Pós-impressão. O que é mais correto fazer?",
+            "pergunta": "Você terminou de limpar uma peça, mas ainda não conferiu se ficou boa. O cartão está em Pós-impressão. O que é mais certo fazer?",
             "opcoes": [
               "Mover para Pintura agora e conferir enquanto a pessoa da pintura pega a peça",
               "Mover para Pintura e avisar depois, se achar algum problema",
@@ -354,12 +361,12 @@ var TREINAMENTO_TRILHAS = {
               "Deixar o cartão onde está até alguém pedir a peça"
             ],
             "correta": 2,
-            "feedbackCerto": "Exato. O fato que autoriza mover é a peça estar conferida e liberada, não apenas ter terminado a limpeza.",
+            "feedbackCerto": "Isso. O fato que permite mover é a peça estar conferida e liberada. Só terminar a limpeza não basta.",
             "feedbackPorOpcao": [
-              "Isso empurra o problema para a próxima etapa e informa uma situação que ainda não é verdadeira.",
-              "Avisar depois não desfaz a informação falsa que já circulou no Kanban.",
+              "Isso empurra o problema para a próxima etapa. E o quadro mostra uma situação que ainda não é verdade.",
+              "Avisar depois não apaga a informação falsa que já apareceu no Kanban.",
               null,
-              "Esperar ser cobrado deixa o quadro desatualizado. O cartão deve refletir a situação real."
+              "Esperar alguém cobrar deixa o quadro atrasado. O cartão deve mostrar a situação real."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -369,25 +376,25 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "selecionar_itens",
             "competencia": "fluxo_kanban",
-            "pergunta": "Quais destas situações justificam mover um cartão para a próxima coluna?",
+            "pergunta": "Em quais destas situações é certo mover um cartão para a próxima coluna?",
             "itens": [
               "A impressão terminou e a peça foi conferida e liberada",
-              "Estou com pressa e quero mostrar progresso ao líder",
+              "Estou com pressa e quero mostrar avanço ao líder",
               "O cliente perguntou e quero parecer adiantado",
-              "O evento real que marca o fim da etapa aconteceu"
+              "O fato real que marca o fim da etapa aconteceu"
             ],
             "corretos": [
               0,
               3
             ],
-            "feedbackCerto": "Isso mesmo. Só um fato real justifica a mudança de coluna.",
-            "feedbackErrado": "Pressa e aparência não são fatos. Mova o cartão apenas quando o evento real que encerra a etapa tiver acontecido."
+            "feedbackCerto": "Isso mesmo. Só um fato real permite mudar o cartão de coluna.",
+            "feedbackErrado": "Pressa e aparência não são fatos. Mova o cartão só quando o fato real que encerra a etapa tiver acontecido."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "fluxo_kanban",
-            "local": "Valente OS > aba Pedidos (Kanban)",
-            "instrucao": "Escolha um cartão e observe apenas. Veja qual etapa atual da produção aparece nele, como modelagem, impressão ou pintura, e pense em qual evento real deveria acontecer para ele passar à coluna seguinte. Não arraste nem altere o cartão. Se tiver dúvida sobre quem pode mover aquela etapa, pergunte ao responsável."
+            "local": "No computador ou no tablet Samsung, com o responsável",
+            "instrucao": "Peça ao responsável para abrir a aba Pedidos com você e escolham um cartão. Só olhe. Veja qual etapa da produção aparece nele, como modelagem, impressão ou pintura. Pense: o que precisa acontecer de verdade para ele ir para a próxima coluna? Não arraste nem mude o cartão. Se tiver dúvida sobre quem pode mover, pergunte ao responsável."
           }
         ]
       },
@@ -398,23 +405,23 @@ var TREINAMENTO_TRILHAS = {
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Ordem incompleta, peça errada",
-            "texto": "Uma ordem incompleta pode produzir uma peça errada mesmo quando todos trabalham bem. Dependendo do trabalho, são necessárias informações como: cliente, produto, quantidade, tamanho, arquivo ou referência, acabamento, observações e prazo. Os campos reais do Valente OS são a referência oficial. Esta é a segunda pergunta mental: o que preciso saber antes de começar?"
+            "titulo": "Tarefa incompleta, peça errada",
+            "texto": "Uma tarefa incompleta pode gerar uma peça errada, mesmo com todos trabalhando bem. Conforme o trabalho, você precisa de informações como: cliente, produto, quantidade, tamanho, arquivo ou referência, acabamento, observações e prazo. Os campos do Valente OS são a referência oficial. Esta é a segunda das cinco perguntas: o que preciso saber antes de começar?"
           },
           {
             "tipo": "conteudo",
             "titulo": "Um exemplo",
-            "texto": "Uma ordem que diz apenas 'fazer a miniatura do João' não diz qual modelo, qual tamanho, quantas unidades nem qual versão. Quem recebe vai adivinhar, e adivinhar errado custa material, tempo de máquina e retrabalho. Agora compare com uma ordem que traz todos os dados necessários. O próximo setor consegue trabalhar sem perguntar e sem supor."
+            "texto": "Uma tarefa diz só 'fazer a miniatura do João'. Ela não diz qual modelo, qual tamanho, quantas unidades nem qual versão. Quem recebe vai ter que adivinhar. Adivinhar errado custa material, tempo de máquina e trabalho refeito. Agora pense em uma tarefa com todos os dados necessários. O próximo setor consegue trabalhar sem perguntar e sem supor."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como agir",
-            "texto": "Ao receber uma tarefa, compare o que você recebeu com o que precisa para executar. Se faltar um dado essencial, pare e consulte a fonte: o pedido no Valente OS, a ficha ou a OT. Se a fonte não resolver, fale com o responsável. Não preencha a lacuna com suposição. Dizer 'não sei, vou conferir' não é erro. Inventar é."
+            "texto": "Ao receber uma tarefa, compare o que você recebeu com o que precisa para fazer o trabalho. Falta um dado importante? Pare e procure na fonte: o pedido no Valente OS, a ficha ou a tarefa. Se não achar, fale com o responsável. Não complete o que falta com palpite. Dizer 'não sei, vou conferir' não é erro. Inventar é erro."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "informacao_completa",
-            "pergunta": "Você recebeu a ordem: 'Imprimir miniaturas do dragão para a Carla.' Quais informações ainda precisam estar claras antes de começar?",
+            "pergunta": "Você recebeu a tarefa: 'Imprimir miniaturas do dragão para a Carla.' Quais informações ainda precisam estar claras antes de começar?",
             "itens": [
               "Tamanho da miniatura",
               "Quantidade de unidades",
@@ -426,25 +433,25 @@ var TREINAMENTO_TRILHAS = {
               1,
               2
             ],
-            "feedbackCerto": "Isso mesmo. Tamanho, quantidade e arquivo são essenciais para executar. O sobrenome do cliente não muda o trabalho.",
-            "feedbackErrado": "Faltam dados que mudam o resultado da peça: tamanho, quantidade e arquivo ou versão. Dados que não alteram a execução não bloqueiam o trabalho."
+            "feedbackCerto": "Isso mesmo. Sem tamanho, quantidade e arquivo não dá para fazer o trabalho. O sobrenome da cliente não muda o trabalho.",
+            "feedbackErrado": "Faltam dados que mudam a peça: tamanho, quantidade e arquivo ou versão. Dado que não muda o trabalho não impede você de começar."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "informacao_completa",
-            "pergunta": "Na ordem de uma peça, o campo de quantidade está em branco. O que você faz?",
+            "pergunta": "Na tarefa de uma peça, o campo de quantidade está em branco. O que você faz?",
             "opcoes": [
               "Imprimo uma unidade, que é o mais comum",
-              "Procuro a informação no pedido do Valente OS e, se não achar, consulto o responsável",
-              "Pergunto a um colega que provavelmente lembra",
-              "Imprimo várias para não faltar e sobra eu guardo"
+              "Procuro a informação no pedido do Valente OS e, se não achar, pergunto ao responsável",
+              "Pergunto a um colega que deve lembrar",
+              "Imprimo várias para não faltar e guardo o que sobrar"
             ],
             "correta": 1,
-            "feedbackCerto": "Correto. Primeiro a fonte oficial, depois o responsável. Nada de adivinhar.",
+            "feedbackCerto": "Certo. Primeiro a fonte oficial, depois o responsável. Nada de adivinhar.",
             "feedbackPorOpcao": [
-              "O 'mais comum' é uma suposição. Pode faltar peça ou sobrar material desperdiçado.",
+              "O 'mais comum' é um palpite. Pode faltar peça ou sobrar material gasto à toa.",
               null,
-              "Memória de colega não é fonte confiável. Consulte o sistema primeiro.",
+              "A memória do colega não é fonte segura. Olhe o sistema primeiro.",
               "Imprimir a mais gasta material e tempo sem autorização."
             ],
             "erroCriticoOpcoes": [
@@ -453,68 +460,71 @@ var TREINAMENTO_TRILHAS = {
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "informacao_completa",
-            "pergunta": "Receba esta ordem fictícia: 'Fazer a miniatura do João.' Liste o que está faltando e diga o que você faria antes de começar.",
-            "pontosEsperados": [
-              "Aponta dados ausentes, como modelo, tamanho, quantidade e versão",
-              "Diz que consultaria o pedido no Valente OS ou a ficha antes de perguntar",
-              "Se a fonte não resolver, consultaria o responsável",
-              "Afirma que não começaria a trabalhar com suposições"
-            ]
+            "pergunta": "Você recebeu a tarefa: 'Fazer a miniatura do João.' Ela não diz modelo, tamanho, quantidade nem versão. O que você faz antes de começar?",
+            "opcoes": [
+              "Uso o modelo e o tamanho mais pedidos e começo",
+              "Começo o trabalho e acerto os dados depois, se alguém reclamar",
+              "Pergunto a um colega e sigo o que ele lembrar",
+              "Procuro os dados no pedido do Valente OS ou na ficha e, se não achar, pergunto ao responsável"
+            ],
+            "correta": 3,
+            "feedbackCerto": "Isso mesmo. Você viu o que faltava, procurou na fonte e não começou com palpite.",
+            "feedbackErrado": "Não comece com palpite. Veja o que falta. Procure no pedido do Valente OS ou na ficha. Se não achar, pergunte ao responsável."
           }
         ]
       },
       {
         "dia": 6,
-        "titulo": "Minha responsabilidade começa antes de executar",
+        "titulo": "Minha responsabilidade começa antes de fazer",
         "subtitulo": "Identificar, conferir, executar",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Conferir antes de agir",
-            "texto": "Executar bem começa pela conferência. Antes de ligar uma máquina, pintar, modelar, embalar ou responder algo que dependa da operação, verifique três coisas. Você sabe exatamente o que deve fazer? Você tem a referência correta? Você tem autorização para decidir? Esta é a terceira pergunta mental: o que é minha responsabilidade fazer?"
+            "texto": "Fazer bem feito começa por conferir. Antes de ligar uma máquina, pintar, modelar, embalar ou responder algo sobre o trabalho, veja três coisas. Você sabe exatamente o que deve fazer? Você tem a referência certa? Você tem autorização para decidir? Esta é a terceira das cinco perguntas: o que é minha responsabilidade fazer?"
           },
           {
             "tipo": "conteudo",
             "titulo": "Parecido não é igual",
-            "texto": "Dois arquivos com nomes quase iguais podem ser versões diferentes do modelo. Duas peças visualmente semelhantes podem pertencer a pedidos diferentes. Usar o arquivo ou a peça errada é um erro sério, porque ele só aparece depois que o trabalho já foi feito. Pressa não transforma dúvida em certeza."
+            "texto": "Dois arquivos com nomes quase iguais podem ser versões diferentes do modelo. Duas peças parecidas podem ser de pedidos diferentes. Usar o arquivo errado ou a peça errada é um erro sério. Ele só aparece depois que o trabalho já foi feito. Pressa não transforma dúvida em certeza."
           },
           {
             "tipo": "conteudo",
             "titulo": "A sequência",
-            "texto": "Use a sequência IDENTIFICAR, CONFERIR, EXECUTAR. Identificar: qual é o pedido, a peça e a tarefa. Conferir: o arquivo, a referência, a quantidade e as instruções batem com o que foi pedido? Executar: só então comece. Se a conferência falhar, use CONSULTAR RESPONSÁVEL. Na dúvida, o passo de consultar vem antes do passo de executar."
+            "texto": "Siga a ordem IDENTIFICAR, CONFERIR, EXECUTAR. Identificar: qual é o pedido, a peça e a tarefa. Conferir: o arquivo, a referência, a quantidade e as instruções batem com o que foi pedido? Executar: só então comece. Se algo não bater, use CONSULTAR RESPONSÁVEL. Na dúvida, perguntar vem antes de executar."
           },
           {
             "tipo": "ordenar",
             "competencia": "responsabilidade",
-            "instrucao": "Ordene a sequência de responsabilidade antes de executar uma tarefa.",
+            "instrucao": "Coloque na ordem certa os passos para fazer uma tarefa com responsabilidade.",
             "itens": [
               "Identificar o pedido e a tarefa",
               "Conferir arquivo, referência e instruções",
               "Executar a tarefa",
               "Seguir para a conferência do resultado"
             ],
-            "feedbackCerto": "Isso. Primeiro saber o que é, depois verificar, depois fazer.",
-            "feedbackErrado": "Lembre da ordem: IDENTIFICAR, CONFERIR e só então EXECUTAR."
+            "feedbackCerto": "Isso. Primeiro saber o que é, depois conferir, depois fazer.",
+            "feedbackErrado": "Lembre a ordem: IDENTIFICAR, CONFERIR e só então EXECUTAR."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "responsabilidade",
             "pergunta": "Na pasta há dois arquivos: 'dragao_v2.stl' e 'dragao_v2_final.stl'. A tarefa só diz 'imprimir o dragão'. Qual é o melhor passo?",
             "opcoes": [
-              "Usar o mais recente, porque 'final' deve ser o correto",
-              "Imprimir os dois, para garantir que um deles serve",
-              "Conferir no pedido ou na OT qual versão vale e, se não estiver claro, consultar o responsável",
+              "Usar o mais novo, porque 'final' deve ser o certo",
+              "Imprimir os dois, para ter certeza de que um deles serve",
+              "Conferir no pedido ou na tarefa qual versão vale e, se não estiver claro, perguntar ao responsável",
               "Usar o que tem o nome mais curto"
             ],
             "correta": 2,
-            "feedbackCerto": "Certo. A referência do pedido decide qual arquivo usar. Nome parecido não prova versão.",
+            "feedbackCerto": "Certo. O pedido diz qual arquivo usar. Nome parecido não prova qual é a versão.",
             "feedbackPorOpcao": [
-              "'Final' no nome não garante que seja a versão aprovada.",
-              "Imprimir os dois desperdiça material e tempo, e ainda deixa dúvida sobre qual enviar.",
+              "'Final' no nome não prova que é a versão aprovada.",
+              "Imprimir os dois gasta material e tempo. E a dúvida sobre qual enviar continua.",
               null,
-              "O tamanho do nome não tem relação com a versão correta."
+              "O tamanho do nome não tem nada a ver com a versão certa."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -525,66 +535,66 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "A caixa SUA MISSÃO",
-            "texto": "No topo da tarefa aparece a caixa SUA MISSÃO, que diz o que você deve fazer, por exemplo: Pintar 8 de 18 unidades de Saia. Quando a tarefa já avançou, ela mostra o que falta e uma linha como Já feitas nesta tarefa: 10. Ela também informa quantas unidades são necessárias para fechar o pedido e quantas peças impressas estão disponíveis. Leia essa caixa antes de começar. Nas tarefas de pintura, separação, montagem, conferência, embalagem e expedição, o botão Retirar do estoque mostra onde pegar a peça. O PIN identifica quem executa: seu nome aparece no topo e fica gravado como responsável pelo que você inicia e conclui."
+            "texto": "No alto da tarefa aparece a caixa SUA MISSÃO. Ela diz o que você deve fazer. Exemplo: Pintar 8 de 18 unidades de Saia. Se a tarefa já andou, a caixa mostra o que falta e uma linha como Já feitas nesta tarefa: 10. Ela também diz quantas unidades faltam para fechar o pedido e quantas peças impressas estão disponíveis. Leia essa caixa antes de começar. Nas tarefas de pintura, separação, montagem, conferência, embalagem e expedição, o botão Retirar do estoque mostra onde pegar a peça. O PIN, seu código pessoal, mostra quem faz a tarefa. Seu nome aparece no alto e fica gravado como responsável pelo que você inicia e conclui."
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "responsabilidade",
-            "afirmacao": "Se um colega está sem PIN por perto, você pode iniciar e concluir tarefas com o PIN dele, porque o resultado do trabalho é o mesmo.",
+            "afirmacao": "Se um colega está sem o PIN dele por perto, você pode iniciar e concluir tarefas com o PIN dele, porque o resultado do trabalho é o mesmo.",
             "correta": false,
-            "feedbackCerto": "Correto. O PIN identifica quem executou e grava o responsável. Usar o de outra pessoa registra uma informação falsa.",
-            "feedbackErrado": "O nome gravado como responsável vem do PIN. Usar o PIN de outra pessoa registra quem não fez o trabalho, o que vai contra a regra de registrar só o que de fato aconteceu."
+            "feedbackCerto": "Certo. O PIN mostra quem fez e grava o responsável. Usar o PIN de outra pessoa registra uma informação falsa.",
+            "feedbackErrado": "O nome gravado como responsável vem do PIN. Usar o PIN de outra pessoa grava o nome de quem não fez o trabalho. A regra é registrar só o que aconteceu de verdade."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "responsabilidade",
-            "local": "Valente OS > aba Missão (caixa de entrada de tarefas)",
-            "instrucao": "Abra uma tarefa (OT) apenas para ler. Observe a caixa SUA MISSÃO no topo, o título, as instruções, o checklist, as fotos de referência e a quantidade. Pergunte-se: eu saberia exatamente o que fazer? Tenho a referência certa? Não clique em Iniciar nem em Concluir. Se não houver tarefas na sua caixa, observe a área e anote o que espera encontrar nela."
+            "local": "Valente OS > aba Tarefas (no computador) ou Minhas funções (no tablet)",
+            "instrucao": "Abra uma tarefa só para ler. Veja a caixa SUA MISSÃO no alto, o título, as instruções, a lista de conferência, as fotos de referência e a quantidade. Pergunte a si mesmo: eu saberia exatamente o que fazer? Tenho a referência certa? Não toque em Iniciar tarefa nem em Concluir tarefa. Se não houver tarefa para você, olhe a tela e anote o que espera encontrar nela."
           }
         ]
       },
       {
         "dia": 7,
-        "titulo": "Minha responsabilidade termina depois de executar",
+        "titulo": "Minha responsabilidade termina depois de fazer",
         "subtitulo": "Executar, conferir, registrar, entregar",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Terminar não é acabar",
-            "texto": "Terminar a atividade física não encerra a sua responsabilidade. Falta conferir o resultado, organizar o material, registrar o que for devido, identificar a peça corretamente e entregar para a próxima etapa em condição de uso. Aqui entram as duas últimas perguntas mentais: como sei que fiz corretamente? E o que a próxima pessoa precisa receber de mim?"
+            "texto": "Terminar o trabalho com as mãos não encerra a sua responsabilidade. Ainda falta conferir o resultado, organizar o material, registrar o que for preciso, identificar a peça e entregar para a próxima etapa pronta para uso. Aqui entram as duas últimas das cinco perguntas: como sei que fiz certo? E o que a próxima pessoa precisa receber de mim?"
           },
           {
             "tipo": "conteudo",
             "titulo": "Exemplos do dia a dia",
-            "texto": "Uma impressão pode ter terminado na máquina, mas a peça ainda precisa ser conferida antes de ser liberada. Uma pintura pode estar seca, mas ainda precisa ser comparada com a referência e com o pedido. Se você entrega sem conferir, a próxima pessoa herda um problema que talvez só descubra tarde, quando já gastou tempo em cima dele."
+            "texto": "A impressão terminou na máquina. Mesmo assim, a peça precisa ser conferida antes de ser liberada. A pintura secou. Mesmo assim, ela precisa ser comparada com a referência e com o pedido. Se você entrega sem conferir, a próxima pessoa recebe um problema. Ela talvez só descubra tarde, depois de gastar tempo com a peça."
           },
           {
             "tipo": "conteudo",
             "titulo": "A sequência",
-            "texto": "Use EXECUTAR, CONFERIR, REGISTRAR, ENTREGAR. Conferir: o resultado bate com o pedido? Registrar: marque o que for devido no Valente OS, como concluir a tarefa ou preencher o checklist. Entregar: a peça vai identificada, organizada e com o que a próxima pessoa precisa saber, como alertas ou observações. Só registre como feito aquilo que de fato foi feito."
+            "texto": "Siga a ordem EXECUTAR, CONFERIR, REGISTRAR, ENTREGAR. Conferir: o resultado bate com o pedido? Registrar: marque no Valente OS o que for preciso, como concluir a tarefa ou preencher a lista de conferência. Entregar: a peça vai identificada, organizada e com os avisos que a próxima pessoa precisa saber. Só registre como feito o que foi feito de verdade."
           },
           {
             "tipo": "conteudo",
             "titulo": "Cada tarefa fecha do seu jeito",
-            "texto": "Ao concluir, cada tipo de tarefa abre a sua janela. Na impressão, você responde Tudo certo, Saiu só parte, Falhou ou Cancelada. Em etapas como lavagem, cura, montagem e separação, a janela Concluir etapa pergunta quantas ficaram prontas, quantas precisam voltar para a fase anterior, com o motivo, e mostra a próxima etapa. Na pintura de várias peças, a Produção do dia registra quantas foram pintadas e quantas estragaram. Em Conferência e Embalagem, Encontrei problema exige motivo e impede o pedido de seguir. Na expedição, o caminho é Marcar como enviado, com forma de envio, código de rastreio e saldo quitado ou combinado."
+            "texto": "Ao concluir, cada tipo de tarefa abre a sua janela. Na impressão, você responde Tudo certo, Saiu só parte, Falhou ou Cancelada. Em etapas como lavagem, cura, montagem e separação, a janela Concluir etapa pergunta quantas ficaram prontas e quantas precisam voltar para a fase anterior, com o motivo. Ela também mostra a próxima etapa. Na pintura de várias peças, a Produção do dia registra quantas foram pintadas e quantas estragaram. Em Conferência e Embalagem, Encontrei problema pede o motivo e não deixa o pedido seguir. Na expedição, o caminho é Marcar como enviado, com forma de envio, código de rastreio e saldo quitado ou combinado."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "responsabilidade",
-            "pergunta": "Você embalou o pedido e vai fechar a tarefa de expedição. Qual é o caminho correto no sistema?",
+            "pergunta": "Você embalou o pedido e vai fechar a tarefa de expedição. Qual é o caminho certo no sistema?",
             "opcoes": [
               "Marcar como enviado, informando a forma de envio, o código de rastreio e se o saldo está quitado ou combinado",
-              "Concluir a tarefa de expedição e avisar o cliente do envio por mensagem, sem registrar o rastreio",
-              "Deixar a tarefa aberta até o cliente confirmar o recebimento",
+              "Concluir a tarefa de expedição e avisar o cliente por mensagem, sem registrar o rastreio",
+              "Deixar a tarefa aberta até o cliente confirmar que recebeu",
               "Mover o cartão para Enviado e deixar a tarefa de expedição para outra pessoa fechar"
             ],
             "correta": 0,
-            "feedbackCerto": "Isso. Marcar como enviado registra o fato com os dados que a próxima pessoa e o cliente vão precisar.",
+            "feedbackCerto": "Isso. Marcar como enviado registra o envio com os dados que a próxima pessoa e o cliente vão precisar.",
             "feedbackPorOpcao": [
               null,
-              "Concluir a expedição sem marcar como enviado não é o caminho. O envio fica sem registro de rastreio e de saldo.",
-              "A confirmação de recebimento é tratada depois, no pós-compra. A expedição se fecha ao registrar o envio.",
-              "Quem executou deve registrar o próprio fato, e o registro do envio é feito na janela da tarefa."
+              "Concluir a expedição sem Marcar como enviado não é o caminho. O envio fica sem registro de rastreio e de saldo.",
+              "A confirmação de que o cliente recebeu vem depois. A expedição fecha quando você registra o envio.",
+              "Quem fez o trabalho registra o que fez. O envio é registrado na janela da tarefa."
             ],
             "erroCriticoOpcoes": [
               1
@@ -593,31 +603,31 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "resposta_cliente",
             "competencia": "responsabilidade",
-            "cliente": "Colega da próxima etapa: 'A peça já está comigo, mas não tem identificação e a tarefa ainda aparece como em andamento. Pode me dizer se terminou?'",
+            "cliente": "Colega da próxima etapa: 'A peça já está comigo, mas está sem identificação. E a tarefa ainda aparece como em andamento. Você terminou?'",
             "opcoes": [
               {
                 "label": "Já terminei. Esqueci de registrar, mas pode seguir que depois eu marco.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Entregar sem registrar deixa o sistema dizendo uma coisa diferente da realidade."
+                "feedback": "Entregar sem registrar deixa o sistema dizendo uma coisa diferente do que aconteceu."
               },
               {
-                "label": "Vou conferir a peça, identificá-la, concluir a tarefa no sistema e avisar você de qualquer observação.",
+                "label": "Vou conferir a peça, identificar, concluir a tarefa no sistema e avisar você se houver alguma observação.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Isso. Conferir, registrar e entregar identificado é o que fecha a sua responsabilidade."
+                "feedback": "Isso. Conferir, registrar e entregar a peça identificada é o que fecha a sua responsabilidade."
               },
               {
-                "label": "Marco a tarefa como concluída agora e depois confiro a peça quando der.",
+                "label": "Marco a tarefa como concluída agora e confiro a peça depois, quando der.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Marcar como feito sem ter conferido é registrar uma coisa que não aconteceu."
+                "feedback": "Marcar como feito sem conferir é registrar uma coisa que não aconteceu."
               },
               {
-                "label": "Pode seguir sem identificação, porque a peça é reconhecível.",
+                "label": "Pode seguir sem identificação, porque dá para reconhecer a peça.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Peças parecidas se confundem. Identificar é parte da entrega."
+                "feedback": "Peças parecidas se confundem. Identificar faz parte da entrega."
               }
             ]
           },
@@ -626,58 +636,78 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "responsabilidade",
             "afirmacao": "Uma impressão que terminou na máquina já pode ser liberada para a próxima etapa sem conferência.",
             "correta": false,
-            "feedbackCerto": "Correto. Terminar na máquina não prova que a peça está boa. É preciso conferir antes.",
+            "feedbackCerto": "Certo. Terminar na máquina não prova que a peça está boa. É preciso conferir antes.",
             "feedbackErrado": "A peça pode ter falhas que só aparecem na conferência. Liberar sem conferir passa o problema adiante."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "ordenar",
             "competencia": "responsabilidade",
-            "pergunta": "Pense na sua função. Ao terminar sua parte, o que você conferiria e o que entregaria à próxima pessoa?",
-            "pontosEsperados": [
-              "Indica ao menos uma conferência concreta do resultado",
-              "Cita o que registraria no Valente OS, como concluir a tarefa",
-              "Menciona a identificação da peça ou do material",
-              "Diz o que a próxima pessoa precisa saber ou receber"
-            ]
+            "instrucao": "Coloque na ordem certa: o que você faz para fechar a sua parte do trabalho.",
+            "itens": [
+              "Executar a sua parte do trabalho",
+              "Conferir se o resultado bate com o pedido",
+              "Registrar no Valente OS o que foi feito",
+              "Entregar a peça identificada para a próxima pessoa"
+            ],
+            "feedbackCerto": "Isso mesmo. EXECUTAR, CONFERIR, REGISTRAR e ENTREGAR. Assim a próxima pessoa recebe a peça pronta para uso.",
+            "feedbackErrado": "Lembre a ordem: EXECUTAR, CONFERIR, REGISTRAR, ENTREGAR. Você só registra e entrega depois de conferir."
           }
         ]
       },
       {
         "dia": 8,
         "titulo": "Erro, dúvida e segurança",
-        "subtitulo": "Posso executar, preciso consultar ou preciso parar",
+        "subtitulo": "Posso fazer, preciso perguntar ou preciso parar",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Três níveis de decisão",
-            "texto": "Nem toda decisão tem o mesmo nível de autonomia. Algumas ações são rotineiras e autorizadas, e você pode executar. Outras exigem consulta ao sistema ou ao responsável. Em situações de risco, é preciso parar. Classificar a decisão antes de agir evita tanto a paralisia quanto o improviso. Os limites exatos de autonomia de cada função seguem o procedimento definido pela Valente ou o responsável."
+            "titulo": "Três tipos de decisão",
+            "texto": "Nem toda decisão é igual. Algumas ações são de rotina e autorizadas. Essas você pode fazer. Outras pedem consulta ao sistema ou ao responsável. Em situação de risco, é preciso parar. Pense em qual tipo é antes de agir. Assim você não fica travado e também não improvisa. O que cada função pode decidir sozinha segue o procedimento da Valente ou o responsável."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Onde vai cada dúvida",
-            "texto": "Se a dúvida é só onde achar uma informação, consulte o sistema. Se envolve autorização, regra que não está documentada, risco, equipamento com comportamento anormal ou condição comercial não definida, consulte o responsável. Você não precisa saber tudo. A regra da casa é: não saber não é erro; inventar é."
+            "titulo": "Onde levar cada dúvida",
+            "texto": "A dúvida é só onde achar uma informação? Consulte o sistema. A dúvida é sobre autorização, regra que não está escrita, risco, equipamento funcionando de jeito estranho ou condição de venda não definida? Consulte o responsável. Você não precisa saber tudo. A regra da casa é: não saber não é erro. Inventar é erro."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Peça de coleção não é brinquedo",
+            "texto": "As miniaturas de resina da Valente são peças de coleção. Elas podem quebrar e ter partes pequenas. A linha atual não foi aprovada como brinquedo. Se alguém disser que uma criança vai brincar com a peça, avise o responsável. Não trate a peça como brinquedo seguro."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "seguranca_produto",
+            "pergunta": "Uma pessoa pede uma miniatura de resina para uma criança brincar. Qual é a atitude certa?",
+            "opcoes": [
+              "Explicar que a linha atual é de coleção, não serve para esse uso, e avisar o responsável.",
+              "Prometer que a resina não quebra.",
+              "Entregar sem perguntar para que a peça vai ser usada."
+            ],
+            "correta": 0,
+            "feedbackCerto": "Certo. A segurança vem antes da venda.",
+            "feedbackErrado": "Volte ao texto sobre o uso da peça. Antes de vender, saiba para que ela vai ser usada. As miniaturas de resina da linha atual não são brinquedos."
           },
           {
             "tipo": "conteudo",
             "titulo": "Segurança vem primeiro",
-            "texto": "Segurança nunca é sacrificada para ganhar tempo. Como regra geral na impressão 3D: resina líquida exige luvas, proteção para os olhos e boa ventilação; solventes, tintas e lixamento pedem ventilação e proteção respiratória adequadas; ferramentas de corte pedem atenção e proteção das mãos. Se algo parecer perigoso ou anormal, pare. Os EPI e procedimentos oficiais da Valente prevalecem sobre qualquer regra geral."
+            "texto": "Nunca deixe a segurança de lado para ganhar tempo. Regras gerais na impressão 3D: resina líquida pede luvas, proteção para os olhos e boa ventilação. Solventes, tintas e lixamento pedem ventilação e proteção certa para a respiração. Ferramentas de corte pedem atenção e proteção das mãos. Se algo parecer perigoso ou estranho, pare. Os EPI, que são os equipamentos de proteção, e os procedimentos oficiais da Valente valem mais que qualquer regra geral."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "seguranca_qualidade",
-            "pergunta": "Quais destas situações exigem PARAR ou consultar o responsável, e não decidir sozinho?",
+            "pergunta": "Em quais destas situações você deve PARAR ou consultar o responsável, e não decidir sozinho?",
             "itens": [
-              "Descobrir em qual aba está o status de um pedido",
-              "Impressora fazendo um barulho diferente do normal e cheirando a queimado",
+              "Descobrir em qual aba aparece a situação de um pedido",
+              "Impressora fazendo um barulho diferente do normal e com cheiro de queimado",
               "Cliente pedindo um desconto que ninguém definiu",
-              "Dúvida sobre qual cartão é do pedido da Marina, já visível na tela"
+              "Dúvida sobre qual cartão é do pedido da Marina, que já aparece na tela"
             ],
             "corretos": [
               1,
               2
             ],
-            "feedbackCerto": "Isso mesmo. Equipamento com comportamento anormal e condição comercial não definida pedem parar ou consultar. Achar uma informação no sistema é consulta de rotina.",
-            "feedbackErrado": "Consultar o sistema resolve dúvida de localização. Equipamento anormal e condição comercial não definida exigem parar ou consultar o responsável."
+            "feedbackCerto": "Isso mesmo. Equipamento funcionando de jeito estranho e condição de venda não definida pedem parar ou consultar. Achar uma informação no sistema é consulta de rotina.",
+            "feedbackErrado": "Dúvida sobre onde achar uma informação se resolve no sistema. Equipamento estranho e condição de venda não definida pedem parar ou consultar o responsável."
           },
           {
             "tipo": "resposta_cliente",
@@ -688,25 +718,25 @@ var TREINAMENTO_TRILHAS = {
                 "label": "Vigio, mas só desta vez.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Ignorar segurança para ganhar tempo é um erro crítico. Resina em contato com a pele pode causar irritação."
+                "feedback": "Deixar a segurança de lado para ganhar tempo é um erro grave. Resina na pele pode causar irritação."
               },
               {
-                "label": "Lembro que precisa usar luva e ventilação, e ofereço ajuda para pegar o EPI.",
+                "label": "Lembro que precisa de luva e ventilação, e ofereço ajuda para pegar o EPI.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Isso. Segurança não é negociável e você ajuda sem cobrar ou ironizar."
+                "feedback": "Isso. Segurança não se negocia. E você ajuda sem cobrar nem fazer piada."
               },
               {
                 "label": "Não é problema meu, cada um cuida de si.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Segurança é responsabilidade de todos. Avisar é a atitude correta."
+                "feedback": "A segurança é responsabilidade de todos. Avisar é a atitude certa."
               },
               {
                 "label": "Digo que, se for rápido mesmo, tudo bem.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "A rapidez não elimina o risco. O contato com a resina é perigoso, mesmo que breve."
+                "feedback": "Ser rápido não tira o risco. Tocar na resina é perigoso, mesmo por pouco tempo."
               }
             ]
           },
@@ -714,46 +744,46 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "seguranca_qualidade",
             "local": "Área física de trabalho (bancada, impressoras, pós-impressão e pintura)",
-            "instrucao": "Observe a sua área de trabalho e localize onde ficam os EPI, como luvas e proteção para os olhos, e quais são as saídas de ventilação ou de emergência. Se não souber onde está algo, pergunte ao responsável. Não manuseie resina, solventes ou tintas nesta prática, apenas identifique os locais."
+            "instrucao": "Olhe a sua área de trabalho. Ache onde ficam os EPI, como luvas e proteção para os olhos. Ache também as saídas de ventilação e de emergência. Se não souber onde está algo, pergunte ao responsável. Nesta prática, não mexa em resina, solventes ou tintas. Só encontre os lugares."
           }
         ]
       },
       {
         "dia": 9,
         "titulo": "Qualidade é responsabilidade de todos",
-        "subtitulo": "Não deixe um defeito viajar adiante",
+        "subtitulo": "Não deixe um defeito seguir adiante",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Todo mundo é controle de qualidade",
-            "texto": "Qualidade não pertence apenas ao último setor. Quem identifica um defeito deve impedir que ele viaje adiante sem tratamento. Continuar um trabalho que se sabe errado transforma um problema pequeno em retrabalho grande e caro. O defeito só fica barato quando é achado cedo."
+            "titulo": "Todo mundo cuida da qualidade",
+            "texto": "A qualidade não é só do último setor. Quem acha um defeito deve impedir que ele siga adiante sem ser tratado. Continuar um trabalho que você sabe que está errado faz um problema pequeno virar um conserto grande e caro. O defeito só sai barato quando é achado cedo."
           },
           {
             "tipo": "conteudo",
             "titulo": "Dois exemplos",
-            "texto": "Se o acabamento recebe uma peça quebrada, não deve simplesmente prepará-la e mandá-la para a pintura. Se a pintura percebe um defeito estrutural, não deve escondê-lo com tinta. Esconder o defeito dá a sensação de problema resolvido, mas entrega ao cliente uma peça ruim e tira da empresa a chance de corrigir a causa."
+            "texto": "O acabamento recebe uma peça quebrada. Ele não deve só preparar a peça e mandar para a pintura. A pintura percebe um defeito na estrutura da peça. Ela não deve esconder o defeito com tinta. Esconder dá a impressão de problema resolvido. Mas o cliente recebe uma peça ruim. E a empresa perde a chance de corrigir a causa."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que fazer ao achar um problema",
-            "texto": "Siga a sequência: IDENTIFICAR, SEPARAR, REGISTRAR ou COMUNICAR, DECIDIR COM AUTORIZAÇÃO, e só DEPOIS AVANÇAR. Separe a peça para que ela não siga por engano. Descreva o que viu, de forma clara e sem culpar ninguém. A decisão sobre refazer, reparar ou aceitar segue o procedimento definido pela Valente ou a orientação do responsável."
+            "texto": "Siga a ordem: IDENTIFICAR, SEPARAR, REGISTRAR ou COMUNICAR, DECIDIR COM AUTORIZAÇÃO, e só DEPOIS AVANÇAR. Separe a peça para ela não seguir por engano. Conte o que viu, de forma clara e sem culpar ninguém. A decisão de refazer, consertar ou aceitar a peça segue o procedimento da Valente ou a orientação do responsável."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "seguranca_qualidade",
-            "pergunta": "Na pintura, você percebe uma trinca na base de uma peça. A tinta cobriria bem. Qual é a atitude correta?",
+            "pergunta": "Na pintura, você vê uma trinca na base de uma peça. A tinta cobriria bem. Qual é a atitude certa?",
             "opcoes": [
               "Pintar normalmente, porque a trinca fica escondida e o cliente não vai ver",
               "Pintar e avisar só se o cliente reclamar",
-              "Corrigir a trinca sozinho com o que tiver à mão e seguir",
-              "Separar a peça, registrar ou comunicar o defeito e aguardar a decisão do responsável"
+              "Consertar a trinca sozinho com o que tiver à mão e seguir",
+              "Separar a peça, registrar ou comunicar o defeito e esperar a decisão do responsável"
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. Defeito estrutural não se esconde. Separar e comunicar permite a decisão certa.",
+            "feedbackCerto": "Certo. Defeito na estrutura não se esconde. Separar e comunicar permite a decisão certa.",
             "feedbackPorOpcao": [
-              "Esconder defeito é um erro crítico. A trinca continua lá e pode quebrar com o uso.",
-              "Esperar a reclamação transfere o problema para o cliente.",
-              "Reparo improvisado sem autorização pode piorar a peça e foge da sua decisão.",
+              "Esconder defeito é um erro grave. A trinca continua lá e a peça pode quebrar com o uso.",
+              "Esperar a reclamação passa o problema para o cliente.",
+              "Conserto improvisado e sem autorização pode piorar a peça. Essa decisão não é sua.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -768,17 +798,17 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "Você está na pós-impressão e recebe uma peça com um dos braços partido. O cartão está na etapa e a pessoa da pintura já perguntou se a peça está liberada.",
+                "cliente": "Você está na pós-impressão e recebe uma peça com um braço partido. O cartão está nessa etapa. A pessoa da pintura já perguntou se a peça está liberada.",
                 "opcoes": [
                   {
-                    "label": "Colo o braço rápido e envio para pintura sem comentar nada.",
+                    "label": "Colo o braço depressa e mando para a pintura sem falar nada.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Avançar sem comunicar esconde o defeito. A pessoa da pintura recebe uma peça com problema sem saber.",
+                    "feedback": "Avançar sem avisar esconde o defeito. A pessoa da pintura recebe uma peça com problema sem saber.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Separo a peça para que ela não siga adiante e anoto o que vi.",
+                    "label": "Separo a peça para ela não seguir adiante e anoto o que vi.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Isso. Separar e registrar é o primeiro passo.",
@@ -788,30 +818,30 @@ var TREINAMENTO_TRILHAS = {
                     "label": "Mando para a pintura e peço que ela decida o que fazer.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Isso empurra o problema para outro setor em vez de tratar na origem.",
+                    "feedback": "Isso empurra o problema para outro setor. Ele deve ser tratado onde foi achado.",
                     "proximo": "b"
                   },
                   {
                     "label": "Deixo a peça no meio das outras, para ninguém se preocupar.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Misturar a peça defeituosa com as boas pode fazer com que ela siga por engano.",
+                    "feedback": "Misturar a peça com defeito com as boas pode fazer ela seguir por engano.",
                     "proximo": "b"
                   }
                 ]
               },
               "b": {
-                "cliente": "A peça está separada. Agora você precisa avisar o responsável. Como faz a comunicação?",
+                "cliente": "A peça está separada. Agora você precisa avisar o responsável. Como você avisa?",
                 "opcoes": [
                   {
-                    "label": "Digo apenas que a peça veio com problema.",
+                    "label": "Digo só que a peça veio com problema.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Falta informação. Sem descrição, o responsável não consegue decidir.",
+                    "feedback": "Falta informação. Sem saber qual é o defeito, o responsável não consegue decidir.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Descrevo o defeito, o pedido e a etapa de onde veio, sem apontar culpados.",
+                    "label": "Conto qual é o defeito, o pedido e a etapa de onde a peça veio, sem culpar ninguém.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Informação clara permite uma decisão rápida.",
@@ -821,59 +851,62 @@ var TREINAMENTO_TRILHAS = {
                     "label": "Culpo a impressão e explico como o erro devia ter sido evitado.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Apontar culpa não ajuda a decidir. O foco é o fato e o pedido.",
+                    "feedback": "Apontar culpa não ajuda a decidir. O que importa é o fato e o pedido.",
                     "proximo": "c"
                   },
                   {
                     "label": "Espero alguém perguntar sobre a peça.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Esperar deixa o pedido parado e o cartão desatualizado.",
+                    "feedback": "Esperar deixa o pedido parado e o cartão atrasado.",
                     "proximo": "c"
                   }
                 ]
               },
               "c": {
-                "cliente": "O responsável ainda não respondeu e a pessoa da pintura pergunta se pode começar essa peça.",
+                "cliente": "O responsável ainda não respondeu. A pessoa da pintura pergunta se pode começar essa peça.",
                 "opcoes": [
                   {
                     "label": "Digo que pode começar, para ganhar tempo.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Avançar um trabalho com defeito sem decisão é erro crítico."
+                    "feedback": "Avançar um trabalho com defeito sem decisão é um erro grave."
                   },
                   {
-                    "label": "Digo que a peça está separada aguardando a decisão do responsável e que ela não deve ser pintada ainda.",
+                    "label": "Digo que a peça está separada, esperando a decisão do responsável, e que ainda não deve ser pintada.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Isso. Só avança depois da decisão com autorização."
+                    "feedback": "Isso. A peça só avança depois da decisão com autorização."
                   },
                   {
-                    "label": "Repasso a peça sem conversa, achando que ela decide sozinha.",
+                    "label": "Passo a peça sem conversar, achando que ela decide sozinha.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Sem informação, ela pode seguir por engano."
+                    "feedback": "Sem informação, a peça pode seguir por engano."
                   },
                   {
-                    "label": "Digo que a peça vai ser descartada, que é o mais provável.",
+                    "label": "Digo que a peça vai ser jogada fora, que é o mais provável.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Você não sabe qual será a decisão. Inventar um desfecho é erro."
+                    "feedback": "Você não sabe qual vai ser a decisão. Inventar o final é erro."
                   }
                 ]
               }
             }
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "ordenar",
             "competencia": "seguranca_qualidade",
-            "pergunta": "Descreva um defeito que você poderia encontrar na sua etapa, como uma peça quebrada ou com falha de impressão, e diga o que faria em ordem, desde o momento em que o encontra.",
-            "pontosEsperados": [
-              "Descreve um defeito concreto da sua etapa",
-              "Diz que separaria a peça para não seguir adiante",
-              "Cita registrar ou comunicar o responsável com clareza",
-              "Diz que só avançaria após decisão com autorização"
-            ]
+            "instrucao": "Coloque na ordem certa: o que fazer quando você acha uma peça com defeito, como uma peça quebrada ou com falha de impressão.",
+            "itens": [
+              "Identificar o defeito na peça",
+              "Separar a peça para ela não seguir por engano",
+              "Registrar ou comunicar ao responsável o que viu",
+              "Esperar a decisão do responsável",
+              "Só depois avançar com o trabalho"
+            ],
+            "feedbackCerto": "Isso mesmo. Identificar, separar, registrar ou comunicar, esperar a decisão e só depois avançar.",
+            "feedbackErrado": "Lembre a ordem: IDENTIFICAR, SEPARAR, REGISTRAR ou COMUNICAR, DECIDIR COM AUTORIZAÇÃO e só DEPOIS AVANÇAR."
           }
         ]
       },
@@ -884,18 +917,18 @@ var TREINAMENTO_TRILHAS = {
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Tudo conectado",
-            "texto": "Um pedido nasce de uma necessidade do cliente, ganha informações, passa pelas etapas que precisa e termina quando aquilo que foi combinado é entregue e registrado corretamente. Cada setor recebe algo e deve acrescentar valor sem perder informação. Nada disso funciona se um elo apenas executa e não confere."
+            "titulo": "Tudo ligado",
+            "texto": "Um pedido começa com o que o cliente precisa. Ele recebe informações e passa pelas etapas necessárias. Ele termina quando o combinado é entregue e registrado do jeito certo. Cada setor recebe algo e deve melhorar o trabalho sem perder informação. Nada disso funciona se uma pessoa só faz a sua parte e não confere."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Uma viagem fictícia",
-            "texto": "Acompanhe: o cliente pede uma peça personalizada. O Comercial entende e registra o pedido. A Modelagem prepara o modelo, quando necessário. A Impressão fabrica. A Pós-impressão trata a peça. A Pintura finaliza, quando aplicável. A expedição confere e prepara o envio. O envio é registrado. Em cada passo, uma pessoa recebe de outra e entrega para a próxima."
+            "titulo": "Uma viagem de exemplo",
+            "texto": "Acompanhe. O cliente pede uma peça personalizada. O Comercial entende e registra o pedido. A Modelagem prepara o modelo, quando é preciso. A Impressão faz a peça. A Pós-impressão trata a peça. A Pintura finaliza, quando o pedido tem pintura. A expedição confere e prepara o envio. O envio é registrado. Em cada passo, uma pessoa recebe de outra e entrega para a próxima."
           },
           {
             "tipo": "conteudo",
             "titulo": "As cinco perguntas, em cada etapa",
-            "texto": "Em qualquer etapa, repita as cinco perguntas. O que estou recebendo? O que preciso saber antes de começar? O que é minha responsabilidade fazer? Como sei que fiz corretamente? O que a próxima pessoa precisa receber de mim? Se você consegue responder às cinco, está pronto para trabalhar com segurança. Se não consegue, consulte a fonte ou o responsável antes de avançar."
+            "texto": "Em qualquer etapa, repita as cinco perguntas. O que estou recebendo? O que preciso saber antes de começar? O que é minha responsabilidade fazer? Como sei que fiz certo? O que a próxima pessoa precisa receber de mim? Se você sabe responder às cinco, está pronto para trabalhar com segurança. Se não sabe, consulte a fonte ou o responsável antes de avançar."
           },
           {
             "tipo": "cenario",
@@ -904,67 +937,67 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "Pedido fictício: a Bia pediu uma miniatura personalizada do cachorro dela, a partir de fotos. Falta definir o tamanho e a quantidade. O cartão está em Negociação. O que você faz?",
+                "cliente": "Pedido de exemplo: a Bia pediu uma miniatura personalizada do cachorro dela, a partir de fotos. Falta definir o tamanho e a quantidade. O cartão está em Negociação. O que você faz?",
                 "opcoes": [
                   {
                     "label": "Escolho um tamanho comum e deixo anotado para adiantar.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Escolher o tamanho sem confirmar é inventar. A ordem fica errada desde o início.",
+                    "feedback": "Escolher o tamanho sem confirmar é inventar. O pedido fica errado desde o começo.",
                     "proximo": "b"
                   },
                   {
                     "label": "Confirmo o tamanho e a quantidade com a cliente e registro no pedido.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Isso. Informação correta no começo evita retrabalho depois.",
+                    "feedback": "Isso. Informação certa no começo evita refazer o trabalho depois.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Movo o cartão para Pago para adiantar o processo.",
+                    "label": "Movo o cartão para Pago para adiantar o trabalho.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Só se move depois do fato real. O pagamento não foi confirmado.",
+                    "feedback": "Só se move o cartão depois do fato real. O pagamento não foi confirmado.",
                     "proximo": "b"
                   },
                   {
                     "label": "Deixo para quem for modelar perguntar depois.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Isso empurra o problema e faz a próxima etapa trabalhar sem informação.",
+                    "feedback": "Isso empurra o problema. A próxima etapa vai trabalhar sem informação.",
                     "proximo": "b"
                   }
                 ]
               },
               "b": {
-                "cliente": "Na Pós-impressão, a peça chega com marcas de suporte e uma pequena trinca num ponto fino. O pedido segue para pintura amanhã. O que você faz?",
+                "cliente": "Na Pós-impressão, a peça chega com marcas de suporte e uma pequena trinca em um ponto fino. O pedido segue para a pintura amanhã. O que você faz?",
                 "opcoes": [
                   {
                     "label": "Passo tinta grossa por cima para esconder a trinca.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Esconder defeito estrutural é erro crítico.",
+                    "feedback": "Esconder defeito na estrutura da peça é um erro grave.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Separo a peça, registro o que vi e comunico o responsável antes de avançar.",
+                    "label": "Separo a peça, registro o que vi e aviso o responsável antes de avançar.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Identificar, separar, comunicar e só avançar com autorização.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Envio direto para a pintura e deixo a pessoa de lá avaliar.",
+                    "label": "Mando direto para a pintura e deixo a pessoa de lá avaliar.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Isso passa o defeito para a etapa seguinte sem tratamento.",
+                    "feedback": "Isso passa o defeito para a próxima etapa sem tratar.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Descarto a peça sem avisar e peço outra.",
+                    "label": "Jogo a peça fora sem avisar e peço outra.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Você não tem autorização para decidir isso e perde o registro do problema.",
+                    "feedback": "Você não tem autorização para decidir isso. E o problema fica sem registro.",
                     "proximo": "c"
                   }
                 ]
@@ -973,13 +1006,13 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "A peça foi resolvida e pintada. Na etapa Preparar p/ envio, você confere e vai embalar. O que você faz antes de marcar como enviado?",
                 "opcoes": [
                   {
-                    "label": "Embalo e marco como enviado, pois a peça parece certa.",
+                    "label": "Embalo e marco como enviado, porque a peça parece certa.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Parecer certa não é conferir com o pedido."
+                    "feedback": "Parecer certa não é o mesmo que conferir com o pedido."
                   },
                   {
-                    "label": "Confiro a peça contra o pedido, embalo identificada e só uso Marcar como enviado, com o rastreio, quando for de fato enviada.",
+                    "label": "Confiro a peça com o pedido, embalo identificada e só uso Marcar como enviado, com o rastreio, quando ela for enviada de verdade.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Isso. O cartão acompanha o fato real, e a entrega sai conferida."
@@ -988,13 +1021,13 @@ var TREINAMENTO_TRILHAS = {
                     "label": "Marco como enviado agora para o cliente ver que já está a caminho.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Informar um envio que não aconteceu é uma informação falsa."
+                    "feedback": "Dizer que foi enviado sem ter sido é dar uma informação falsa."
                   },
                   {
                     "label": "Envio sem conferir, porque as etapas anteriores já conferiram.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Qualidade é de todos, mas cada etapa confere a sua parte."
+                    "feedback": "A qualidade é de todos, mas cada etapa confere a sua parte."
                   }
                 ]
               }
@@ -1004,27 +1037,27 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "missao",
             "competencia": "visao_processo",
             "titulo": "Missão: a viagem do seu pedido",
-            "objetivo": "Mostrar que você sabe percorrer o fluxo completo do pedido, aplicando as cinco perguntas mentais em cada etapa.",
-            "contexto": "Pedido fictício: o cliente Rafael pediu três miniaturas personalizadas de um personagem, com pintura, a partir de fotos. O cartão acaba de entrar no Kanban.",
+            "objetivo": "Mostrar que você sabe seguir o caminho completo do pedido, usando as cinco perguntas em cada etapa.",
+            "contexto": "Pedido de exemplo: o cliente Rafael pediu três miniaturas personalizadas de um personagem, com pintura, a partir de fotos. O cartão acabou de entrar no Kanban.",
             "tarefas": [
-              "Liste as etapas pelas quais esse pedido passa, na ordem, de Negociação até Enviado, e diga se alguma poderia ser dispensada.",
-              "Escolha a etapa em que você atua e responda às cinco perguntas mentais: o que estou recebendo, o que preciso saber, o que faço, como confiro e o que entrego à próxima pessoa.",
-              "Cite uma informação que pode faltar nessa etapa e o que você faria para obtê-la sem supor.",
-              "Descreva o que faria se encontrasse um defeito: identificar, separar, comunicar e aguardar a decisão.",
-              "Diga qual fato real justificaria mover o cartão para a etapa seguinte."
+              "Diga as etapas por onde esse pedido passa, na ordem, de Negociação até Enviado. Diga se alguma poderia ser pulada.",
+              "Escolha a etapa em que você trabalha e responda às cinco perguntas: o que estou recebendo, o que preciso saber, o que faço, como confiro e o que entrego à próxima pessoa.",
+              "Diga uma informação que pode faltar nessa etapa e o que você faria para conseguir essa informação sem supor.",
+              "Diga o que faria se achasse um defeito: identificar, separar, comunicar e esperar a decisão.",
+              "Diga qual fato real permitiria mover o cartão para a etapa seguinte."
             ],
-            "criterioConclusao": "Você percorreu o fluxo na ordem, respondeu às cinco perguntas para a sua etapa, consultou a fonte em vez de supor e tratou o defeito sem escondê-lo nem avançar sem autorização."
+            "criterioConclusao": "Você seguiu o caminho na ordem, respondeu às cinco perguntas para a sua etapa, consultou a fonte em vez de supor e tratou o defeito sem esconder e sem avançar sem autorização."
           }
         ]
       }
     ]
   },
-  comercial: {
+  "comercial": {
     "id": "comercial",
     "nome": "Formação Comercial Valente",
     "descricao": "Do atendimento ao pós-venda: como vender o que a Valente produz.",
     "icone": "🎓",
-    "versao": 4,
+    "versao": 5,
     "cargosPermitidos": [
       "comercial"
     ],
@@ -1035,58 +1068,58 @@ var TREINAMENTO_TRILHAS = {
       "Venda em marketplace",
       "Negociação e prospecção"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Atender um pedido fictício; perguntar a finalidade de uso; recusar a linha atual de resina para brincadeira infantil; registrar dados e condições sem inventar; explicar empenho corretamente. Exige revisão do responsável antes de atendimento sem supervisão.",
     "dias": [
       {
         "dia": 1,
         "titulo": "Minha Estação Comercial Valente",
-        "subtitulo": "Conhecer as ferramentas disponíveis no usuário Comercial e saber para que cada uma serve antes de atender clientes",
+        "subtitulo": "Conhecer as ferramentas do usuário Comercial e para que serve cada uma, antes de atender clientes",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Antes de vender, conheça sua bancada de trabalho",
-            "texto": "O Valente OS organiza informações usadas pelo Comercial e por outras etapas da operação. Você não precisa decorar tudo no primeiro dia. Precisa aprender onde cada tipo de informação nasce, onde é consultado e quando uma ferramenta deve ser usada. No usuário Comercial, as áreas principais são: Pedidos, Peças Próprias, Caixa, Orçamento, Propostas, Tarefas e Centro de Capacitação. Regra do Dia 1: antes de perguntar a outra pessoa ou responder de memória, verifique se a informação já está disponível na ferramenta correta."
+            "titulo": "Antes de vender, conheça suas ferramentas",
+            "texto": "O Valente OS guarda as informações que o Comercial e as outras áreas usam. Você não precisa decorar tudo no primeiro dia. Precisa aprender onde cada informação nasce, onde você consulta e quando usar cada ferramenta. No usuário Comercial, as áreas principais são: Pedidos, Peças Próprias, Caixa, Orçamento, Propostas, Tarefas e Centro de Capacitação. Regra do Dia 1: antes de perguntar a alguém ou responder de memória, veja se a informação já está na ferramenta certa."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "operacao_os",
             "local": "Aba Pedidos",
-            "instrucao": "Abra a aba Pedidos. Nela ficam os pedidos registrados e o andamento operacional de cada trabalho. O que é Kanban? É uma forma visual de acompanhar um trabalho por etapas — cada pedido é um cartão que passa de uma coluna para outra conforme avança. Na Valente, o fluxo pode apresentar etapas como: Negociação → Pago → Modelando → Imprimindo → Pós-impressão → Pintura → Preparar/envio → Enviado. O nome da coluna informa a etapa atual: estar em Pintura não significa automaticamente que o pedido está pronto para retirada; ainda podem existir preparação, conferência e envio. Cada cartão mostra a etapa atual da produção (por exemplo, modelagem, impressão ou pintura) e a tela se atualiza sozinha a cada 60 segundos, então você não precisa recarregar para ver o andamento."
+            "instrucao": "Abra a aba Pedidos. Nela ficam os pedidos registrados e o andamento de cada trabalho. Essa tela é o Kanban: um quadro com colunas. Cada pedido é um cartão que passa de uma coluna para a outra quando avança. Na Valente, as colunas podem ser: Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. O nome da coluna mostra a etapa atual. Estar em Pintura não quer dizer que o pedido está pronto para retirada. Ainda podem faltar preparação, conferência e envio. Cada cartão mostra a etapa atual da produção, como modelagem, impressão ou pintura. A tela se atualiza sozinha a cada 60 segundos. Você não precisa recarregar."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que existe dentro de um pedido",
-            "texto": "Para um pedido ser útil à operação, ele precisa conter informações suficientes pra identificar quem pediu, o que foi combinado e o que deverá ser produzido (os campos exatos seguem a tela real do Valente OS): Cliente (quem está comprando), Produto/serviço (o que será produzido ou entregue), Quantidade, Valor (valor comercial acordado), Pagamento/entrada e saldo (conforme a regra vigente e os campos disponíveis), Prazo (condição confirmada), Observações (detalhes necessários pra executar corretamente). Atenção: nunca invente um dado só pra completar um campo — se uma informação obrigatória ainda não foi confirmada, siga o procedimento vigente ou consulte o responsável."
+            "texto": "Um pedido precisa mostrar quem pediu, o que foi combinado e o que será produzido. Os campos exatos são os da tela real do Valente OS. Cliente: quem está comprando. Produto ou serviço: o que será produzido ou entregue. Quantidade. Valor: o valor combinado. Pagamento, entrada e saldo: conforme a regra atual e os campos da tela. Prazo: o que foi confirmado. Observações: detalhes necessários para fazer certo. Atenção: nunca invente um dado só para completar um campo. Se uma informação obrigatória ainda não foi confirmada, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "produtos",
             "local": "Aba Peças Próprias",
-            "instrucao": "Abra Peças Próprias. Esta área reúne produtos e referências já cadastrados pela Valente — ajuda o Comercial a verificar se algo já existe antes de tratar toda solicitação como projeto novo. Observe os campos disponíveis na versão atual: nome, foto, preço, estoque, categoria, tamanho ou outros dados cadastrados."
+            "instrucao": "Abra Peças Próprias. Aqui ficam os produtos e as referências que a Valente já cadastrou. Use para ver se algo já existe antes de tratar o pedido como projeto novo. Olhe os campos da tela: nome, foto, preço, estoque, categoria, tamanho ou outros dados cadastrados."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "ferramentas_digitais",
             "local": "Aba Caixa",
-            "instrucao": "Abra Caixa. O Comercial usa esta área pra consultar informações financeiras relacionadas aos pedidos, como valores recebidos e saldos, dentro das permissões do usuário. O objetivo aqui não é fazer a contabilidade da empresa — é conseguir responder perguntas operacionais sem alterar dados por suposição."
+            "instrucao": "Abra Caixa. O Comercial usa esta área para consultar o dinheiro dos pedidos, como valores recebidos e saldos, dentro do que o seu usuário pode ver. Você não vai fazer a contabilidade da empresa. Vai conseguir responder perguntas do dia a dia sem alterar dados por suposição."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "orcamento",
             "local": "Aba Orçamento",
-            "instrucao": "Abra Orçamento. Esta é a calculadora de custo, usada pra formar preço com base em informações do trabalho — orçamento não deve sair de memória ou chute. A tela tem caminhos diferentes pra situações diferentes; dois caminhos importantes são \"Tenho STL\" e \"Só tenho imagem\". Atenção: a calculadora gera o custo; o documento que vai para o cliente é montado na aba Propostas, que você conhece no Dia 4. Nesta primeira aula, o objetivo é só localizar esses caminhos."
+            "instrucao": "Abra Orçamento. Esta é a calculadora de custo. Ela forma o preço com os dados do trabalho. Orçamento não sai de memória nem de chute. A tela tem caminhos diferentes. Dois são importantes: \"Tenho STL\" e \"Só tenho imagem\". Atenção: a calculadora gera o custo. O documento que vai para o cliente é montado na aba Propostas, que você conhece no Dia 4. Hoje, só encontre esses dois caminhos."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "ferramentas_digitais",
             "local": "Aba Propostas e aba Tarefas",
-            "instrucao": "Abra a aba Propostas e observe a lista de propostas salvas, com busca e filtro por status (rascunho, enviada, aprovada, recusada). Depois abra a aba lateral Tarefas: é lá que o Comercial vê as tarefas designadas a ele, como contatar um cliente, confirmar um pagamento ou aprovar uma arte. Só observe; não altere nada."
+            "instrucao": "Abra a aba Propostas. Veja a lista de propostas salvas, com busca e filtro por status (rascunho, enviada, aprovada, recusada). Depois abra a aba lateral Tarefas. Lá o Comercial vê as tarefas que recebeu, como contatar um cliente, confirmar um pagamento ou aprovar uma arte. Só olhe. Não altere nada."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "ferramentas_digitais",
             "local": "Centro de Capacitação (aqui mesmo)",
-            "instrucao": "É a área em que você está agora. Aqui ficam as trilhas de aprendizagem, progresso e, futuramente, consultas rápidas de procedimento. Quando não lembrar um processo, o Centro de Capacitação deve ser uma das primeiras fontes de consulta."
+            "instrucao": "É a área em que você está agora. Aqui ficam as trilhas de aprendizagem, o seu progresso e, no futuro, consultas rápidas de procedimento. Quando não lembrar como fazer algo, procure primeiro no Centro de Capacitação."
           },
           {
             "tipo": "multipla_escolha",
@@ -1099,18 +1132,18 @@ var TREINAMENTO_TRILHAS = {
               "Peças Próprias"
             ],
             "correta": 1,
-            "feedbackCerto": "Você aprendeu no tour que o Kanban mostra o estágio operacional do pedido.",
+            "feedbackCerto": "Isso mesmo. O Kanban mostra em que etapa o pedido está.",
             "feedbackPorOpcao": [
-              "Caixa é financeiro, não status — tente de novo.",
+              "Caixa mostra dinheiro, não a etapa. Tente de novo.",
               null,
-              "Orçamento calcula preço, não mostra status — tente de novo.",
-              "Peças Próprias é estoque de produto pronto, não status de pedido — tente de novo."
+              "Orçamento calcula preço, não mostra a etapa. Tente de novo.",
+              "Peças Próprias mostra produtos cadastrados, não a etapa do pedido. Tente de novo."
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "ferramentas_digitais",
-            "pergunta": "Você precisa verificar quanto ainda falta pagar de um pedido. Onde procura?",
+            "pergunta": "Você precisa ver quanto ainda falta pagar de um pedido. Onde procura?",
             "opcoes": [
               "Caixa",
               "Orçamento",
@@ -1118,18 +1151,18 @@ var TREINAMENTO_TRILHAS = {
               "Centro de Capacitação"
             ],
             "correta": 0,
-            "feedbackCerto": "A área financeira é a fonte adequada pra consultar pagamento e saldo dentro das permissões do Comercial.",
+            "feedbackCerto": "Certo. No Caixa você consulta pagamento e saldo, dentro do que o Comercial pode ver.",
             "feedbackPorOpcao": [
               null,
-              "Orçamento calcula preço, não mostra o que já foi pago — tente de novo.",
-              "Peças Próprias não tem nada a ver com pagamento — tente de novo.",
-              "Centro de Capacitação é aprendizado, não controle financeiro — tente de novo."
+              "Orçamento calcula preço, não mostra o que já foi pago. Tente de novo.",
+              "Peças Próprias não mostra pagamento. Tente de novo.",
+              "Centro de Capacitação é para aprender, não para ver pagamento. Tente de novo."
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "produtos",
-            "pergunta": "O cliente pergunta se a Valente já possui determinado modelo cadastrado. Onde começa a busca?",
+            "pergunta": "O cliente pergunta se a Valente já tem um certo modelo cadastrado. Onde você começa a busca?",
             "opcoes": [
               "Pedidos",
               "Caixa",
@@ -1137,18 +1170,18 @@ var TREINAMENTO_TRILHAS = {
               "Orçamento"
             ],
             "correta": 2,
-            "feedbackCerto": "Essa área reúne produtos e referências já cadastrados.",
+            "feedbackCerto": "Certo. Lá ficam os produtos e as referências já cadastrados.",
             "feedbackPorOpcao": [
-              "Pedidos é pra pedidos já registrados, não catálogo — tente de novo.",
-              "Caixa é financeiro — tente de novo.",
+              "Pedidos mostra pedidos já registrados, não o catálogo. Tente de novo.",
+              "Caixa mostra dinheiro. Tente de novo.",
               null,
-              "Orçamento calcula preço, não mostra o catálogo — tente de novo."
+              "Orçamento calcula preço, não mostra o catálogo. Tente de novo."
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "orcamento",
-            "pergunta": "Você precisa calcular o preço de uma impressão. Qual ferramenta foi criada pra isso?",
+            "pergunta": "Você precisa calcular o preço de uma impressão. Qual ferramenta foi criada para isso?",
             "opcoes": [
               "Orçamento",
               "Caixa",
@@ -1156,12 +1189,12 @@ var TREINAMENTO_TRILHAS = {
               "Capacitação"
             ],
             "correta": 0,
-            "feedbackCerto": "O Dia 4 vai ensinar a usar essa ferramenta em profundidade.",
+            "feedbackCerto": "Certo. No Dia 4 você aprende a usar essa ferramenta.",
             "feedbackPorOpcao": [
               null,
-              "Caixa não calcula preço — tente de novo.",
-              "Pedidos é pra registrar depois de orçado — tente de novo.",
-              "Capacitação é aprendizado, não a ferramenta de cálculo — tente de novo."
+              "Caixa não calcula preço. Tente de novo.",
+              "Pedidos serve para registrar depois de orçar. Tente de novo.",
+              "Capacitação é para aprender, não para calcular. Tente de novo."
             ]
           }
         ]
@@ -1169,46 +1202,46 @@ var TREINAMENTO_TRILHAS = {
       {
         "dia": 2,
         "titulo": "Como funciona um pedido",
-        "subtitulo": "Aprender a registrar informações mínimas, compreender o cartão do pedido e interpretar o Kanban",
+        "subtitulo": "Aprender a registrar os dados mínimos, entender o cartão do pedido e ler o Kanban",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Por que registrar corretamente",
-            "texto": "Um pedido é a tradução operacional do que foi combinado com o cliente. Se o registro estiver incompleto ou errado, produção, financeiro e atendimento podem trabalhar com informações diferentes. Registrar não é \"encher campos\" — é garantir que outra pessoa consiga entender o pedido sem depender da memória de quem atendeu."
+            "titulo": "Por que registrar certo",
+            "texto": "O pedido é o registro do que foi combinado com o cliente. Se o registro estiver incompleto ou errado, a produção, o financeiro e o atendimento podem trabalhar com informações diferentes. Registrar não é \"encher campos\". É deixar o pedido claro para outra pessoa entender sem depender da memória de quem atendeu."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Dados mínimos e origem da informação",
-            "texto": "Cliente vem do cadastro/identificação do comprador. Produto e quantidade vêm do que foi aprovado. Valor vem do orçamento/negociação. Pagamento vem do que foi efetivamente recebido ou da condição confirmada. Prazo deve ser o prazo confirmado, não o desejado pelo cliente quando ainda não foi validado. Observações guardam detalhes relevantes para execução."
+            "titulo": "Dados mínimos e de onde vêm",
+            "texto": "Cliente: vem do cadastro ou da identificação de quem compra. Produto e quantidade: vêm do que foi aprovado. Valor: vem do orçamento ou da negociação. Pagamento: vem do que foi recebido de verdade ou da condição confirmada. Prazo: é o prazo confirmado, não o que o cliente deseja e ainda não foi validado. Observações: guardam detalhes importantes para fazer o trabalho."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "operacao_os",
             "local": "Criação/edição de pedido",
-            "instrucao": "Abra a criação/edição de pedido e percorra os campos sem salvar um pedido real. Pra cada campo, responda mentalmente: \"de onde vem esta informação?\" e \"o que pode acontecer se eu preencher errado?\"."
+            "instrucao": "Abra a criação ou edição de pedido. Passe pelos campos sem salvar um pedido real. Em cada campo, pense: \"de onde vem esta informação?\" e \"o que acontece se eu preencher errado?\"."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Entendendo o Kanban em profundidade",
-            "texto": "Negociação indica que a oportunidade ainda está sendo tratada. Pago representa a condição de pagamento/entrada conforme a regra vigente. Modelando indica desenvolvimento/modelagem. Imprimindo indica fabricação em impressora. Pós-impressão reúne operações posteriores à impressão. Pintura indica acabamento de pintura. Preparar/envio indica conferência, embalagem ou preparação para saída. Enviado indica que o pedido seguiu para o cliente. Nem todo trabalho terá exatamente a mesma necessidade em todas as etapas — o importante é interpretar o estado mostrado e não prometer algo que o sistema não confirma. Cada cartão mostra a etapa atual da produção e a tela atualiza sozinha a cada 60 segundos."
+            "titulo": "Entendendo melhor o Kanban",
+            "texto": "Negociação: a venda ainda está sendo tratada. Pago: mostra a condição de pagamento ou entrada, conforme a regra atual. Modelando: o modelo 3D está sendo feito. Imprimindo: a peça está na impressora. Pós-impressão: reúne os trabalhos feitos depois da impressão. Pintura: a peça está sendo pintada. Preparar p/ envio: conferência, embalagem ou preparação para sair. Enviado: o pedido seguiu para o cliente. Nem todo trabalho precisa de todas as etapas. O importante é ler o que a tela mostra e não prometer o que o sistema não confirma. Cada cartão mostra a etapa atual da produção. A tela atualiza sozinha a cada 60 segundos."
           },
           {
             "tipo": "conteudo",
             "titulo": "Aguardando liberação e o botão Liberar",
-            "texto": "Pedido novo fica como \"Aguardando liberação\". No cartão do Kanban aparece o botão \"Liberar\": ao clicar, o sistema gera a ordem de produção, o plano e as tarefas das pessoas da produção. Se ainda não há pagamento nem empenho registrado, o botão avisa a pendência em vez de liberar. Pedido de instituição com empenho pendente também não pode ser movido para uma etapa de produção: o empenho precisa estar registrado primeiro. Liberar é o que faz o pedido sair do papel e entrar na fila da produção."
+            "texto": "Pedido novo fica como \"Aguardando liberação\". No cartão do Kanban aparece o botão \"Liberar\". Quando você clica, o sistema gera a ordem de produção, o plano e as tarefas das pessoas da produção. Se ainda não há pagamento nem empenho registrado, o botão avisa a pendência e não libera. Pedido de instituição com empenho pendente também não pode ir para uma etapa de produção. O empenho precisa estar registrado primeiro. Liberar é o que faz o pedido sair do papel e entrar na fila da produção."
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "operacao_os",
-            "afirmacao": "Um pedido novo, sem pagamento nem empenho registrado, pode ser liberado normalmente: o botão Liberar gera as tarefas mesmo assim.",
+            "afirmacao": "Um pedido novo, sem pagamento nem empenho registrado, pode ser liberado normalmente. O botão Liberar gera as tarefas mesmo assim.",
             "correta": false,
-            "feedbackCerto": "Isso mesmo: o botão avisa a pendência de pagamento ou empenho antes de liberar.",
-            "feedbackErrado": "O botão Liberar avisa a pendência quando não há pagamento nem empenho. Não force a liberação: resolva a pendência primeiro."
+            "feedbackCerto": "Isso mesmo. O botão avisa a pendência de pagamento ou empenho antes de liberar.",
+            "feedbackErrado": "O botão Liberar avisa a pendência quando não há pagamento nem empenho. Não force a liberação. Resolva a pendência primeiro."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Como responder andamento",
-            "texto": "Use a sequência: CONSULTAR → INTERPRETAR → RESPONDER. Se o status não for suficiente: CONSULTAR → CONFIRMAR COM O RESPONSÁVEL → RESPONDER."
+            "titulo": "Como responder sobre o andamento",
+            "texto": "Siga esta ordem: consultar, entender e responder. Se o status não bastar: consultar, confirmar com o responsável e responder."
           },
           {
             "tipo": "multipla_escolha",
@@ -1216,17 +1249,17 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "O pedido aparece em \"Imprimindo\". O cliente pergunta: \"Já está sendo pintado?\"",
             "opcoes": [
               "Sim, porque já está em produção.",
-              "Não podemos afirmar; o sistema ainda mostra Imprimindo.",
+              "Não dá para afirmar. O sistema ainda mostra Imprimindo.",
               "Sim, impressão e pintura são a mesma etapa.",
               "Verificar o Caixa."
             ],
             "correta": 1,
-            "feedbackCerto": "Pintura é uma etapa posterior no fluxo apresentado.",
+            "feedbackCerto": "Certo. Pintura é uma etapa que vem depois.",
             "feedbackPorOpcao": [
-              "O sistema ainda não mostra Pintura — não dá pra afirmar isso — tente de novo.",
+              "O sistema ainda não mostra Pintura. Não dá para afirmar isso. Tente de novo.",
               null,
-              "Impressão e pintura são etapas diferentes no fluxo — tente de novo.",
-              "Caixa é financeiro, não mostra etapa de produção — tente de novo."
+              "Impressão e pintura são etapas diferentes. Tente de novo.",
+              "Caixa mostra dinheiro, não a etapa de produção. Tente de novo."
             ]
           },
           {
@@ -1236,20 +1269,20 @@ var TREINAMENTO_TRILHAS = {
               0,
               2
             ],
-            "pergunta": "O pedido aparece em \"Pintura\" e o cliente pergunta se pode retirar hoje. O que fazer?",
+            "pergunta": "O pedido aparece em \"Pintura\". O cliente pergunta se pode retirar hoje. O que fazer?",
             "opcoes": [
-              "Confirmar retirada imediatamente.",
-              "Verificar se concluiu as etapas necessárias e se está liberado.",
+              "Confirmar a retirada na hora.",
+              "Verificar se as etapas necessárias terminaram e se está liberado.",
               "Mover para Enviado.",
-              "Dizer que não sem consultar."
+              "Dizer que não, sem consultar."
             ],
             "correta": 1,
-            "feedbackCerto": "Estar em Pintura não significa automaticamente estar pronto pra retirada.",
+            "feedbackCerto": "Certo. Estar em Pintura não quer dizer que está pronto para retirada.",
             "feedbackPorOpcao": [
-              "Confirmar sem verificar é um erro crítico — status intermediário não é liberação.",
+              "Confirmar sem verificar é erro crítico. Pedido no meio do caminho não está liberado.",
               null,
-              "Mover manualmente o pedido pra fingir que está pronto é um erro crítico.",
-              "Recusar sem consultar também pode estar errado — verifique antes."
+              "Mover o pedido para fingir que está pronto é erro crítico.",
+              "Recusar sem consultar também pode estar errado. Verifique antes."
             ]
           },
           {
@@ -1263,57 +1296,75 @@ var TREINAMENTO_TRILHAS = {
               "A data em que a conversa começou."
             ],
             "correta": 1,
-            "feedbackCerto": "O registro operacional deve representar o que foi efetivamente confirmado.",
+            "feedbackCerto": "Certo. O registro deve mostrar o que foi confirmado de verdade.",
             "feedbackPorOpcao": [
-              "Desejo do cliente não é prazo confirmado — tente de novo.",
+              "Desejo do cliente não é prazo confirmado. Tente de novo.",
               null,
-              "Uma data aproximada não é uma confirmação real — tente de novo.",
-              "A data do início da conversa não tem relação com o prazo de entrega — tente de novo."
+              "Data aproximada não é confirmação. Tente de novo.",
+              "A data do início da conversa não é o prazo de entrega. Tente de novo."
             ]
           },
           {
             "tipo": "missao",
             "competencia": "operacao_os",
             "titulo": "Missão do dia",
-            "objetivo": "Praticar quais dados mínimos um pedido precisa ter e em que etapa do Kanban ele começaria.",
-            "contexto": "Pense num pedido fictício.",
+            "objetivo": "Praticar quais dados mínimos um pedido precisa ter e em que etapa do Kanban ele começa.",
+            "contexto": "Pense em um pedido de mentira.",
             "tarefas": [
-              "Identifique: cliente, produto, quantidade, valor, pagamento/saldo, prazo e observações.",
-              "Indique em qual etapa do Kanban esse pedido começaria segundo o procedimento vigente. Não grave dados reais."
+              "Diga quais são: cliente, produto, quantidade, valor, pagamento e saldo, prazo e observações.",
+              "Diga em qual etapa do Kanban esse pedido começaria, pelo procedimento da Valente. Não grave dados reais."
             ],
-            "criterioConclusao": "Ter identificado os dados e a etapa inicial antes de marcar como concluída."
+            "criterioConclusao": "Ter definido os dados e a etapa inicial antes de marcar como concluída."
           }
         ]
       },
       {
         "dia": 3,
         "titulo": "O que a Valente vende?",
-        "subtitulo": "Entender os tipos de demanda para saber qual ferramenta e qual caminho usar depois",
+        "subtitulo": "Entender os tipos de pedido para saber qual ferramenta e qual caminho usar depois",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Produto existente, personalizado e projeto novo",
-            "texto": "Produto existente: já foi desenvolvido e pode possuir cadastro/referência em Peças Próprias. Produto personalizado: parte de algo existente, mas recebe alterações. Projeto sob encomenda: nasce de foto, desenho, ideia ou necessidade e ainda exige desenvolvimento/modelagem."
+            "texto": "Produto existente: já foi desenvolvido e pode ter cadastro em Peças Próprias. Produto personalizado: parte de algo que já existe, mas recebe mudanças. Projeto sob encomenda: nasce de foto, desenho, ideia ou necessidade e ainda precisa de modelagem, que é criar o modelo 3D."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Quando o cliente já possui STL",
-            "texto": "STL é um arquivo 3D usado como base para impressão. Ter um STL pode eliminar a necessidade de criar o modelo do zero, mas não elimina perguntas sobre tamanho, quantidade, acabamento, material adequado ou prazo."
+            "titulo": "Quando o cliente já tem STL",
+            "texto": "STL é um arquivo 3D usado como base para a impressão. Com o STL, pode não ser preciso criar o modelo do zero. Mas você ainda precisa perguntar sobre tamanho, quantidade, acabamento, material adequado e prazo."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Resina e FDM — visão comercial",
-            "texto": "Resina costuma ser indicada quando detalhe e acabamento são prioridade. FDM costuma ser usada em peças maiores, funcionais ou quando suas características atendem melhor ao projeto. O Comercial não deve transformar isso em regra absoluta. Dúvida técnica específica deve ser confirmada com a produção."
+            "titulo": "Resina e FDM: o que o Comercial precisa saber",
+            "texto": "Resina e FDM são dois tipos de impressão 3D. A resina costuma ser indicada quando detalhe e acabamento vêm primeiro. A FDM costuma ser usada em peças maiores, em peças de uso ou quando ela atende melhor ao projeto. Não trate isso como regra fixa. Dúvida técnica deve ser confirmada com a produção."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Quantidade muda a operação",
-            "texto": "Produzir uma unidade e produzir cem unidades não são a mesma operação. Volume pode alterar capacidade, prazo, organização, custo e logística. Por isso, grandes quantidades exigem análise antes de prometer condição ou prazo."
+            "titulo": "Miniatura de resina não é brinquedo",
+            "texto": "As miniaturas de resina da linha atual da Valente Artes são peças colecionáveis. Elas podem quebrar e ter partes pequenas. Não foram validadas para uso como brinquedos. Antes de oferecer uma peça, pergunte: é para coleção ou decoração, ou é para uma criança brincar? Se for para criança brincar, explique que essa linha não é adequada e não ofereça a peça para esse uso. Se tiver dúvida, consulte o responsável."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "seguranca_produto",
+            "pergunta": "Uma pessoa quer comprar uma miniatura de resina para uma criança brincar. O que você faz?",
+            "opcoes": [
+              "Vendo e digo que basta ter cuidado.",
+              "Explico que a miniatura é colecionável, não é adequada para criança brincar, e não ofereço para esse uso.",
+              "Digo que qualquer peça impressa em 3D é brinquedo seguro."
+            ],
+            "correta": 1,
+            "feedbackCerto": "Isso mesmo. Confirme o uso e não venda a linha atual de resina como brinquedo.",
+            "feedbackErrado": "Volte à orientação sobre o uso da peça. Antes de vender, confirme para que ela será usada. Miniaturas de resina da linha atual não são brinquedos."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "A quantidade muda o trabalho",
+            "texto": "Produzir uma unidade é diferente de produzir cem. A quantidade pode mudar a capacidade, o prazo, a organização, o custo e a entrega. Por isso, pedido grande precisa de análise antes de você prometer condição ou prazo."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "produtos",
-            "pergunta": "\"Quero esse modelo do catálogo, mas com outro nome na base.\" Como classificar?",
+            "pergunta": "\"Quero esse modelo do catálogo, mas com outro nome na base.\" Que tipo de pedido é esse?",
             "opcoes": [
               "Produto existente sem alteração",
               "Produto personalizado",
@@ -1321,114 +1372,114 @@ var TREINAMENTO_TRILHAS = {
               "Apenas impressão de STL"
             ],
             "correta": 1,
-            "feedbackCerto": "Existe uma solução de base, mas haverá alteração solicitada pelo cliente.",
+            "feedbackCerto": "Certo. Já existe uma base, mas o cliente pediu uma mudança.",
             "feedbackPorOpcao": [
-              "Houve pedido de alteração — não é sem alteração — tente de novo.",
+              "O cliente pediu uma mudança. Não é sem alteração. Tente de novo.",
               null,
-              "Já existe uma base pronta, não é do zero — tente de novo.",
-              "Não foi mencionado nenhum arquivo 3D enviado — tente de novo."
+              "Já existe uma base pronta. Não é do zero. Tente de novo.",
+              "O cliente não falou em arquivo 3D. Tente de novo."
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "produtos",
-            "pergunta": "\"Tenho STL e quero 80 unidades pintadas.\" O que o STL resolve e o que ainda precisa ser analisado?",
+            "pergunta": "\"Tenho STL e quero 80 unidades pintadas.\" O que o STL resolve e o que ainda falta analisar?",
             "opcoes": [
               "Resolve tudo.",
-              "Resolve a existência do arquivo 3D; ainda é preciso analisar tamanho, quantidade, acabamento, prazo e demais condições.",
+              "Resolve o arquivo 3D. Ainda falta analisar tamanho, quantidade, acabamento, prazo e as outras condições.",
               "Só resolve o pagamento.",
               "Significa que deve ser FDM."
             ],
             "correta": 1,
-            "feedbackCerto": "Arquivo pronto não elimina as variáveis comerciais e produtivas.",
+            "feedbackCerto": "Certo. Arquivo pronto não resolve as outras questões da venda e da produção.",
             "feedbackPorOpcao": [
-              "O STL só resolve o arquivo, não o resto — tente de novo.",
+              "O STL só resolve o arquivo, não o resto. Tente de novo.",
               null,
-              "STL não tem relação com pagamento — tente de novo.",
-              "Ter STL não define a tecnologia de impressão — tente de novo."
+              "STL não tem relação com pagamento. Tente de novo.",
+              "Ter STL não define o tipo de impressão. Tente de novo."
             ]
           },
           {
             "tipo": "missao",
             "competencia": "produtos",
             "titulo": "Missão de classificação",
-            "objetivo": "Classificar demandas e identificar o que ainda falta descobrir antes de orçar.",
-            "contexto": "Cinco demandas: peça do catálogo; peça do catálogo com personalização; STL pronto; foto sem arquivo 3D; pedido de 200 unidades.",
+            "objetivo": "Dizer o tipo de cada pedido e o que ainda falta descobrir antes de orçar.",
+            "contexto": "Cinco pedidos: peça do catálogo, peça do catálogo com personalização, STL pronto, foto sem arquivo 3D, pedido de 200 unidades.",
             "tarefas": [
-              "Classifique cada uma das 5 demandas.",
-              "Pra cada uma, diga qual informação ainda precisaria obter antes de orçar."
+              "Diga o tipo de cada um dos 5 pedidos.",
+              "Para cada um, diga qual informação ainda falta antes de orçar."
             ],
-            "criterioConclusao": "Ter classificado as 5 e identificado a informação faltante de cada uma antes de marcar como concluída."
+            "criterioConclusao": "Ter dito o tipo dos 5 pedidos e a informação que falta em cada um antes de marcar como concluída."
           }
         ]
       },
       {
         "dia": 4,
         "titulo": "Aprendendo a fazer um orçamento",
-        "subtitulo": "Conhecer a aba Orçamento, entender os caminhos disponíveis e aprender quais informações alimentam a ferramenta",
+        "subtitulo": "Conhecer a aba Orçamento, entender os caminhos e saber quais informações a ferramenta pede",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O que é um orçamento",
-            "texto": "Orçar é transformar informações do pedido em uma proposta usando regras e ferramentas da empresa. O preço não deve ser escolhido por sensação. Material é apenas uma parte; também podem existir mão de obra, perdas, operação, acabamento, taxas, impostos e margem."
+            "texto": "Orçar é usar os dados do pedido, as regras e as ferramentas da empresa para chegar a uma proposta. O preço não se escolhe por sensação. O material é só uma parte. Também podem entrar mão de obra, perdas, operação, acabamento, taxas, impostos e margem, que é o ganho da empresa."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "ferramentas_digitais",
             "local": "Aba Orçamento",
-            "instrucao": "Abra a aba Orçamento. Localize os caminhos \"Tenho STL\" e \"Só tenho imagem\". Observe os campos existentes em cada caminho."
+            "instrucao": "Abra a aba Orçamento. Encontre os caminhos \"Tenho STL\" e \"Só tenho imagem\". Olhe os campos de cada caminho."
           },
           {
             "tipo": "conteudo",
             "titulo": "Caminho: Tenho STL",
-            "texto": "Use quando o cliente fornece um arquivo 3D. A ferramenta poderá exigir informações extraídas do arquivo ou definidas no pedido, como dimensões, tecnologia, material, tempo/peso estimado, quantidade e acabamento, conforme a versão atual do sistema."
+            "texto": "Use quando o cliente manda um arquivo 3D. A ferramenta pode pedir dados tirados do arquivo ou definidos no pedido, como medidas, tipo de impressão, material, tempo ou peso estimado, quantidade e acabamento, conforme a versão atual do sistema."
           },
           {
             "tipo": "conteudo",
             "titulo": "Caminho: Só tenho imagem",
-            "texto": "Use quando o cliente possui foto, desenho ou referência, mas não um modelo 3D pronto. Nessa situação pode existir uma etapa de avaliação/modelagem antes da produção. A imagem não deve ser tratada como se fosse automaticamente um STL."
+            "texto": "Use quando o cliente tem foto, desenho ou referência, mas não tem um modelo 3D pronto. Nesse caso pode existir uma etapa de avaliação ou modelagem antes da produção. Não trate a imagem como se fosse um STL."
           },
           {
             "tipo": "conteudo",
             "titulo": "As 6 perguntas de ouro agora têm um motivo",
-            "texto": "O que deseja produzir? Tem arquivo 3D ou só imagem? Qual tamanho? Quantas unidades? Precisa de pintura/acabamento? Para quando precisa? Essas perguntas existem porque as ferramentas e a operação precisam dessas informações pra escolher o caminho, calcular e verificar viabilidade."
+            "texto": "O que deseja produzir? Tem arquivo 3D ou só imagem? Qual tamanho? Quantas unidades? Precisa de pintura ou acabamento? Para quando precisa? Essas perguntas existem porque as ferramentas e a produção precisam dessas respostas para escolher o caminho, calcular e ver se dá para fazer."
           },
           {
             "tipo": "conteudo",
             "titulo": "Orçamento calcula, Proposta apresenta",
-            "texto": "A aba Orçamento é a calculadora de custo. O documento que o cliente recebe é montado na aba Propostas: um cartão com a logo azul do Estúdio Valente Artes, os itens, a validade (padrão de 10 dias), o prazo de entrega (padrão de 30 dias), as condições de pagamento e os dados do estúdio no rodapé. Para instituição, a condição de pagamento pode ser empenho. Para enviar, use os botões Copiar como imagem, Copiar como texto, Baixar imagem, Baixar PDF ou Abrir WhatsApp. Se o prazo ou a validade padrão não servir ao caso, confirme com o responsável antes de alterar."
+            "texto": "A aba Orçamento é a calculadora de custo. O documento que o cliente recebe é montado na aba Propostas. É um cartão com a logo azul do Estúdio Valente Artes, os itens, a validade (padrão de 10 dias), o prazo de entrega (padrão de 30 dias), as condições de pagamento e os dados do estúdio no rodapé. Para instituição, o pedido público pode exigir empenho. As condições de recebimento seguem o contrato. Para enviar, use os botões Copiar como imagem, Copiar como texto, Baixar imagem, Baixar PDF ou Abrir WhatsApp. Se o prazo ou a validade padrão não servir, confirme com o responsável antes de alterar."
           },
           {
             "tipo": "conteudo",
             "titulo": "Propostas salvas, revisões e aprovação",
-            "texto": "Todas as propostas ficam salvas, com busca e filtro por status: rascunho, enviada, aprovada e recusada. Ao alterar uma proposta, a versão anterior é guardada nas revisões, então você sempre sabe o que foi enviado antes. Para cliente recorrente, o editor mostra o histórico de pedidos e propostas anteriores, que você pode reaproveitar. Quando o cliente aceita, o botão Aprovar na proposta cria o pedido em Negociação e a tarefa de contato para fechar a venda."
+            "texto": "Todas as propostas ficam salvas, com busca e filtro por status: rascunho, enviada, aprovada e recusada. Quando você altera uma proposta, a versão anterior fica guardada nas revisões. Assim você sempre sabe o que foi enviado antes. Para cliente que já comprou, o editor mostra o histórico de pedidos e propostas anteriores, e você pode reaproveitar. Quando o cliente aceita, o botão Aprovar na proposta cria o pedido em Negociação e a tarefa de contato para fechar a venda."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "orcamento",
-            "pergunta": "Quais destas informações fazem parte do que o sistema guarda ou faz com as propostas?",
+            "pergunta": "Quais destas frases mostram o que o sistema guarda ou faz com as propostas?",
             "itens": [
               "A versão anterior fica guardada quando a proposta é alterada",
               "Aprovar a proposta cria o pedido em Negociação",
               "Proposta enviada some da lista",
-              "Cliente recorrente mostra histórico de pedidos e propostas anteriores"
+              "Cliente que já comprou mostra histórico de pedidos e propostas anteriores"
             ],
             "corretos": [
               0,
               1,
               3
             ],
-            "feedbackCerto": "Isso mesmo: revisões guardadas, pedido criado ao aprovar e histórico do cliente recorrente.",
-            "feedbackErrado": "Todas as propostas ficam salvas na lista, com filtro por status; só a opção que diz que a proposta enviada some está errada."
+            "feedbackCerto": "Isso mesmo. Revisões guardadas, pedido criado ao aprovar e histórico do cliente que já comprou.",
+            "feedbackErrado": "Todas as propostas ficam salvas na lista, com filtro por status. Só a frase que diz que a proposta enviada some está errada."
           },
           {
             "tipo": "missao",
             "competencia": "orcamento",
             "titulo": "Exercício orientado",
             "objetivo": "Praticar a escolha do caminho certo da calculadora.",
-            "contexto": "Caso A — STL pronto, 1 unidade. Caso B — somente fotografia. Caso C — STL pronto, 50 unidades pintadas.",
+            "contexto": "Caso A: STL pronto, 1 unidade. Caso B: somente fotografia. Caso C: STL pronto, 50 unidades pintadas.",
             "tarefas": [
-              "Em cada caso, identifique o caminho da ferramenta (Tenho STL / Só tenho imagem).",
+              "Em cada caso, diga qual é o caminho da ferramenta (Tenho STL ou Só tenho imagem).",
               "Em cada caso, liste os dados que ainda faltam. Não grave dados reais."
             ],
             "criterioConclusao": "Ter pensado nos 3 casos antes de marcar como concluída."
@@ -1436,20 +1487,20 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "multipla_escolha",
             "competencia": "orcamento",
-            "pergunta": "Cliente envia apenas uma fotografia e pede preço. Qual caminho conceitual deve ser considerado primeiro?",
+            "pergunta": "O cliente manda só uma fotografia e pede preço. Qual caminho você considera primeiro?",
             "opcoes": [
               "Tratar a foto como STL.",
-              "Caminho de imagem/referência, com avaliação/modelagem quando necessário.",
-              "Usar preço de produto parecido.",
-              "Perguntar somente forma de pagamento."
+              "O caminho de imagem, com avaliação ou modelagem quando for preciso.",
+              "Usar o preço de um produto parecido.",
+              "Perguntar somente a forma de pagamento."
             ],
             "correta": 1,
-            "feedbackCerto": "A aula mostrou que foto é referência visual, não arquivo 3D pronto.",
+            "feedbackCerto": "Certo. Foto é referência visual, não é arquivo 3D pronto.",
             "feedbackPorOpcao": [
-              "Foto não é STL — tente de novo.",
+              "Foto não é STL. Tente de novo.",
               null,
-              "Comparar com outro produto não substitui o cálculo real — tente de novo.",
-              "Forma de pagamento vem depois de orçar — tente de novo."
+              "Comparar com outro produto não substitui o cálculo real. Tente de novo.",
+              "A forma de pagamento vem depois de orçar. Tente de novo."
             ]
           },
           {
@@ -1458,17 +1509,17 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Por que não basta saber o custo do material para definir o preço?",
             "opcoes": [
               "Porque material nunca entra no preço.",
-              "Porque existem outros custos e regras que também podem compor a proposta.",
+              "Porque existem outros custos e regras que também podem entrar na proposta.",
               "Porque todo produto precisa ter o mesmo preço.",
               "Porque o cliente escolhe o lucro."
             ],
             "correta": 1,
-            "feedbackCerto": "Preço não é apenas material mais uma diferença arbitrária.",
+            "feedbackCerto": "Certo. Preço não é só o material mais um valor qualquer.",
             "feedbackPorOpcao": [
-              "Material entra sim no preço, só não é o único custo — tente de novo.",
+              "Material entra no preço, sim. Só não é o único custo. Tente de novo.",
               null,
-              "Cada produto tem seu próprio custo — não é sempre o mesmo preço — tente de novo.",
-              "O lucro não é escolhido pelo cliente — tente de novo."
+              "Cada produto tem o seu custo. O preço não é sempre o mesmo. Tente de novo.",
+              "O cliente não escolhe o lucro. Tente de novo."
             ]
           }
         ]
@@ -1476,32 +1527,50 @@ var TREINAMENTO_TRILHAS = {
       {
         "dia": 5,
         "titulo": "Agora vamos atender o cliente",
-        "subtitulo": "Usar as ferramentas já conhecidas para receber, entender, confirmar, apresentar e conduzir uma demanda",
+        "subtitulo": "Usar as ferramentas que você já conhece para receber, entender, confirmar, apresentar e conduzir um pedido",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Atendimento não é decorar frases",
-            "texto": "Agora você já conhece o sistema, sabe o que é um pedido, reconhece tipos de demanda e conhece os caminhos do orçamento. O atendimento serve para obter e organizar as informações necessárias para usar essas ferramentas corretamente."
+            "titulo": "Atender não é decorar frases",
+            "texto": "Agora você já conhece o sistema, sabe o que é um pedido, reconhece os tipos de pedido e conhece os caminhos do orçamento. O atendimento serve para conseguir e organizar as informações que essas ferramentas precisam."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Fluxo do atendimento",
-            "texto": "RECEBER → ENTENDER → CONFIRMAR → APRESENTAR → CONDUZIR. Receber é acolher. Entender é descobrir a necessidade. Confirmar é repetir/organizar o que foi entendido. Apresentar é oferecer a solução ou proposta adequada. Conduzir é indicar o próximo passo."
+            "titulo": "Os passos do atendimento",
+            "texto": "São cinco passos: receber, entender, confirmar, apresentar e conduzir. Receber é acolher o cliente. Entender é descobrir o que ele precisa. Confirmar é repetir e organizar o que você entendeu. Apresentar é oferecer a solução ou a proposta certa. Conduzir é dizer qual é o próximo passo."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Perguntar com propósito",
-            "texto": "Não faça um interrogatório. Use o que o cliente já disse e pergunte apenas o que falta. Se ele já informou quantidade, não pergunte novamente. Se mandou STL, não pergunte se tem arquivo 3D. A conversa deve parecer natural, mas produzir informação útil."
+            "titulo": "Pergunte só o que falta",
+            "texto": "Não faça um interrogatório. Use o que o cliente já disse e pergunte só o que falta. Se ele já disse a quantidade, não pergunte de novo. Se mandou STL, não pergunte se tem arquivo 3D. A conversa deve ser natural e trazer informação útil."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quando não souber",
-            "texto": "Nunca transforme dúvida em certeza. Use: \"Vou confirmar essa informação e retorno para você.\" Isso vale para técnica, prazo, capacidade, desconto ou regra que não esteja clara."
+            "texto": "Nunca trate dúvida como certeza. Diga: \"Vou confirmar essa informação e retorno para você.\" Isso vale para técnica, prazo, capacidade, desconto ou regra que não esteja clara."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Pergunte para que a peça será usada",
+            "texto": "No atendimento, descubra o uso da peça antes de fechar a venda. Uma miniatura de resina para coleção é diferente de um brinquedo para criança. Se o cliente disser que é para brincar, explique com calma que a linha atual é frágil, pode ter partes pequenas e não é adequada para esse uso. Não prometa segurança infantil nem certificação que a Valente não possui."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "seguranca_produto",
+            "pergunta": "O cliente diz: \"É para meu filho pequeno brincar\". Qual resposta é adequada?",
+            "opcoes": [
+              "\"Pode levar, porque é feita em impressora 3D.\"",
+              "\"Eu prometo que não quebra.\"",
+              "\"Esta miniatura de resina é colecionável e não é adequada para criança brincar. Não posso oferecê-la para esse uso.\""
+            ],
+            "correta": 2,
+            "feedbackCerto": "Certo. A resposta mostra o limite do produto sem prometer segurança que não foi comprovada.",
+            "feedbackErrado": "Volte à orientação sobre o uso da peça. Antes de vender, confirme para que ela será usada. Miniaturas de resina da linha atual não são brinquedos."
           },
           {
             "tipo": "conteudo",
             "titulo": "Aprovar arte e aprovar orçamento",
-            "texto": "Depois do atendimento, o sistema cria tarefas para você. Em Aprovar arte, há um quadro com as imagens carregadas (a arte do mascote ou da peça) e o botão Copiar imagem, para colar no WhatsApp junto da mensagem pronta \"Olá! Segue a arte da sua peça para aprovação...\". Respostas possíveis: Aprovou (libera a impressão; dá para anexar o print da aprovação), Pediu ajustes (você descreve; o sistema cria uma tarefa de Modelagem de ajuste e conta a rodada) ou Ainda não respondeu (nova cobrança). Em Aprovar orçamento: Aprovou, Pediu ajuste de valor ou quantidade, Recusou (com motivo) ou Ainda não respondeu."
+            "texto": "Depois do atendimento, o sistema cria tarefas para você. Em Aprovar arte, há um quadro com as imagens carregadas (a arte do mascote ou da peça) e o botão Copiar imagem. Você cola a imagem no WhatsApp junto da mensagem pronta \"Olá! Segue a arte da sua peça para aprovação...\". As respostas possíveis são três. Aprovou: libera a impressão, e dá para anexar o print da aprovação. Pediu ajustes: você descreve, o sistema cria uma tarefa de Modelagem de ajuste e conta a rodada. Ainda não respondeu: nova cobrança. Em Aprovar orçamento, as respostas são: Aprovou, Pediu ajuste de valor ou quantidade, Recusou (com motivo) ou Ainda não respondeu."
           },
           {
             "tipo": "resposta_cliente",
@@ -1512,7 +1581,7 @@ var TREINAMENTO_TRILHAS = {
                 "label": "Marcar Aprovou, porque ele disse que gostou, e ajustar depois.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Aprovou libera a impressão. Há ajustes pedidos, então liberar seria imprimir a arte errada."
+                "feedback": "Aprovou libera a impressão. Ele pediu ajustes. Liberar agora seria imprimir a arte errada."
               },
               {
                 "label": "Marcar Ainda não respondeu e esperar novo contato.",
@@ -1522,12 +1591,12 @@ var TREINAMENTO_TRILHAS = {
               {
                 "label": "Marcar Pediu ajustes e descrever o chapéu maior e a nova cor da faixa.",
                 "correta": true,
-                "feedback": "Isso cria a tarefa de Modelagem de ajuste e conta a rodada; a aprovação volta quando a modelagem termina."
+                "feedback": "Isso cria a tarefa de Modelagem de ajuste e conta a rodada. A aprovação volta quando a modelagem termina."
               },
               {
                 "label": "Pedir que ele mande tudo de novo por escrito e não registrar nada no sistema.",
                 "correta": false,
-                "feedback": "O pedido já está claro. Registrar no sistema é o que aciona a modelagem."
+                "feedback": "O pedido já está claro. É o registro no sistema que chama a modelagem."
               }
             ]
           },
@@ -1537,7 +1606,7 @@ var TREINAMENTO_TRILHAS = {
             "erroCriticoOpcoes": [
               3
             ],
-            "pergunta": "Cliente: \"Quanto custa uma miniatura personalizada?\" Qual resposta inicia melhor o atendimento?",
+            "pergunta": "Cliente: \"Quanto custa uma miniatura personalizada?\" Qual resposta começa melhor o atendimento?",
             "opcoes": [
               "\"R$70.\"",
               "\"Claro. Você já tem alguma referência, foto ou arquivo 3D do que gostaria de fazer?\"",
@@ -1545,12 +1614,12 @@ var TREINAMENTO_TRILHAS = {
               "\"Me mande o pagamento primeiro.\""
             ],
             "correta": 1,
-            "feedbackCerto": "A resposta acolhe e começa a obter uma informação que define o caminho do orçamento.",
+            "feedbackCerto": "Certo. A resposta acolhe e já busca uma informação que define o caminho do orçamento.",
             "feedbackPorOpcao": [
-              "Você deu um preço sem saber nada sobre o pedido — tente de novo.",
+              "Você deu um preço sem saber nada sobre o pedido. Tente de novo.",
               null,
-              "Resposta vaga, não conduz a nada — tente de novo.",
-              "Pedir pagamento antes de qualquer levantamento é um erro crítico."
+              "Resposta vaga, não leva a nada. Tente de novo.",
+              "Pedir pagamento antes de entender o pedido é erro crítico."
             ]
           },
           {
@@ -1563,72 +1632,76 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Cliente: \"Tenho STL, quero 30 unidades de 8 cm pintadas para um evento daqui a 20 dias.\" Qual atitude é melhor?",
             "opcoes": [
               "Repetir as seis perguntas de ouro desde o começo.",
-              "Reconhecer o que já foi informado e investigar apenas o que ainda falta, além de verificar orçamento/capacidade.",
+              "Aproveitar o que ele já disse, perguntar só o que falta e verificar orçamento e capacidade.",
               "Dar desconto automático pela quantidade.",
               "Prometer o prazo."
             ],
             "correta": 1,
-            "feedbackCerto": "Bom atendimento aproveita os dados já fornecidos e evita interrogatório.",
+            "feedbackCerto": "Certo. Bom atendimento aproveita o que o cliente já disse e evita interrogatório.",
             "feedbackPorOpcao": [
-              "Repetir tudo que ele já disse vira interrogatório — tente de novo.",
+              "Repetir o que ele já disse vira interrogatório. Tente de novo.",
               null,
-              "Desconto automático fora da autonomia é erro crítico.",
-              "Prometer prazo sem verificar capacidade é erro crítico."
+              "Desconto automático, fora da sua autonomia, é erro crítico.",
+              "Prometer prazo sem verificar a capacidade é erro crítico."
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "atendimento",
-            "pergunta": "Cliente: \"Vi uma peça de vocês no Instagram e queria fazer uma parecida para minha filha.\" Escreva sua primeira resposta.",
-            "pontosEsperados": [
-              "Acolher",
-              "Identificar qual peça/referência",
-              "Iniciar levantamento sem inventar preço ou prazo"
-            ]
+            "pergunta": "Cliente: \"Vi uma peça de vocês no Instagram e queria fazer uma parecida para minha filha.\" Qual é a melhor primeira resposta?",
+            "opcoes": [
+              "\"Fazemos sim. Custa R$70 e fica pronta em 10 dias.\"",
+              "\"Depende da peça.\"",
+              "\"Que bom que gostou! Qual peça você viu? Pode me mandar a foto ou o link?\"",
+              "\"Só fazemos se você tiver o arquivo 3D.\""
+            ],
+            "correta": 2,
+            "feedbackCerto": "Certo. A resposta acolhe, descobre qual é a peça e não inventa preço nem prazo.",
+            "feedbackErrado": "A primeira resposta deve acolher e descobrir qual peça o cliente viu. Não dê preço nem prazo antes de entender o pedido."
           },
           {
             "tipo": "missao",
             "competencia": "atendimento",
             "titulo": "Missão",
-            "objetivo": "Conduzir mentalmente três atendimentos reconhecendo qual ferramenta usar depois.",
-            "contexto": "1) cliente com produto do catálogo. 2) cliente com STL. 3) cliente com apenas fotos.",
+            "objetivo": "Fazer de cabeça três atendimentos e dizer qual ferramenta usar depois.",
+            "contexto": "1) cliente com produto do catálogo. 2) cliente com STL. 3) cliente só com fotos.",
             "tarefas": [
-              "Conduza os três atendimentos simulados.",
-              "Em cada um, identifique qual ferramenta do Valente OS será usada depois da conversa."
+              "Faça os três atendimentos de treino.",
+              "Em cada um, diga qual ferramenta do Valente OS você usa depois da conversa."
             ],
-            "criterioConclusao": "Ter pensado nos 3 atendimentos e nas ferramentas correspondentes antes de marcar como concluída."
+            "criterioConclusao": "Ter pensado nos 3 atendimentos e na ferramenta de cada um antes de marcar como concluída."
           }
         ]
       },
       {
         "dia": 6,
         "titulo": "Da negociação ao pedido",
-        "subtitulo": "Transformar uma oportunidade aprovada em informação operacional correta, sem confundir conversa com pedido",
+        "subtitulo": "Passar uma venda aprovada para o sistema do jeito certo, sem confundir conversa com pedido",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O que muda quando o cliente aprova",
-            "texto": "Aprovação comercial precisa ser convertida em registro operacional. O pedido deve refletir o que foi combinado: produto, quantidade, valor, pagamento, prazo confirmado e observações relevantes. Quando a aprovação vem pela proposta ou pela tarefa Aprovar orçamento, o sistema já cria o pedido em Negociação; sua parte é conferir se ele reflete o combinado e seguir para fechar a venda."
+            "texto": "Quando o cliente aprova, a venda precisa virar registro no sistema. O pedido deve mostrar o que foi combinado: produto, quantidade, valor, pagamento, prazo confirmado e observações importantes. Quando a aprovação vem pela proposta ou pela tarefa Aprovar orçamento, o sistema já cria o pedido em Negociação. A sua parte é conferir se ele mostra o combinado e seguir para fechar a venda."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Conferência antes do registro",
-            "texto": "Antes de concluir o pedido, compare o que está no sistema com o que foi aprovado. Uma divergência pequena pode virar erro grande na produção."
+            "titulo": "Confira antes de registrar",
+            "texto": "Antes de concluir o pedido, compare o que está no sistema com o que foi aprovado. Uma diferença pequena pode virar erro grande na produção."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Pagamento e início do fluxo",
-            "texto": "Não invente política de entrada ou condição de pagamento. Use a regra vigente. Se houver dúvida, consulte o responsável. Ao fechar o pedido, o contato registra o combinado e a forma de pagamento: Pix, Transferência, Dinheiro/cartão e, só para instituições públicas, Empenho (pago na entrega). Quando há pagamento previsto, o sistema gera a tarefa Confirmar pagamento na data. Nela você registra o valor recebido (o pedido vai para Pago e a produção pode começar) ou reagenda se ainda não caiu (volta em 2 dias). O status financeiro deve representar o que realmente aconteceu."
+            "titulo": "Pagamento e início do trabalho",
+            "texto": "Não invente regra de entrada ou condição de pagamento. Use a regra atual. Se tiver dúvida, consulte o responsável. Ao fechar o pedido, o contato registra o combinado e a forma de pagamento: Pix, Transferência, Dinheiro/cartão e, só para instituições públicas, Empenho (recebimento conforme contrato e trâmites do órgão). Quando há pagamento previsto, o sistema gera a tarefa Confirmar pagamento na data. Nela você registra o valor recebido. Aí o pedido vai para Pago e a produção pode começar. Se o dinheiro ainda não caiu, você reagenda e a tarefa volta em 2 dias. O status financeiro deve mostrar o que aconteceu de verdade."
           },
           {
             "tipo": "conteudo",
             "titulo": "Empenho: número antes de começar",
-            "texto": "Empenho é a forma de pagamento de instituições públicas, como prefeituras e a Polícia Militar: o pagamento acontece na entrega. O número do empenho precisa existir ANTES de iniciar o trabalho. Sem o número, o pedido fica \"Aguardando empenho\", a produção não começa e a tarefa Cobrar empenho volta a cada 7 dias. Também não é possível mover o pedido para uma etapa de produção com empenho pendente. Nunca invente ou estime o número só para destravar o pedido."
+            "texto": "Empenho não é pagamento. É um registro de compromisso de gasto feito pelo órgão público. O recebimento depende do contrato, da conferência do fornecimento e dos procedimentos do órgão. Na Valente, a regra ensinada é exigir o número do empenho antes de liberar a produção, quando essa condição se aplica ao pedido. O número do empenho precisa existir ANTES de iniciar o trabalho. Sem o número, o pedido fica \"Aguardando empenho\", a produção não começa e a tarefa Cobrar empenho volta a cada 7 dias. Também não é possível mover o pedido para uma etapa de produção com empenho pendente. Nunca invente ou estime o número só para destravar o pedido."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "operacao_os",
-            "cliente": "Sou da prefeitura. Já aprovamos o orçamento, pode começar a produzir; o número do empenho sai na semana que vem.",
+            "cliente": "Sou da prefeitura. Já aprovamos o orçamento, pode começar a produzir. O número do empenho sai na semana que vem.",
             "opcoes": [
               {
                 "label": "Começar a produção e registrar o empenho depois.",
@@ -1637,9 +1710,9 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "O número do empenho precisa existir antes de iniciar o trabalho."
               },
               {
-                "label": "Registrar o pedido com forma de pagamento Empenho; ele fica Aguardando empenho e a produção só começa quando o número for registrado.",
+                "label": "Registrar o pedido com forma de pagamento Empenho. Ele fica Aguardando empenho e a produção só começa quando o número for registrado.",
                 "correta": true,
-                "feedback": "É o fluxo do sistema, e a tarefa Cobrar empenho volta a cada 7 dias para acompanhar."
+                "feedback": "É assim que o sistema funciona. A tarefa Cobrar empenho volta a cada 7 dias para você acompanhar."
               },
               {
                 "label": "Registrar um número de empenho provisório para liberar.",
@@ -1651,14 +1724,14 @@ var TREINAMENTO_TRILHAS = {
                 "label": "Escolher Pix para o pedido não travar.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Registrar uma forma de pagamento diferente da combinada distorce o financeiro."
+                "feedback": "Registrar uma forma de pagamento diferente da combinada deixa o financeiro errado."
               }
             ]
           },
           {
             "tipo": "conteudo",
             "titulo": "Acompanhamento depois da venda",
-            "texto": "Depois de registrado, o Comercial acompanha pelo Kanban e consulta o Caixa quando necessário. O sistema deve ser a primeira fonte antes de interromper produção ou financeiro. Depois da entrega, a tarefa de pós-compra pergunta como foi: Recebeu e está satisfeito (pede avaliação e encerra), Ainda não recebeu (você confere o rastreio; volta em 2 dias), Há um problema (você descreve e abre uma tarefa de resolução) ou Não respondeu (nova tentativa em 2 dias)."
+            "texto": "Depois de registrar, o Comercial acompanha pelo Kanban e consulta o Caixa quando precisar. Olhe primeiro no sistema antes de interromper a produção ou o financeiro. Depois da entrega, a tarefa de pós-compra pergunta como foi. Recebeu e está satisfeito: pede avaliação e encerra. Ainda não recebeu: você confere o rastreio e a tarefa volta em 2 dias. Há um problema: você descreve e abre uma tarefa de resolução. Não respondeu: nova tentativa em 2 dias."
           },
           {
             "tipo": "multipla_escolha",
@@ -1667,80 +1740,98 @@ var TREINAMENTO_TRILHAS = {
               0,
               2
             ],
-            "pergunta": "Cliente diz \"pode fazer\", mas a condição de pagamento ainda não está confirmada. O que fazer?",
+            "pergunta": "O cliente diz \"pode fazer\", mas a condição de pagamento ainda não está confirmada. O que fazer?",
             "opcoes": [
               "Marcar como Pago para adiantar.",
-              "Seguir a regra vigente e confirmar o que faltar antes de representar o pedido como pago.",
+              "Seguir a regra atual e confirmar o que falta antes de mostrar o pedido como pago.",
               "Inventar 50% de entrada.",
               "Enviar direto para impressão."
             ],
             "correta": 1,
-            "feedbackCerto": "O sistema deve refletir fatos e regras confirmadas.",
+            "feedbackCerto": "Certo. O sistema deve mostrar fatos e regras confirmadas.",
             "feedbackPorOpcao": [
               "Marcar como pago sem o pagamento é erro crítico.",
               null,
-              "Inventar um percentual é erro crítico.",
-              "Mandar pra produção sem confirmar pagamento foge da regra — risco operacional."
+              "Inventar uma porcentagem é erro crítico.",
+              "Mandar para a produção sem confirmar o pagamento foge da regra e traz risco."
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "operacao_os",
-            "pergunta": "Ao registrar o pedido, você percebe que o prazo no WhatsApp era apenas um desejo do cliente e nunca foi confirmado. O que fazer?",
+            "pergunta": "Ao registrar o pedido, você nota que o prazo no WhatsApp era só um desejo do cliente e nunca foi confirmado. O que fazer?",
             "opcoes": [
               "Registrar como prazo fechado.",
-              "Confirmar viabilidade antes de registrar como compromisso.",
+              "Confirmar se dá para cumprir antes de registrar como compromisso.",
               "Escolher uma data parecida.",
               "Deixar a produção descobrir depois."
             ],
             "correta": 1,
-            "feedbackCerto": "Desejo do cliente não é automaticamente prazo confirmado.",
+            "feedbackCerto": "Certo. Desejo do cliente não é prazo confirmado.",
             "feedbackPorOpcao": [
-              "Isso não foi confirmado — não registre como fechado — tente de novo.",
+              "Isso não foi confirmado. Não registre como fechado. Tente de novo.",
               null,
-              "Chutar uma data parecida é inventar informação — tente de novo.",
-              "Deixar a produção descobrir depois gera um problema evitável — tente de novo."
+              "Chutar uma data parecida é inventar informação. Tente de novo.",
+              "Deixar a produção descobrir depois cria um problema que dava para evitar. Tente de novo."
             ]
           },
           {
             "tipo": "missao",
             "competencia": "operacao_os",
             "titulo": "Missão",
-            "objetivo": "Transformar um orçamento aprovado em pedido registrado corretamente.",
-            "contexto": "Receba um orçamento fictício aprovado.",
+            "objetivo": "Passar um orçamento aprovado para um pedido registrado do jeito certo.",
+            "contexto": "Receba um orçamento de treino já aprovado.",
             "tarefas": [
-              "Monte o conjunto de informações necessárias para criar o pedido.",
-              "Descreva como acompanharia o trabalho até Enviado."
+              "Junte as informações necessárias para criar o pedido.",
+              "Diga como você acompanharia o trabalho até Enviado."
             ],
-            "criterioConclusao": "Ter montado as informações e descrito o acompanhamento antes de marcar como concluída."
+            "criterioConclusao": "Ter juntado as informações e dito como acompanharia antes de marcar como concluída."
           }
         ]
       },
       {
         "dia": 7,
         "titulo": "Colocando um produto à venda",
-        "subtitulo": "Aprender a transformar informações confiáveis do produto em cadastro e anúncio comercial",
+        "subtitulo": "Aprender a usar informações confiáveis do produto para fazer o cadastro e o anúncio",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Antes de anunciar, a informação precisa estar certa",
-            "texto": "Um anúncio ruim não é apenas feio. Pode gerar preço errado, expectativa errada, dúvidas e retrabalho. Antes de publicar, confira a fonte das informações."
+            "texto": "Um anúncio ruim não é só feio. Ele pode trazer preço errado, expectativa errada, dúvidas e trabalho refeito. Antes de publicar, confira de onde vêm as informações."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que um anúncio precisa responder",
-            "texto": "O que é? Para quem é? Qual tamanho? Como é feito? Quais opções existem? Quanto custa? Qual o prazo? Como comprar? Nem todo anúncio precisa ter um texto enorme, mas não deve esconder informação essencial."
+            "texto": "O que é? Para quem é? Qual tamanho? Como é feito? Quais opções existem? Quanto custa? Qual o prazo? Como comprar? O anúncio não precisa ter um texto enorme. Mas não pode esconder informação importante."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Descrição clara e segura",
+            "texto": "No anúncio de miniaturas de resina, informe que são peças colecionáveis e frágeis, não brinquedos. Não anuncie como produto para criança brincar. Fotos, título e descrição devem mostrar a peça real. Se houver peças pequenas ou pontas frágeis, explique esse cuidado sem inventar certificações."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "seguranca_produto",
+            "pergunta": "Qual informação deve aparecer em um anúncio de miniatura de resina da linha atual?",
+            "opcoes": [
+              "Que é um brinquedo para qualquer idade.",
+              "Que é colecionável, frágil e não é para criança brincar.",
+              "Que não precisa de cuidados porque é de resina."
+            ],
+            "correta": 1,
+            "feedbackCerto": "Certo. O anúncio precisa deixar claro para que a peça serve e quais são os cuidados.",
+            "feedbackErrado": "Volte à orientação sobre o uso da peça. Antes de vender, confirme para que ela será usada. Miniaturas de resina da linha atual não são brinquedos."
           },
           {
             "tipo": "conteudo",
             "titulo": "Título, fotos e descrição",
-            "texto": "Título identifica o produto de forma clara. Fotos precisam representar corretamente a peça. Descrição organiza características e condições. Não invente característica apenas para deixar o anúncio mais atraente."
+            "texto": "O título diz com clareza qual é o produto. As fotos precisam mostrar a peça como ela é. A descrição organiza as características e as condições. Não invente característica só para o anúncio ficar mais bonito."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "produtos",
             "local": "Aba Peças Próprias",
-            "instrucao": "Abra Peças Próprias e use os dados cadastrados como ponto de partida. Confirme preço, tamanho, variações e demais campos relevantes antes de publicar."
+            "instrucao": "Abra Peças Próprias e comece pelos dados cadastrados. Confirme preço, tamanho, variações e os outros campos importantes antes de publicar."
           },
           {
             "tipo": "multipla_escolha",
@@ -1753,37 +1844,41 @@ var TREINAMENTO_TRILHAS = {
             "opcoes": [
               "Usar o menor preço.",
               "Publicar e corrigir depois.",
-              "Confirmar qual informação está vigente antes de publicar.",
+              "Confirmar qual informação está valendo antes de publicar.",
               "Tirar o preço e inventar no atendimento."
             ],
             "correta": 2,
-            "feedbackCerto": "Quando duas fontes divergem, o Comercial precisa confirmar a informação vigente.",
+            "feedbackCerto": "Certo. Quando duas fontes mostram dados diferentes, o Comercial confirma qual está valendo.",
             "feedbackPorOpcao": [
-              "Escolher o menor preço \"no chute\" é inventar informação — tente de novo.",
-              "Publicar errado e corrigir depois é erro crítico — informação errada pode já ter alcançado o cliente.",
+              "Escolher o menor preço no chute é inventar informação. Tente de novo.",
+              "Publicar errado e corrigir depois é erro crítico. O cliente já pode ter visto a informação errada.",
               null,
               "Inventar preço no atendimento é erro crítico."
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "produtos",
-            "pergunta": "Com os dados: miniatura personalizada de pet, resina, 10 cm, pintura manual, prazo 20 dias, preço R$85 — escreva um título e uma descrição curta.",
-            "pontosEsperados": [
-              "Usa somente informações fornecidas",
-              "Identifica produto, tamanho/personalização e condições relevantes",
-              "Não inventa benefícios não informados"
-            ]
+            "pergunta": "Os dados do produto são: miniatura personalizada de pet, resina, 10 cm, pintura manual, prazo de 20 dias, preço R$85. Qual anúncio está certo?",
+            "opcoes": [
+              "Miniatura personalizada de pet em resina, 10 cm. Pintura manual. Prazo de 20 dias. R$85.",
+              "Miniatura de pet que não quebra, 10 cm. Entrega em 5 dias. R$85.",
+              "Brinquedo de pet em resina para crianças, 10 cm, pintura manual. R$85.",
+              "Miniatura de pet linda e personalizada. Preço a combinar."
+            ],
+            "correta": 0,
+            "feedbackCerto": "Certo. O anúncio usa só os dados informados e mostra produto, tamanho, prazo e preço.",
+            "feedbackErrado": "O anúncio certo usa só os dados informados. Não invente qualidade, prazo ou uso, e não esconda o preço nem o prazo."
           },
           {
             "tipo": "missao",
             "competencia": "produtos",
             "titulo": "Missão",
-            "objetivo": "Montar e revisar criticamente um anúncio de treinamento.",
-            "contexto": "Use os dados da etapa anterior ou um produto fictício similar.",
+            "objetivo": "Montar um anúncio de treino e revisar com atenção.",
+            "contexto": "Use os dados da etapa anterior ou um produto de mentira parecido.",
             "tarefas": [
-              "Monte um anúncio de treinamento.",
-              "Revise procurando 5 tipos de erro: informação faltando, preço divergente, prazo ausente, foto inadequada e promessa não confirmada."
+              "Monte um anúncio de treino.",
+              "Revise procurando 5 tipos de erro: informação faltando, preço diferente, prazo ausente, foto inadequada e promessa não confirmada."
             ],
             "criterioConclusao": "Ter montado e revisado o anúncio procurando os 5 tipos de erro antes de marcar como concluída."
           }
@@ -1792,22 +1887,22 @@ var TREINAMENTO_TRILHAS = {
       {
         "dia": 8,
         "titulo": "Marketplaces e redes sociais",
-        "subtitulo": "Entender como o canal de venda muda preço, comunicação e condução do cliente",
+        "subtitulo": "Entender como o canal de venda muda o preço, a conversa e o caminho do cliente",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Venda direta e marketplace não são iguais",
-            "texto": "Shopee, Mercado Livre e outros canais podem possuir taxas, comissões e custos próprios. Por isso, copiar o preço da venda direta pode reduzir o resultado da Valente."
+            "texto": "Marketplace é um site de vendas, como Shopee e Mercado Livre. Esses canais podem cobrar taxas, comissões e outros custos. Por isso, copiar o preço da venda direta pode diminuir o ganho da Valente."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que o Comercial precisa entender",
-            "texto": "Preço anunciado → custos/taxas do canal → líquido recebido → custo do produto → resultado/margem. Não é necessário decorar taxas. É necessário usar parâmetros atualizados da ferramenta ou consultar o responsável."
+            "texto": "Do preço anunciado saem os custos e as taxas do canal. O que sobra é o valor recebido. Tirando o custo do produto, fica o ganho da Valente. Você não precisa decorar taxas. Precisa usar os números atualizados da ferramenta ou consultar o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Calculadora de marketplace",
-            "texto": "⚠️ Quando o recurso estiver disponível no Valente OS, a ferramenta deve mostrar os modos reais: preservar determinado resultado, ou testar um preço de anúncio e visualizar o que sobra. Enquanto não estiver disponível, a regra é CONSULTAR RESPONSÁVEL e não inventar percentual."
+            "texto": "Atenção: quando esse recurso estiver no Valente OS, a ferramenta deve mostrar os modos reais. Um modo mantém um ganho definido. O outro testa um preço de anúncio e mostra o que sobra. Enquanto o recurso não estiver disponível, a regra é consultar o responsável e não inventar porcentagem."
           },
           {
             "tipo": "multipla_escolha",
@@ -1816,36 +1911,36 @@ var TREINAMENTO_TRILHAS = {
               0,
               3
             ],
-            "pergunta": "Preço direto é R$70. Você pode copiar automaticamente R$70 para qualquer marketplace?",
+            "pergunta": "O preço na venda direta é R$70. Você pode copiar R$70 direto para qualquer marketplace?",
             "opcoes": [
               "Sim.",
-              "Não; é preciso considerar os custos atuais do canal.",
+              "Não. É preciso considerar os custos atuais do canal.",
               "Sim, se a peça for pequena.",
               "Não, mas basta acrescentar 10%."
             ],
             "correta": 1,
-            "feedbackCerto": "Nem copiar o preço nem inventar um percentual substitui a ferramenta.",
+            "feedbackCerto": "Certo. Copiar o preço ou inventar uma porcentagem não substitui a ferramenta.",
             "feedbackPorOpcao": [
-              "Copiar o preço direto ignora as taxas do canal — erro crítico.",
+              "Copiar o preço direto ignora as taxas do canal. É erro crítico.",
               null,
-              "Tamanho do produto não muda o fato de que o canal cobra taxas — tente de novo.",
-              "Inventar um percentual fixo (10%) também é chute — erro crítico."
+              "O tamanho da peça não muda o fato de que o canal cobra taxas. Tente de novo.",
+              "Inventar uma porcentagem fixa (10%) também é chute. É erro crítico."
             ]
           },
           {
             "tipo": "conteudo",
-            "titulo": "Redes sociais como entrada comercial",
-            "texto": "Nas redes, nem toda interação é venda. O Comercial precisa reconhecer intenção. Um elogio é engajamento; \"vocês fazem personalizado?\" é oportunidade; \"qual prazo para 30?\" é uma oportunidade ainda mais qualificada."
+            "titulo": "Redes sociais como porta de entrada",
+            "texto": "Nas redes, nem todo contato é venda. O Comercial precisa perceber a intenção da pessoa. Um elogio é só interesse. \"Vocês fazem personalizado?\" é uma chance de venda. \"Qual prazo para 30?\" é uma chance de venda ainda mais forte."
           },
           {
             "tipo": "conteudo",
             "titulo": "Conteúdo e próximo passo",
-            "texto": "Produto mostra o que vendemos. Processo mostra fabricação/acabamento. Prova mostra resultado ou entrega. A chamada para ação indica o próximo passo: WhatsApp, orçamento ou consulta."
+            "texto": "Produto mostra o que vendemos. Processo mostra como a peça é feita e acabada. Prova mostra o resultado ou a entrega. A chamada para ação diz qual é o próximo passo: WhatsApp, orçamento ou consulta."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "redes_sociais",
-            "pergunta": "Qual interação merece prioridade comercial?",
+            "pergunta": "Qual contato o Comercial deve atender primeiro?",
             "opcoes": [
               "❤️",
               "\"Muito bonito!\"",
@@ -1853,47 +1948,47 @@ var TREINAMENTO_TRILHAS = {
               "🔥"
             ],
             "correta": 2,
-            "feedbackCerto": "A pessoa apresentou necessidade, quantidade e personalização: há intenção comercial clara.",
+            "feedbackCerto": "Certo. A pessoa disse o que precisa, a quantidade e a personalização. Ela quer comprar.",
             "feedbackPorOpcao": [
-              "Reação é só sinal de atenção — tente de novo.",
-              "Elogio não revela necessidade específica — tente de novo.",
+              "Reação é só sinal de atenção. Tente de novo.",
+              "Elogio não mostra o que a pessoa precisa. Tente de novo.",
               null,
-              "Reação não revela necessidade nenhuma — tente de novo."
+              "Reação não mostra nenhuma necessidade. Tente de novo."
             ]
           },
           {
             "tipo": "missao",
             "competencia": "redes_sociais",
             "titulo": "Missão",
-            "objetivo": "Praticar os formatos de conteúdo comercial e reconhecer quando uma interação vira atendimento.",
-            "contexto": "Produto fictício.",
+            "objetivo": "Praticar os tipos de conteúdo de venda e perceber quando um contato vira atendimento.",
+            "contexto": "Produto de mentira.",
             "tarefas": [
               "Prepare uma publicação, um Story, uma resposta de Direct e uma chamada para WhatsApp.",
-              "Identifique qual interação deve virar atendimento."
+              "Diga qual contato deve virar atendimento."
             ],
-            "criterioConclusao": "Ter preparado os itens e identificado a interação antes de marcar como concluída."
+            "criterioConclusao": "Ter preparado os itens e escolhido o contato antes de marcar como concluída."
           }
         ]
       },
       {
         "dia": 9,
         "titulo": "Negociação, follow-up e prospecção",
-        "subtitulo": "Aprender a investigar objeções, respeitar limites de autonomia e continuar oportunidades",
+        "subtitulo": "Aprender a entender as objeções do cliente, respeitar sua autonomia e não abandonar uma venda",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Negociar não é dar desconto",
-            "texto": "Quando o cliente diz \"está caro\", ele pode estar comparando tamanho, acabamento, prazo, personalização, forma de pagamento ou simplesmente não ter entendido o valor da proposta. Primeiro investigue."
+            "texto": "Quando o cliente diz \"está caro\", ele pode estar comparando tamanho, acabamento, prazo, personalização ou forma de pagamento. Ou pode não ter entendido o valor da proposta. Primeiro descubra o motivo."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Comparar propostas corretamente",
-            "texto": "Preço só é comparável quando o escopo também é. Pergunte o que está incluído na outra proposta antes de atacar concorrente ou alterar preço."
+            "titulo": "Compare propostas do jeito certo",
+            "texto": "Só dá para comparar preço quando as duas propostas incluem as mesmas coisas. Pergunte o que está incluído na outra proposta antes de falar mal do concorrente ou mudar o preço."
           },
           {
             "tipo": "conteudo",
             "titulo": "Autonomia",
-            "texto": "PODE: consultar produto, enviar fotos, coletar informações, acompanhar pedido e orçar dentro das regras. CONSULTAR: prazo fora do normal, grandes quantidades, produto diferente, desconto ou condição especial. NÃO PODE: inventar preço/prazo, prometer capacidade sem verificar, conceder desconto fora da autorização ou alterar financeiro por suposição."
+            "texto": "Autonomia é o que você pode decidir sem perguntar. PODE: consultar produto, enviar fotos, coletar informações, acompanhar pedido e orçar dentro das regras. CONSULTAR: prazo fora do normal, grandes quantidades, produto diferente, desconto ou condição especial. NÃO PODE: inventar preço ou prazo, prometer capacidade sem verificar, dar desconto fora da autorização ou alterar o financeiro por suposição."
           },
           {
             "tipo": "resposta_cliente",
@@ -1903,45 +1998,45 @@ var TREINAMENTO_TRILHAS = {
               {
                 "label": "\"O material dele é pior.\"",
                 "correta": false,
-                "feedback": "Evite atacar o concorrente — isso não fortalece sua proposta e pode nem ser verdade."
+                "feedback": "Não fale mal do concorrente. Isso não melhora a sua proposta e pode nem ser verdade."
               },
               {
                 "label": "\"Então já baixo meu preço.\"",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Dar desconto automático pra \"competir\" sem avaliar está fora da autonomia padrão."
+                "feedback": "Dar desconto automático para \"competir\", sem avaliar, está fora da sua autonomia."
               },
               {
                 "label": "\"Entendo. O que está incluído na proposta dele para compararmos corretamente?\"",
                 "correta": true,
-                "feedback": "A resposta investiga a objeção sem atacar concorrente nem dar desconto automático."
+                "feedback": "A resposta busca o motivo sem falar mal do concorrente e sem dar desconto automático."
               },
               {
                 "label": "\"Compre com ele.\"",
                 "correta": false,
-                "feedback": "Essa resposta fecha a porta pra uma venda que ainda pode acontecer."
+                "feedback": "Essa resposta fecha a porta para uma venda que ainda pode acontecer."
               }
             ]
           },
           {
             "tipo": "conteudo",
             "titulo": "Follow-up",
-            "texto": "Orçamento enviado não é atendimento encerrado. Acompanhe de forma profissional: orçamento → acompanhamento → retorno → fechamento ou perda. O objetivo do follow-up é facilitar a decisão, não pressionar."
+            "texto": "Follow-up é voltar a falar com o cliente depois do orçamento. Orçamento enviado não é atendimento encerrado. Acompanhe com educação: orçamento, acompanhamento, retorno e, no fim, fechamento ou perda. O follow-up serve para ajudar o cliente a decidir, não para pressionar."
           },
           {
             "tipo": "conteudo",
             "titulo": "Registrar o contato: Como foi o contato?",
-            "texto": "Cada tarefa de contato termina com a pergunta \"Como foi o contato?\". As respostas são: Fechou o pedido (registra o combinado e a forma de pagamento), Cliente vai pensar e retornar (você escolhe a data do retorno), Não consegui falar com o cliente, ou Cliente desistiu (pede o motivo: achou caro, comprou com outra empresa, desistiu da ideia ou sem retorno; o pedido vira \"perdido\"). Sem resposta, o ritmo padrão é de 3 tentativas, a próxima em 1, 2 e 3 dias. Na última, o sistema pergunta se você encerra como \"Sem retorno do cliente\" ou continua."
+            "texto": "Cada tarefa de contato termina com a pergunta \"Como foi o contato?\". As respostas são quatro. Fechou o pedido: registra o combinado e a forma de pagamento. Cliente vai pensar e retornar: você escolhe a data do retorno. Não consegui falar com o cliente. Cliente desistiu: o sistema pede o motivo (achou caro, comprou com outra empresa, desistiu da ideia ou sem retorno) e o pedido vira \"perdido\". Sem resposta, o ritmo padrão é de 3 tentativas, a próxima em 1, 2 e 3 dias. Na última, o sistema pergunta se você encerra como \"Sem retorno do cliente\" ou continua."
           },
           {
             "tipo": "conteudo",
             "titulo": "Instituições públicas pedem mais paciência",
-            "texto": "Em instituições públicas, como prefeituras e a Polícia Militar, quem decide costuma ter muitas tarefas. Por isso o sistema permite até 6 tentativas, com intervalos maiores (3, 7, 7, 14, 14 dias). Registre também quem decide no órgão, com nome e setor, para o próximo contato falar com a pessoa certa. A cobrança de aprovação de arte também usa um ritmo mais longo para instituições."
+            "texto": "Em instituições públicas, como prefeituras e a Polícia Militar, quem decide costuma ter muitas tarefas. Por isso o sistema permite até 6 tentativas, com intervalos maiores (3, 7, 7, 14, 14 dias). Registre também quem decide no órgão, com nome e setor. Assim o próximo contato fala com a pessoa certa. A cobrança de aprovação de arte também usa um ritmo mais longo para instituições."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "negociacao",
-            "pergunta": "Você contatou uma prefeitura 3 vezes sem resposta. O que o ritmo do sistema indica?",
+            "pergunta": "Você falou com uma prefeitura 3 vezes e não teve resposta. O que o ritmo do sistema indica?",
             "opcoes": [
               "Encerrar como \"Sem retorno do cliente\", como em qualquer cliente.",
               "Marcar o pedido como perdido por achar caro.",
@@ -1949,71 +2044,78 @@ var TREINAMENTO_TRILHAS = {
               "Ligar todos os dias até atender."
             ],
             "correta": 2,
-            "feedbackCerto": "Instituições têm ritmo próprio, com intervalos maiores, e o registro de quem decide ajuda o próximo contato.",
+            "feedbackCerto": "Certo. Instituições têm ritmo próprio, com intervalos maiores. Registrar quem decide ajuda o próximo contato.",
             "feedbackPorOpcao": [
-              "Para instituições o ritmo é diferente, com até 6 tentativas — tente de novo.",
-              "Não houve motivo de preço; o motivo seria inventado — tente de novo.",
+              "Para instituições o ritmo é outro, com até 6 tentativas. Tente de novo.",
+              "Ninguém falou em preço. Esse motivo seria inventado. Tente de novo.",
               null,
-              "Insistir diariamente foge do ritmo e pressiona quem decide — tente de novo."
+              "Insistir todo dia foge do ritmo e pressiona quem decide. Tente de novo."
             ],
             "erroCriticoOpcoes": [
               1
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "negociacao",
-            "pergunta": "O cliente recebeu orçamento há 3 dias e não respondeu. Escreva um follow-up curto.",
-            "pontosEsperados": [
-              "Lembra o orçamento",
-              "Oferece ajuda",
-              "Evita pressão ou urgência inventada"
-            ]
+            "pergunta": "O cliente recebeu o orçamento há 3 dias e não respondeu. Qual é o melhor follow-up?",
+            "opcoes": [
+              "\"O orçamento vence hoje. Feche agora ou perde o preço.\"",
+              "\"Olá! Passando para saber se ficou alguma dúvida sobre o orçamento. Posso ajudar em algo?\"",
+              "\"Como você não respondeu, baixei o preço.\"",
+              "\"Vai querer ou não?\""
+            ],
+            "correta": 1,
+            "feedbackCerto": "Certo. A mensagem lembra o orçamento, oferece ajuda e não pressiona.",
+            "feedbackErrado": "O bom follow-up lembra o orçamento e oferece ajuda. Não pressione, não invente urgência e não dê desconto automático."
           },
           {
             "tipo": "conteudo",
             "titulo": "Prospecção",
-            "texto": "O Comercial também busca oportunidades. Escolas, unidades militares, empresas, restaurantes, eventos, clubes, lojas e instituições podem ter demandas compatíveis. A abordagem deve ter motivo e relevância para aquele contato."
+            "texto": "Prospecção é procurar novos clientes. O Comercial também faz isso. Escolas, unidades militares, empresas, restaurantes, eventos, clubes, lojas e instituições podem precisar do que a Valente faz. A abordagem deve ter um motivo e fazer sentido para aquele contato."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "prospeccao",
-            "pergunta": "Escolha um desses públicos e escreva uma abordagem inicial.",
-            "pontosEsperados": [
-              "Apresentação curta",
-              "Motivo do contato",
-              "Relevância/benefício",
-              "Convite pra conversar"
-            ]
+            "pergunta": "Você vai fazer o primeiro contato com uma escola. Qual é a melhor abordagem?",
+            "opcoes": [
+              "\"Oi. Vocês querem comprar miniaturas?\"",
+              "\"Olá! Estamos com promoção só hoje. Fechem agora.\"",
+              "\"Olá! Segue nossa tabela de preços.\"",
+              "\"Olá! Sou da Valente Artes, estúdio de impressão 3D. Fazemos peças personalizadas que podem servir para os eventos da escola. Podemos conversar?\""
+            ],
+            "correta": 3,
+            "feedbackCerto": "Certo. A mensagem se apresenta, diz o motivo, mostra a utilidade e convida para conversar.",
+            "feedbackErrado": "A boa abordagem tem apresentação curta, motivo do contato, utilidade para a pessoa e convite para conversar."
           },
           {
             "tipo": "missao",
             "competencia": "prospeccao",
             "titulo": "Missão",
-            "objetivo": "Analisar contatos fictícios, escolher os de maior potencial e praticar negociação sem desconto automático.",
-            "contexto": "Cinco contatos fictícios.",
+            "objetivo": "Analisar contatos de treino, escolher os melhores e praticar negociação sem desconto automático.",
+            "contexto": "Cinco contatos de mentira.",
             "tarefas": [
-              "Analise os 5 e escolha dois com maior potencial; prepare abordagem pra eles.",
-              "Pra um deles, simule uma objeção de preço e conduza sem desconto automático."
+              "Analise os 5 e escolha os dois com mais chance de venda. Prepare a abordagem para eles.",
+              "Para um deles, imagine que o cliente achou caro e conduza sem desconto automático."
             ],
-            "criterioConclusao": "Ter escolhido os 2 contatos, preparado a abordagem e simulado a objeção antes de marcar como concluída."
+            "criterioConclusao": "Ter escolhido os 2 contatos, preparado a abordagem e treinado a objeção antes de marcar como concluída."
           }
         ]
       },
       {
         "dia": 10,
         "titulo": "Missão Comercial Valente",
-        "subtitulo": "Demonstrar que consegue usar as ferramentas e conhecimentos da trilha em uma situação integrada",
+        "subtitulo": "Mostrar que você consegue usar as ferramentas e o que aprendeu na trilha em um caso completo",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Como funciona",
-            "texto": "Este dia não apresenta conteúdo novo importante. Ele verifica se você consegue combinar: consulta ao sistema, classificação da demanda, levantamento de dados, orçamento e proposta, negociação, registro, liberação e acompanhamento."
+            "texto": "Este dia não traz conteúdo novo importante. Ele verifica se você consegue juntar tudo: consulta ao sistema, tipo de pedido, coleta de dados, orçamento e proposta, negociação, registro, liberação e acompanhamento."
           },
           {
             "tipo": "cenario",
             "competencia": "atendimento",
-            "titulo": "Atendimento integrado",
+            "titulo": "Atendimento completo",
             "noInicial": "a",
             "nos": {
               "a": {
@@ -2023,26 +2125,26 @@ var TREINAMENTO_TRILHAS = {
                     "label": "\"R$70 cada.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Você informou preço sem saber nada sobre o pedido — isso é um erro crítico.",
+                    "feedback": "Você deu preço sem saber nada sobre o pedido. Isso é erro crítico.",
                     "proximo": "b"
                   },
                   {
                     "label": "\"Fazemos trabalhos personalizados. Me conta um pouco mais: o que vocês imaginam e quantas unidades precisam?\"",
                     "correta": true,
-                    "feedback": "Usa o método de atendimento aprendido no Dia 5.",
+                    "feedback": "Certo. Você usou o atendimento aprendido no Dia 5.",
                     "proximo": "b"
                   },
                   {
                     "label": "\"Mande o pagamento.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Pedir pagamento antes de levantar qualquer informação é um erro crítico.",
+                    "feedback": "Pedir pagamento antes de entender o pedido é erro crítico.",
                     "proximo": "b"
                   },
                   {
                     "label": "\"Só com STL.\"",
                     "correta": false,
-                    "feedback": "Recusar de cara sem perguntar fecha uma oportunidade real.",
+                    "feedback": "Recusar de cara, sem perguntar, perde uma chance real de venda.",
                     "proximo": "b"
                   }
                 ]
@@ -2054,27 +2156,27 @@ var TREINAMENTO_TRILHAS = {
                     "label": "\"Já temos tudo e podemos prometer.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Prometer sem orçamento nem verificação de capacidade é um erro crítico.",
+                    "feedback": "Prometer sem orçamento e sem verificar a capacidade é erro crítico.",
                     "proximo": "c"
                   },
                   {
-                    "label": "\"É projeto a partir de referência, com possível modelagem; quantidade, acabamento e prazo exigem orçamento e verificação de capacidade.\"",
+                    "label": "\"É um projeto a partir de fotos e pode precisar de modelagem. Quantidade, acabamento e prazo pedem orçamento e verificação de capacidade.\"",
                     "correta": true,
-                    "feedback": "A resposta combina os Dias 3 e 4.",
+                    "feedback": "Certo. A resposta junta os Dias 3 e 4.",
                     "proximo": "c"
                   },
                   {
-                    "label": "\"Foto é equivalente a STL.\"",
+                    "label": "\"Foto é a mesma coisa que STL.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Foto não é arquivo 3D — essa afirmação é tecnicamente incorreta.",
+                    "feedback": "Foto não é arquivo 3D. Essa frase está errada.",
                     "proximo": "c"
                   },
                   {
                     "label": "\"Basta multiplicar um preço unitário por 100.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Produção em escala muda custo por peça — multiplicar direto é um erro crítico.",
+                    "feedback": "Produzir muitas peças muda o custo de cada uma. Multiplicar direto é erro crítico.",
                     "proximo": "c"
                   }
                 ]
@@ -2086,26 +2188,26 @@ var TREINAMENTO_TRILHAS = {
                     "label": "\"Sim, 20%.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Prometer um percentual específico de desconto sem consultar é um erro crítico.",
+                    "feedback": "Prometer uma porcentagem de desconto sem consultar é erro crítico.",
                     "proximo": "d"
                   },
                   {
-                    "label": "\"Volume maior pode mudar a condição, mas preciso recalcular/consultar antes de confirmar.\"",
+                    "label": "\"Quantidade maior pode mudar a condição, mas preciso recalcular e consultar antes de confirmar.\"",
                     "correta": true,
-                    "feedback": "Não promete desconto fora da autonomia.",
+                    "feedback": "Certo. Não promete desconto fora da autonomia.",
                     "proximo": "d"
                   },
                   {
                     "label": "\"O preço nunca muda.\"",
                     "correta": false,
-                    "feedback": "Essa afirmação fecha uma negociação que talvez pudesse avançar.",
+                    "feedback": "Essa frase fecha uma negociação que talvez pudesse avançar.",
                     "proximo": "d"
                   },
                   {
                     "label": "\"Faço metade.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Prometer 50% de desconto sem qualquer análise é um erro crítico grave.",
+                    "feedback": "Prometer 50% de desconto sem nenhuma análise é erro crítico grave.",
                     "proximo": "d"
                   }
                 ]
@@ -2117,26 +2219,26 @@ var TREINAMENTO_TRILHAS = {
                     "label": "\"Tranquilo.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Prometer prazo sem checar capacidade é um erro crítico.",
+                    "feedback": "Prometer prazo sem verificar a capacidade é erro crítico.",
                     "proximo": "e"
                   },
                   {
-                    "label": "\"Vou verificar a capacidade de produção antes de confirmar se esse prazo é viável.\"",
+                    "label": "\"Vou verificar a capacidade de produção antes de confirmar se dá para cumprir esse prazo.\"",
                     "correta": true,
-                    "feedback": "Prazo precisa de confirmação operacional.",
+                    "feedback": "Certo. O prazo precisa ser confirmado com a produção.",
                     "proximo": "e"
                   },
                   {
                     "label": "\"Impossível.\"",
                     "correta": false,
-                    "feedback": "Recusar sem verificar a capacidade pode perder uma venda viável.",
+                    "feedback": "Recusar sem verificar a capacidade pode perder uma venda possível.",
                     "proximo": "e"
                   },
                   {
-                    "label": "\"Se pagar hoje eu garanto.\"",
+                    "label": "\"Se pagar hoje, eu prometo o prazo.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Condicionar uma garantia de prazo ao pagamento, sem checar capacidade, é um erro crítico.",
+                    "feedback": "Prometer o prazo em troca de pagamento, sem verificar a capacidade, é erro crítico.",
                     "proximo": "e"
                   }
                 ]
@@ -2148,84 +2250,88 @@ var TREINAMENTO_TRILHAS = {
                     "label": "\"Sim, sempre 50%.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Afirmar uma política fixa sem confirmar é um erro crítico — essa condição precisa ser consultada."
+                    "feedback": "Afirmar uma regra fixa sem confirmar é erro crítico. Essa condição precisa ser consultada."
                   },
                   {
                     "label": "\"Pode pagar 30%.\"",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Afirmar um percentual específico sem confirmar a política vigente é um erro crítico."
+                    "feedback": "Afirmar uma porcentagem sem confirmar a regra atual é erro crítico."
                   },
                   {
-                    "label": "\"Vou confirmar a condição aplicável ao pedido e te explico entrada e saldo corretamente.\"",
+                    "label": "\"Vou confirmar a condição que vale para o pedido e te explico entrada e saldo corretamente.\"",
                     "correta": true,
-                    "feedback": "Não inventa política comercial."
+                    "feedback": "Certo. Não inventa regra de pagamento."
                   },
                   {
                     "label": "\"Só pagamento total.\"",
                     "correta": false,
-                    "feedback": "Essa afirmação pode nem ser verdadeira e fecha uma forma de pagamento sem necessidade."
+                    "feedback": "Essa frase pode nem ser verdade e fecha uma forma de pagamento sem necessidade."
                   }
                 ]
               }
             }
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "atendimento",
-            "pergunta": "Monte o briefing final do atendimento. Organize: cliente, tipo de projeto, referência disponível, tamanho, quantidade, acabamento, prazo solicitado, necessidade de modelagem, condição de pagamento a confirmar, orçamento a realizar e próximo passo.",
-            "pontosEsperados": [
-              "Organiza todos os itens com base no que foi revelado na conversa",
-              "Não inventa preço, prazo ou condição ainda não confirmados",
-              "Indica claramente o próximo passo"
-            ]
+            "pergunta": "Depois dessa conversa, você monta o resumo do atendimento. Qual resumo está certo?",
+            "opcoes": [
+              "Projeto com STL do cliente. 100 miniaturas de 10 cm, pintadas. Prazo pedido de 5 dias. Próximo passo: fazer o orçamento.",
+              "Projeto a partir de fotos, precisa de modelagem. 100 miniaturas de 10 cm, pintadas (perguntou sobre 300). Prazo pedido de 5 dias, a verificar. Pagamento a confirmar. Próximo passo: fazer o orçamento e verificar a capacidade.",
+              "Projeto a partir de fotos. 300 miniaturas de 10 cm, pintadas. Prazo de 5 dias confirmado. Entrada de 50%. Próximo passo: liberar a produção.",
+              "Empresa quer miniaturas personalizadas para um evento. Aguardar o cliente voltar a falar."
+            ],
+            "correta": 1,
+            "feedbackCerto": "Certo. O resumo usa só o que o cliente disse, não inventa prazo nem condição e mostra o próximo passo.",
+            "feedbackErrado": "O resumo certo usa só o que apareceu na conversa. Ele não trata como confirmado o preço, o prazo ou o pagamento, e diz qual é o próximo passo."
           },
           {
             "tipo": "missao",
             "competencia": "operacao_os",
             "titulo": "Missão operacional",
-            "objetivo": "Associar cada ação à ferramenta correta do Valente OS e explicar o próximo passo ao cliente.",
-            "contexto": "Ações: consultar produto existente; calcular o custo; montar a proposta para o cliente; registrar pedido; consultar pagamento; acompanhar produção; ver suas tarefas de contato e aprovação.",
+            "objetivo": "Ligar cada ação à ferramenta certa do Valente OS e explicar o próximo passo ao cliente.",
+            "contexto": "Ações: consultar produto existente, calcular o custo, montar a proposta para o cliente, registrar pedido, consultar pagamento, acompanhar produção, ver suas tarefas de contato e aprovação.",
             "tarefas": [
-              "Indique em qual ferramenta faria cada uma dessas ações.",
-              "Descreva como explicaria ao cliente o próximo passo."
+              "Diga em qual ferramenta você faria cada uma dessas ações.",
+              "Diga como você explicaria ao cliente o próximo passo."
             ],
-            "criterioConclusao": "Ter associado as ações às ferramentas e descrito o próximo passo antes de marcar como concluída."
+            "criterioConclusao": "Ter ligado as ações às ferramentas e dito o próximo passo antes de marcar como concluída."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "operacao_os",
-            "pergunta": "Associe as ações às ferramentas.",
+            "pergunta": "Qual opção liga cada ação à ferramenta certa?",
             "opcoes": [
-              "Produto existente → Peças Próprias; custo → Orçamento; proposta ao cliente → Propostas; pedido/status → Pedidos; pagamento → Caixa; contatos e aprovações → Tarefas.",
-              "Tudo → Caixa.",
-              "Tudo → Pedidos.",
-              "Produto → Orçamento; pagamento → Peças Próprias."
+              "Produto existente em Peças Próprias. Custo em Orçamento. Proposta ao cliente em Propostas. Pedido e status em Pedidos. Pagamento em Caixa. Contatos e aprovações em Tarefas.",
+              "Tudo em Caixa.",
+              "Tudo em Pedidos.",
+              "Produto em Orçamento. Pagamento em Peças Próprias."
             ],
             "correta": 0,
-            "feedbackCerto": "A missão fecha o ciclo iniciado no tour do Dia 1.",
+            "feedbackCerto": "Certo. A missão fecha o que você começou a ver no Dia 1.",
             "feedbackPorOpcao": [
               null,
-              "Cada ferramenta tem um propósito diferente — não é tudo a mesma — tente de novo.",
-              "Cada ferramenta tem um propósito diferente — não é tudo a mesma — tente de novo.",
-              "Essas associações estão trocadas — revise o tour do Dia 1."
+              "Cada ferramenta serve para uma coisa. Não é tudo no mesmo lugar. Tente de novo.",
+              "Cada ferramenta serve para uma coisa. Não é tudo no mesmo lugar. Tente de novo.",
+              "Essas ligações estão trocadas. Reveja o Dia 1."
             ]
           },
           {
             "tipo": "conteudo",
             "titulo": "Parabéns!",
-            "texto": "Você concluiu a Formação Comercial Valente. A classificação final considera suas competências e os erros críticos ao longo dos 10 dias — não é só uma contagem de respostas certas."
+            "texto": "Você concluiu a Formação Comercial Valente. A classificação final considera suas competências e os erros críticos ao longo dos 10 dias. Não é só uma contagem de respostas certas."
           }
         ]
       }
     ]
   },
-  modelagem_3d: {
+  "modelagem_3d": {
     "id": "modelagem_3d",
     "nome": "Modelagem 3D",
     "descricao": "Aprenda a transformar um briefing em um modelo 3D pronto para imprimir, com escala, arquivos, conferência e entrega corretos.",
     "icone": "🗿",
-    "versao": 2,
+    "versao": 3,
     "cargosPermitidos": null,
     "competencias": [
       "Organização do trabalho de modelagem",
@@ -2235,134 +2341,134 @@ var TREINAMENTO_TRILHAS = {
       "Arquivos, versões e entrega",
       "Conferência e liberação"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Interpretar um pedido fictício, preparar e conferir um arquivo de exemplo e explicar quando pedir aprovação. O responsável verifica o resultado antes de autorizar trabalho independente.",
     "dias": [
       {
         "dia": 1,
         "titulo": "Minha estação de modelagem",
-        "subtitulo": "Onde o trabalho nasce e onde ele deve ser guardado",
+        "subtitulo": "Onde o trabalho começa e onde ele fica guardado",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "O trabalho começa em uma ordem, não em uma mensagem solta",
-            "texto": "Modelar é transformar uma ideia em um objeto que possa ser impresso. Antes de abrir o software, você precisa saber qual trabalho está fazendo. Na Valente, a fonte oficial é o Valente OS. O pedido aparece na aba Pedidos (Kanban), na etapa Modelando, e as tarefas chegam na Missão/Inbox de tarefas como OTs, com título, instruções, checklist e quantidade. Uma mensagem de WhatsApp pode avisar que algo existe, mas o briefing oficial é o que vale."
+            "titulo": "O trabalho começa em uma tarefa, não em uma mensagem solta",
+            "texto": "Modelar é transformar uma ideia em um objeto que pode ser impresso. Antes de abrir o programa de modelagem, saiba qual trabalho você vai fazer. Na Valente, a fonte oficial é o Valente OS. O pedido aparece na aba Pedidos (Kanban), na coluna Modelando. As tarefas chegam na aba Tarefas, com título, instruções, checklist (lista de conferência) e quantidade. Uma mensagem de WhatsApp só avisa que existe um trabalho. O que vale é o briefing oficial, que é a descrição do trabalho no sistema."
           },
           {
             "tipo": "conteudo",
-            "titulo": "O que compõe a sua estação",
-            "texto": "Sua estação de modelagem tem quatro partes. Primeiro, o pedido ou a OT que diz o que fazer. Segundo, as referências: fotos, desenhos, medidas e links do cliente. Terceiro, o software de modelagem e os arquivos de trabalho. Quarto, as pastas onde ficam os arquivos de entrada e de saída. Saber onde cada coisa fica evita que você perca tempo procurando e, principalmente, evita que trabalhe em cima do arquivo errado."
+            "titulo": "As partes da sua estação",
+            "texto": "Sua estação de modelagem tem quatro partes. Primeira: o pedido ou a tarefa, que diz o que fazer. Segunda: as referências, que são fotos, desenhos, medidas e links do cliente. Terceira: o programa de modelagem e os arquivos de trabalho. Quarta: as pastas dos arquivos de entrada e de saída. Quando você sabe onde cada coisa fica, não perde tempo procurando. E não trabalha no arquivo errado."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sua missão no topo da tarefa",
-            "texto": "Ao abrir uma tarefa, o topo mostra a caixa SUA MISSÃO em destaque, dizendo o que fazer e quanto falta. Leia essa caixa primeiro. Abaixo ficam o checklist e as fotos de referência. Os botões são Iniciar tarefa, Pausar, Retomar e Concluir tarefa. Seu PIN identifica você como executor, e seu nome fica gravado como responsável nas tarefas que você inicia e conclui. No tablet, Minhas funções abre uma fila única com as tarefas da sua função. No PC, use a Missão/Inbox de tarefas ou a aba Tarefas."
+            "texto": "Ao abrir uma tarefa, você vê no topo a caixa SUA MISSÃO em destaque. Ela diz o que fazer e quanto falta. Leia essa caixa primeiro. Abaixo ficam o checklist e as fotos de referência. Os botões são Iniciar tarefa, Pausar, Retomar e Concluir tarefa. Seu PIN mostra ao sistema quem você é. Seu nome fica gravado como responsável nas tarefas que você inicia e conclui. No tablet, Minhas funções abre uma fila única com as tarefas da sua função. No computador, use a aba Tarefas."
           },
           {
             "tipo": "conteudo",
             "titulo": "O perigo das versões",
-            "texto": "Imagine uma pasta com um arquivo antigo e outro novo do mesmo capacete. Abrir o que parece certo sem conferir pode custar horas de trabalho sobre a versão errada. O hábito correto é confirmar, no pedido ou na OT, qual é o trabalho e qual é a versão vigente, e só então abrir o arquivo. Siga a nomenclatura e a estrutura de pastas definidas pela Valente; se você não souber qual é a regra, consulte o responsável em vez de adivinhar."
+            "texto": "Imagine uma pasta com dois arquivos do mesmo capacete, um antigo e um novo. Se você abrir o que parece certo sem conferir, pode perder horas na versão errada. O certo é confirmar, no pedido ou na tarefa, qual é o trabalho e qual é a versão que vale. Só depois abra o arquivo. Siga os nomes de arquivo e as pastas definidos pela Valente. Não sabe qual é a regra? Pergunte ao responsável. Não adivinhe."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "organizacao_trabalho",
-            "cliente": "Colega da produção: \"Ei, o cliente mandou um áudio dizendo que quer o capacete maior. Já começa a mexer no arquivo que está na pasta, depois a gente vê o pedido.\"",
+            "cliente": "Colega da produção: \"Ei, o cliente mandou um áudio. Ele quer o capacete maior. Já vai mexendo no arquivo que está na pasta. Depois a gente vê o pedido.\"",
             "opcoes": [
               {
-                "label": "Começo pelo arquivo da pasta e confiro o pedido no final, quando terminar.",
+                "label": "Começo pelo arquivo da pasta. Confiro o pedido no final, quando terminar.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Se o arquivo ou o pedido estiverem diferentes do que você imagina, o trabalho inteiro pode ser perdido."
+                "feedback": "Se o arquivo ou o pedido forem diferentes do que você pensa, você pode perder o trabalho todo."
               },
               {
-                "label": "Antes de mexer, abro o pedido e a OT no Valente OS para confirmar o trabalho e a versão vigente, e registro o que o cliente pediu no próprio pedido.",
+                "label": "Antes de mexer, abro o pedido e a tarefa no Valente OS. Confirmo o trabalho e a versão que vale. Registro no pedido o que o cliente pediu.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. O áudio é um aviso, mas o briefing oficial e a versão do arquivo precisam ser confirmados na fonte."
+                "feedback": "Certo. O áudio é só um aviso. O briefing oficial e a versão do arquivo se confirmam na fonte."
               },
               {
-                "label": "Peço ao cliente para mandar outro arquivo novo e uso esse, sem olhar o pedido.",
+                "label": "Peço ao cliente outro arquivo novo e uso esse, sem olhar o pedido.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Você deixa de usar a fonte oficial e cria mais uma versão solta no meio do caminho."
+                "feedback": "Você deixa de usar a fonte oficial. E cria mais uma versão solta no caminho."
               },
               {
-                "label": "Aumento o capacete por conta própria, em uma escala que eu achar boa.",
+                "label": "Aumento o capacete por conta própria, no tamanho que eu achar bom.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Isso é inventar uma medida. Quando faltar informação, consulte a fonte e o responsável."
+                "feedback": "Isso é inventar uma medida. Se falta informação, consulte a fonte e o responsável."
               }
             ]
           },
           {
             "tipo": "ordenar",
             "competencia": "organizacao_trabalho",
-            "instrucao": "Coloque na ordem correta os passos para começar um trabalho de modelagem.",
+            "instrucao": "Coloque na ordem certa os passos para começar um trabalho de modelagem.",
             "itens": [
-              "Abrir o pedido ou a OT no Valente OS",
-              "Ler instruções, checklist e quantidade",
-              "Localizar as referências do trabalho",
-              "Confirmar a versão vigente do arquivo e a pasta de saída",
-              "Só então abrir o software e começar a modelar"
+              "Abrir o pedido ou a tarefa no Valente OS",
+              "Ler as instruções, o checklist e a quantidade",
+              "Achar as referências do trabalho",
+              "Confirmar a versão que vale e a pasta de saída",
+              "Só então abrir o programa e começar a modelar"
             ],
-            "feedbackCerto": "Isso mesmo: primeiro a fonte oficial, depois as referências e a versão, por último o software.",
-            "feedbackErrado": "A ordem correta começa pelo pedido ou OT, passa pelas referências e pela versão, e só depois abre o software."
+            "feedbackCerto": "Isso mesmo. Primeiro a fonte oficial, depois as referências e a versão, por último o programa.",
+            "feedbackErrado": "A ordem certa começa pelo pedido ou pela tarefa. Depois vêm as referências e a versão. Só no fim você abre o programa."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "organizacao_trabalho",
-            "local": "Valente OS > Pedidos (Kanban) e Missão/Inbox de tarefas",
-            "instrucao": "Apenas consulte, sem alterar nada: localize um pedido na etapa Modelando e a OT correspondente. Observe a caixa SUA MISSÃO, o título, as instruções, o checklist e a quantidade. Depois identifique onde ficam as referências e a pasta de saída. Se a estrutura de pastas e a nomenclatura oficiais não estiverem claras, anote a dúvida e consulte o responsável. Marque como feito somente depois de realmente localizar tudo."
+            "local": "No computador: Valente OS > Pedidos (Kanban) e aba Tarefas",
+            "instrucao": "Só olhe, não mude nada. Ache um pedido na coluna Modelando e a tarefa dele. Veja a caixa SUA MISSÃO, o título, as instruções, o checklist e a quantidade. Depois descubra onde ficam as referências e a pasta de saída. Se não souber a regra oficial de pastas e nomes de arquivo, anote a dúvida e pergunte ao responsável. Marque como feito só depois de achar tudo de verdade."
           }
         ]
       },
       {
         "dia": 2,
-        "titulo": "Entendendo a solicitação",
-        "subtitulo": "O briefing é o contrato técnico do que será construído",
+        "titulo": "Entendendo o pedido",
+        "subtitulo": "O briefing é o combinado técnico do que você vai construir",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Tipos de demanda",
-            "texto": "Nem todo pedido de modelagem é igual. Pode ser produto novo, criado do zero. Pode ser alteração de um modelo que já existe. Pode ser reprodução de algo que o cliente trouxe como referência. Pode ser personalização, como incluir um nome ou trocar um acessório. Pode ser ajuste de escala, para deixar uma peça maior ou menor. Ou pode ser apenas preparação para fabricação de um modelo pronto. Cada tipo exige perguntas diferentes."
+            "titulo": "Tipos de pedido",
+            "texto": "Os pedidos de modelagem não são todos iguais. Pode ser um produto novo, criado do zero. Pode ser a alteração de um modelo que já existe. Pode ser a reprodução de algo que o cliente trouxe como referência. Pode ser uma personalização, como incluir um nome ou trocar um acessório. Pode ser um ajuste de escala, para deixar a peça maior ou menor. Ou pode ser só preparar um modelo pronto para a fabricação. Cada tipo pede perguntas diferentes."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que o briefing precisa responder",
-            "texto": "O briefing é o contrato técnico do que deve ser construído. Ele precisa deixar claros três pontos. A finalidade: a peça será exposta, pintada, usada no dia a dia? O tamanho final: altura ou largura em milímetros ou centímetros. E o nível de detalhe esperado: rosto marcado, textura de armadura, detalhes finos. Sem essas respostas, você estaria construindo geometria no escuro."
+            "texto": "O briefing é a descrição do que o cliente quer. Ele é o combinado técnico do que você vai construir. O briefing precisa responder três coisas. A finalidade: a peça vai ficar exposta, vai ser pintada ou vai ser usada no dia a dia? O tamanho final: altura ou largura, em milímetros ou centímetros. O nível de detalhe: rosto marcado, textura de armadura, detalhes finos. Sem essas respostas, você modela no escuro."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Quando a intenção está ambígua",
-            "texto": "Imagine o pedido: \"faça igual à foto\". Se existe só uma vista, a foto mostra o que está visível e esconde o resto. Você precisa reconhecer o que a referência mostra e o que ela não mostra. Quando a intenção estiver ambígua, não escolha uma interpretação em silêncio. Registre a dúvida no pedido ou na OT e consulte o responsável. Dizer \"não sei\" e perguntar não é erro. Inventar é."
+            "titulo": "Quando o pedido não está claro",
+            "texto": "Imagine o pedido: \"faça igual à foto\". Se só existe uma foto, ela mostra um lado e esconde o resto. Você precisa separar o que a referência mostra do que ela não mostra. Quando o pedido tiver mais de um sentido, não escolha um sentido em silêncio. Registre a dúvida no pedido ou na tarefa e consulte o responsável. Dizer \"não sei\" e perguntar não é erro. Inventar é erro."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "leitura_briefing",
-            "pergunta": "O pedido diz: \"Preciso do meu personagem do jogo, só que com a espada na outra mão\". Que tipo de demanda é esse?",
+            "pergunta": "O pedido diz: \"Quero o meu personagem do jogo, mas com a espada na outra mão\". Que tipo de pedido é esse?",
             "opcoes": [
-              "Personalização ou alteração sobre uma reprodução: há um modelo base e uma mudança pedida, então é preciso confirmar o que muda e o que se mantém.",
+              "Personalização ou alteração em cima de uma reprodução. Existe um modelo base e uma mudança pedida. É preciso confirmar o que muda e o que fica igual.",
               "Produto novo, porque o cliente pediu algo diferente do original.",
-              "Apenas ajuste de escala, porque o tamanho é o que normalmente muda.",
+              "Só ajuste de escala, porque o tamanho é o que mais costuma mudar.",
               "Preparação para fabricação, porque o modelo já existe."
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Identificar o tipo de demanda define as perguntas certas: qual é o personagem base, de onde vêm as referências e o que exatamente muda.",
+            "feedbackCerto": "Certo. Saber o tipo de pedido mostra as perguntas certas: qual é o personagem base, de onde vêm as referências e o que muda.",
             "feedbackPorOpcao": [
               null,
-              "Há um personagem de referência. Tratar como produto novo faz você ignorar o que já está definido.",
+              "Existe um personagem de referência. Se você tratar como produto novo, ignora o que já está definido.",
               "O pedido não fala de tamanho. A mudança é na pose e no acessório.",
-              "Não sabemos se o modelo existe pronto. E há uma mudança de pose, que não é só preparação."
+              "Não sabemos se o modelo já existe pronto. E mudar a pose não é só preparação."
             ]
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "leitura_briefing",
-            "pergunta": "Um briefing chegou dizendo só \"faça a miniatura do dragão da foto\". Quais informações você ainda precisa confirmar antes de modelar?",
+            "pergunta": "O briefing chegou só com a frase \"faça a miniatura do dragão da foto\". O que você ainda precisa confirmar antes de modelar?",
             "itens": [
               "Tamanho final desejado",
               "Finalidade da peça (exposição, pintura, uso)",
               "Como são as costas e a cauda, que não aparecem na foto",
-              "Qual é a sua cor favorita para o dragão",
+              "Qual é a sua cor preferida para o dragão",
               "Nível de detalhe esperado nas escamas"
             ],
             "corretos": [
@@ -2371,19 +2477,22 @@ var TREINAMENTO_TRILHAS = {
               2,
               4
             ],
-            "feedbackCerto": "Isso mesmo. Tamanho, finalidade, partes não visíveis e nível de detalhe fazem parte do briefing.",
-            "feedbackErrado": "Faltaram itens ou sobrou algum. Sua preferência pessoal de cor não faz parte do briefing; tamanho, finalidade, partes invisíveis e nível de detalhe fazem."
+            "feedbackCerto": "Isso mesmo. Tamanho, finalidade, partes que não aparecem e nível de detalhe fazem parte do briefing.",
+            "feedbackErrado": "Faltou algum item ou sobrou um. A sua cor preferida não faz parte do briefing. Tamanho, finalidade, partes que não aparecem e nível de detalhe fazem."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "leitura_briefing",
-            "pergunta": "Imagine um pedido simulado: \"Faça um busto do meu avô, igual à foto\", com apenas uma foto de frente. Escreva as dúvidas que você registraria antes de modelar.",
-            "pontosEsperados": [
-              "Tamanho final do busto",
-              "Como são lado e costas da cabeça, já que só há vista frontal",
-              "Finalidade e nível de detalhe esperado (por exemplo, será pintado?)",
-              "Consultar o responsável em vez de inventar o que não aparece na foto"
-            ]
+            "pergunta": "O pedido diz: \"Faça um busto do meu avô, igual à foto\". Só veio uma foto de frente. O que você faz antes de modelar?",
+            "opcoes": [
+              "Modelo o lado e as costas da cabeça do jeito que eu imaginar.",
+              "Escolho um tamanho comum de busto e começo a modelar.",
+              "Registro as dúvidas (tamanho, lado e costas, finalidade e nível de detalhe) e consulto o responsável.",
+              "Peço mais fotos direto ao cliente pelo WhatsApp, sem registrar nada."
+            ],
+            "correta": 2,
+            "feedbackCerto": "Certo. A foto de frente não mostra o lado nem as costas. O que falta se registra e se pergunta.",
+            "feedbackErrado": "Não invente o que a foto não mostra. Registre as dúvidas de tamanho, lado e costas, finalidade e nível de detalhe. Depois consulte o responsável."
           }
         ]
       },
@@ -2395,35 +2504,35 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que é referência suficiente",
-            "texto": "Referência suficiente é aquela que permite decidir sem inventar características importantes. Em geral ajudam fotos de vários ângulos (frente, lado, costas e topo), medidas conhecidas, desenhos em vista ortogonal e fotos de detalhes como mãos, rosto e acessórios. Quanto mais vistas, menos o modelador precisa adivinhar. Não existe um número mágico de fotos: o que importa é conseguir responder o que o briefing pede."
+            "texto": "Referência suficiente é a que deixa você decidir sem inventar partes importantes da peça. Costumam ajudar: fotos de vários ângulos (frente, lado, costas e topo), medidas conhecidas, desenhos em vista ortogonal (a peça desenhada reta, sem perspectiva) e fotos de detalhes, como mãos, rosto e acessórios. Quanto mais vistas, menos você precisa adivinhar. Não existe número mágico de fotos. O que importa é conseguir responder o que o briefing pede."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que a foto não mostra",
-            "texto": "Uma foto frontal pode mostrar bem o rosto, mas não define as costas, a espessura ou os acessórios laterais. O que não está visível não deve ser tratado como fato. Se você completar essas partes com a sua imaginação e o cliente esperava outra coisa, o retrabalho é seu e do próximo setor. O caminho certo é listar o que falta e pedir ao responsável, que pode falar com o cliente."
+            "texto": "Uma foto de frente pode mostrar bem o rosto. Mas ela não mostra as costas, a espessura nem os acessórios dos lados. O que não aparece não é fato. Se você completar essas partes com a imaginação e o cliente esperava outra coisa, você e o próximo setor vão ter que refazer o trabalho. O certo é listar o que falta e pedir ao responsável. Ele pode falar com o cliente."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Referências que se contradizem",
-            "texto": "Às vezes duas referências discordam: uma foto mostra o personagem com capa e outra, sem capa. Ou a medida escrita no pedido não bate com a proporção da imagem. Referências contraditórias precisam ser resolvidas antes de consolidar o modelo, ou seja, antes de investir horas em geometria final. Registre a contradição no pedido, indique as duas fontes e aguarde a definição do responsável."
+            "titulo": "Referências que não combinam",
+            "texto": "Às vezes duas referências não combinam. Uma foto mostra o personagem com capa e a outra mostra sem capa. Ou a medida escrita no pedido não bate com a proporção da imagem. Isso é uma contradição. Resolva a contradição antes de gastar horas no modelo final. Registre a contradição no pedido, aponte as duas fontes e espere a decisão do responsável."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "leitura_briefing",
-            "pergunta": "Duas imagens de referência do mesmo cavaleiro: na primeira ele tem um escudo no braço esquerdo, na segunda não. O que você faz?",
+            "pergunta": "Você tem duas imagens do mesmo cavaleiro. Na primeira, ele tem um escudo no braço esquerdo. Na segunda, não tem. O que você faz?",
             "opcoes": [
-              "Modelo com escudo, porque uma imagem mostra o escudo e é mais seguro incluir.",
+              "Modelo com escudo. Uma imagem mostra o escudo e é mais seguro incluir.",
               "Modelo sem escudo, porque é mais fácil e rápido de imprimir.",
-              "Registro a contradição no pedido, indico quais imagens divergem e peço a definição ao responsável antes de consolidar o modelo.",
+              "Registro a contradição no pedido, aponto as imagens que não combinam e peço a decisão do responsável antes de fechar o modelo.",
               "Modelo as duas versões e entrego as duas sem avisar nada."
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. Contradição se resolve na fonte, antes de gastar tempo no modelo final.",
+            "feedbackCerto": "Certo. Contradição se resolve na fonte, antes de gastar tempo no modelo final.",
             "feedbackPorOpcao": [
-              "Você escolheu uma interpretação em silêncio. Se o cliente não queria o escudo, o trabalho vai ser refeito.",
-              "Facilidade de produção não define o que o cliente pediu.",
+              "Você escolheu um sentido em silêncio. Se o cliente não queria o escudo, o trabalho vai ser refeito.",
+              "O que é mais fácil de produzir não define o que o cliente pediu.",
               null,
-              "Dobra o trabalho e deixa a decisão com o próximo setor, sem registro."
+              "Você dobra o trabalho e deixa a decisão para o próximo setor, sem registro."
             ],
             "erroCriticoOpcoes": [
               0
@@ -2432,21 +2541,24 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "leitura_briefing",
-            "afirmacao": "Se a foto frontal mostra o rosto com clareza, você já pode considerar definidas as costas e os acessórios laterais da peça.",
+            "afirmacao": "Se a foto de frente mostra bem o rosto, você já pode considerar definidas as costas e os acessórios dos lados da peça.",
             "correta": false,
-            "feedbackCerto": "Correto. O que não aparece na referência não é fato; deve ser listado como falta.",
-            "feedbackErrado": "Na verdade, falso. Uma vista só define o que está visível. Costas, espessura e laterais continuam em aberto e precisam ser perguntados."
+            "feedbackCerto": "Certo. O que não aparece na referência não é fato. Deve entrar na lista do que falta.",
+            "feedbackErrado": "É falso. Uma vista só define o que aparece nela. Costas, espessura e laterais continuam em aberto. Você precisa perguntar."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "leitura_briefing",
-            "pergunta": "Simulação: o pedido traz 1 foto frontal de um robô, a medida \"20 cm\" e uma descrição dizendo que ele tem \"antena no topo\", mas a foto mostra a cabeça sem antena. Classifique o conjunto como suficiente, incompleto ou contraditório e liste o que falta.",
-            "pontosEsperados": [
-              "Classificação coerente (contraditório, por conta da antena, e também incompleto por ter só uma vista)",
-              "Lista do que falta: vistas laterais e de costas",
-              "Resolver a divergência da antena com o responsável",
-              "Não completar com suposições"
-            ]
+            "pergunta": "O pedido traz 1 foto de frente de um robô e a medida \"20 cm\". A descrição diz \"antena no topo\", mas a foto mostra a cabeça sem antena. Como você classifica essas referências e o que faz?",
+            "opcoes": [
+              "Contraditórias e incompletas. Peço as vistas de lado e de costas e resolvo a antena com o responsável.",
+              "Suficientes. Tem foto e medida, então já posso modelar.",
+              "Só incompletas. Faço a antena, porque está escrito na descrição.",
+              "Só contraditórias. Sigo a foto e modelo o robô sem antena."
+            ],
+            "correta": 0,
+            "feedbackCerto": "Certo. A antena é uma contradição e só há uma vista. Você pede o que falta e não completa por suposição.",
+            "feedbackErrado": "As referências são contraditórias, por causa da antena, e incompletas, porque só há uma vista. Peça as vistas de lado e de costas e resolva a antena com o responsável. Não complete por suposição."
           }
         ]
       },
@@ -2457,35 +2569,35 @@ var TREINAMENTO_TRILHAS = {
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Escala muda tudo",
-            "texto": "Escala é o tamanho final do objeto em relação ao modelo original. Ao reduzir uma figura, tudo diminui junto: braços, dedos, espadas, textura. Uma peça que funciona bem a 30 cm pode não funcionar igual a 5 cm. Os detalhes finos podem sumir na impressão, as partes finas ficam frágeis e os encaixes ficam apertados demais. Por isso, o tamanho final precisa ser decidido antes de refinar o detalhe."
+            "titulo": "A escala muda tudo",
+            "texto": "Escala é o tamanho final do objeto em relação ao modelo original. Quando você reduz uma figura, tudo diminui junto: braços, dedos, espadas, textura. Uma peça que funciona bem com 30 cm pode não funcionar com 5 cm. Os detalhes finos podem sumir na impressão. As partes finas ficam frágeis. Os encaixes ficam apertados demais. Por isso, decida o tamanho final antes de caprichar nos detalhes."
           },
           {
             "tipo": "conteudo",
             "titulo": "Espessura mínima e detalhes",
-            "texto": "Toda impressora 3D tem um limite do que consegue reproduzir. Paredes e hastes muito finas podem falhar, quebrar no manuseio ou nem formar. O que é suficiente depende do processo, por exemplo resina ou FDM, e do material. Como prática geral, evite partes sutis demais para o tamanho final e engrosse o que for frágil. Os valores mínimos que a Valente adota por processo devem ser consultados com a produção; não use números de cabeça."
+            "texto": "Toda impressora 3D tem um limite do que consegue imprimir. Paredes e hastes muito finas podem falhar, quebrar na mão ou nem se formar. O mínimo depende do processo (resina ou FDM, que é a impressão com filamento) e do material. Como regra geral, evite partes finas demais para o tamanho final e engrosse o que for frágil. Consulte a produção para saber os valores mínimos que a Valente usa em cada processo. Não use números de cabeça."
           },
           {
             "tipo": "conteudo",
             "titulo": "Tolerância em encaixes",
-            "texto": "Quando uma peça precisa encaixar em outra, como um braço no ombro, o furo precisa ser um pouco maior que o pino. Essa folga se chama tolerância. Sem ela, a peça impressa pode não montar, porque a impressão nunca é perfeita ao décimo de milímetro. Com folga demais, a peça fica solta. O valor certo depende do processo e deve seguir o padrão da Valente. Quando não houver padrão documentado, consulte a produção, e se possível peça um teste de encaixe."
+            "texto": "Quando uma peça encaixa em outra, como um braço no ombro, o furo precisa ser um pouco maior que o pino. Essa folga se chama tolerância. Sem folga, a peça impressa pode não montar, porque a impressão nunca sai perfeita. Com folga demais, a peça fica solta. O valor certo depende do processo e segue o padrão da Valente. Se não houver padrão escrito, consulte a produção. Se possível, peça um teste de encaixe."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "escala_medidas",
             "pergunta": "Você modelou uma figura com uma espada bem fina, pensando em 30 cm. O cliente pediu a figura com 5 cm de altura. O que você deve fazer?",
             "opcoes": [
-              "Apenas reduzir tudo proporcionalmente, pois o desenho está igual.",
-              "Manter a espada como está e avisar que, se quebrar, é problema da impressão.",
-              "Remover a espada para não ter risco, sem avisar ninguém.",
-              "Rever a espada na escala final: ela pode ficar frágil ou desaparecer, então avalio engrossá-la e confirmo os mínimos com a produção."
+              "Só reduzir tudo na mesma proporção, porque o desenho é o mesmo.",
+              "Deixar a espada como está e avisar que, se quebrar, o problema é da impressão.",
+              "Tirar a espada para não ter risco, sem avisar ninguém.",
+              "Rever a espada no tamanho final. Ela pode ficar frágil ou sumir. Avalio engrossar a espada e confirmo os mínimos com a produção."
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. A escala final precisa ser considerada antes de fechar o detalhe, e os mínimos devem ser confirmados com a produção.",
+            "feedbackCerto": "Certo. Pense na escala final antes de fechar o detalhe. E confirme os mínimos com a produção.",
             "feedbackPorOpcao": [
-              "Reduzir em escala não reduz o problema: a espada fica ainda mais fina e frágil.",
-              "Você entregou um risco previsível sem tentar evitá-lo.",
-              "Retirar um elemento do pedido é mudar o escopo sem consultar.",
+              "Reduzir a escala não reduz o problema. A espada fica ainda mais fina e frágil.",
+              "Você entregou um risco que dava para prever, sem tentar evitar.",
+              "Tirar uma parte do pedido é mudar o combinado sem consultar.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -2499,66 +2611,66 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega da pintura: \"Você sabe qual é a espessura mínima que a gente pode usar nessa miniatura? Preciso saber para o meu modelo.\"",
             "opcoes": [
               {
-                "label": "É sempre 1 mm, pode usar em qualquer peça.",
+                "label": "É sempre 1 mm. Pode usar em qualquer peça.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Inventar um número específico é arriscado, porque o mínimo depende do processo e do material."
+                "feedback": "Inventar um número é arriscado. O mínimo depende do processo e do material."
               },
               {
                 "label": "Não tenho esse número documentado. Vou consultar a produção ou o responsável e usar o padrão da Valente.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Dizer que não sabe e consultar a fonte é o comportamento esperado; o número oficial vem da Valente."
+                "feedback": "Certo. Dizer que não sabe e consultar a fonte é o esperado. O número oficial vem da Valente."
               },
               {
-                "label": "Qualquer espessura serve, a impressora resolve.",
+                "label": "Qualquer espessura serve. A impressora resolve.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Impressoras têm limites. Partes finas demais falham ou quebram."
               },
               {
-                "label": "Deixa fino mesmo e vemos na impressão se quebra.",
+                "label": "Deixa fino mesmo. A gente vê na impressão se quebra.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Isso desperdiça tempo e material de produção."
+                "feedback": "Isso desperdiça tempo e material da produção."
               }
             ]
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "escala_medidas",
-            "local": "Conversa com o responsável da produção / bancada de produção",
-            "instrucao": "Pergunte a um responsável da produção quais são os padrões de espessura mínima e tolerância de encaixe adotados para cada processo. Se houver documento oficial, anote onde fica. Se não houver, anote que não há padrão documentado e combine como proceder em casos assim. Marque como feito só depois de ter feito a consulta de verdade."
+            "local": "Conversa com o responsável da produção, na bancada de produção",
+            "instrucao": "Pergunte a um responsável da produção quais são os padrões de espessura mínima e de tolerância de encaixe em cada processo. Se existir documento oficial, anote onde ele fica. Se não existir, anote isso e combine como agir nesses casos. Marque como feito só depois de fazer a consulta de verdade."
           }
         ]
       },
       {
         "dia": 5,
         "titulo": "Modelar para fabricar",
-        "subtitulo": "Um modelo bonito na tela precisa também funcionar como objeto",
+        "subtitulo": "Um modelo bonito na tela também precisa funcionar como objeto",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Geometria íntegra",
-            "texto": "Uma renderização bonita não garante uma boa impressão. Para o fatiador (o programa que prepara o arquivo para a impressora), o modelo precisa ser um sólido fechado, também chamado de malha fechada ou watertight, como um balão sem furos. Buracos na superfície, faces invertidas, partes que se atravessam ou superfícies sem espessura confundem o programa e geram falhas. Antes de entregar, verifique a integridade da malha com as ferramentas do seu software."
+            "titulo": "Malha fechada",
+            "texto": "Uma renderização bonita (a imagem pronta do modelo na tela) não quer dizer boa impressão. O fatiador é o programa que prepara o arquivo para a impressora. Para ele, o modelo precisa ser um sólido fechado, como um balão sem furos. Isso se chama malha fechada ou watertight. Buracos na superfície, faces invertidas (viradas ao contrário), partes que se atravessam ou superfícies sem espessura confundem o programa e causam falhas. Antes de entregar, confira a malha com as ferramentas do seu programa."
           },
           {
             "tipo": "conteudo",
             "titulo": "Divisão de peças e pintura",
-            "texto": "Dividir uma figura em partes pode facilitar a impressão e a pintura. Braços, cabeça e acessórios separados deixam alcançar áreas difíceis com o pincel e podem exigir menos suporte. Por outro lado, cada divisão cria a necessidade de encaixes bem pensados, com tolerância. Decida a divisão pensando em quem imprime, quem pinta e quem monta, e registre como as peças se juntam."
+            "texto": "Dividir uma figura em partes pode facilitar a impressão e a pintura. Com braços, cabeça e acessórios separados, o pincel alcança as áreas difíceis. E a peça pode precisar de menos suporte. Mas cada divisão pede um encaixe bem pensado, com tolerância. Decida a divisão pensando em quem imprime, em quem pinta e em quem monta. Registre como as peças se juntam."
           },
           {
             "tipo": "conteudo",
             "titulo": "Suportes e orientação",
-            "texto": "Suportes são pequenas estruturas temporárias que sustentam partes que ficariam no ar durante a impressão, como braços levantados ou ponta de espada. Orientação é o ângulo em que a peça será posicionada na plataforma. A orientação e o suporte afetam o acabamento e a quantidade de pós-processamento. Como modelador, você deve reduzir problemas previsíveis: evitar balanços exagerados, deixar áreas planas de apoio e pensar em onde o suporte vai marcar. A configuração final de impressão segue a regra da Valente."
+            "texto": "Suportes são pequenas estruturas temporárias. Eles seguram partes que ficariam no ar durante a impressão, como braços levantados ou a ponta de uma espada. Orientação é o ângulo em que a peça fica na plataforma da impressora. A orientação e o suporte mudam o acabamento e a quantidade de trabalho depois da impressão. Como modelador, reduza os problemas que dá para prever: evite partes longas demais sem apoio, deixe áreas planas de apoio e pense onde o suporte vai marcar. A configuração final de impressão segue a regra da Valente."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "modelagem_fabricacao",
-            "pergunta": "Qual destes itens são riscos de fabricação reais para uma figura de guerreiro?",
+            "pergunta": "Quais destes itens são riscos reais de fabricação em uma figura de guerreiro?",
             "itens": [
-              "Lança extremamente fina, que pode quebrar no manuseio",
-              "Braço levantado sem apoio, que pode exigir suporte",
+              "Lança muito fina, que pode quebrar na mão",
+              "Braço levantado sem apoio, que pode precisar de suporte",
               "Fendas ou buracos na malha do modelo",
               "Cor do uniforme que você acha mais bonita",
               "Peças divididas sem encaixe ou com encaixe sem folga"
@@ -2569,67 +2681,70 @@ var TREINAMENTO_TRILHAS = {
               2,
               4
             ],
-            "feedbackCerto": "Isso mesmo. Fragilidade, balanços, malha aberta e encaixes ruins são riscos previsíveis; preferência estética não é risco de fabricação.",
-            "feedbackErrado": "Você deixou passar algum risco ou marcou algo que não é risco. Fragilidade, balanços sem apoio, malha aberta e encaixes ruins são riscos de fabricação."
+            "feedbackCerto": "Isso mesmo. Peça frágil, parte sem apoio, malha aberta e encaixe ruim são riscos que dá para prever. Gosto pessoal não é risco de fabricação.",
+            "feedbackErrado": "Você deixou passar um risco ou marcou algo que não é risco. Peça frágil, parte sem apoio, malha aberta e encaixe ruim são riscos de fabricação."
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "modelagem_fabricacao",
-            "afirmacao": "Se o modelo parece perfeito na renderização, pode ser entregue para impressão sem verificar se a malha é fechada.",
+            "afirmacao": "Se o modelo parece perfeito na renderização, você pode entregar para impressão sem conferir se a malha é fechada.",
             "correta": false,
-            "feedbackCerto": "Correto. A aparência na tela não garante integridade; a malha precisa ser verificada.",
-            "feedbackErrado": "Falso. Um modelo bonito pode ter buracos ou faces invertidas que só aparecem no fatiador ou na impressão."
+            "feedbackCerto": "Certo. A aparência na tela não prova que a malha está boa. Ela precisa ser conferida.",
+            "feedbackErrado": "É falso. Um modelo bonito pode ter buracos ou faces invertidas. Eles só aparecem no fatiador ou na impressão."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "modelagem_fabricacao",
-            "pergunta": "Simulação: você recebeu um modelo de um mago com cajado muito fino, braços estendidos para o lado e uma capa solta no ar. Identifique três riscos de fabricação antes de liberar e diga o que sugeriria.",
-            "pontosEsperados": [
-              "Cajado fino demais para o tamanho: engrossar e confirmar mínimos com a produção",
-              "Braços estendidos e capa em balanço: pensar em suporte ou apoio e orientação",
-              "Considerar dividir peças para facilitar pintura, com encaixes adequados",
-              "Consultar a regra da Valente e a produção em caso de dúvida"
-            ]
+            "pergunta": "Você recebeu o modelo de um mago. O cajado é muito fino, os braços estão abertos para os lados e a capa está solta no ar. O que você faz antes de liberar?",
+            "opcoes": [
+              "Libero como está. Se alguma parte quebrar, a impressão resolve.",
+              "Tiro o cajado e a capa do modelo, para não ter risco.",
+              "Engrosso o cajado com a medida que eu acho boa e libero.",
+              "Engrosso o cajado, penso em apoio ou suporte para os braços e a capa, avalio dividir as peças e confirmo os mínimos com a produção."
+            ],
+            "correta": 3,
+            "feedbackCerto": "Certo. Você viu a parte frágil e as partes sem apoio, pensou na divisão das peças e consultou a produção.",
+            "feedbackErrado": "O cajado fino pode quebrar. Os braços e a capa ficam sem apoio. Engrosse o cajado, pense em apoio ou suporte, avalie dividir as peças com bons encaixes e confirme os mínimos com a produção."
           }
         ]
       },
       {
         "dia": 6,
         "titulo": "Preparação do arquivo",
-        "subtitulo": "Exportar é entregar o modelo aprovado, não apenas salvar",
+        "subtitulo": "Exportar é entregar o modelo aprovado, não é só salvar",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O arquivo STL",
-            "texto": "O formato mais usado para impressão 3D é o STL. Ele guarda só a forma do objeto, feita de pequenos triângulos, e não guarda cores nem unidades. Por isso, o tamanho de um STL só faz sentido se a escala e a unidade de exportação (milímetros, por exemplo) estiverem corretas. Um modelo pode estar perfeito na tela e sair 10 vezes menor ou maior no arquivo exportado. Confira sempre as dimensões depois de exportar."
+            "texto": "O formato de arquivo mais usado na impressão 3D é o STL. Ele guarda só a forma do objeto, feita de pequenos triângulos. Ele não guarda cores nem unidades de medida. Por isso, o tamanho só sai certo se a escala e a unidade de exportação (milímetros, por exemplo) estiverem certas. Um modelo pode estar perfeito na tela e sair 10 vezes menor ou maior no arquivo exportado. Confira sempre as dimensões depois de exportar."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Nome, versão e componentes",
-            "texto": "Arquivos precisam ser identificáveis. O nome deve dizer o que é a peça e qual a versão, de modo que ninguém precise adivinhar. Imagine encontrar soldado.stl, soldado_final.stl e soldado_final2.stl: qual usar? A produção não deveria ter que decidir. Se o conjunto tem várias peças, cada componente deve estar identificado e nenhum deve ficar esquecido. Aplique o padrão oficial de nomenclatura da Valente quando houver; se não souber qual é, consulte o responsável."
+            "titulo": "Nome, versão e peças",
+            "texto": "Todo arquivo precisa ser fácil de identificar. O nome deve dizer qual é a peça e qual é a versão. Assim ninguém precisa adivinhar. Imagine achar soldado.stl, soldado_final.stl e soldado_final2.stl. Qual usar? A produção não deveria ter que decidir. Se o conjunto tem várias peças, identifique cada uma e não esqueça nenhuma. Use o padrão oficial de nomes da Valente, quando houver. Se não souber qual é, consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Exportar é uma etapa de qualidade",
-            "texto": "Exportar não é só clicar em salvar. É garantir que o arquivo entregue corresponde ao modelo aprovado e ao processo esperado. Antes de exportar, confirme qual versão do modelo está aberta. Depois de exportar, reabra o arquivo ou confira no visualizador se as peças estão todas lá, se a escala está certa e se o nome está claro. Guarde o arquivo na pasta de saída do trabalho, e não em uma pasta qualquer do computador."
+            "texto": "Exportar não é só clicar em salvar. O arquivo entregue precisa ser igual ao modelo aprovado e servir para o processo esperado. Antes de exportar, confirme qual versão do modelo está aberta. Depois de exportar, abra o arquivo de novo ou confira no visualizador. Veja se todas as peças estão lá, se a escala está certa e se o nome está claro. Guarde o arquivo na pasta de saída do trabalho, não em uma pasta qualquer do computador."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "organizacao_versoes",
-            "pergunta": "Na pasta de saída há soldado.stl, soldado_final.stl e soldado_final2.stl, sem nenhuma informação no pedido sobre qual é o vigente. O que você faz?",
+            "pergunta": "Na pasta de saída estão soldado.stl, soldado_final.stl e soldado_final2.stl. O pedido não diz qual é o que vale. O que você faz?",
             "opcoes": [
-              "Não escolho pela aparência do nome: confiro no pedido ou na OT e com o responsável qual é o aprovado, e organizo a pasta conforme o padrão.",
-              "Uso o soldado_final2.stl, porque o número maior deve ser o mais recente.",
+              "Não escolho pelo nome. Confiro no pedido ou na tarefa e com o responsável qual é o aprovado. Depois organizo a pasta conforme o padrão.",
+              "Uso o soldado_final2.stl, porque o número maior deve ser o mais novo.",
               "Uso o primeiro, soldado.stl, porque é o original.",
-              "Exporto um novo arquivo chamado soldado_final3.stl para resolver."
+              "Exporto um arquivo novo chamado soldado_final3.stl para resolver."
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Em caso de dúvida sobre a versão, a fonte oficial e o responsável decidem, não o nome do arquivo.",
+            "feedbackCerto": "Certo. Na dúvida sobre a versão, quem decide é a fonte oficial e o responsável, não o nome do arquivo.",
             "feedbackPorOpcao": [
               null,
-              "O nome não garante a versão. Você pode estar usando o arquivo errado.",
+              "O nome não prova qual é a versão. Você pode estar usando o arquivo errado.",
               "Pode ser a versão mais antiga, não a aprovada.",
-              "Cria mais uma versão solta e aumenta a confusão."
+              "Você cria mais uma versão solta e aumenta a confusão."
             ],
             "erroCriticoOpcoes": [
               1,
@@ -2639,22 +2754,22 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "ordenar",
             "competencia": "organizacao_versoes",
-            "instrucao": "Ordene os passos de uma exportação segura.",
+            "instrucao": "Coloque na ordem certa os passos de uma exportação segura.",
             "itens": [
-              "Confirmar no pedido ou OT qual versão do modelo está aprovada",
-              "Conferir escala, unidade e se todos os componentes estão no conjunto",
-              "Exportar o STL com o nome seguindo o padrão oficial",
-              "Reabrir ou visualizar o arquivo exportado para conferir dimensões e peças",
+              "Confirmar no pedido ou na tarefa qual versão do modelo está aprovada",
+              "Conferir escala, unidade e se todas as peças estão no conjunto",
+              "Exportar o STL com o nome no padrão oficial",
+              "Abrir de novo o arquivo exportado para conferir dimensões e peças",
               "Guardar o arquivo na pasta de saída do trabalho"
             ],
-            "feedbackCerto": "Ordem correta: confirmar a versão, preparar, exportar, conferir o resultado e guardar no lugar certo.",
-            "feedbackErrado": "Primeiro confirme a versão e prepare o modelo; depois exporte, confira o arquivo gerado e guarde na pasta de saída."
+            "feedbackCerto": "Ordem certa: confirmar a versão, preparar, exportar, conferir o resultado e guardar no lugar certo.",
+            "feedbackErrado": "Primeiro confirme a versão e prepare o modelo. Depois exporte, confira o arquivo gerado e guarde na pasta de saída."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "organizacao_versoes",
-            "local": "Pasta de saída do trabalho simulado / software de modelagem",
-            "instrucao": "Com um modelo de treino (não um trabalho real em andamento), exporte um STL, reabra-o e confira dimensões, componentes e nome. Se o padrão oficial de nomenclatura da Valente existir, aplique-o; se não souber qual é, consulte o responsável. Marque como feito somente depois de conferir o arquivo exportado."
+            "local": "Programa de modelagem e pasta de saída do trabalho de treino",
+            "instrucao": "Use um modelo de treino, não um trabalho real em andamento. Exporte um STL e abra o arquivo de novo. Confira dimensões, peças e nome. Se existir padrão oficial de nomes da Valente, use. Se não souber qual é, consulte o responsável. Marque como feito só depois de conferir o arquivo exportado."
           }
         ]
       },
@@ -2666,74 +2781,74 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Por que conferir antes",
-            "texto": "A conferência acontece antes de liberar porque, depois que a impressão começa, o tempo da máquina e o material já estão sendo gastos. Corrigir um erro no arquivo leva minutos; corrigir depois de uma impressão perdida custa horas, resina ou filamento e prazo. Um modelo pode estar visualmente correto e exportado em escala errada. Uma peça pode ter sido esquecida no conjunto. A conferência existe para pegar esses casos."
+            "texto": "Confira antes de liberar. Depois que a impressão começa, a máquina já está gastando tempo e material. Corrigir um erro no arquivo leva minutos. Corrigir depois de uma impressão perdida custa horas, resina ou filamento e prazo. Um modelo pode parecer certo na tela e ter sido exportado na escala errada. Uma peça do conjunto pode ter sido esquecida. A conferência serve para pegar esses casos."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que conferir",
-            "texto": "Confira seis pontos. Tamanho: as dimensões finais batem com o briefing? Integridade: a malha é fechada, sem buracos? Componentes: todas as peças do conjunto estão presentes? Versão: é a aprovada? Encaixes: há folga adequada? Informações de produção: quantidade, observações e orientação sugerida estão registradas? Use o checklist de liberação da Valente quando existir."
+            "texto": "Confira seis pontos. Tamanho: as dimensões finais batem com o briefing (a descrição do pedido)? Malha: está fechada, sem buracos? Peças: todas as peças do conjunto estão lá? Versão: é a aprovada? Encaixes: têm a folga certa? Informações de produção: a quantidade, as observações e a orientação sugerida estão registradas? Use o checklist de liberação da Valente, quando existir."
           },
           {
             "tipo": "checklist",
             "titulo": "Checklist de liberação (modelo geral)",
             "itens": [
               "Dimensões finais conferidas com o briefing",
-              "Malha fechada, sem buracos ou faces invertidas",
-              "Todos os componentes presentes no conjunto",
+              "Malha fechada, sem buracos e sem faces invertidas",
+              "Todas as peças do conjunto presentes",
               "Versão confirmada como a aprovada",
-              "Encaixes com folga e áreas frágeis revisadas",
+              "Encaixes com folga e partes frágeis revisadas",
               "Quantidade e observações de produção registradas"
             ]
           },
           {
             "tipo": "conteudo",
-            "titulo": "Quando algo não pode ser confirmado",
-            "texto": "Se um item crítico não puder ser confirmado, não marque como liberado. Marcar como liberado sem ter conferido é um erro crítico, porque empurra o problema para o próximo setor. Diga o que falta, registre no pedido ou na OT e peça ajuda ao responsável. Lembre que competências práticas exigem validação do responsável antes do status Liberado."
+            "titulo": "Quando você não consegue confirmar um item",
+            "texto": "Se você não conseguir confirmar um item importante, não marque como liberado. Marcar como liberado sem conferir é erro crítico, porque empurra o problema para o próximo setor. Diga o que falta, registre no pedido ou na tarefa e peça ajuda ao responsável. Lembre: nas competências práticas, o responsável precisa validar antes do status Liberado."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "conferencia_liberacao",
-            "cliente": "Colega da impressão, com pressa: \"Esse arquivo já está pronto, né? Só falta você marcar como liberado, não deu tempo de abrir o modelo, mas deve estar bom.\"",
+            "cliente": "Colega da impressão, com pressa: \"Esse arquivo já está pronto, né? Só falta você marcar como liberado. Não deu tempo de abrir o modelo, mas deve estar bom.\"",
             "opcoes": [
               {
                 "label": "Libero, porque é quase certo que está bom e o prazo é curto.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Liberar sem conferir é um erro crítico: o problema vai aparecer na impressão."
+                "feedback": "Liberar sem conferir é erro crítico. O problema vai aparecer na impressão."
               },
               {
                 "label": "Libero e peço para você conferir a escala na hora de imprimir.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Você está transferindo para o próximo setor uma conferência que é sua."
+                "feedback": "Você está passando para o próximo setor uma conferência que é sua."
               },
               {
                 "label": "Marco como liberado e confiro depois, se der tempo.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "A conferência precisa ocorrer antes, não depois."
+                "feedback": "A conferência vem antes, não depois."
               },
               {
-                "label": "Ainda não posso liberar. Vou conferir tamanho, malha, componentes e versão agora. Se algum item não for confirmado, registro e aviso o responsável.",
+                "label": "Ainda não posso liberar. Vou conferir tamanho, malha, peças e versão agora. Se eu não conseguir confirmar algum item, registro e aviso o responsável.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Sem conferência, não há liberação."
+                "feedback": "Certo. Sem conferência, não tem liberação."
               }
             ]
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "conferencia_liberacao",
-            "afirmacao": "Se o modelo estiver visualmente correto no software, a conferência de escala pode ser dispensada.",
+            "afirmacao": "Se o modelo parece certo no programa de modelagem, você não precisa conferir a escala.",
             "correta": false,
-            "feedbackCerto": "Correto. A escala pode estar errada mesmo com o visual correto, por isso as dimensões precisam ser conferidas.",
-            "feedbackErrado": "Falso. Um modelo pode parecer certo na tela e ter sido exportado em escala errada."
+            "feedbackCerto": "Certo. A escala pode estar errada mesmo com o visual certo. Por isso, confira as dimensões.",
+            "feedbackErrado": "É falso. Um modelo pode parecer certo na tela e ter sido exportado na escala errada."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "conferencia_liberacao",
-            "local": "Software de modelagem / modelo de treino",
-            "instrucao": "Usando um modelo de treino, percorra o checklist de liberação item por item. Para cada item, verifique de verdade: meça as dimensões, procure buracos na malha, conte os componentes. Se algum item não puder ser confirmado, anote e não considere o modelo liberado. Marque como feito só depois de completar a conferência."
+            "local": "Programa de modelagem, com um modelo de treino",
+            "instrucao": "Com um modelo de treino, siga o checklist de liberação item por item. Confira de verdade: meça as dimensões, procure buracos na malha e conte as peças. Se não conseguir confirmar algum item, anote e não considere o modelo liberado. Marque como feito só depois de terminar a conferência."
           }
         ]
       },
@@ -2745,45 +2860,45 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Três situações diferentes",
-            "texto": "Erro é algo que não atende ao que já estava definido. Por exemplo, o briefing pedia escudo e o arquivo entregue ficou sem escudo. Revisão é um ajuste dentro do processo normal, como refinar um detalhe que ainda estava sendo trabalhado. Alteração solicitada é uma mudança de escopo ou de decisão anterior, como o cliente aprovar o capacete A e depois pedir o capacete B."
+            "texto": "Erro é o que não atende ao que já estava definido. Exemplo: o briefing (a descrição do pedido) pedia escudo e o arquivo entregue ficou sem escudo. Revisão é um ajuste normal do processo, como melhorar um detalhe que ainda estava em trabalho. Alteração solicitada é uma mudança no que foi combinado ou decidido antes. Exemplo: o cliente aprova o capacete A e depois pede o capacete B."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Por que diferenciar",
-            "texto": "Separar as três situações ajuda a registrar o histórico e evitar perda de versão. Um erro costuma ser responsabilidade de quem produziu e deve ser corrigido de acordo com o processo da Valente. Uma alteração solicitada pelo cliente muda o escopo e precisa ser registrada e encaminhada ao responsável, já que pode envolver orçamento, prazo ou aprovação. Não decida sozinho como tratar o custo: siga o procedimento da Valente ou consulte o responsável."
+            "titulo": "Por que separar",
+            "texto": "Separar as três situações ajuda a registrar o histórico e a não perder versão. O erro costuma ser responsabilidade de quem produziu. Ele deve ser corrigido conforme o processo da Valente. A alteração solicitada pelo cliente muda o que foi combinado. Ela precisa ser registrada e levada ao responsável, porque pode mexer em orçamento, prazo ou aprovação. Não decida sozinho como tratar o custo. Siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Registrar nova versão",
-            "texto": "Sempre que o modelo mudar, crie uma nova versão em vez de sobrescrever a antiga, e registre o motivo da mudança no pedido ou na OT. Isso preserva a rastreabilidade: dá para voltar ao que foi aprovado, saber quem mudou o quê e evitar que a produção use um arquivo desatualizado. Siga o padrão oficial de nomenclatura de versões da Valente."
+            "texto": "Sempre que o modelo mudar, crie uma nova versão. Não salve por cima da antiga. Registre o motivo da mudança no pedido ou na tarefa. Assim o histórico fica guardado: dá para voltar ao que foi aprovado, saber quem mudou o quê e evitar que a produção use um arquivo antigo. Siga o padrão oficial de nomes de versão da Valente."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quando o cliente pede ajuste na arte",
-            "texto": "Antes de imprimir, o comercial envia ao cliente a arte da peça para aprovação, por uma tarefa chamada Aprovar arte. O cliente pode aprovar, pedir ajustes ou ainda não responder. Se ele pedir ajustes, o comercial descreve o que mudar e o sistema cria uma tarefa de Modelagem de ajuste, que chega para você, e conta mais uma rodada de aprovação. A impressão só é liberada quando a arte for aprovada. Isso é uma alteração solicitada: leia a descrição do ajuste com atenção antes de mexer no modelo."
+            "texto": "Antes da impressão, o comercial envia a arte da peça para o cliente aprovar. Isso é feito por uma tarefa chamada Aprovar arte. O cliente pode aprovar, pedir ajustes ou ainda não responder. Se ele pedir ajustes, o comercial descreve o que mudar. O sistema cria uma tarefa de Modelagem de ajuste, que chega para você. Isso conta mais uma rodada de aprovação. A impressão só é liberada quando a arte for aprovada. Isso é uma alteração solicitada. Leia a descrição do ajuste com atenção antes de mexer no modelo."
           },
           {
             "tipo": "conteudo",
             "titulo": "O ciclo do ajuste, passo a passo",
-            "texto": "Enquanto você faz o ajuste, a tarefa Aprovar arte fica bloqueada. Quando você conclui a Modelagem do ajuste, ela volta sozinha para o comercial, que envia a nova arte ao cliente. Por isso o ajuste precisa ser feito em uma nova versão do modelo, sem sobrescrever a anterior, e conferido antes de você concluir. Se a descrição do ajuste estiver confusa ou contraditória com as referências, registre a dúvida e consulte o responsável, em vez de interpretar em silêncio."
+            "texto": "Enquanto você faz o ajuste, a tarefa Aprovar arte fica bloqueada. Quando você conclui a Modelagem de ajuste, ela volta sozinha para o comercial. O comercial envia a nova arte ao cliente. Por isso, faça o ajuste em uma nova versão do modelo, sem salvar por cima da anterior. E confira antes de concluir. Se a descrição do ajuste estiver confusa ou não combinar com as referências, registre a dúvida e consulte o responsável. Não escolha um sentido em silêncio."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "versionamento",
-            "pergunta": "Chegou para você uma tarefa de Modelagem de ajuste: o cliente, ao ver a arte, pediu \"o escudo maior\", sem dizer quanto. O que você faz?",
+            "pergunta": "Chegou para você uma tarefa de Modelagem de ajuste. O cliente viu a arte e pediu \"o escudo maior\", sem dizer quanto. O que você faz?",
             "opcoes": [
-              "Concluo a tarefa logo para a aprovação voltar ao comercial e o cliente dizer se gostou.",
-              "Aumento o escudo em uma proporção que eu ache boa e sobrescrevo o arquivo da arte anterior.",
-              "Registro que falta a medida, consulto o responsável ou o comercial sobre quanto aumentar, faço o ajuste em nova versão e só então concluo a tarefa.",
+              "Concluo a tarefa logo, para a aprovação voltar ao comercial e o cliente dizer se gostou.",
+              "Aumento o escudo no tamanho que eu achar bom e salvo por cima do arquivo da arte anterior.",
+              "Registro que falta a medida. Pergunto ao responsável ou ao comercial quanto aumentar. Faço o ajuste em nova versão e só então concluo a tarefa.",
               "Ignoro o pedido, porque a arte já tinha sido enviada ao cliente."
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. A medida não foi dada, então se pergunta. O ajuste vira nova versão e a tarefa só conclui com o trabalho feito, pois é a conclusão que devolve a aprovação ao comercial.",
+            "feedbackCerto": "Certo. A medida não foi dada, então você pergunta. O ajuste vira nova versão. Só conclua com o trabalho feito, porque concluir devolve a aprovação ao comercial.",
             "feedbackPorOpcao": [
-              "Concluir sem ter feito o ajuste devolve ao cliente a mesma arte e gasta uma rodada de aprovação à toa.",
-              "Inventar a proporção e sobrescrever perde a versão anterior e a rastreabilidade.",
+              "Concluir sem fazer o ajuste devolve ao cliente a mesma arte e gasta uma rodada de aprovação à toa.",
+              "Inventar o tamanho e salvar por cima faz você perder a versão anterior e o histórico.",
               null,
-              "O ajuste foi pedido pelo cliente e a aprovação fica parada até a modelagem concluir."
+              "O ajuste foi pedido pelo cliente. A aprovação fica parada até a modelagem concluir."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -2798,58 +2913,61 @@ var TREINAMENTO_TRILHAS = {
               "O cliente aprovou o capacete A e agora pede o capacete B",
               "O briefing pedia escudo e o arquivo entregue não tem escudo",
               "O cliente decide aumentar a altura da figura depois de aprovada",
-              "O encaixe do braço ficou fora do que estava definido no briefing",
-              "O cliente pede para adicionar uma capa que não estava no pedido"
+              "O encaixe do braço ficou diferente do que estava definido no briefing",
+              "O cliente pede para colocar uma capa que não estava no pedido"
             ],
             "corretos": [
               0,
               2,
               4
             ],
-            "feedbackCerto": "Isso mesmo. Mudanças na decisão ou no escopo depois da aprovação são alterações solicitadas.",
-            "feedbackErrado": "As alterações solicitadas são as que mudam a decisão ou o escopo depois da aprovação. O escudo faltando e o encaixe fora do definido são erros."
+            "feedbackCerto": "Isso mesmo. Mudar a decisão ou o combinado depois da aprovação é alteração solicitada.",
+            "feedbackErrado": "Alteração solicitada é a que muda a decisão ou o combinado depois da aprovação. O escudo faltando e o encaixe diferente do definido são erros."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "versionamento",
-            "cliente": "Cliente (via atendimento): \"Eu aprovei o capacete A, mas agora gostei mais do B. Troca aí rapidinho no mesmo arquivo, né?\"",
+            "cliente": "Cliente (pelo atendimento): \"Eu aprovei o capacete A, mas agora gostei mais do B. Troca aí rapidinho no mesmo arquivo, né?\"",
             "opcoes": [
               {
-                "label": "Sobrescrevo o arquivo do capacete A com o B, que fica mais rápido.",
+                "label": "Salvo o capacete B por cima do arquivo do capacete A, que é mais rápido.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Você perde a versão aprovada e a rastreabilidade."
+                "feedback": "Você perde a versão aprovada e o histórico."
               },
               {
-                "label": "Digo que não é possível mudar depois de aprovado.",
+                "label": "Digo que não dá para mudar depois de aprovado.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Você inventou uma regra. A decisão sobre aceitar ou não e sobre custo cabe ao responsável."
+                "feedback": "Você inventou uma regra. Quem decide se aceita e quanto custa é o responsável."
               },
               {
-                "label": "Isso é uma alteração solicitada, então registro o pedido, mantenho o arquivo aprovado como está e crio uma nova versão. Encaminho ao responsável o que envolve escopo, valor ou prazo.",
+                "label": "Isso é uma alteração solicitada. Registro o pedido, deixo o arquivo aprovado como está e crio uma nova versão. Passo ao responsável o que envolve o combinado, o valor ou o prazo.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. A alteração muda a decisão anterior e deve ser registrada, com versão nova e encaminhamento ao responsável."
+                "feedback": "Certo. A alteração muda a decisão anterior. Ela deve ser registrada, com versão nova, e levada ao responsável."
               },
               {
                 "label": "Faço a troca e aviso depois que terminar.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "O registro e o encaminhamento precisam acontecer antes."
+                "feedback": "O registro e o aviso ao responsável vêm antes."
               }
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "versionamento",
-            "pergunta": "Simulação: o cliente recebeu a miniatura e diz que \"o escudo não está igual à foto\". Como você descobriria se é erro, revisão ou alteração solicitada, e o que registraria?",
-            "pontosEsperados": [
-              "Comparar o arquivo entregue com o briefing e as referências aprovadas",
-              "Se o arquivo não atendia ao definido, é erro; se o cliente quer algo diferente do aprovado, é alteração solicitada",
-              "Registrar a decisão no pedido ou OT e criar nova versão sem sobrescrever a anterior",
-              "Consultar o responsável quando a dúvida envolver escopo ou custo"
-            ]
+            "pergunta": "O cliente recebeu a miniatura e diz: \"o escudo não está igual à foto\". Como você descobre se é erro ou alteração solicitada?",
+            "opcoes": [
+              "Pergunto ao cliente como ele prefere o escudo e mudo no mesmo arquivo.",
+              "Comparo o arquivo entregue com o briefing e as referências aprovadas. Registro o resultado no pedido ou na tarefa.",
+              "Trato sempre como erro da modelagem e refaço o escudo.",
+              "Trato sempre como alteração solicitada, porque o cliente já tinha aprovado."
+            ],
+            "correta": 1,
+            "feedbackCerto": "Certo. Se o arquivo não atendia ao que estava definido, é erro. Se o cliente quer algo diferente do aprovado, é alteração solicitada. Crie nova versão, sem salvar por cima da anterior.",
+            "feedbackErrado": "Compare o arquivo entregue com o briefing e as referências aprovadas. Arquivo diferente do definido é erro. Pedido diferente do aprovado é alteração solicitada. Registre, crie nova versão e consulte o responsável se envolver o combinado ou o custo."
           }
         ]
       },
@@ -2861,40 +2979,40 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que a produção precisa receber",
-            "texto": "A produção precisa receber o arquivo correto, a versão, a escala, a quantidade e as observações necessárias. O objetivo é que o operador não precise reconstruir o briefing para descobrir o que imprimir. Entregar apenas um STL em uma pasta sem identificação pode gerar erro mesmo que o arquivo esteja tecnicamente perfeito, porque ninguém sabe se é o certo, quantas cópias fazer ou se há peças em outro arquivo."
+            "texto": "A produção precisa receber o arquivo certo, a versão, a escala, a quantidade e as observações necessárias. O operador não deve precisar montar o briefing (a descrição do pedido) de novo para descobrir o que imprimir. Entregar só um STL em uma pasta sem identificação pode causar erro, mesmo com o arquivo perfeito. Ninguém sabe se é o arquivo certo, quantas cópias fazer ou se existem peças em outro arquivo."
           },
           {
             "tipo": "conteudo",
             "titulo": "O pacote de liberação",
-            "texto": "Um pacote bem feito traz: nome da peça e do pedido, versão aprovada, lista de arquivos e componentes, tamanho final, quantidade, observações como sugestão de orientação, pontos frágeis e como as peças se encaixam, e o que ainda ficou em aberto, se houver. Registre isso no pedido ou na OT do Valente OS, no lugar que a Valente define, para que a informação fique junto do trabalho."
+            "texto": "Um pacote bem feito traz: nome da peça e do pedido, versão aprovada, lista de arquivos e peças, tamanho final e quantidade. Traz também as observações, como sugestão de orientação, pontos frágeis e como as peças se encaixam. E diz o que ainda ficou em aberto, se houver. Registre tudo no pedido ou na tarefa do Valente OS, no lugar que a Valente define. Assim a informação fica junto do trabalho."
           },
           {
             "tipo": "conteudo",
-            "titulo": "O teste da pessoa sem contexto",
-            "texto": "Um bom jeito de testar o seu pacote é pedir a outra pessoa que o interprete sem nenhuma explicação verbal. Se ela precisar adivinhar qualquer coisa, falta informação. Também vale lembrar que a avaliação do pacote não é só do arquivo: informação clara faz a impressão acontecer sem retrabalho."
+            "titulo": "O teste da pessoa que não conhece o trabalho",
+            "texto": "Um bom jeito de testar o seu pacote: peça para outra pessoa entender o pacote sem você explicar nada. Se ela precisar adivinhar alguma coisa, falta informação. Lembre também que o pacote não é só o arquivo. Informação clara faz a impressão acontecer sem refazer trabalho."
           },
           {
             "tipo": "conteudo",
             "titulo": "Concluir a tarefa libera quem espera",
-            "texto": "No Valente OS, algumas tarefas ficam bloqueadas até que outra termine. Quando você conclui a sua tarefa de modelagem, as que dependiam dela são liberadas automaticamente. Um exemplo é a aprovação da arte, que volta para o comercial assim que a modelagem do ajuste conclui. Por isso, só toque em Concluir tarefa depois de conferir o arquivo e registrar o pacote. Concluir antes da hora manda um trabalho incompleto para o próximo setor. O Kanban mostra a etapa atual de cada pedido e se atualiza sozinho a cada 60 segundos."
+            "texto": "No Valente OS, algumas tarefas ficam bloqueadas até outra terminar. Quando você conclui a sua tarefa de modelagem, o sistema libera sozinho as tarefas que dependiam dela. Um exemplo é a aprovação da arte, que volta para o comercial assim que a modelagem do ajuste é concluída. Por isso, só toque em Concluir tarefa depois de conferir o arquivo e registrar o pacote. Concluir antes da hora manda trabalho incompleto para o próximo setor. O Kanban mostra a etapa atual de cada pedido e se atualiza sozinho a cada 60 segundos."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "entrega_producao",
-            "pergunta": "Qual pacote de entrega é o mais adequado para o operador de impressão?",
+            "pergunta": "Qual pacote de entrega é o melhor para o operador de impressão?",
             "opcoes": [
-              "Apenas o STL na pasta do trabalho, porque o operador pode olhar o pedido depois.",
-              "STL com nome e versão claros, tamanho final, quantidade, lista de componentes e observações registrados no pedido ou na OT.",
+              "Só o STL na pasta do trabalho, porque o operador pode olhar o pedido depois.",
+              "STL com nome e versão claros, mais tamanho final, quantidade, lista de peças e observações registrados no pedido ou na tarefa.",
               "O STL por mensagem pessoal, com a explicação falada, sem registro.",
-              "O STL mais recente da pasta, com a mensagem \"é este\"."
+              "O STL mais novo da pasta, com a mensagem \"é este\"."
             ],
             "correta": 1,
-            "feedbackCerto": "Correto. O pacote deve ser compreensível sozinho, com tudo registrado.",
+            "feedbackCerto": "Certo. O pacote precisa ser entendido sozinho, com tudo registrado.",
             "feedbackPorOpcao": [
-              "O operador teria que reconstruir o briefing por conta própria.",
+              "O operador teria que montar o briefing de novo por conta própria.",
               null,
               "O que não fica registrado se perde e cria dúvida.",
-              "Sem identificação de versão, escala e quantidade, a informação ainda é insuficiente."
+              "Sem versão, escala e quantidade, a informação ainda não é suficiente."
             ]
           },
           {
@@ -2905,7 +3023,7 @@ var TREINAMENTO_TRILHAS = {
               "Versão aprovada do arquivo",
               "Escala ou tamanho final",
               "Quantidade a imprimir",
-              "Quanto tempo você demorou para modelar",
+              "Quanto tempo você levou para modelar",
               "Observações sobre pontos frágeis e encaixes"
             ],
             "corretos": [
@@ -2914,14 +3032,14 @@ var TREINAMENTO_TRILHAS = {
               2,
               4
             ],
-            "feedbackCerto": "Isso mesmo. Versão, escala, quantidade e observações permitem imprimir sem adivinhar.",
-            "feedbackErrado": "O tempo que você levou para modelar não ajuda a produção. Versão, escala, quantidade e observações, sim."
+            "feedbackCerto": "Isso mesmo. Com versão, escala, quantidade e observações, a produção imprime sem adivinhar.",
+            "feedbackErrado": "O tempo que você levou para modelar não ajuda a produção. Versão, escala, quantidade e observações ajudam."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "entrega_producao",
-            "local": "Valente OS > OT / pedido simulado e uma pessoa colega",
-            "instrucao": "Prepare um pacote de liberação simulado, com os itens que aprendeu, usando um trabalho de treino. Peça a um colega que o interprete sem nenhuma explicação sua. Anote tudo o que ele precisou perguntar ou adivinhar e complete o pacote. Não altere pedidos reais. Marque como feito só depois do teste com o colega."
+            "local": "Valente OS > tarefa ou pedido de treino, com um colega",
+            "instrucao": "Monte um pacote de liberação de treino, com os itens que você aprendeu. Use um trabalho de treino e não altere pedidos reais. Peça a um colega para entender o pacote sem você explicar nada. Anote tudo o que ele precisou perguntar ou adivinhar e complete o pacote. Marque como feito só depois do teste com o colega."
           }
         ]
       },
@@ -2933,12 +3051,12 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "A missão do curso",
-            "texto": "Nesta missão você percorre o fluxo inteiro: identifica o trabalho no Valente OS, lê o briefing e as referências, descobre as lacunas, planeja escala e divisão, prepara e exporta a versão final, faz a conferência e entrega o pacote à produção. A avaliação observa o processo, não apenas a aparência do modelo. Você identificou o trabalho? Evitou inventar referência? Registrou versão? Pensou em fabricação? Entregou informação suficiente?"
+            "texto": "Nesta missão você faz o caminho inteiro. Você acha o trabalho no Valente OS. Lê o briefing (a descrição do pedido) e as referências. Descobre o que falta. Planeja a escala e a divisão das peças. Prepara e exporta a versão final. Faz a conferência e entrega o pacote à produção. A avaliação olha o processo, não só a aparência do modelo. Você achou o trabalho certo? Evitou inventar referência? Registrou a versão? Pensou na fabricação? Entregou informação suficiente?"
           },
           {
             "tipo": "conteudo",
             "titulo": "Lembretes de método",
-            "texto": "Regras gerais deste curso, como malha fechada, tolerância e checklist, são práticas comuns da área. Medidas, nomenclatura de arquivos e padrões por processo são da Valente: quando você não tiver o número ou a regra, consulte a fonte e o responsável. Dizer \"não sei\" e perguntar não é erro; inventar é. O procedimento oficial da Valente sempre prevalece sobre qualquer regra geral deste curso."
+            "texto": "As regras gerais deste curso, como malha fechada, tolerância e checklist, são práticas comuns da área. Já as medidas, os nomes de arquivo e os padrões de cada processo são da Valente. Quando você não tiver o número ou a regra, consulte a fonte e o responsável. Dizer \"não sei\" e perguntar não é erro. Inventar é erro. O procedimento oficial da Valente sempre vale mais que qualquer regra geral deste curso."
           },
           {
             "tipo": "cenario",
@@ -2947,20 +3065,20 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "Briefing simulado no pedido: \"Quero uma miniatura da minha personagem guerreira, igual à foto, para pintar. Tamanho: o que ficar bom.\" Há uma única foto frontal e nenhuma medida. Qual é o seu primeiro passo?",
+                "cliente": "Briefing simulado no pedido: \"Quero uma miniatura da minha personagem guerreira, igual à foto, para pintar. Tamanho: o que ficar bom.\" Só há uma foto de frente e nenhuma medida. Qual é o seu primeiro passo?",
                 "opcoes": [
                   {
-                    "label": "Começo a modelar com base na foto e defino eu mesmo o tamanho.",
+                    "label": "Começo a modelar pela foto e escolho eu mesmo o tamanho.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Você inventou tamanho e partes que não aparecem na foto.",
+                    "feedback": "Você inventou o tamanho e as partes que não aparecem na foto.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Registro as lacunas no pedido (tamanho, costas, acessórios, finalidade) e consulto o responsável antes de modelar.",
+                    "label": "Registro no pedido o que falta (tamanho, costas, acessórios, finalidade) e consulto o responsável antes de modelar.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Lacunas são consultadas na fonte, sem inventar.",
+                    "feedback": "Certo. O que falta se pergunta na fonte, sem inventar.",
                     "proximo": "b"
                   },
                   {
@@ -2971,55 +3089,55 @@ var TREINAMENTO_TRILHAS = {
                     "proximo": "b"
                   },
                   {
-                    "label": "Modelo a frente e deixo as costas lisas para economizar tempo.",
+                    "label": "Modelo a frente e deixo as costas lisas para ganhar tempo.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Decisão de escopo tomada em silêncio.",
+                    "feedback": "Você mudou o combinado em silêncio.",
                     "proximo": "b"
                   }
                 ]
               },
               "b": {
-                "cliente": "O responsável respondeu: altura final definida, peça será pintada, e enviou novas fotos de lado e costas. Agora você precisa planejar a modelagem. O que considera?",
+                "cliente": "O responsável respondeu. A altura final está definida e a peça vai ser pintada. Ele enviou novas fotos de lado e de costas. Agora você precisa planejar a modelagem. O que você leva em conta?",
                 "opcoes": [
                   {
-                    "label": "Confiro a escala final com os detalhes finos, planejo dividir a espada e a cabeça para facilitar a pintura, com encaixes com tolerância pelo padrão da Valente.",
+                    "label": "Confiro se os detalhes finos funcionam na escala final. Planejo separar a espada e a cabeça para facilitar a pintura, com encaixes com tolerância no padrão da Valente.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Escala, divisão e encaixes pensados para fabricação e pintura.",
+                    "feedback": "Certo. Escala, divisão e encaixes pensados para a fabricação e a pintura.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Modelo tudo em uma peça só, sem pensar em suportes ou pintura, e vejo na impressão.",
+                    "label": "Modelo tudo em uma peça só, sem pensar em suportes nem em pintura, e vejo na impressão.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Isso ignora riscos previsíveis de fabricação.",
+                    "feedback": "Isso ignora riscos de fabricação que dá para prever.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Uso a espessura mínima que acho certa, pois sei que 1 mm basta.",
+                    "label": "Uso a espessura mínima que eu acho certa, porque sei que 1 mm basta.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Você inventou um padrão. Os mínimos devem vir da produção.",
+                    "feedback": "Você inventou um padrão. Os mínimos vêm da produção.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Salvo os arquivos em qualquer pasta, depois organizo.",
+                    "label": "Salvo os arquivos em qualquer pasta e organizo depois.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "A organização de versão e pasta faz parte do trabalho desde o início.",
+                    "feedback": "Organizar versão e pasta faz parte do trabalho desde o início.",
                     "proximo": "c"
                   }
                 ]
               },
               "c": {
-                "cliente": "O modelo ficou pronto. Você exportou o STL e precisa liberar para a impressão. Qual é a atitude correta?",
+                "cliente": "O modelo ficou pronto. Você exportou o STL e precisa liberar para a impressão. Qual é a atitude certa?",
                 "opcoes": [
                   {
-                    "label": "Confiro dimensões, malha, componentes, versão e encaixes, registro o pacote no pedido ou OT, e aguardo a validação do responsável antes do status Liberado.",
+                    "label": "Confiro dimensões, malha, peças, versão e encaixes. Registro o pacote no pedido ou na tarefa. Espero a validação do responsável antes do status Liberado.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. A conferência vem antes, e o responsável valida."
+                    "feedback": "Certo. A conferência vem antes, e o responsável valida."
                   },
                   {
                     "label": "Marco como liberado, porque o modelo está bonito na tela.",
@@ -3031,13 +3149,13 @@ var TREINAMENTO_TRILHAS = {
                     "label": "Entrego só o STL e aviso a produção por mensagem.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Falta registro do pacote."
+                    "feedback": "Falta o registro do pacote."
                   },
                   {
-                    "label": "Libero sem conferir a escala, já que não mudei o tamanho.",
+                    "label": "Libero sem conferir a escala, porque não mudei o tamanho.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Escala errada na exportação é comum e precisa ser conferida."
+                    "feedback": "Escala errada na exportação é comum. Ela precisa ser conferida."
                   }
                 ]
               }
@@ -3047,30 +3165,30 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "missao",
             "competencia": "conferencia_liberacao",
             "titulo": "Missão Modelagem: miniatura da guerreira",
-            "objetivo": "Conduzir um briefing simulado, do recebimento até a liberação, sem inventar informações e deixando um pacote claro para a produção.",
-            "contexto": "Pedido fictício de treinamento: o cliente quer uma miniatura de uma guerreira para pintar, a partir de uma foto frontal, sem medidas. Use apenas material de treino, sem alterar pedidos reais.",
+            "objetivo": "Conduzir um briefing simulado, do recebimento até a liberação, sem inventar informação e deixando um pacote claro para a produção.",
+            "contexto": "Pedido de treino, que não é real: o cliente quer uma miniatura de uma guerreira para pintar, a partir de uma foto de frente, sem medidas. Use só material de treino e não altere pedidos reais.",
             "tarefas": [
-              "Localizar o trabalho simulado e suas referências, e confirmar a pasta de saída",
+              "Achar o trabalho simulado e as referências dele, e confirmar a pasta de saída",
               "Classificar as referências como suficientes, incompletas ou contraditórias e listar o que falta",
-              "Registrar as dúvidas e consultar o responsável em vez de supor tamanho ou detalhes ocultos",
-              "Planejar escala, espessuras, divisão de peças e encaixes, confirmando padrões com a produção",
-              "Preparar e exportar o arquivo com nome e versão no padrão da Valente, conferindo escala e componentes",
+              "Registrar as dúvidas e consultar o responsável, sem supor tamanho ou detalhes que não aparecem",
+              "Planejar escala, espessuras, divisão de peças e encaixes, confirmando os padrões com a produção",
+              "Preparar e exportar o arquivo com nome e versão no padrão da Valente, conferindo escala e peças",
               "Preencher o checklist de liberação e montar o pacote de entrega com versão, escala, quantidade e observações",
-              "Simular um pedido de ajuste da arte: tratar como tarefa de Modelagem de ajuste, criar nova versão sem sobrescrever a aprovada e concluir a tarefa só quando o ajuste estiver pronto e conferido",
+              "Simular um pedido de ajuste da arte: tratar como tarefa de Modelagem de ajuste, criar nova versão sem salvar por cima da aprovada e concluir a tarefa só com o ajuste pronto e conferido",
               "Pedir a validação do responsável antes de considerar o trabalho Liberado"
             ],
-            "criterioConclusao": "Todos os itens foram feitos com informação real, nenhuma lacuna foi preenchida com suposição, o checklist foi completado e o responsável validou a liberação."
+            "criterioConclusao": "Você fez todos os itens com informação real. Não completou nenhuma falta com suposição. Preencheu o checklist. O responsável validou a liberação."
           }
         ]
       }
     ]
   },
-  impressao_3d: {
+  "impressao_3d": {
     "id": "impressao_3d",
     "nome": "Impressão 3D",
     "descricao": "Operar a estação de impressão 3D em resina e FDM, da OT até a liberação para o pós-impressão.",
     "icone": "🖨️",
-    "versao": 2,
+    "versao": 3,
     "cargosPermitidos": null,
     "competencias": [
       "Estação e segurança",
@@ -3080,27 +3198,27 @@ var TREINAMENTO_TRILHAS = {
       "Inspeção e falhas",
       "Liberação para pós-impressão"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Explicar cuidados de segurança, preparar uma impressão simulada, conferir parâmetros e identificar falhas. Uso de equipamento exige autorização e supervisão conforme o procedimento interno.",
     "dias": [
       {
         "dia": 1,
         "titulo": "Minha estação de impressão",
-        "subtitulo": "Equipamentos, materiais, EPIs e onde consultar a OT",
+        "subtitulo": "Equipamentos, materiais, EPIs e onde ver a tarefa",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O que existe na estação",
-            "texto": "A estação de impressão 3D reúne impressoras, um computador ou tablet, o Valente OS, o fatiador, materiais, ferramentas e EPIs. Impressora é a máquina que fabrica a peça. Fatiador é o programa que transforma o modelo 3D em instruções para a máquina. Material é a resina líquida ou o filamento, que é o fio plástico usado no processo FDM. Cada item tem uma finalidade, e você precisa saber qual é antes de mexer."
+            "texto": "Na estação de impressão 3D você encontra impressoras, um computador ou tablet, o Valente OS, o fatiador, materiais, ferramentas e EPIs. A impressora é a máquina que faz a peça. O fatiador é o programa que transforma o modelo 3D em instruções para a máquina. O material é a resina líquida ou o filamento, um fio de plástico usado no processo FDM. Cada item tem um uso. Saiba qual é antes de mexer."
           },
           {
             "tipo": "conteudo",
             "titulo": "Disponível não é autorizado",
-            "texto": "Uma máquina livre não significa que o trabalho é autorizado. Um material na prateleira não significa que serve para qualquer peça. A fonte da verdade do que produzir é a ordem de trabalho (OT), no Valente OS. Ao abrir a tarefa, o topo mostra a caixa SUA MISSÃO em destaque, com o que fazer e quantas unidades faltam (por exemplo, 8 de 18, com a linha Já feitas nesta tarefa). Abaixo vêm instruções, checklist e fotos de referência. Seu PIN identifica você como executor, e seu nome fica gravado nas tarefas que você inicia e conclui."
+            "texto": "Máquina livre não quer dizer trabalho autorizado. Material na prateleira não serve para qualquer peça. O que produzir está na tarefa, no Valente OS. Ao abrir a tarefa, você vê no topo a caixa SUA MISSÃO em destaque. Ela mostra o que fazer e quantas unidades faltam (por exemplo, 8 de 18, com a linha Já feitas nesta tarefa). Abaixo ficam as instruções, o checklist e as fotos de referência. O seu PIN mostra ao sistema quem você é. O seu nome fica gravado nas tarefas que você inicia e conclui."
           },
           {
             "tipo": "conteudo",
             "titulo": "EPIs e ventilação",
-            "texto": "EPI é o equipamento de proteção individual. Com resina líquida, a prática geral é usar luvas adequadas, proteção para os olhos e trabalhar com ventilação, porque resina irrita a pele e tem odor forte. Em ferramentas de corte e solventes, o cuidado é o mesmo. Quais máquinas você pode operar e quais EPIs são exigidos em cada uma: siga o procedimento definido pela Valente ou consulte o responsável."
+            "texto": "EPI é o equipamento de proteção individual. Com resina líquida, a prática geral é usar luvas adequadas, proteger os olhos e trabalhar em lugar ventilado. A resina irrita a pele e tem cheiro forte. Com ferramentas de corte e solventes, tenha o mesmo cuidado. Quais máquinas você pode operar? Quais EPIs cada uma exige? Siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "resposta_cliente",
@@ -3108,90 +3226,90 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: 'A impressora do canto está livre e tem resina no tanque. Pode já ir imprimindo uma peça que você acha que vai precisar, né?'",
             "opcoes": [
               {
-                "label": "Posso, máquina livre e material na estação são sinal de que está liberado.",
+                "label": "Posso. Máquina livre e material na estação mostram que está liberado.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Máquina e material disponíveis não são autorização. Sem OT, não há trabalho autorizado."
+                "feedback": "Máquina livre e material na estação não são autorização. Sem tarefa, o trabalho não está autorizado."
               },
               {
-                "label": "Só imprimo depois de abrir a OT no Valente OS e confirmar que o equipamento é um que posso operar.",
+                "label": "Só imprimo depois de abrir a tarefa no Valente OS e confirmar que posso operar essa máquina.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. A OT define o que produzir, e a autorização por máquina segue o que a Valente definiu."
+                "feedback": "Certo. A tarefa diz o que produzir. A Valente define quais máquinas você pode operar."
               },
               {
                 "label": "Imprimo uma peça de teste pequena, porque gasta pouco material.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Mesmo teste gasta material, tempo de máquina e pode ocupar o lugar de um trabalho real. Precisa de OT ou de autorização."
+                "feedback": "Teste também gasta material e tempo de máquina. Pode ocupar o lugar de um trabalho real. Precisa de tarefa ou de autorização."
               },
               {
-                "label": "Pergunto ao colega qual resina usar e sigo o que ele disser, sem olhar a OT.",
+                "label": "Pergunto ao colega qual resina usar e faço o que ele disser, sem olhar a tarefa.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "A informação do material vem da OT e da ficha, não de memória de alguém."
+                "feedback": "O material certo está na tarefa e na ficha, não na memória de alguém."
               }
             ]
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "estacao_seguranca",
-            "local": "Estação de impressão (área física) e Valente OS, aba Minha missão (PC) ou tablet",
-            "instrucao": "Sem iniciar nenhuma produção, caminhe pela estação com o líder ou responsável. Identifique impressoras, onde ficam os materiais, ferramentas e EPIs, e localize no tablet ou computador a Minha missão, onde as OTs aparecem, e a caixa SUA MISSÃO no topo de uma tarefa. Confirme apenas quando tiver visto cada item e perguntado quais máquinas você está autorizado a operar."
+            "local": "Estação de impressão (área física) e Valente OS: aba Tarefas (computador) ou Minhas funções (tablet)",
+            "instrucao": "Não inicie nenhuma produção. Ande pela estação com o líder ou responsável e veja as impressoras, os materiais, as ferramentas e os EPIs. No computador (aba Tarefas) ou no tablet (Minhas funções), ache onde as tarefas aparecem e a caixa SUA MISSÃO no topo de uma tarefa. Pergunte quais máquinas você pode operar. Confirme só depois de ver cada item."
           }
         ]
       },
       {
         "dia": 2,
-        "titulo": "Entendendo a OT antes de imprimir",
+        "titulo": "Entendendo a tarefa antes de imprimir",
         "subtitulo": "Conferir antes de preparar",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "O que a OT precisa dizer",
-            "texto": "A OT deve informar o suficiente para você saber o que produzir: peça, arquivo e versão, quantidade, tamanho, material, prioridade e observações. Versão importa porque um mesmo modelo pode ter sido corrigido depois. Imprimir a versão antiga é usar o arquivo errado, e isso só aparece quando a peça já está pronta."
+            "titulo": "O que a tarefa precisa dizer",
+            "texto": "A tarefa deve dizer o que produzir: peça, arquivo e versão, quantidade, tamanho, material, prioridade e observações. A versão importa. O mesmo modelo pode ter sido corrigido depois. Imprimir a versão antiga é usar o arquivo errado. E esse erro só aparece quando a peça já está pronta."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Quando a OT e o arquivo divergem",
-            "texto": "Se a OT diz uma coisa e o arquivo diz outra, você não escolhe sozinho. Exemplo: a OT pede 16 unidades, mas a plataforma preparada contém 15. Se isso for percebido antes de iniciar, o custo é um minuto. Se for percebido depois de quatro horas, o custo é a máquina ocupada e uma peça faltando."
+            "titulo": "Quando a tarefa e o arquivo não batem",
+            "texto": "A tarefa diz uma coisa e o arquivo diz outra? Você não escolhe sozinho. Exemplo: a tarefa pede 16 unidades, mas a plataforma preparada tem 15. Se você vê isso antes de iniciar, perde um minuto. Se vê depois de quatro horas, a máquina ficou ocupada e falta uma peça."
           },
           {
             "tipo": "conteudo",
-            "titulo": "A sequência de conferência",
-            "texto": "Use sempre esta ordem: identificar a OT, conferir o arquivo, conferir a quantidade, conferir o material e só então preparar. Ao não ter uma informação, não invente: consulte a fonte (Valente OS, ficha, OT) e, se for preciso, o responsável. Dizer 'não sei, vou confirmar' não é erro. Supor é."
+            "titulo": "A ordem da conferência",
+            "texto": "Siga sempre esta ordem: identificar a tarefa, conferir o arquivo, conferir a quantidade, conferir o material e só então preparar. Faltou uma informação? Não invente. Procure no Valente OS, na ficha ou na tarefa. Se precisar, pergunte ao responsável. Dizer 'não sei, vou confirmar' não é erro. Adivinhar é erro."
           },
           {
             "tipo": "ordenar",
             "competencia": "leitura_ot",
-            "instrucao": "Coloque a conferência antes de imprimir na ordem correta.",
+            "instrucao": "Coloque na ordem certa a conferência antes de imprimir.",
             "itens": [
-              "Identificar a OT",
+              "Identificar a tarefa",
               "Conferir arquivo e versão",
               "Conferir quantidade",
               "Conferir material",
               "Preparar a impressão"
             ],
             "feedbackCerto": "Isso mesmo. Preparar vem por último.",
-            "feedbackErrado": "A ordem é: identificar a OT, arquivo e versão, quantidade, material, e só então preparar."
+            "feedbackErrado": "A ordem é: identificar a tarefa, arquivo e versão, quantidade, material, e só então preparar."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "leitura_ot",
-            "pergunta": "A OT pede 16 unidades, mas o arquivo aberto no fatiador tem 15 peças na plataforma. O que você faz?",
+            "pergunta": "A tarefa pede 16 unidades. O arquivo aberto no fatiador tem 15 peças na plataforma. O que você faz?",
             "opcoes": [
-              "Corrige a quantidade conforme a OT se for dentro do que você já faz e, se a divergência vier de arquivo ou versão, avisa o responsável antes de iniciar.",
+              "Corrige a quantidade como a tarefa pede, se isso já faz parte do seu trabalho. Se o erro vem do arquivo ou da versão, avisa o responsável antes de iniciar.",
               "Imprime as 15 e depois vê se dá tempo de fazer a que falta.",
-              "Confia no arquivo, pois quem preparou deve ter calculado.",
-              "Inicia com 15 e registra 16 ao concluir, para a OT ficar certa."
+              "Confia no arquivo, porque quem preparou deve ter calculado.",
+              "Inicia com 15 e registra 16 ao concluir, para a tarefa ficar certa."
             ],
             "correta": 0,
-            "feedbackCerto": "Certo. Quantidade e arquivo precisam bater com a OT antes de iniciar.",
+            "feedbackCerto": "Certo. A quantidade e o arquivo precisam bater com a tarefa antes de iniciar.",
             "feedbackPorOpcao": [
               null,
-              "Você já sabe que está errado e mesmo assim iniciaria. Isso gera tempo perdido e peça faltando.",
-              "A OT é a referência da quantidade. O arquivo preparado pode ter erro.",
-              "Registrar o que não foi feito é esconder o problema, um erro crítico."
+              "Você já sabe que está errado e mesmo assim iniciaria. Isso faz perder tempo e deixa peça faltando.",
+              "A quantidade certa é a da tarefa. O arquivo preparado pode ter erro.",
+              "Registrar o que não foi feito é esconder o problema. É um erro crítico."
             ],
             "erroCriticoOpcoes": [
               1,
@@ -3199,47 +3317,50 @@ var TREINAMENTO_TRILHAS = {
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "leitura_ot",
-            "pergunta": "Pegue uma OT de treino no Valente OS (apenas consulta). Descreva quais informações dela você usaria para saber o que produzir e o que faria se faltasse alguma.",
-            "pontosEsperados": [
-              "Cita peça, arquivo/versão, quantidade, material e observações",
-              "Percebe que falta de informação se resolve consultando ficha, OT ou responsável",
-              "Não inventa o dado que falta"
-            ]
+            "pergunta": "Você abriu uma tarefa de impressão. Ela mostra a peça, o arquivo e a quantidade, mas não diz o material. O que você faz?",
+            "opcoes": [
+              "Usa o material que já está na máquina.",
+              "Usa o mesmo material da última peça parecida.",
+              "Procura na ficha e no Valente OS. Se não achar, pergunta ao responsável antes de preparar."
+            ],
+            "correta": 2,
+            "feedbackCerto": "Certo. Quando falta informação, você procura na fonte ou pergunta. Não inventa.",
+            "feedbackErrado": "Não adivinhe o que falta. Procure na ficha e no Valente OS. Se não achar, pergunte ao responsável antes de preparar."
           }
         ]
       },
       {
         "dia": 3,
         "titulo": "Resina x FDM",
-        "subtitulo": "Dois processos, duas formas de operar",
+        "subtitulo": "Dois processos, dois jeitos de trabalhar",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Como cada processo funciona",
-            "texto": "Na impressão por resina, uma resina líquida fotossensível fica em um tanque e é endurecida por luz, camada a camada. A peça sai molhada de resina, cheia de suportes, e precisa de lavagem e cura UV depois. No FDM, um filamento plástico é derretido e depositado em camadas sobre uma mesa. Ali o pós-processo costuma ser remover suportes e acabar a superfície."
+            "texto": "Na impressão por resina, uma resina líquida fica em um tanque. A luz endurece essa resina, camada por camada. A peça sai molhada de resina e cheia de suportes. Depois ela precisa de lavagem e de cura UV. No FDM, a máquina derrete um filamento de plástico e coloca em camadas sobre uma mesa. Depois, o comum é tirar os suportes e dar acabamento na superfície."
           },
           {
             "tipo": "conteudo",
-            "titulo": "O que muda na operação",
-            "texto": "Na resina, os cuidados centrais são o tanque (com o filme FEP no fundo), o nível de resina, luvas e ventilação. No FDM, os cuidados são o nivelamento e a limpeza da mesa, a adesão da primeira camada e o estado do filamento, que absorve umidade e pode causar defeitos. Parâmetros como temperatura e tempo de exposição: siga o procedimento definido pela Valente ou consulte o responsável."
+            "titulo": "O que muda no trabalho",
+            "texto": "Na resina, os cuidados principais são o tanque (com o filme FEP no fundo), o nível de resina, as luvas e a ventilação. No FDM, cuide da mesa limpa e nivelada, da primeira camada bem grudada e do estado do filamento. O filamento puxa umidade do ar e isso pode causar defeitos. Para temperatura e tempo de exposição, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quem escolhe o processo",
-            "texto": "O processo vem da OT e do padrão definido, não da preferência do operador nem de qual máquina está livre. Uma peça designada para resina não migra para FDM só porque uma impressora está parada. Isso muda acabamento, resistência e tolerância. Trocar só com decisão autorizada."
+            "texto": "O processo vem da tarefa e do padrão definido. Não vem do gosto do operador nem da máquina que está livre. Uma peça marcada para resina não vai para o FDM só porque uma impressora está parada. Isso muda o acabamento, a resistência e a precisão da medida. Só troque com decisão autorizada."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "processos_fatiamento",
-            "pergunta": "Quais itens são cuidados típicos da impressão em RESINA?",
+            "pergunta": "Quais itens são cuidados comuns da impressão em RESINA?",
             "itens": [
               "Tanque de resina com filme FEP",
-              "Nivelamento e adesão da mesa de filamento",
-              "Luvas e ventilação ao manusear resina líquida",
+              "Mesa nivelada e primeira camada bem grudada",
+              "Luvas e ventilação ao mexer com resina líquida",
               "Umidade do filamento",
-              "Lavagem e cura UV após a impressão"
+              "Lavagem e cura UV depois da impressão"
             ],
             "corretos": [
               0,
@@ -3247,7 +3368,7 @@ var TREINAMENTO_TRILHAS = {
               4
             ],
             "feedbackCerto": "Certo. Os outros dois são cuidados do FDM.",
-            "feedbackErrado": "Tanque/FEP, luvas e ventilação, e lavagem com cura UV são da resina. Nivelamento de mesa e umidade do filamento são do FDM."
+            "feedbackErrado": "Tanque com FEP, luvas e ventilação, lavagem e cura UV são da resina. Mesa nivelada e umidade do filamento são do FDM."
           },
           {
             "tipo": "resposta_cliente",
@@ -3255,28 +3376,28 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: 'A impressora de resina está ocupada e a de FDM está livre. Essa peça é pra resina, mas se eu mandar no FDM sai hoje. Manda ver?'",
             "opcoes": [
               {
-                "label": "Mando no FDM, o importante é entregar no prazo.",
+                "label": "Mando no FDM. O importante é entregar no prazo.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Trocar o processo muda acabamento e resistência. Só com decisão autorizada."
+                "feedback": "Trocar o processo muda o acabamento e a resistência. Só com decisão autorizada."
               },
               {
-                "label": "Mando no FDM e aviso depois se ninguém reclamar.",
+                "label": "Mando no FDM e aviso depois, se ninguém reclamar.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Avisar depois é esconder a decisão que não era sua."
+                "feedback": "Avisar depois é esconder uma decisão que não era sua."
               },
               {
                 "label": "Espero a resina terminar e imprimo mais tarde, sem falar com ninguém.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Aguardar pode ser certo, mas se o prazo aperta você deve avisar o responsável em vez de decidir sozinho."
+                "feedback": "Esperar pode ser certo. Mas, se o prazo aperta, avise o responsável. Não decida sozinho."
               },
               {
-                "label": "A OT define resina, então mantenho resina e, se o prazo é problema, falo com o responsável para decidir.",
+                "label": "A tarefa pede resina, então mantenho resina. Se o prazo é problema, falo com o responsável para ele decidir.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. O processo segue a OT; mudança precisa de quem decide."
+                "feedback": "Certo. O processo segue a tarefa. Quem muda é quem decide."
               }
             ]
           },
@@ -3284,7 +3405,7 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "processos_fatiamento",
             "local": "Estação de impressão (área física)",
-            "instrucao": "Com o líder, identifique quais máquinas da estação são de resina e quais são FDM, e quais delas você está autorizado a operar. Confirme quando souber distinguir os dois tipos e souber onde consultar o que é autorizado."
+            "instrucao": "Com o líder, veja quais máquinas da estação são de resina e quais são FDM. Pergunte quais você pode operar. Confirme quando souber separar os dois tipos e souber onde ver o que é autorizado."
           }
         ]
       },
@@ -3296,34 +3417,34 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que é fatiar",
-            "texto": "Fatiar é transformar o modelo 3D em instruções de fabricação: o programa corta o modelo em camadas finas e gera o caminho que a máquina vai seguir. Orientação é o ângulo em que a peça fica na plataforma. Suportes são estruturas temporárias que seguram partes que ficariam no ar. Posicionamento é onde cada peça fica na plataforma."
+            "texto": "Fatiar é transformar o modelo 3D em instruções para a máquina. O programa corta o modelo em camadas finas e cria o caminho que a máquina vai seguir. Orientação é o ângulo em que a peça fica na plataforma. Suportes são apoios temporários que seguram as partes que ficariam no ar. Posicionamento é o lugar de cada peça na plataforma."
           },
           {
             "tipo": "conteudo",
             "titulo": "Por que a preparação importa",
-            "texto": "Orientação ruim pode deixar marcas visíveis ou aumentar falhas. Suporte insuficiente pode fazer parte da peça cair ou deformar. Duplicar uma peça na plataforma muda a quantidade e também o tempo total. Por isso o fatiamento deve seguir o padrão: perfis oficiais e parâmetros autorizados, siga o procedimento definido pela Valente ou consulte o responsável. Não altere parâmetros críticos sem autorização."
+            "texto": "Orientação ruim pode deixar marcas na peça ou aumentar as falhas. Com pouco suporte, uma parte da peça pode cair ou entortar. Duplicar uma peça na plataforma muda a quantidade e também o tempo total. Por isso, fatie sempre no padrão, com os perfis oficiais e os parâmetros (ajustes da impressão) autorizados. Siga o procedimento da Valente ou consulte o responsável. Não mude parâmetros críticos sem autorização."
           },
           {
             "tipo": "conteudo",
-            "titulo": "A prévia é seu último filtro",
-            "texto": "Antes de enviar para a máquina, abra a prévia do fatiamento e confira: é a versão certa do arquivo? A quantidade bate com a OT? Todas as peças cabem e estão dentro da plataforma? Os suportes cobrem as partes no ar? O tempo estimado faz sentido? Só então envie. Corrigir na prévia leva minutos; depois de iniciar, custa horas."
+            "titulo": "A prévia é a última conferência",
+            "texto": "Antes de enviar para a máquina, abra a prévia do fatiamento e confira. É a versão certa do arquivo? A quantidade bate com a tarefa? Todas as peças cabem dentro da plataforma? Os suportes seguram as partes no ar? O tempo estimado faz sentido? Só então envie. Corrigir na prévia leva minutos. Depois de iniciar, custa horas."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "processos_fatiamento",
-            "pergunta": "Ao abrir o fatiamento você percebe que uma parte da peça ficou sem suporte, pendurada. O que fazer?",
+            "pergunta": "Você abriu o fatiamento e viu que uma parte da peça ficou sem suporte, pendurada. O que fazer?",
             "opcoes": [
               "Enviar assim mesmo e torcer para a parte se segurar.",
-              "Remover a parte do arquivo para a impressão ficar mais rápida.",
-              "Aumentar parâmetros do perfil por conta própria até o suporte parecer forte.",
-              "Ajustar a orientação ou os suportes dentro do que o procedimento permite, e consultar o responsável se precisar mexer em parâmetro crítico."
+              "Tirar essa parte do arquivo para a impressão ficar mais rápida.",
+              "Aumentar os parâmetros do perfil por conta própria até o suporte parecer forte.",
+              "Ajustar a orientação ou os suportes dentro do que o procedimento permite. Se precisar mexer em parâmetro crítico, consultar o responsável."
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Corrija na prévia, dentro do que é autorizado.",
             "feedbackPorOpcao": [
-              "Enviar sabendo do risco é avançar trabalho defeituoso.",
-              "Alterar o modelo muda a peça entregue.",
-              "Parâmetros críticos não se alteram sem autorização.",
+              "Enviar sabendo do risco é passar adiante trabalho com defeito.",
+              "Mudar o modelo muda a peça entregue.",
+              "Não se muda parâmetro crítico sem autorização.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -3334,56 +3455,56 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "processos_fatiamento",
-            "afirmacao": "Se a prévia do fatiamento parece boa, não é necessário conferir quantidade e versão do arquivo contra a OT.",
+            "afirmacao": "Se a prévia do fatiamento parece boa, não é preciso conferir a quantidade e a versão do arquivo com a tarefa.",
             "correta": false,
-            "feedbackCerto": "Isso. A prévia só vale se o arquivo for a versão certa e a quantidade bater com a OT.",
-            "feedbackErrado": "Aparência boa não garante versão e quantidade corretas. Confira sempre contra a OT."
+            "feedbackCerto": "Isso. A prévia só vale se o arquivo for a versão certa e a quantidade bater com a tarefa.",
+            "feedbackErrado": "Prévia bonita não prova que a versão e a quantidade estão certas. Confira sempre com a tarefa."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "processos_fatiamento",
             "local": "Fatiador (computador da estação)",
-            "instrucao": "Sem enviar nada para a máquina, abra um arquivo de treino no fatiador com o líder. Localize a prévia por camadas, os suportes, a quantidade de peças na plataforma e o tempo estimado. Confirme quando souber onde conferir cada um desses pontos."
+            "instrucao": "Não envie nada para a máquina. Com o líder, abra um arquivo de treino no fatiador. Ache a prévia por camadas, os suportes, a quantidade de peças na plataforma e o tempo estimado. Confirme quando souber onde conferir cada um."
           }
         ]
       },
       {
         "dia": 5,
         "titulo": "Preparação da máquina",
-        "subtitulo": "Checagem curta que evita perda de horas",
+        "subtitulo": "Checagem rápida que evita perder horas",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Por que checar antes",
-            "texto": "Iniciar com material errado ou máquina em condição anormal transforma uma tarefa simples em retrabalho. A checagem antes de iniciar leva poucos minutos e evita perder horas de máquina e material. Use o checklist específico da máquina, e para procedimentos químicos e mecânicos siga o procedimento definido pela Valente ou consulte o responsável."
+            "texto": "Começar com o material errado ou com a máquina fora do normal faz uma tarefa simples virar retrabalho. A checagem antes de iniciar leva poucos minutos. Ela evita perder horas de máquina e material. Use o checklist próprio da máquina. Para procedimentos químicos e mecânicos, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Checagem na resina",
-            "texto": "Na resina, a prática geral é conferir: resina correta e suficiente no tanque, filme FEP sem riscos, furos ou resíduos endurecidos, plataforma de impressão limpa e bem fixada, e tela e tampa em ordem. Resina com resíduo curado no tanque pode arrancar a peça do suporte. Use luvas e ventilação ao manusear."
+            "texto": "Na resina, a prática geral é conferir estes pontos. A resina é a certa e tem o bastante no tanque? O filme FEP está sem riscos, furos ou restos endurecidos? A plataforma de impressão está limpa e bem presa? A tela e a tampa estão em ordem? Resto de resina endurecida no tanque pode arrancar a peça do suporte. Use luvas e ventilação ao mexer com resina."
           },
           {
             "tipo": "conteudo",
             "titulo": "Checagem no FDM",
-            "texto": "No FDM, confira: filamento correto e seco (filamento úmido pode estalar, soltar fiapos e deixar acabamento ruim), bico sem sujeira, mesa limpa e nivelada e primeira camada com boa adesão. Nivelar a mesa é ajustar a distância do bico para que o filamento grude de forma uniforme. Mesa suja ou desnivelada é uma das causas comuns de descolamento e warping, que é o canto da peça levantando."
+            "texto": "No FDM, confira o filamento certo e seco, o bico sem sujeira, a mesa limpa e nivelada e a primeira camada bem grudada. Filamento úmido pode estalar, soltar fiapos e deixar o acabamento ruim. Nivelar a mesa é ajustar a distância do bico para o filamento grudar por igual. Mesa suja ou desnivelada é causa comum de peça descolando e de warping, que é o canto da peça levantando."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "preparo_acompanhamento",
-            "pergunta": "Você vai iniciar uma impressão em resina e vê pedaços endurecidos flutuando no tanque. Qual é o passo certo?",
+            "pergunta": "Você vai iniciar uma impressão em resina e vê pedaços endurecidos boiando no tanque. Qual é o passo certo?",
             "opcoes": [
-              "Iniciar mesmo assim, a máquina costuma passar por cima.",
-              "Misturar com uma ferramenta qualquer e iniciar em seguida.",
-              "Não iniciar, avisar o responsável e tratar o tanque pelo procedimento oficial antes de imprimir.",
+              "Iniciar mesmo assim, porque a máquina costuma passar por cima.",
+              "Mexer com uma ferramenta qualquer e iniciar em seguida.",
+              "Não iniciar, avisar o responsável e cuidar do tanque pelo procedimento oficial antes de imprimir.",
               "Iniciar uma peça menor para testar se funciona."
             ],
             "correta": 2,
-            "feedbackCerto": "Isso. Condição anormal do equipamento se resolve antes de iniciar, pelo procedimento.",
+            "feedbackCerto": "Isso. Máquina fora do normal se resolve antes de iniciar, pelo procedimento.",
             "feedbackPorOpcao": [
-              "Resíduo curado pode estragar a impressão e o tanque. Avançar é erro crítico.",
-              "Improvisar ferramenta pode riscar o FEP e danificar o tanque.",
+              "Resto endurecido pode estragar a impressão e o tanque. Seguir em frente é erro crítico.",
+              "Ferramenta improvisada pode riscar o FEP e estragar o tanque.",
               null,
-              "Mesmo peça pequena usa o mesmo tanque com problema."
+              "Peça pequena usa o mesmo tanque com problema."
             ],
             "erroCriticoOpcoes": [
               0
@@ -3396,50 +3517,50 @@ var TREINAMENTO_TRILHAS = {
             "itens": [
               "Mesa limpa e nivelada",
               "Filme FEP sem riscos",
-              "Filamento correto e seco",
+              "Filamento certo e seco",
               "Bico sem sujeira",
-              "Plataforma de resina fixada"
+              "Plataforma de resina bem presa"
             ],
             "corretos": [
               0,
               2,
               3
             ],
-            "feedbackCerto": "Correto. FEP e plataforma de resina são da impressão em resina.",
-            "feedbackErrado": "Mesa, filamento e bico são do FDM. FEP e plataforma de resina pertencem à impressão em resina."
+            "feedbackCerto": "Certo. FEP e plataforma de resina são da impressão em resina.",
+            "feedbackErrado": "Mesa, filamento e bico são do FDM. FEP e plataforma de resina são da impressão em resina."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "preparo_acompanhamento",
             "local": "Estação de impressão (checklist da máquina)",
-            "instrucao": "Com o líder, localize o checklist específico de uma máquina e percorra cada item sem iniciar produção. Confirme quando souber onde fica o checklist e o que fazer se algum item estiver fora da condição normal."
+            "instrucao": "Não inicie produção. Com o líder, ache o checklist próprio de uma máquina e passe por cada item. Confirme quando souber onde fica o checklist e o que fazer se algum item estiver fora do normal."
           }
         ]
       },
       {
         "dia": 6,
         "titulo": "Iniciando e acompanhando",
-        "subtitulo": "Iniciar a OT, observar e reconhecer sinais",
+        "subtitulo": "Iniciar a tarefa, observar e perceber sinais",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Iniciar a OT certa",
-            "texto": "Na tarefa, as ações são Iniciar tarefa, Pausar, Retomar e Concluir tarefa. No PC existe também Pular tarefa, que não aparece no tablet. Ao começar o trabalho, use Iniciar tarefa na OT correta, para que o sistema saiba o que está em produção e por quem (o PIN identifica você). Confira que a máquina recebeu o arquivo da mesma OT e que a caixa SUA MISSÃO bate com o que você vai imprimir. Iniciar na OT errada gera confusão de quantidade e de responsável."
+            "titulo": "Iniciar a tarefa certa",
+            "texto": "Na tarefa, os botões são Iniciar tarefa, Pausar, Retomar e Concluir tarefa. No computador existe também Pular tarefa, que não aparece no tablet. Ao começar o trabalho, toque em Iniciar tarefa na tarefa certa. Assim o sistema sabe o que está em produção e quem está fazendo (o PIN mostra quem é você). Confira se a máquina recebeu o arquivo da mesma tarefa. Confira se a caixa SUA MISSÃO bate com o que você vai imprimir. Iniciar na tarefa errada confunde a quantidade e o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sua fila no tablet",
-            "texto": "No tablet, Minhas funções abre uma fila única com todas as tarefas da sua função, com filtros por tipo, como Impressão e Pintura. O botão grande Próxima da fila leva à próxima tarefa a fazer. Outras funções mostra tarefas de funções de outras pessoas, para ajudar. Mesmo ao ajudar, o que vale é a OT e a caixa SUA MISSÃO. Tarefas bloqueadas por outra aparecem quando a anterior conclui. No PC, a aba Tarefas lista as tarefas designadas."
+            "texto": "No tablet, Minhas funções abre uma fila única com todas as tarefas da sua função. Há filtros por tipo, como Impressão e Pintura. O botão grande Próxima da fila leva à próxima tarefa a fazer. Outras funções mostra tarefas de outras pessoas, para você ajudar. Mesmo ajudando, vale o que está na tarefa e na caixa SUA MISSÃO. Uma tarefa que depende de outra só aparece quando a anterior é concluída. No computador, a aba Tarefas mostra as tarefas que são suas."
           },
           {
             "tipo": "conteudo",
             "titulo": "Acompanhar não é olhar sem parar",
-            "texto": "Acompanhar é fazer as verificações previstas e reconhecer sinais de problema. Os pontos de inspeção e critérios de parada oficiais: siga o procedimento definido pela Valente ou consulte o responsável. Como regra geral, a primeira camada é a mais importante, então observe o começo com atenção. Se precisar parar o trabalho para resolver algo, use Pausar na OT e, quando o problema estiver resolvido, Retomar."
+            "texto": "Acompanhar é fazer as verificações previstas e perceber sinais de problema. Para saber os pontos de inspeção e quando parar, siga o procedimento da Valente ou consulte o responsável. Regra geral: a primeira camada é a mais importante. Olhe o começo com atenção. Precisa parar o trabalho para resolver algo? Toque em Pausar na tarefa. Quando o problema estiver resolvido, toque em Retomar."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sinais de problema e decisão",
-            "texto": "Sinais comuns: peça soltando da plataforma ou da mesa, cantos levantando, fiapos de filamento, camadas falhando, barulho diferente ou cheiro anormal. Não continue só para ver se termina. Classifique: posso corrigir com procedimento autorizado, devo pausar ou abortar, ou devo chamar o responsável. Em caso de risco, segurança vem primeiro."
+            "texto": "Sinais comuns: peça soltando da plataforma ou da mesa, cantos levantando, fiapos de filamento, camadas com falha, barulho diferente ou cheiro estranho. Não continue só para ver se termina. Decida entre três caminhos: corrigir com procedimento autorizado, pausar ou cancelar a impressão, ou chamar o responsável. Se houver risco, a segurança vem primeiro."
           },
           {
             "tipo": "cenario",
@@ -3448,59 +3569,59 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "Você iniciou uma impressão FDM e, na primeira camada, vê o filamento saindo mas não grudando na mesa; os cantos já soltam.",
+                "cliente": "Você iniciou uma impressão FDM. Na primeira camada, o filamento sai mas não gruda na mesa. Os cantos já estão soltando.",
                 "opcoes": [
                   {
-                    "label": "Deixar rodando, as próximas camadas vão compensar.",
+                    "label": "Deixar rodando. As próximas camadas vão compensar.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "A falha só cresce. Continuar sem agir é avançar trabalho com defeito conhecido."
+                    "feedback": "A falha só cresce. Continuar sem agir é seguir com um defeito que você já viu."
                   },
                   {
-                    "label": "Pausar a impressão e avaliar a causa (mesa suja, desnivelada) pelo procedimento.",
+                    "label": "Pausar a impressão e procurar a causa (mesa suja, desnivelada) pelo procedimento.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Parar cedo poupa material e horas.",
+                    "feedback": "Certo. Parar cedo poupa material e horas.",
                     "proximo": "b"
                   },
                   {
                     "label": "Dar uma pancada na mesa para ajustar.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Isso pode danificar a máquina e não resolve a causa."
+                    "feedback": "Isso pode estragar a máquina e não resolve a causa."
                   },
                   {
                     "label": "Aumentar parâmetros por conta própria durante a impressão.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Parâmetros críticos não se mudam sem autorização."
+                    "feedback": "Não se muda parâmetro crítico sem autorização."
                   }
                 ]
               },
               "b": {
-                "cliente": "Você pausou. Limpando a mesa e revisando o nivelamento você ainda não tem certeza do ajuste correto para esse material.",
+                "cliente": "Você pausou. Limpou a mesa e olhou o nivelamento. Mas ainda não tem certeza do ajuste certo para esse material.",
                 "opcoes": [
                   {
                     "label": "Chutar um valor e reiniciar.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Chutar é inventar. O ajuste certo vem do procedimento da Valente."
+                    "feedback": "Chutar é inventar. O ajuste certo está no procedimento da Valente."
                   },
                   {
-                    "label": "Consultar o procedimento da Valente e, se persistir a dúvida, o responsável.",
+                    "label": "Consultar o procedimento da Valente. Se a dúvida continuar, consultar o responsável.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Isso. Não saber é aceitável, inventar não.",
+                    "feedback": "Isso. Não saber é normal. Inventar não pode.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Descartar o material e trocar de máquina sem avisar.",
+                    "label": "Jogar o material fora e trocar de máquina sem avisar.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Trocar de máquina sem avisar quebra o vínculo da OT com a máquina."
+                    "feedback": "Trocar de máquina sem avisar quebra a ligação da tarefa com a máquina."
                   },
                   {
-                    "label": "Concluir a tarefa na OT para sair do alerta.",
+                    "label": "Tocar em Concluir tarefa para sair do alerta.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Concluir sem ter produzido é marcar como feito o que não foi feito."
@@ -3511,28 +3632,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "O responsável liberou você para reiniciar. Como registrar?",
                 "opcoes": [
                   {
-                    "label": "Reiniciar usando Retomar na OT e voltar ao acompanhamento da primeira camada.",
+                    "label": "Reiniciar com Retomar na tarefa e voltar a acompanhar a primeira camada.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Retome e observe a primeira camada com atenção."
+                    "feedback": "Certo. Retome e olhe a primeira camada com atenção."
                   },
                   {
                     "label": "Reiniciar e não dizer nada, para não parecer que errou.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Esconder falha impede aprender com ela."
+                    "feedback": "Esconder a falha impede de aprender com ela."
                   },
                   {
                     "label": "Reiniciar e apagar as anotações da tentativa anterior.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Apagar o histórico esconde o ocorrido."
+                    "feedback": "Apagar o histórico esconde o que aconteceu."
                   },
                   {
                     "label": "Deixar a máquina rodando e sair, já que o problema foi resolvido.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Depois de uma falha, a primeira camada merece acompanhamento extra."
+                    "feedback": "Depois de uma falha, a primeira camada pede atenção extra."
                   }
                 ]
               }
@@ -3541,53 +3662,53 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "confirmacao_pratica",
             "competencia": "preparo_acompanhamento",
-            "local": "Valente OS, tablet, Minhas funções e tarefa de impressão (apenas observação)",
-            "instrucao": "Sem alterar nenhuma OT real, abra uma tarefa de impressão no tablet e localize a caixa SUA MISSÃO e os botões Iniciar tarefa, Pausar, Retomar e Concluir tarefa. Confirme quando souber o que cada um representa e quando usaria Pausar."
+            "local": "Valente OS, tablet, Minhas funções e tarefa de impressão (só olhar)",
+            "instrucao": "Não mude nenhuma tarefa real. No tablet, abra uma tarefa de impressão. Ache a caixa SUA MISSÃO e os botões Iniciar tarefa, Pausar, Retomar e Concluir tarefa. Confirme quando souber para que serve cada um e quando você usaria Pausar."
           }
         ]
       },
       {
         "dia": 7,
         "titulo": "Quando a impressão termina",
-        "subtitulo": "Fim do ciclo não é aprovação",
+        "subtitulo": "Terminar não é aprovar",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Terminar não é aprovar",
-            "texto": "Quando a máquina acaba, o ciclo terminou, mas a peça ainda não foi aprovada. A máquina pode concluir normalmente e a peça sair com defeito. Antes de liberar, confira quantidade, integridade, falhas, deformações e resultado geral. Retire a peça com cuidado, usando luvas quando houver resina, e sem forçar para não quebrar."
+            "texto": "Quando a máquina para, a impressão terminou. Mas a peça ainda não foi aprovada. A máquina pode terminar normalmente e a peça sair com defeito. Antes de liberar, confira a quantidade, se a peça está inteira, as falhas, as partes tortas e o resultado geral. Retire a peça com cuidado e sem forçar, para não quebrar. Use luvas quando houver resina."
           },
           {
             "tipo": "conteudo",
             "titulo": "Contar e inspecionar",
-            "texto": "Conte as peças e compare com a OT. Uma bandeja com 16 posições e 15 peças boas não deve ser registrada como 16 concluídas. Inspecione: partes faltando, suportes quebrados, camadas falhadas, empenamento (warping), superfície com defeito e peças que soltaram no meio do processo."
+            "texto": "Conte as peças e compare com a tarefa. Uma bandeja com 16 lugares e 15 peças boas não pode ser registrada como 16 concluídas. Olhe cada peça e procure: partes faltando, suportes quebrados, camadas com falha, warping (canto levantado), superfície com defeito e peças que soltaram no meio da impressão."
           },
           {
             "tipo": "conteudo",
             "titulo": "Registrar o que aconteceu",
-            "texto": "Registre conforme o procedimento. Concluir tarefa só se usa quando a tarefa foi de fato realizada. O registro, feito por fornada, deve refletir a realidade: quantas peças boas, quantas reprovadas e por quê. Se a tarefa pede 16 e você já fez 10, a SUA MISSÃO mostra o que falta, então um registro inflado também bagunça a próxima fornada. Detalhes do registro: siga o procedimento definido pela Valente ou consulte o responsável."
+            "texto": "Registre do jeito que o procedimento manda. Só use Concluir tarefa quando a tarefa foi feita de verdade. O registro é por fornada, que é cada leva de peças impressas. Ele deve mostrar a verdade: quantas peças boas, quantas reprovadas e por quê. Se a tarefa pede 16 e você já fez 10, a SUA MISSÃO mostra o que falta. Um registro com número maior que o real atrapalha a próxima fornada. Para os detalhes do registro, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "A janela de conclusão da impressão",
-            "texto": "Ao tocar Concluir tarefa em uma impressão, o Valente OS abre uma janela própria com quatro respostas: Tudo certo, Saiu só parte, Falhou e Cancelada. Escolha a que descreve o que aconteceu de verdade. Tudo certo é para quando o que a tarefa pedia saiu bom. Saiu só parte é para resultado parcial. Falhou e Cancelada são para quando o trabalho não se completou. O registro é por fornada, com o motivo quando houve falha. Se estiver em dúvida entre duas respostas, confirme com o responsável."
+            "texto": "Ao tocar em Concluir tarefa em uma impressão, o Valente OS abre uma janela com quatro respostas: Tudo certo, Saiu só parte, Falhou e Cancelada. Escolha a que mostra o que aconteceu de verdade. Tudo certo é para quando saiu bom tudo o que a tarefa pedia. Saiu só parte é para quando só uma parte saiu boa. Falhou e Cancelada são para quando o trabalho não se completou. O registro é por fornada, com o motivo quando houve falha. Ficou em dúvida entre duas respostas? Confirme com o responsável."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "inspecao_falhas",
-            "pergunta": "A bandeja tinha 16 posições; saíram 15 peças boas e 1 com camada falhada. Como você registra?",
+            "pergunta": "A bandeja tinha 16 lugares. Saíram 15 peças boas e 1 com camada falhada. Como você registra?",
             "opcoes": [
               "16 concluídas, porque a bandeja estava completa.",
-              "15 boas, 1 falha registrada com o motivo, separada das aprovadas.",
-              "15 concluídas e não menciono a falha, já que a quantidade das boas está certa.",
-              "Descarto a peça defeituosa sem registro."
+              "15 boas e 1 falha registrada com o motivo, separada das aprovadas.",
+              "15 concluídas, sem falar da falha, já que a quantidade das boas está certa.",
+              "Jogo fora a peça com defeito, sem registro."
             ],
             "correta": 1,
-            "feedbackCerto": "Certo. Quantidade real e falha com motivo.",
+            "feedbackCerto": "Certo. Quantidade real e falha com o motivo.",
             "feedbackPorOpcao": [
-              "Registrar 16 é afirmar o que não existe, um erro crítico.",
+              "Registrar 16 é afirmar o que não existe. É um erro crítico.",
               null,
-              "Omitir a falha impede que a causa seja investigada.",
-              "Descartar sem registro apaga a evidência."
+              "Sem o registro da falha, ninguém consegue procurar a causa.",
+              "Jogar fora sem registro apaga a prova."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -3601,61 +3722,63 @@ var TREINAMENTO_TRILHAS = {
             "afirmacao": "Se a impressora terminou sem mostrar erro, as peças já podem ser consideradas aprovadas.",
             "correta": false,
             "feedbackCerto": "Isso. Terminar sem erro não prova que as peças estão boas.",
-            "feedbackErrado": "A máquina pode terminar normalmente e ainda ter gerado peças defeituosas. A inspeção é sua."
+            "feedbackErrado": "A máquina pode terminar normalmente e mesmo assim fazer peças com defeito. A inspeção é sua."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "inspecao_falhas",
-            "pergunta": "A impressão de uma bandeja com 12 posições terminou: 9 peças boas e 3 com falha. Ao tocar Concluir tarefa abre a janela da impressão. Qual resposta combina com o resultado?",
+            "pergunta": "A impressão de uma bandeja com 12 lugares terminou: 9 peças boas e 3 com falha. Você toca em Concluir tarefa e a janela da impressão abre. Qual resposta combina com o resultado?",
             "opcoes": [
-              "Tudo certo, porque a máquina terminou o ciclo sem erro.",
+              "Tudo certo, porque a máquina terminou sem erro.",
               "Cancelada, porque nem todas as peças ficaram boas.",
-              "Saiu só parte, informando quantas ficaram boas e o motivo da falha nas demais.",
+              "Saiu só parte, informando quantas ficaram boas e o motivo da falha nas outras.",
               "Falhou, porque houve peças ruins na bandeja."
             ],
             "correta": 2,
-            "feedbackCerto": "Certo. O resultado foi parcial, então a resposta e o registro da fornada mostram o que realmente saiu e por que o resto falhou.",
+            "feedbackCerto": "Certo. Só uma parte saiu boa. A resposta e o registro da fornada mostram o que saiu de verdade e por que o resto falhou.",
             "feedbackPorOpcao": [
-              "Terminar o ciclo não é aprovar. Dizer Tudo certo com 3 peças ruins é registrar o que não aconteceu.",
-              "Cancelada serve para quando o trabalho foi interrompido, não para uma bandeja que terminou com peças aproveitáveis.",
+              "Terminar não é aprovar. Dizer Tudo certo com 3 peças ruins é registrar o que não aconteceu.",
+              "Cancelada é para quando o trabalho foi interrompido. Aqui a bandeja terminou e tem peças boas.",
               null,
-              "Falhou descreve um resultado sem aproveitamento. Aqui 9 peças saíram boas e isso precisa constar."
+              "Falhou é para quando nada se aproveita. Aqui 9 peças saíram boas e isso precisa aparecer."
             ],
             "erroCriticoOpcoes": [
               0
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "ordenar",
             "competencia": "inspecao_falhas",
-            "pergunta": "Você retirou uma bandeja e as peças parecem corretas, mas uma está com um canto levantado. Descreva como você contaria, inspecionaria e registraria esse resultado.",
-            "pontosEsperados": [
-              "Conta as peças e compara com a OT",
-              "Identifica a peça com canto levantado (warping) como reprovada",
-              "Registra quantidade real e falha com motivo, sem esconder"
-            ]
+            "instrucao": "Coloque na ordem certa: você retirou uma bandeja e uma das peças está com um canto levantado.",
+            "itens": [
+              "Contar as peças e comparar com a tarefa",
+              "Inspecionar e reprovar a peça com o canto levantado",
+              "Registrar a quantidade real e a falha com o motivo"
+            ],
+            "feedbackCerto": "Certo. Primeiro você conta, depois inspeciona e por último registra a verdade.",
+            "feedbackErrado": "A ordem é: contar e comparar com a tarefa, inspecionar e reprovar a peça com warping, e só então registrar a quantidade real e a falha com o motivo."
           }
         ]
       },
       {
         "dia": 8,
         "titulo": "Falhas de impressão",
-        "subtitulo": "Reconhecer, separar e comunicar",
+        "subtitulo": "Perceber, separar e avisar",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Falhas comuns",
-            "texto": "Falha é qualquer resultado que não atende à OT. Exemplos: peça solta da plataforma, suporte quebrado, falta de material no meio da impressão, falha parcial, deformação, arquivo incorreto ou máquina parada. Em FDM, os nomes mais comuns são warping (canto levantando), descolamento da mesa e falha de camada (camadas deslocadas ou faltando)."
+            "texto": "Falha é todo resultado diferente do que a tarefa pede. Exemplos: peça solta da plataforma, suporte quebrado, material que acabou no meio da impressão, falha em parte da peça, peça torta, arquivo errado ou máquina parada. No FDM, os nomes mais comuns são warping (canto levantando), descolamento da mesa e falha de camada (camadas fora do lugar ou faltando)."
           },
           {
             "tipo": "conteudo",
             "titulo": "Procurar a causa, não o culpado",
-            "texto": "O objetivo não é achar um culpado, é impedir que se repita e proteger o fluxo. Reimprimir automaticamente pode repetir a mesma causa. Antes, olhe o que dá: arquivo, preparação, material, máquina e outros fatores dentro da sua competência. Causas comuns: mesa suja ou desnivelada, filamento úmido, suporte insuficiente, FEP sujo ou riscado, quantidade errada."
+            "texto": "O objetivo não é achar um culpado. É não deixar a falha se repetir e proteger o trabalho dos outros setores. Imprimir de novo sem pensar pode repetir a mesma causa. Antes, olhe o que você pode olhar: arquivo, preparação, material, máquina e outros pontos que cabem à sua função. Causas comuns: mesa suja ou desnivelada, filamento úmido, pouco suporte, FEP sujo ou riscado, quantidade errada."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Separar e comunicar",
-            "texto": "Não esconda a falha e não misture peça reprovada com peça aprovada. Separe fisicamente, identifique e registre a falha com motivo (no tablet, na janela de conclusão da impressão, com a resposta Falhou ou Saiu só parte). Se a causa for fora da sua competência ou envolver reimpressão, comunique o responsável. Regras de descarte e reimpressão: siga o procedimento definido pela Valente ou consulte o responsável."
+            "titulo": "Separar e avisar",
+            "texto": "Não esconda a falha. Não misture peça reprovada com peça aprovada. Separe a peça, identifique e registre a falha com o motivo. No tablet, isso é feito na janela de conclusão da impressão, com a resposta Falhou ou Saiu só parte. A causa não cabe à sua função ou é preciso imprimir de novo? Avise o responsável. Para descarte e reimpressão, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "resposta_cliente",
@@ -3663,48 +3786,48 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: 'Deu falha na peça 7, mas sobraram 15 boas. Joga a ruim junto com as outras e a gente vê isso depois, ninguém percebe.'",
             "opcoes": [
               {
-                "label": "Jogo junto e confiro depois se alguém reclama.",
+                "label": "Jogo junto e vejo depois se alguém reclama.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Misturar peça reprovada com aprovada é erro crítico, pois pode chegar ao cliente."
+                "feedback": "Misturar peça reprovada com aprovada é erro crítico. A peça ruim pode chegar ao cliente."
               },
               {
-                "label": "Separo e identifico a peça ruim, registro a falha com motivo e comunico o responsável.",
+                "label": "Separo e identifico a peça ruim, registro a falha com o motivo e aviso o responsável.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Isso protege o fluxo e a causa pode ser tratada."
+                "feedback": "Certo. Isso protege os outros setores e a causa pode ser tratada."
               },
               {
-                "label": "Descarto a ruim e não registro nada, para não gerar burocracia.",
+                "label": "Jogo a ruim fora e não registro nada, para não dar trabalho.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Sem registro a causa não é investigada e a falha pode se repetir."
+                "feedback": "Sem registro, ninguém procura a causa e a falha pode se repetir."
               },
               {
-                "label": "Reimprimo logo a peça sem avisar, assim o prazo não muda.",
+                "label": "Imprimo a peça de novo logo, sem avisar. Assim o prazo não muda.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Reimprimir sem entender a causa pode repetir a falha e gastar material."
+                "feedback": "Imprimir de novo sem entender a causa pode repetir a falha e gastar material."
               }
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "inspecao_falhas",
-            "pergunta": "Uma peça saiu com warping (cantos levantados). Qual é o melhor primeiro passo antes de reimprimir?",
+            "pergunta": "Uma peça saiu com warping (cantos levantados). Qual é o melhor primeiro passo antes de imprimir de novo?",
             "opcoes": [
-              "Procurar a causa (mesa suja/desnivelada, primeira camada, material) e comunicar o responsável.",
-              "Reimprimir na mesma máquina com o mesmo arquivo.",
+              "Procurar a causa (mesa suja ou desnivelada, primeira camada, material) e avisar o responsável.",
+              "Imprimir de novo na mesma máquina, com o mesmo arquivo.",
               "Esconder a peça e pegar outra da bandeja anterior.",
-              "Trocar a OT para outra máquina sem avisar."
+              "Passar a tarefa para outra máquina sem avisar."
             ],
             "correta": 0,
             "feedbackCerto": "Isso. Entender antes de repetir.",
             "feedbackPorOpcao": [
               null,
-              "Isso pode repetir exatamente a mesma falha.",
-              "Usar peça de outra OT é confundir pedidos e esconder o defeito.",
-              "Mudar a máquina sem avisar quebra o rastro da OT."
+              "Isso pode repetir a mesma falha.",
+              "Usar peça de outra tarefa confunde os pedidos e esconde o defeito.",
+              "Trocar de máquina sem avisar quebra o histórico da tarefa."
             ],
             "erroCriticoOpcoes": [
               2
@@ -3713,8 +3836,8 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "confirmacao_pratica",
             "competencia": "inspecao_falhas",
-            "local": "Valente OS, janela de conclusão da impressão (apenas observação)",
-            "instrucao": "Sem registrar nada real, peça ao líder para mostrar a janela que aparece ao concluir uma tarefa de impressão e onde se informa a fornada com falha e o motivo. Confirme quando souber como se registra a falha e por que o motivo importa."
+            "local": "Valente OS, janela de conclusão da impressão (só olhar)",
+            "instrucao": "Não registre nada real. Peça ao líder para mostrar a janela que abre ao concluir uma tarefa de impressão. Veja onde se informa a fornada com falha e o motivo. Confirme quando souber como registrar a falha e por que o motivo importa."
           }
         ]
       },
@@ -3725,29 +3848,29 @@ var TREINAMENTO_TRILHAS = {
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "O que o pós-processo precisa",
-            "texto": "O pós-impressão é a etapa do Kanban que recebe suas peças. Ele precisa de quantidade identificada, peças em condição compatível com o processo e vínculo claro com a OT e o pedido. Se ele precisa adivinhar o que recebeu, o erro aparece só depois, quando já é caro."
+            "titulo": "O que a Pós-impressão precisa",
+            "texto": "Pós-impressão é a etapa do Kanban que recebe as suas peças. Ela precisa de três coisas: a quantidade identificada, as peças em bom estado para o processo e a ligação clara com a tarefa e o pedido. Se ela tiver que adivinhar o que recebeu, o erro só aparece depois, quando já sai caro."
           },
           {
             "tipo": "conteudo",
             "titulo": "Risco de misturar",
-            "texto": "Peças de pedidos diferentes misturadas aumentam muito o risco de troca. Componentes pequenos sem identificação podem desaparecer ou ser montados no conjunto errado. Separe por OT, use recipientes ou etiquetas conforme o padrão e guarde peças pequenas juntas, identificadas. Formato de identificação e local de entrega: siga o procedimento definido pela Valente ou consulte o responsável."
+            "texto": "Misturar peças de pedidos diferentes aumenta muito o risco de troca. Peças pequenas sem identificação podem sumir ou ir para o conjunto errado. Separe por tarefa. Use recipientes ou etiquetas conforme o padrão. Guarde as peças pequenas juntas e identificadas. Para o formato da identificação e o local de entrega, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Concluir e liberar",
-            "texto": "Depois de contar, inspecionar e organizar, use Concluir tarefa na OT, que registra o término. Só conclua quando o trabalho realmente terminou e a entrega está identificada. Concluir com peça faltando ou sem conferir passa o problema para o próximo setor, que depois não tem como saber a origem. As tarefas que dependiam desta são liberadas automaticamente quando ela conclui."
+            "texto": "Depois de contar, inspecionar e organizar, toque em Concluir tarefa. Isso registra o fim do trabalho. Só conclua quando o trabalho terminou de verdade e a entrega está identificada. Concluir com peça faltando ou sem conferir passa o problema para o próximo setor. Depois ele não tem como saber de onde veio. As tarefas que dependiam desta são liberadas sozinhas quando ela é concluída."
           },
           {
             "tipo": "ordenar",
             "competencia": "liberacao_pos",
-            "instrucao": "Coloque o fechamento da OT na ordem correta.",
+            "instrucao": "Coloque na ordem certa o fechamento da tarefa.",
             "itens": [
-              "Contar as peças e comparar com a OT",
-              "Inspecionar e separar peças reprovadas",
-              "Organizar e identificar por OT/pedido",
-              "Registrar quantidade e falhas",
-              "Concluir a OT e liberar ao pós-impressão"
+              "Contar as peças e comparar com a tarefa",
+              "Inspecionar e separar as peças reprovadas",
+              "Organizar e identificar por tarefa e pedido",
+              "Registrar a quantidade e as falhas",
+              "Concluir a tarefa e liberar para a Pós-impressão"
             ],
             "feedbackCerto": "Certo. Concluir vem depois de conferir e identificar.",
             "feedbackErrado": "A ordem é contar, inspecionar, organizar e identificar, registrar, e só então concluir e liberar."
@@ -3755,19 +3878,19 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "multipla_escolha",
             "competencia": "liberacao_pos",
-            "pergunta": "Você tem peças de duas OTs diferentes na mesma bandeja, todas parecidas. O que faz antes de liberar?",
+            "pergunta": "Você tem peças de duas tarefas diferentes na mesma bandeja, todas parecidas. O que faz antes de liberar?",
             "opcoes": [
-              "Libera tudo junto, o pós-processo separa depois.",
-              "Marca todas com o nome da OT mais antiga.",
-              "Libera só uma OT e deixa a outra sem registro.",
-              "Separa por OT, identifica cada grupo e confere a quantidade de cada um."
+              "Libera tudo junto. A Pós-impressão separa depois.",
+              "Marca todas com o nome da tarefa mais antiga.",
+              "Libera só uma tarefa e deixa a outra sem registro.",
+              "Separa por tarefa, identifica cada grupo e confere a quantidade de cada um."
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. Cada OT vai separada e identificada.",
+            "feedbackCerto": "Certo. Cada tarefa vai separada e identificada.",
             "feedbackPorOpcao": [
-              "O pós-processo não tem como saber a origem. Gera troca de peças.",
+              "A Pós-impressão não tem como saber de onde veio cada peça. Isso causa troca.",
               "Isso mistura os pedidos.",
-              "Uma OT sem registro fica perdida.",
+              "Uma tarefa sem registro fica perdida.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -3779,99 +3902,99 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "liberacao_pos",
             "local": "Estação de impressão e Pós-impressão (área física)",
-            "instrucao": "Prepare uma entrega simulada com peças de treino: separe por OT fictícia, identifique, conte e deixe pronta para que o pós-processo confira sem adivinhar. Confirme quando um colega ou líder conseguir conferir a quantidade e a origem só olhando."
+            "instrucao": "Monte uma entrega de treino com peças de treino. Separe por tarefa de faz de conta, identifique e conte. Deixe pronta para a Pós-impressão conferir sem adivinhar. Confirme quando um colega ou o líder conseguir conferir a quantidade e a origem só olhando."
           }
         ]
       },
       {
         "dia": 10,
         "titulo": "Missão Produção",
-        "subtitulo": "Do arquivo à liberação em uma OT simulada",
+        "subtitulo": "Do arquivo à liberação em uma tarefa simulada",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "A missão",
-            "texto": "Você vai receber uma OT simulada e percorrer o fluxo do curso: identificar arquivo e versão, conferir quantidade e material, preparar o fatiamento conforme padrão, fazer o checklist da máquina, simular o início, inspecionar o resultado e decidir se libera ou trata falha."
+            "texto": "Você vai receber uma tarefa simulada e passar por todo o caminho do curso: identificar o arquivo e a versão, conferir a quantidade e o material, preparar o fatiamento no padrão, fazer o checklist da máquina, simular o início, inspecionar o resultado e decidir se libera ou trata a falha."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Há uma inconsistência",
-            "texto": "A missão inclui pelo menos uma inconsistência proposital. O objetivo é verificar se você percebe e interrompe antes de transformar dúvida em desperdício. Lembre: não saber não é erro, inventar é. Liberação prática real depende de validação do responsável."
+            "titulo": "Há um erro de propósito",
+            "texto": "A missão tem pelo menos um erro colocado de propósito. A ideia é ver se você percebe e para antes de a dúvida virar desperdício. Lembre: não saber não é erro. Inventar é erro. Para liberar na prática real, o responsável precisa validar."
           },
           {
             "tipo": "cenario",
             "competencia": "liberacao_pos",
-            "titulo": "OT de produção com inconsistência",
+            "titulo": "Tarefa de produção com algo errado",
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "OT: 12 peças em resina, versão 3 do arquivo. No fatiador está aberto o arquivo de versão 2, com 10 peças na plataforma.",
+                "cliente": "Tarefa: 12 peças em resina, versão 3 do arquivo. No fatiador está aberto o arquivo da versão 2, com 10 peças na plataforma.",
                 "opcoes": [
                   {
                     "label": "Imprimir 10 e depois fazer 2 à parte.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Versão e quantidade estão divergindo da OT. Prosseguir é usar arquivo errado."
+                    "feedback": "A versão e a quantidade não batem com a tarefa. Seguir é usar o arquivo errado."
                   },
                   {
-                    "label": "Parar, não preparar nada e avisar o responsável sobre versão e quantidade.",
+                    "label": "Parar, não preparar nada e avisar o responsável sobre a versão e a quantidade.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Percebeu antes de iniciar.",
+                    "feedback": "Certo. Você percebeu antes de iniciar.",
                     "proximo": "b"
                   },
                   {
                     "label": "Usar a versão 2, que é a que já está aberta.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Arquivo/versão errada é erro crítico."
+                    "feedback": "Arquivo ou versão errada é erro crítico."
                   },
                   {
                     "label": "Mudar a quantidade do arquivo para 12 e usar a versão 2.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Corrige a quantidade mas mantém o arquivo errado."
+                    "feedback": "Acerta a quantidade, mas o arquivo continua errado."
                   }
                 ]
               },
               "b": {
-                "cliente": "Com o arquivo correto liberado, você faz o checklist da máquina e vê resíduo endurecido no tanque.",
+                "cliente": "O arquivo certo foi liberado. Você faz o checklist da máquina e vê resto endurecido no tanque.",
                 "opcoes": [
                   {
                     "label": "Iniciar mesmo assim para não perder tempo.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Condição anormal exige tratar antes de iniciar."
+                    "feedback": "Máquina fora do normal se trata antes de iniciar."
                   },
                   {
-                    "label": "Não iniciar, avisar e tratar o tanque pelo procedimento da Valente.",
+                    "label": "Não iniciar, avisar e cuidar do tanque pelo procedimento da Valente.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Isso. Condição do equipamento primeiro.",
+                    "feedback": "Isso. Primeiro o estado da máquina.",
                     "proximo": "c"
                   },
                   {
                     "label": "Limpar com o que tiver à mão e iniciar.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Improvisar pode danificar o FEP."
+                    "feedback": "Improvisar pode estragar o FEP."
                   },
                   {
-                    "label": "Usar Concluir na OT para sinalizar que há problema.",
+                    "label": "Tocar em Concluir tarefa para mostrar que há problema.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Concluir significa que foi realizado."
+                    "feedback": "Concluir quer dizer que foi feito."
                   }
                 ]
               },
               "c": {
-                "cliente": "A impressão terminou: a bandeja tem 12 posições, 11 peças boas e 1 com suporte quebrado e parte faltando.",
+                "cliente": "A impressão terminou. A bandeja tem 12 lugares: 11 peças boas e 1 com suporte quebrado e parte faltando.",
                 "opcoes": [
                   {
-                    "label": "Registrar 11 boas e 1 falha com motivo, separar a peça ruim e comunicar o responsável antes de liberar.",
+                    "label": "Registrar 11 boas e 1 falha com o motivo, separar a peça ruim e avisar o responsável antes de liberar.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Realidade registrada e falha tratada."
+                    "feedback": "Certo. Registro verdadeiro e falha tratada."
                   },
                   {
                     "label": "Registrar 12 concluídas.",
@@ -3880,16 +4003,16 @@ var TREINAMENTO_TRILHAS = {
                     "feedback": "Registrar o que não existe é erro crítico."
                   },
                   {
-                    "label": "Liberar as 12 juntas, pois o pós-processo vai notar.",
+                    "label": "Liberar as 12 juntas, porque a Pós-impressão vai notar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Mistura peça reprovada com aprovada."
                   },
                   {
-                    "label": "Descartar a peça ruim sem registro.",
+                    "label": "Jogar fora a peça ruim sem registro.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Sem registro a causa não é investigada."
+                    "feedback": "Sem registro, ninguém procura a causa."
                   }
                 ]
               }
@@ -3898,29 +4021,29 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "missao",
             "competencia": "liberacao_pos",
-            "titulo": "Missão Produção: da OT à liberação",
-            "objetivo": "Percorrer o fluxo de produção em uma OT simulada, percebendo a inconsistência e decidindo com segurança.",
-            "contexto": "Você recebeu uma OT simulada de peças em resina. Há pelo menos uma inconsistência proposital entre OT, arquivo, quantidade, material ou resultado. Nada é produzido de verdade e nenhum dado real é alterado.",
+            "titulo": "Missão Produção: da tarefa à liberação",
+            "objetivo": "Passar por todo o caminho da produção em uma tarefa simulada, perceber o que está errado e decidir com segurança.",
+            "contexto": "Você recebeu uma tarefa simulada de peças em resina. Há pelo menos um erro colocado de propósito na tarefa, no arquivo, na quantidade, no material ou no resultado. Nada é produzido de verdade e nenhum dado real muda.",
             "tarefas": [
-              "Identifique a OT e confira arquivo, versão, quantidade e material.",
-              "Descreva o que você conferiria na prévia do fatiamento, sem inventar parâmetros e remetendo ao perfil da Valente.",
-              "Percorra o checklist da máquina e diga o que faria se algo estivesse anormal.",
+              "Identifique a tarefa e confira arquivo, versão, quantidade e material.",
+              "Diga o que você conferiria na prévia do fatiamento. Não invente parâmetros. Use o perfil da Valente.",
+              "Passe pelo checklist da máquina e diga o que faria se algo estivesse fora do normal.",
               "Simule Iniciar tarefa, acompanhe e diga quando usaria Pausar e Retomar.",
-              "Inspecione o resultado apresentado, conte e, na janela de conclusão da impressão, escolha a resposta certa (Tudo certo, Saiu só parte, Falhou ou Cancelada) registrando a fornada e a falha com motivo.",
-              "Decida se libera ou trata falha e como entregaria ao pós-impressão com identificação."
+              "Inspecione o resultado mostrado e conte. Na janela de conclusão da impressão, escolha a resposta certa (Tudo certo, Saiu só parte, Falhou ou Cancelada) e registre a fornada e a falha com o motivo.",
+              "Decida se libera ou trata a falha. Diga como entregaria à Pós-impressão com identificação."
             ],
-            "criterioConclusao": "Você apontou a inconsistência, interrompeu antes de gastar material, registrou a quantidade real e a falha com motivo, e só liberou o que estava aprovado. A liberação prática real depende de validação do responsável."
+            "criterioConclusao": "Você apontou o erro, parou antes de gastar material, registrou a quantidade real e a falha com o motivo, e só liberou o que estava aprovado. Para liberar na prática real, o responsável precisa validar."
           }
         ]
       }
     ]
   },
-  pos_impressao: {
+  "pos_impressao": {
     "id": "pos_impressao",
     "nome": "Pós-impressão e Acabamento",
     "descricao": "Aprenda a tratar, inspecionar e entregar peças de resina e FDM com segurança, qualidade e organização.",
     "icone": "🧰",
-    "versao": 2,
+    "versao": 3,
     "cargosPermitidos": null,
     "competencias": [
       "Organização da bancada",
@@ -3930,7 +4053,7 @@ var TREINAMENTO_TRILHAS = {
       "Acabamento de superfície",
       "Qualidade e entrega"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Demonstrar limpeza e conferência segura em exercício supervisionado; identificar defeitos e registrar problemas. A conclusão exige verificação prática do responsável.",
     "dias": [
       {
         "dia": 1,
@@ -3940,59 +4063,59 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Pós-impressão: o que acontece aqui",
-            "texto": "A peça sai da impressora 3D ainda bruta. Ela pode ter suportes (apoios que a seguraram durante a impressão), resíduos de resina, rebarbas, marcas de camada e pequenos defeitos. O pós-impressão transforma essa peça bruta em uma peça pronta para a Pintura. É a etapa do Kanban chamada Pós-impressão, entre Imprimindo e Pintura. Cada processo tem riscos e uma sequência própria. Você nunca usa produto, ferramenta ou equipamento sem saber para que serve e sem ter o procedimento autorizado."
+            "texto": "A peça sai da impressora 3D ainda bruta. Ela pode ter suportes, que são apoios que seguraram a peça durante a impressão. Pode ter também restos de resina, rebarbas, marcas de camada e pequenos defeitos. O pós-impressão deixa essa peça pronta para a Pintura. No Kanban, essa etapa se chama Pós-impressão e fica entre Imprimindo e Pintura. Cada processo tem riscos e uma ordem certa. Nunca use produto, ferramenta ou equipamento sem saber para que serve e sem ter o procedimento autorizado."
           },
           {
             "tipo": "conteudo",
             "titulo": "EPI e ventilação vêm primeiro",
-            "texto": "EPI significa equipamento de proteção individual. Como regra geral, ao manusear resina líquida ou ainda não curada, use luvas adequadas e proteção ocular, e trabalhe em local ventilado. Resina pode irritar a pele e os olhos, e solventes como o álcool isopropílico têm vapores e são inflamáveis. Ao lixar, a poeira exige proteção ocular e respiratória. Ao cortar suportes, uma lasca pode saltar. Quais EPIs, de que tipo e em qual etapa: o procedimento da Valente prevalece. Se faltar EPI, não comece."
+            "texto": "EPI quer dizer equipamento de proteção individual. Regra geral: para mexer com resina líquida ou ainda não curada (não endurecida), use luvas adequadas e proteção nos olhos, em local ventilado. Resina pode irritar a pele e os olhos. Solventes como o álcool isopropílico soltam vapores e pegam fogo. Ao lixar, a poeira pede proteção nos olhos e na respiração. Ao cortar suportes, uma lasca pode saltar. Quais EPIs usar, de que tipo e em qual etapa: vale o procedimento da Valente. Se faltar EPI, não comece."
           },
           {
             "tipo": "conteudo",
             "titulo": "Bancada organizada é controle de qualidade",
-            "texto": "Uma bancada bagunçada mistura componentes de pedidos diferentes, perde peças pequenas, contamina áreas limpas com poeira ou resina e causa acidentes. Pense em três zonas: onde a peça entra, onde ela fica durante cada processo (limpeza, cura, lixamento) e onde ela espera para sair. Em todas, a peça continua vinculada à OT, a tarefa do Valente OS com título, instruções, checklist e quantidade. Peça sem identificação é peça que alguém vai ter de adivinhar."
+            "texto": "Bancada bagunçada mistura peças de pedidos diferentes, perde peças pequenas, suja áreas limpas com poeira ou resina e causa acidentes. Pense em três zonas. Uma onde a peça entra. Uma onde ela fica durante cada processo (limpeza, cura, lixamento). E uma onde ela espera para sair. Em todas, a peça continua ligada à tarefa do Valente OS, que tem título, instruções, checklist e quantidade. Peça sem identificação obriga alguém a adivinhar."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sua tarefa no Valente OS",
-            "texto": "Cada tarefa tem os botões Iniciar tarefa, Pausar, Retomar e Concluir tarefa. O PIN do colaborador identifica quem executa: seu nome aparece no topo da tela e fica gravado como responsável pelo que você inicia e conclui. Por isso, use sempre o seu PIN e nunca o de outra pessoa. No topo da tarefa fica a caixa SUA MISSÃO, em destaque, com o que você deve fazer e a quantidade. Abaixo estão o checklist e as fotos de referência da peça."
+            "texto": "Cada tarefa tem os botões Iniciar tarefa, Pausar, Retomar e Concluir tarefa. O PIN mostra quem está fazendo a tarefa. Seu nome aparece no topo da tela e fica gravado como responsável pelo que você inicia e conclui. Por isso, use sempre o seu PIN. Nunca use o de outra pessoa. No topo da tarefa fica a caixa SUA MISSÃO, em destaque. Ela diz o que você deve fazer e a quantidade. Abaixo ficam o checklist e as fotos de referência da peça."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "organizacao_bancada",
             "pergunta": "Marque o que é regra de uma bancada de pós-impressão segura e organizada.",
             "itens": [
-              "Luvas e proteção ocular à mão antes de abrir qualquer recipiente de resina ou solvente",
+              "Luvas e proteção nos olhos à mão antes de abrir qualquer pote de resina ou solvente",
               "Peças de pedidos diferentes na mesma bandeja para ganhar espaço",
-              "Ventilação do ambiente verificada antes de começar",
-              "Usar a ferramenta que estiver mais perto, mesmo sem saber a finalidade",
-              "Cada peça identificada com a OT durante todo o processo"
+              "Ventilação do ambiente conferida antes de começar",
+              "Usar a ferramenta que estiver mais perto, mesmo sem saber para que serve",
+              "Cada peça identificada com a tarefa durante todo o processo"
             ],
             "corretos": [
               0,
               2,
               4
             ],
-            "feedbackCerto": "Isso mesmo. EPI, ventilação e identificação por OT são a base do posto.",
-            "feedbackErrado": "Misturar pedidos e usar ferramenta sem saber a finalidade são erros de iniciante que geram perda e acidente."
+            "feedbackCerto": "Isso mesmo. EPI, ventilação e identificação pela tarefa são a base do posto.",
+            "feedbackErrado": "Misturar pedidos e usar ferramenta sem saber para que serve são erros que causam perda e acidente."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "organizacao_bancada",
             "pergunta": "Você precisa parar um lote de peças para atender o telefone. O que fazer com as peças que estão na bancada?",
             "opcoes": [
-              "Deixá-las na zona do processo, identificadas com a OT, e guardar solventes e resina fechados",
+              "Deixar na zona do processo, identificadas com a tarefa, e guardar solventes e resina fechados",
               "Misturar todas numa caixa para liberar a mesa",
               "Deixar espalhadas, porque você volta em um minuto",
               "Jogar um pano por cima para proteger da poeira"
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Identificação e recipientes fechados evitam troca de peças e acidentes.",
+            "feedbackCerto": "Certo. Identificação e recipientes fechados evitam troca de peças e acidentes.",
             "feedbackPorOpcao": [
               null,
-              "Misturar peças de OTs diferentes é a causa clássica de troca de componentes.",
-              "Um minuto vira dez, e peças soltas se misturam ou se perdem.",
-              "Pano pode contaminar a peça e não resolve a identificação."
+              "Misturar peças de tarefas diferentes é a causa mais comum de troca de peças.",
+              "Um minuto vira dez. Peças soltas se misturam ou se perdem.",
+              "O pano pode sujar a peça e não resolve a identificação."
             ],
             "erroCriticoOpcoes": [
               1
@@ -4002,7 +4125,7 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "organizacao_bancada",
             "local": "Bancada de pós-impressão (área física)",
-            "instrucao": "Com seu líder ou colega experiente, aponte na bancada onde a peça entra, onde fica em cada processo (limpeza, cura, lixamento) e onde espera para sair, e como ela permanece vinculada à OT. Confirme também onde ficam os EPIs. Só marque como feito depois de ter visto cada ponto."
+            "instrucao": "Com seu líder ou um colega experiente, aponte na bancada onde a peça entra, onde fica em cada processo (limpeza, cura, lixamento) e onde espera para sair. Mostre como ela continua ligada à tarefa. Confirme onde ficam os EPIs. Só marque como feito depois de ver cada ponto."
           }
         ]
       },
@@ -4014,46 +4137,46 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Conte antes de tocar",
-            "texto": "Antes de remover suporte ou lixar, descubra o que você está recebendo. Identifique o pedido e a OT, a quantidade e os componentes. Depois compare o que chegou com o que deveria chegar. Essa conferência leva poucos minutos e evita o pior cenário: trabalhar em metade do conjunto e só então perceber que falta o resto."
+            "texto": "Antes de tirar suporte ou lixar, descubra o que você está recebendo. Veja qual é o pedido e a tarefa, a quantidade e os componentes, que são as partes da peça. Depois compare o que chegou com o que deveria chegar. Essa conferência leva poucos minutos. Ela evita o pior: trabalhar em metade do conjunto e só depois ver que falta o resto."
           },
           {
             "tipo": "conteudo",
             "titulo": "Um exemplo",
-            "texto": "Um conjunto deveria ter corpo, base e dois acessórios. Chegou apenas o corpo. Começar o tratamento mesmo assim parece produtivo, mas você pode estar tratando uma peça de um lote errado, ou a base pode ter ficado na impressora, quebrada ou na fila de reimpressão. Descobrir a falta depois mistura os tempos de cada componente e dificulta o rastreio."
+            "texto": "Um conjunto deveria ter corpo, base e dois acessórios. Chegou só o corpo. Começar assim mesmo parece adiantar o serviço. Mas você pode estar tratando uma peça do lote errado. Ou a base pode ter ficado na impressora, quebrada ou na fila para imprimir de novo. Descobrir a falta depois mistura os tempos de cada componente e dificulta saber onde cada peça está."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como agir",
-            "texto": "Abra a OT no Valente OS e comece pela caixa SUA MISSÃO, no topo: ela diz o que fazer e quantas unidades. Depois leia título, instruções, checklist, fotos de referência e quantidade. Conte as peças e identifique cada componente. Se a conta não fecha, não improvise e não presuma que alguém vai trazer depois. Registre a divergência e consulte o responsável pela etapa anterior ou o seu líder. Dizer que não sabe a origem da peça não é erro. Seguir adiante sem saber é."
+            "texto": "Abra a tarefa no Valente OS e comece pela caixa SUA MISSÃO, no topo. Ela diz o que fazer e quantas unidades. Depois leia título, instruções, checklist, fotos de referência e quantidade. Conte as peças e identifique cada componente. Se a conta não fecha, não improvise. Não pense que alguém vai trazer depois. Registre a diferença e consulte o responsável pela etapa anterior ou o seu líder. Dizer que não sabe de onde veio a peça não é erro. Seguir adiante sem saber é erro."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "conferencia_recebimento",
-            "cliente": "Colega da impressão: \"Deixei o corpo do conjunto aí na sua bancada. A base e os acessórios saem mais tarde. Já pode ir tirando os suportes.\" A OT lista corpo, base e dois acessórios.",
+            "cliente": "Colega da impressão: \"Deixei o corpo do conjunto na sua bancada. A base e os acessórios saem mais tarde. Já pode ir tirando os suportes.\" A tarefa lista corpo, base e dois acessórios.",
             "opcoes": [
               {
                 "label": "Começo agora pelo corpo e junto o resto quando chegar.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Pode até funcionar, mas sem confirmar o restante você não sabe se os outros componentes existem ou virão no mesmo estado."
+                "feedback": "Pode até dar certo. Mas, sem confirmar o resto, você não sabe se os outros componentes existem ou se virão no mesmo estado."
               },
               {
-                "label": "Confirmo na OT e peço para registrar que o conjunto está incompleto e quando os demais componentes chegam, antes de começar.",
+                "label": "Confiro na tarefa e peço para registrar que o conjunto está incompleto e quando chega o resto, antes de começar.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Você confere, deixa a divergência registrada e só então trabalha."
+                "feedback": "Certo. Você confere, deixa a diferença registrada e só então trabalha."
               },
               {
-                "label": "Marco a OT como concluída para não perder o prazo.",
+                "label": "Marco a tarefa como concluída para não perder o prazo.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Marcar etapa como feita sem ter feito é erro crítico."
+                "feedback": "Marcar como feito o que não foi feito é erro crítico."
               },
               {
                 "label": "Pergunto a outro colega e faço o que ele achar melhor.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "A fonte da verdade é a OT e quem responde pela etapa anterior, não a opinião de terceiros."
+                "feedback": "A informação certa está na tarefa e com o responsável pela etapa anterior, não na opinião de outros."
               }
             ]
           },
@@ -4062,20 +4185,20 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "conferencia_recebimento",
             "instrucao": "Coloque na ordem a conferência de recebimento.",
             "itens": [
-              "Identificar pedido e OT",
-              "Ler quantidade e componentes esperados na OT",
+              "Identificar pedido e tarefa",
+              "Ler na tarefa a quantidade e os componentes",
               "Contar e identificar o que chegou",
-              "Comparar o recebido com o esperado",
+              "Comparar o que chegou com o esperado",
               "Se faltar ou sobrar algo, registrar e consultar antes de trabalhar"
             ],
-            "feedbackCerto": "Perfeito. Primeiro saber o que deveria vir, depois checar o que veio.",
-            "feedbackErrado": "A ordem é: identificar a OT, ler o esperado, contar o recebido, comparar e só então decidir."
+            "feedbackCerto": "Perfeito. Primeiro saber o que deveria vir, depois conferir o que veio.",
+            "feedbackErrado": "A ordem é: identificar a tarefa, ler o esperado, contar o que chegou, comparar e só então decidir."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "conferencia_recebimento",
-            "local": "Valente OS > Missão/Inbox de tarefas (apenas consulta)",
-            "instrucao": "Abra uma OT em modo de consulta, sem alterar nada, e leia a caixa SUA MISSÃO no topo, o título, a quantidade e os componentes. Explique para seu líder o que você conferiria na peça física antes de iniciar. Não clique em Iniciar nem Concluir no treinamento."
+            "local": "Valente OS: aba Tarefas no computador ou Minhas funções no tablet (só consulta)",
+            "instrucao": "Abra uma tarefa só para olhar, sem mudar nada. Leia a caixa SUA MISSÃO no topo, o título, a quantidade e os componentes. Explique ao seu líder o que você conferiria na peça antes de começar. No treinamento, não toque em Iniciar tarefa nem em Concluir tarefa."
           }
         ]
       },
@@ -4087,31 +4210,31 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Por que lavar e curar",
-            "texto": "A peça de resina sai da impressora coberta de resina líquida, ainda não curada. Ela precisa ser lavada para remover esse resíduo e depois curada com luz UV para completar o endurecimento do material. Peça mal lavada fica pegajosa e com acabamento ruim. Peça mal curada pode ficar frágil, deformar ou manter resina que irrita a pele. Cura demais também pode causar problemas. Por isso tempo, produto e método não são improviso."
+            "texto": "A peça de resina sai da impressora coberta de resina líquida, ainda não curada. Curar é terminar de endurecer o material com luz UV. Primeiro você lava a peça para tirar a resina que sobrou. Depois cura. Peça mal lavada fica pegajosa e com acabamento ruim. Peça mal curada pode ficar frágil, entortar ou manter resina que irrita a pele. Cura demais também pode dar problema. Por isso, tempo, produto e método não se improvisam."
           },
           {
             "tipo": "conteudo",
             "titulo": "Limpeza: prática geral",
-            "texto": "Uma prática comum é lavar a peça em álcool isopropílico, conhecido como IPA, em recipiente próprio e fechado, e depois secar bem. Use luvas adequadas e proteção ocular e trabalhe com ventilação. O IPA é inflamável: longe de fontes de calor e faísca. Não deixe a peça de molho além do que o procedimento manda, pois isso pode prejudicar o material. Produto, tempo, número de banhos e método: siga o procedimento definido pela Valente ou consulte o responsável."
+            "texto": "Um jeito comum é lavar a peça em álcool isopropílico, chamado IPA, em recipiente próprio e fechado. Depois, secar bem. Use luvas adequadas e proteção nos olhos. Trabalhe com ventilação. O IPA pega fogo: mantenha longe de calor e de faísca. Não deixe a peça de molho por mais tempo do que o procedimento manda. Isso pode estragar o material. Produto, tempo, número de banhos e método: siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Cura UV e descarte",
-            "texto": "A cura usa luz UV em equipamento próprio. Evite olhar para a luz e use a proteção indicada. Tempo e posição seguem o procedimento da Valente para cada resina, nunca palpite. Descarte: resina líquida, IPA sujo e panos ou luvas contaminados não vão para a pia, o ralo ou o lixo comum. Eles têm destino próprio, conforme o procedimento de descarte da empresa e a legislação local. Em dúvida sobre onde jogar, pergunte antes."
+            "texto": "A cura usa luz UV em equipamento próprio. Evite olhar para a luz e use a proteção indicada. Tempo e posição seguem o procedimento da Valente para cada resina. Nunca vá no palpite. Descarte: resina líquida, IPA sujo e panos ou luvas contaminados não vão para a pia, o ralo ou o lixo comum. Eles têm destino próprio, conforme o procedimento de descarte da empresa e a lei local. Na dúvida sobre onde jogar, pergunte antes."
           },
           {
             "tipo": "ordenar",
             "competencia": "seguranca_resina",
-            "instrucao": "Coloque na ordem a sequência segura de limpeza e cura de uma peça de resina.",
+            "instrucao": "Coloque na ordem segura a limpeza e a cura de uma peça de resina.",
             "itens": [
-              "Vestir luvas e proteção ocular e confirmar a ventilação",
+              "Colocar luvas e proteção nos olhos e conferir a ventilação",
               "Lavar a peça conforme o procedimento",
-              "Secar e conferir que não há resina líquida ou pegajosa",
+              "Secar e conferir que não ficou resina líquida ou pegajosa",
               "Curar conforme o procedimento",
-              "Descartar líquidos e materiais contaminados no local correto"
+              "Descartar líquidos e materiais contaminados no local certo"
             ],
-            "feedbackCerto": "Certo. EPI antes de tudo, e descarte correto fecha o processo.",
-            "feedbackErrado": "A sequência é EPI, lavagem, secagem e conferência, cura e descarte correto."
+            "feedbackCerto": "Certo. EPI antes de tudo. O descarte certo fecha o processo.",
+            "feedbackErrado": "A ordem é: EPI, lavagem, secagem e conferência, cura e descarte no local certo."
           },
           {
             "tipo": "resposta_cliente",
@@ -4125,38 +4248,38 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "Inventar tempo de cura é erro crítico. Cada material tem seu procedimento."
               },
               {
-                "label": "Melhor deixar bastante tempo, o excesso nunca faz mal.",
+                "label": "Melhor deixar bastante tempo. Cura a mais nunca faz mal.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Cura em excesso também pode prejudicar a peça."
+                "feedback": "Cura demais também pode estragar a peça."
               },
               {
                 "label": "Vamos olhar o procedimento da Valente para essa resina ou perguntar ao responsável.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Quando falta informação, consulta-se a fonte."
+                "feedback": "Certo. Quando falta informação, consulte a fonte."
               },
               {
-                "label": "Pega pelo cheiro: se ainda tem cheiro, curou pouco.",
+                "label": "Vai pelo cheiro: se ainda tem cheiro, curou pouco.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Cheiro não é critério confiável de cura."
+                "feedback": "Cheiro não serve para saber se curou."
               }
             ]
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "seguranca_resina",
-            "afirmacao": "Se o IPA usado na lavagem ficou sujo de resina, o certo é descartá-lo no ralo com bastante água.",
+            "afirmacao": "Se o IPA da lavagem ficou sujo de resina, o certo é jogar no ralo com bastante água.",
             "correta": false,
-            "feedbackCerto": "Correto. Líquido contaminado tem descarte próprio, definido pelo procedimento da empresa.",
+            "feedbackCerto": "Certo. Líquido contaminado tem descarte próprio, definido pelo procedimento da empresa.",
             "feedbackErrado": "Não. IPA sujo de resina não vai para o ralo. Siga o procedimento de descarte da Valente."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "seguranca_resina",
             "local": "Área de lavagem e cura (física) e procedimento da Valente",
-            "instrucao": "Com seu líder, localize os EPIs, o recipiente de lavagem, o equipamento de cura e o local de descarte. Peça para ver o procedimento oficial de lavagem e cura e confirme que sabe onde estão tempos e produtos aprovados. Não manipule resina sem supervisão."
+            "instrucao": "Com seu líder, encontre os EPIs, o recipiente de lavagem, o equipamento de cura e o local de descarte. Peça para ver o procedimento oficial de lavagem e cura. Confirme que você sabe onde estão os tempos e os produtos aprovados. Não mexa com resina sem supervisão."
           }
         ]
       },
@@ -4168,27 +4291,27 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que são suportes",
-            "texto": "Suportes são pequenas hastes que seguram partes da peça no ar durante a impressão. Eles são necessários, mas ficam presos ao modelo por pontas finas, e quando saem deixam marcas. Remover é uma operação delicada: força demais arranca pedaços do modelo, e a peça perde detalhes que não voltam."
+            "texto": "Suportes são pequenas hastes que seguram partes da peça no ar durante a impressão. Eles são necessários. Mas ficam presos à peça por pontas finas e deixam marcas quando saem. Tirar suporte é um trabalho delicado. Força demais arranca pedaços da peça. E os detalhes perdidos não voltam."
           },
           {
             "tipo": "conteudo",
             "titulo": "Onde olhar primeiro",
-            "texto": "Um suporte perto de dedo, arma, penacho, orelha ou qualquer detalhe fino exige muito mais cuidado do que um suporte em uma base robusta. Antes de tocar, olhe a peça por todos os lados e marque mentalmente os pontos frágeis. Planeje a sequência: comece pelos suportes grandes em áreas fortes e deixe os delicados para depois, quando a peça já está mais livre."
+            "texto": "Suporte perto de dedo, arma, penacho, orelha ou outro detalhe fino pede muito mais cuidado do que suporte em uma base grossa. Antes de tocar, olhe a peça por todos os lados e guarde na cabeça os pontos frágeis. Planeje a ordem. Comece pelos suportes grandes, nas áreas fortes. Deixe os delicados para depois, quando a peça já estiver mais livre."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como remover com segurança",
-            "texto": "Use as ferramentas indicadas no procedimento, como alicate de corte fino ou lâmina, sempre cortando longe do corpo e das mãos, com proteção ocular, pois lascas saltam. Corte o suporte rente, mas sem entrar no modelo. Não puxe e não torça. Se o suporte parecer não sair sem risco, pare e consulte antes de quebrar. Se for resina, siga o procedimento da Valente sobre fazer isso antes ou depois da cura."
+            "texto": "Use as ferramentas indicadas no procedimento, como alicate de corte fino ou lâmina. Corte sempre para longe do corpo e das mãos. Use proteção nos olhos, porque lascas saltam. Corte o suporte rente, mas sem entrar na peça. Não puxe e não torça. Se o suporte não sair sem risco, pare e consulte antes de quebrar. Se for resina, siga o procedimento da Valente sobre tirar os suportes antes ou depois da cura (o endurecimento com luz UV)."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "remocao_suportes",
-            "pergunta": "Marque os pontos que pedem mais cuidado ao remover suportes.",
+            "pergunta": "Marque os pontos que pedem mais cuidado ao tirar suportes.",
             "itens": [
               "Suporte encostado em um dedo fino",
               "Suporte em uma base larga e grossa",
-              "Suporte sob a ponta de um penacho",
-              "Suporte na parte inferior reta da peça",
+              "Suporte embaixo da ponta de um penacho",
+              "Suporte na parte de baixo, reta, da peça",
               "Suporte junto a uma espada fina"
             ],
             "corretos": [
@@ -4196,24 +4319,24 @@ var TREINAMENTO_TRILHAS = {
               2,
               4
             ],
-            "feedbackCerto": "Correto. Detalhes finos quebram com facilidade.",
-            "feedbackErrado": "Áreas robustas aguentam mais. O risco está nos detalhes finos."
+            "feedbackCerto": "Certo. Detalhes finos quebram com facilidade.",
+            "feedbackErrado": "Áreas grossas aguentam mais. O risco está nos detalhes finos."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "remocao_suportes",
-            "pergunta": "Um suporte está colado na ponta de um dedo e você sente que, ao puxar, o dedo vai junto. O que fazer?",
+            "pergunta": "Um suporte está colado na ponta de um dedo da peça. Você sente que, se puxar, o dedo vai junto. O que fazer?",
             "opcoes": [
               "Puxar mais rápido para sair de uma vez",
               "Deixar o suporte e mandar para a Pintura assim",
-              "Torcer até soltar e depois colar o dedo se quebrar",
-              "Parar, avaliar o ponto e consultar o responsável antes de continuar"
+              "Torcer até soltar e colar o dedo se quebrar",
+              "Parar, olhar bem o ponto e consultar o responsável antes de continuar"
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. Consultar antes de quebrar é a regra.",
+            "feedbackCerto": "Certo. Consultar antes de quebrar é a regra.",
             "feedbackPorOpcao": [
-              "Velocidade e força aumentam a chance de quebrar.",
-              "Avançar com defeito conhecido transfere o problema para a Pintura.",
+              "Pressa e força aumentam a chance de quebrar.",
+              "Passar adiante um defeito conhecido joga o problema para a Pintura.",
               "Torcer e colar depois é aceitar o defeito.",
               null
             ],
@@ -4222,15 +4345,18 @@ var TREINAMENTO_TRILHAS = {
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "remocao_suportes",
-            "pergunta": "Descreva em 3 ou 4 frases como você planejaria a remoção dos suportes de uma figura com espada fina, capa e base larga. Diga por onde começa, qual EPI usa e quando para para consultar.",
-            "pontosEsperados": [
-              "Começa pelos suportes das áreas robustas, como a base",
-              "Deixa por último os pontos frágeis, como a espada",
-              "Usa proteção ocular e ferramenta indicada",
-              "Para e consulta se o risco de quebrar for alto"
-            ]
+            "pergunta": "Você vai tirar os suportes de uma figura com espada fina, capa e base larga. Qual é o plano certo?",
+            "opcoes": [
+              "Começar pela espada, que é a parte mais difícil, e deixar a base para o fim",
+              "Começar pela base e, se o suporte da espada não sair, puxar com força",
+              "Com proteção nos olhos, começar pela base, deixar a espada por último e consultar se houver risco de quebrar",
+              "Tirar os suportes com a mão, sem ferramenta, para não riscar a peça"
+            ],
+            "correta": 2,
+            "feedbackCerto": "Certo. Primeiro as áreas fortes, por último os pontos frágeis. Sempre com proteção nos olhos e a ferramenta indicada.",
+            "feedbackErrado": "Comece pelas áreas fortes, como a base. Deixe a espada por último. Use proteção nos olhos e a ferramenta indicada. Pare e consulte se houver risco de quebrar."
           }
         ]
       },
@@ -4242,17 +4368,17 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Como a peça FDM chega",
-            "texto": "FDM significa que a peça foi feita derretendo filamento plástico e depositando camada sobre camada. Ela pode chegar com suportes, fios soltos, respingos, bordas rebarbadas na primeira camada e marcas de camada. O objetivo do pós-processo é preparar a superfície sem alterar medidas nem detalhes funcionais."
+            "texto": "FDM é um jeito de imprimir. A máquina derrete um fio de plástico, chamado filamento, e monta a peça camada por camada. A peça pode chegar com suportes, fios soltos, respingos, rebarbas na primeira camada e marcas de camada. Seu trabalho é preparar a superfície sem mudar as medidas nem os detalhes que têm função."
           },
           {
             "tipo": "conteudo",
             "titulo": "Estético ou funcional",
-            "texto": "Antes de corrigir, diferencie duas áreas. Área estética é o que será visto, e pode receber lixamento para ficar uniforme. Área funcional é a que cumpre uma função: encaixe, furo, pino, rosca, dobradiça. Lixar um encaixe sem entender sua função pode aumentar a folga ou impedir a montagem. Na dúvida, consulte o modelo, a ficha ou a OT."
+            "texto": "Antes de corrigir, separe dois tipos de área. Área estética é a que será vista. Ela pode ser lixada para ficar uniforme. Área funcional é a que tem uma função: encaixe, furo, pino, rosca, dobradiça. Lixar um encaixe sem entender a função dele pode aumentar a folga ou impedir a montagem. Na dúvida, consulte o modelo, a ficha ou a tarefa."
           },
           {
             "tipo": "conteudo",
             "titulo": "Cuidados práticos",
-            "texto": "Ao retirar suportes de FDM, use alicate ou lâmina com cuidado e proteção ocular. Peças plásticas podem estilhaçar. Remova os fios com ferramenta adequada, não com a mão nua. Se aquecer a superfície para alisar, siga o procedimento da Valente e cuide de ventilação. A poeira de lixamento deve ser evitada, e a peça deve ficar limpa antes de ir adiante."
+            "texto": "Para tirar suportes de FDM, use alicate ou lâmina com cuidado e proteção nos olhos. Peças de plástico podem estilhaçar. Tire os fios com a ferramenta adequada, não com a mão nua. Se for aquecer a superfície para alisar, siga o procedimento da Valente e cuide da ventilação. Evite a poeira de lixamento. A peça deve ficar limpa antes de seguir adiante."
           },
           {
             "tipo": "multipla_escolha",
@@ -4260,17 +4386,17 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Uma peça FDM tem um pino de encaixe com uma rebarba na base. O que você faz primeiro?",
             "opcoes": [
               "Lixa o pino até ficar liso como o resto",
-              "Identifica que é área funcional, confere na ficha ou consulta antes de mexer",
-              "Corta o pino fora, pois está feio",
-              "Ignora, porque FDM sempre tem rebarba"
+              "Vê que é área funcional e confere na ficha ou consulta antes de mexer",
+              "Corta o pino fora, porque está feio",
+              "Deixa como está, porque FDM sempre tem rebarba"
             ],
             "correta": 1,
-            "feedbackCerto": "Correto. Área funcional pede entendimento antes de correção.",
+            "feedbackCerto": "Certo. Em área funcional, entenda antes de corrigir.",
             "feedbackPorOpcao": [
               "Lixar pode mudar a medida do encaixe.",
               null,
-              "Remover uma peça funcional inutiliza o conjunto.",
-              "Rebarba em encaixe pode impedir a montagem, então não deve ser ignorada."
+              "Tirar uma parte funcional inutiliza o conjunto.",
+              "Rebarba em encaixe pode impedir a montagem. Não pode ser ignorada."
             ],
             "erroCriticoOpcoes": [
               0
@@ -4279,52 +4405,52 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "acabamento_superficie",
-            "afirmacao": "Em uma peça FDM, todas as marcas de camada devem ser lixadas até desaparecer, inclusive nas áreas de encaixe.",
+            "afirmacao": "Em uma peça FDM, todas as marcas de camada devem ser lixadas até sumir, até nas áreas de encaixe.",
             "correta": false,
-            "feedbackCerto": "Correto. Áreas funcionais não se lixam sem entender a função e a tolerância.",
-            "feedbackErrado": "Não. Lixar encaixes pode alterar medidas e impedir a montagem."
+            "feedbackCerto": "Certo. Não lixe área funcional sem entender a função e a medida permitida.",
+            "feedbackErrado": "Não. Lixar encaixes pode mudar medidas e impedir a montagem."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "acabamento_superficie",
             "local": "Peça FDM de treino na bancada",
-            "instrucao": "Pegue uma peça FDM de treino com seu líder e aponte quais áreas são estéticas e quais são funcionais. Diga o que faria em cada uma e confirme com seu líder antes de qualquer corte ou lixamento."
+            "instrucao": "Com seu líder, pegue uma peça FDM de treino e aponte quais áreas são estéticas e quais são funcionais. Diga o que faria em cada uma. Confirme com seu líder antes de qualquer corte ou lixamento."
           }
         ]
       },
       {
         "dia": 6,
         "titulo": "Lixamento e correção",
-        "subtitulo": "Gradação, geometria e referência",
+        "subtitulo": "Grãos, forma e referência",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Lixar não é deixar tudo liso",
-            "texto": "Lixar é remover marcas indesejadas, como marcas de suporte, linhas de camada e rebarbas, preservando a geometria. O alvo é preparar a peça para montagem ou pintura. Lixar demais apaga detalhes, afina paredes e muda medidas. Por isso toda correção respeita a referência do modelo e a tolerância."
+            "texto": "Lixar é tirar marcas que não deveriam estar ali, como marcas de suporte, linhas de camada e rebarbas, sem mudar a forma da peça. O objetivo é preparar a peça para a montagem ou a pintura. Lixar demais apaga detalhes, afina paredes e muda medidas. Por isso, toda correção respeita a referência do modelo e a tolerância, que é a variação permitida na medida."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Gradação crescente",
-            "texto": "Lixas têm grãos: número menor é mais grosso, número maior é mais fino. Comece com o grão mais grosso necessário para tirar a marca e vá passando para grãos progressivamente mais finos, sem pular muito, porque cada grão apaga os riscos do anterior. Qual lixa e em qual ordem, siga o procedimento da Valente. Limpe a poeira entre as trocas, para que partículas grossas não arranhem de novo."
+            "titulo": "Do grão grosso ao fino",
+            "texto": "As lixas têm grãos. Número menor é lixa mais grossa. Número maior é lixa mais fina. Comece com o grão mais grosso que for preciso para tirar a marca. Depois passe para grãos cada vez mais finos, sem pular muito. Cada grão apaga os riscos do anterior. Qual lixa usar e em qual ordem: siga o procedimento da Valente. Limpe a poeira entre as trocas, para que grãos grossos não risquem a peça de novo."
           },
           {
             "tipo": "conteudo",
             "titulo": "Defeito ou detalhe",
-            "texto": "Uma dobra do uniforme faz parte do modelo. Uma marca de suporte não. O operador precisa distinguir detalhe intencional de defeito comparando com a foto, a ficha e o modelo de referência. Para lixar, use proteção ocular e respiratória adequada e ventilação, pois a poeira, principalmente de resina, não deve ser inalada nem levada à pele. Em dúvida, consulte, pois material lixado não volta."
+            "texto": "Uma dobra do uniforme faz parte do modelo. Uma marca de suporte não faz. Você precisa separar detalhe de defeito. Para isso, compare com a foto, a ficha e o modelo de referência. Para lixar, use proteção adequada nos olhos e na respiração, e ventilação. A poeira, principalmente a de resina, não deve ser respirada nem ficar na pele. Na dúvida, consulte. Material lixado não volta."
           },
           {
             "tipo": "ordenar",
             "competencia": "acabamento_superficie",
             "instrucao": "Coloque na ordem o lixamento de uma marca de suporte.",
             "itens": [
-              "Colocar proteção ocular e respiratória e confirmar a ventilação",
-              "Comparar com a referência para confirmar que é defeito e não detalhe",
-              "Lixar a marca com o grão mais grosso necessário",
+              "Colocar proteção nos olhos e na respiração e conferir a ventilação",
+              "Comparar com a referência para confirmar que é defeito, não detalhe",
+              "Lixar a marca com o grão mais grosso que for preciso",
               "Passar para um grão mais fino",
               "Limpar a poeira e conferir a superfície"
             ],
             "feedbackCerto": "Certo. Referência primeiro, depois do mais grosso ao mais fino.",
-            "feedbackErrado": "A lógica é EPI, confirmar o defeito, grão mais grosso, grão mais fino e limpeza."
+            "feedbackErrado": "A ordem é: EPI, confirmar o defeito, grão mais grosso, grão mais fino e limpeza."
           },
           {
             "tipo": "resposta_cliente",
@@ -4335,13 +4461,13 @@ var TREINAMENTO_TRILHAS = {
                 "label": "Vai, peça lisa é sempre melhor.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Liso nem sempre é correto: pode ser detalhe do modelo."
+                "feedback": "Liso nem sempre é certo. Pode ser detalhe do modelo."
               },
               {
-                "label": "Antes, vamos conferir na foto ou na ficha se aquela linha faz parte do modelo.",
+                "label": "Antes, vamos conferir na foto ou na ficha se essa linha faz parte do modelo.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Referência decide o que é defeito."
+                "feedback": "Certo. A referência mostra o que é defeito."
               },
               {
                 "label": "Lixa com um grão bem grosso para ser rápido.",
@@ -4350,23 +4476,26 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "Grão grosso em detalhe fino destrói o relevo."
               },
               {
-                "label": "Pode lixar e a Pintura refaz o detalhe.",
+                "label": "Pode lixar. A Pintura refaz o detalhe.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Avançar trabalho defeituoso transferindo para a Pintura é erro crítico."
+                "feedback": "Passar trabalho com defeito para a Pintura resolver é erro crítico."
               }
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "acabamento_superficie",
-            "pergunta": "Você vai lixar uma marca de suporte perto de um detalhe de uniforme. Escreva como decidiria o que lixar, que sequência de grãos usaria e como se protegeria.",
-            "pontosEsperados": [
-              "Confere referência para distinguir marca de detalhe",
-              "Usa gradação do mais grosso para o mais fino, conforme procedimento",
-              "Usa proteção ocular e respiratória e ventilação",
-              "Consulta se houver dúvida sobre tolerância"
-            ]
+            "pergunta": "Você vai lixar uma marca de suporte perto de um detalhe do uniforme. Qual é o jeito certo?",
+            "opcoes": [
+              "Comparar com a referência, usar proteção nos olhos e na respiração, com ventilação, e lixar do grão mais grosso para o mais fino",
+              "Lixar a marca e o detalhe juntos, para tudo ficar liso",
+              "Começar pelo grão mais fino e terminar com o mais grosso",
+              "Lixar sem máscara, porque a marca é pequena e faz pouca poeira"
+            ],
+            "correta": 0,
+            "feedbackCerto": "Certo. A referência mostra o que é defeito. Os grãos seguem o procedimento. Na dúvida sobre a tolerância, consulte.",
+            "feedbackErrado": "Compare com a referência antes de lixar. Use proteção nos olhos e na respiração, com ventilação. Lixe do grão mais grosso para o mais fino, conforme o procedimento. Na dúvida, consulte."
           }
         ]
       },
@@ -4378,40 +4507,40 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Teste antes de colar",
-            "texto": "Quando o processo permitir, faça um teste de encaixe sem cola antes de montar. Encaixe a peça com cuidado e sinta. Ele entra com leve resistência, sobra folga ou trava? Esse teste mostra o problema enquanto ainda dá para corrigir."
+            "texto": "Quando o processo permitir, teste o encaixe sem cola antes de montar. Encaixe a peça com cuidado e sinta. Ela entra com leve resistência, fica folgada ou trava? Esse teste mostra o problema enquanto ainda dá para corrigir."
           },
           {
             "tipo": "conteudo",
             "titulo": "Encaixe difícil tem causa",
-            "texto": "Se o encaixe está apertado, pode ser resíduo de resina, rebarba ou suporte esquecido. Pode ser deformação da peça, peça trocada de outro conjunto ou problema de modelagem. Forçar até entrar pode mascarar a causa e quebrar o encaixe ou a peça inteira. Uma peça quebrada por pressa é perda de material e de tempo."
+            "texto": "Se o encaixe está apertado, pode ser resto de resina, rebarba ou suporte esquecido. Pode ser também peça deformada, peça trocada de outro conjunto ou problema de modelagem. Forçar até entrar pode esconder a causa e quebrar o encaixe ou a peça inteira. Peça quebrada por pressa é perda de material e de tempo."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sequência de ação",
-            "texto": "Teste, identifique a causa, corrija se estiver autorizado e consulte quando necessário. Limpar um resíduo ou remover uma rebarba pode estar dentro da sua competência, mas alterar medida, refazer encaixe ou usar adesivo é decisão que segue o procedimento da Valente. Adesivos exigem ventilação e luvas e cuidado com os olhos. Se a causa for deformação ou modelagem, pare e consulte."
+            "texto": "Teste, descubra a causa, corrija se estiver autorizado e consulte quando for preciso. Limpar um resto de resina ou tirar uma rebarba pode estar dentro do que você pode fazer. Mudar medida, refazer encaixe ou usar adesivo (cola) é decisão que segue o procedimento da Valente. Adesivos pedem ventilação, luvas e cuidado com os olhos. Se a causa for deformação ou modelagem, pare e consulte."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pegando peças no estoque",
-            "texto": "Nas tarefas de montagem aparece o botão Retirar do estoque. Ele mostra só o componente daquela tarefa, por exemplo a Saia, ou todos os componentes quando a tarefa é da peça inteira. Você informa no campo Quantas peças? e o sistema diz em qual endereço pegar (como G1-E01-P02-C03). Na Retirada guiada, os itens já pintados saem primeiro. Não pegue peça de memória nem de outro endereço: siga o que o sistema indica."
+            "texto": "Nas tarefas de montagem aparece o botão Retirar do estoque. Ele mostra só o componente daquela tarefa, por exemplo a Saia. Quando a tarefa é da peça inteira, mostra todos os componentes. Você preenche o campo Quantas peças? e o sistema diz em qual endereço pegar, como G1-E01-P02-C03. Na Retirada guiada, os itens já pintados saem primeiro. Não pegue peça de memória nem de outro endereço. Siga o que o sistema indica."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "qualidade_entrega",
             "pergunta": "Ao testar um encaixe, o pino entra pela metade e trava. O que fazer?",
             "opcoes": [
-              "Dar um golpe leve para entrar de vez",
+              "Dar uma batida leve para entrar de vez",
               "Lixar o pino até entrar fácil, sem medir",
-              "Procurar a causa, como resíduo, rebarba ou peça trocada, e consultar se não resolver",
-              "Colar assim mesmo, a cola preenche"
+              "Procurar a causa, como resto de resina, rebarba ou peça trocada, e consultar se não resolver",
+              "Colar assim mesmo, porque a cola preenche"
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. Descobrir a causa evita quebrar a peça.",
+            "feedbackCerto": "Certo. Descobrir a causa evita quebrar a peça.",
             "feedbackPorOpcao": [
-              "Golpe pode quebrar o pino ou o furo.",
-              "Lixar sem medir muda a tolerância e gera folga.",
+              "A batida pode quebrar o pino ou o furo.",
+              "Lixar sem medir muda a medida e deixa folga.",
               null,
-              "Cola não corrige encaixe, só esconde o problema."
+              "Cola não corrige encaixe. Só esconde o problema."
             ],
             "erroCriticoOpcoes": [
               3
@@ -4422,9 +4551,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "qualidade_entrega",
             "pergunta": "Marque as possíveis causas de um encaixe que não entra.",
             "itens": [
-              "Resíduo de resina no furo",
+              "Resto de resina no furo",
               "Peça de outro conjunto misturada",
-              "Deformação da peça",
+              "Peça deformada",
               "Falta de cola",
               "Rebarba no pino"
             ],
@@ -4434,14 +4563,14 @@ var TREINAMENTO_TRILHAS = {
               2,
               4
             ],
-            "feedbackCerto": "Correto. Primeiro se investiga, e cola não é a causa.",
-            "feedbackErrado": "Falta de cola não impede encaixe. Resíduo, rebarba, troca e deformação sim."
+            "feedbackCerto": "Certo. Primeiro se procura a causa. Cola não é causa.",
+            "feedbackErrado": "Falta de cola não impede encaixe. Resto de resina, rebarba, peça trocada e deformação impedem."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "qualidade_entrega",
             "local": "Bancada de montagem (área física)",
-            "instrucao": "Com um conjunto de treino e seu líder, faça o teste de encaixe sem cola, descreva em voz alta o que sentiu e qual causa suspeitaria se estivesse apertado, e diga quando consultaria. Não use cola sem autorização."
+            "instrucao": "Com um conjunto de treino e seu líder, teste o encaixe sem cola. Diga em voz alta o que sentiu, qual causa você suspeitaria se estivesse apertado e quando consultaria. Não use cola sem autorização."
           }
         ]
       },
@@ -4453,17 +4582,17 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que procurar",
-            "texto": "No controle de qualidade, olhe a peça com atenção e boa luz. Procure bolhas, falhas de impressão, deformações, quebras, marcas excessivas de suporte ou lixa e componentes faltantes. Compare com a referência. Faça isso antes da Pintura, porque pintura não esconde defeito: ela pode até destacá-lo."
+            "texto": "No controle de qualidade, olhe a peça com atenção e boa luz. Procure bolhas, falhas de impressão, deformações, quebras, marcas fortes de suporte ou de lixa e componentes faltando. Compare com a referência. Faça isso antes da Pintura. Pintura não esconde defeito. Ela pode até deixar o defeito mais visível."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pintura não é remendo",
-            "texto": "Um braço quebrado ou uma superfície deformada precisa de decisão antes de avançar. Massa de reparo e pequenas correções podem ser feitas quando estiverem dentro da sua competência e do procedimento da Valente. Reparos estruturais, ou dúvidas sobre se o defeito é aceitável, vão para consulta. Se a massa tiver solvente ou liberar poeira ao lixar, use ventilação e EPI."
+            "texto": "Um braço quebrado ou uma superfície deformada pede uma decisão antes de seguir. Você pode usar massa de reparo e fazer pequenas correções quando isso estiver dentro do que você pode fazer e do procedimento da Valente. Reparo estrutural, que mexe na firmeza da peça, vai para consulta. Dúvida se o defeito é aceitável também. Se a massa tiver solvente ou soltar poeira ao lixar, use ventilação e EPI."
           },
           {
             "tipo": "conteudo",
             "titulo": "Três classificações",
-            "texto": "Classifique cada peça em uma das três. Aprovada: sem defeito, pode avançar. Corrigível dentro da sua competência: você corrige e inspeciona de novo. Necessita consulta ou reimpressão: defeito além do que você pode decidir. Quem decide reimpressão segue o procedimento da Valente. Defeito escondido é erro; defeito comunicado é qualidade."
+            "texto": "Classifique cada peça em uma de três situações. Aprovada: sem defeito, pode seguir. Corrigível dentro da sua competência: você corrige e inspeciona de novo. Precisa de consulta ou reimpressão: o defeito vai além do que você pode decidir. A decisão de imprimir de novo segue o procedimento da Valente. Defeito escondido é erro. Defeito avisado é qualidade."
           },
           {
             "tipo": "resposta_cliente",
@@ -4474,13 +4603,13 @@ var TREINAMENTO_TRILHAS = {
                 "label": "Envio e deixo a Pintura resolver.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Avançar peça com defeito estrutural é erro crítico."
+                "feedback": "Passar adiante peça com defeito estrutural é erro crítico."
               },
               {
-                "label": "Explico que a rachadura é estrutural e peço a decisão sobre correção ou reimpressão antes de avançar.",
+                "label": "Explico que a rachadura é estrutural e peço a decisão sobre correção ou reimpressão antes de seguir.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Você comunica o defeito e deixa a decisão com quem é responsável."
+                "feedback": "Certo. Você avisa o defeito e deixa a decisão com o responsável."
               },
               {
                 "label": "Passo massa na rachadura e envio sem avisar.",
@@ -4492,7 +4621,7 @@ var TREINAMENTO_TRILHAS = {
                 "label": "Descarto a peça por conta própria.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Descarte e reimpressão seguem decisão e procedimento da empresa."
+                "feedback": "Descarte e reimpressão seguem a decisão e o procedimento da empresa."
               }
             ]
           },
@@ -4501,30 +4630,33 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "qualidade_entrega",
             "pergunta": "Qual destas peças você classificaria como corrigível dentro da sua competência?",
             "opcoes": [
-              "Pequena marca de suporte remanescente em área estética",
+              "Pequena marca de suporte que sobrou em área estética",
               "Braço quebrado ao meio, com a parte faltando",
               "Corpo deformado e empenado",
               "Conjunto sem a base"
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Uma marca simples se resolve com lixamento, seguindo o procedimento.",
+            "feedbackCerto": "Certo. Uma marca simples se resolve com lixamento, seguindo o procedimento.",
             "feedbackPorOpcao": [
               null,
               "Quebra com parte faltando precisa de decisão.",
-              "Deformação estrutural exige consulta ou reimpressão.",
-              "Componente faltante é caso de conferência e consulta, não de lixamento."
+              "Deformação estrutural pede consulta ou reimpressão.",
+              "Componente faltando é caso de conferência e consulta, não de lixamento."
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "qualidade_entrega",
-            "pergunta": "Três peças chegam à inspeção: uma com pequena rebarba, uma com bolha grande na face e uma sem o acessório. Classifique cada uma em aprovada, corrigível ou consulta e justifique em uma frase cada.",
-            "pontosEsperados": [
-              "Rebarba pequena é corrigível dentro da competência",
-              "Bolha grande na face precisa de consulta",
-              "Sem acessório precisa de consulta e registro",
-              "Nada é empurrado para a Pintura com defeito conhecido"
-            ]
+            "pergunta": "Três peças chegam à inspeção: uma com rebarba pequena, uma com bolha grande na face e uma sem o acessório. Qual classificação está certa?",
+            "opcoes": [
+              "As três são corrigíveis. Você mesmo resolve e manda para a Pintura",
+              "Rebarba: aprovada. Bolha grande: corrigível. Sem acessório: consulta",
+              "Rebarba: corrigível. Bolha grande: aprovada, a Pintura cobre. Sem acessório: consulta",
+              "Rebarba: corrigível. Bolha grande: consulta. Sem acessório: consulta e registro"
+            ],
+            "correta": 3,
+            "feedbackCerto": "Certo. Você corrige a rebarba pequena. A bolha grande e a falta do acessório vão para consulta. Nada segue para a Pintura com defeito conhecido.",
+            "feedbackErrado": "Rebarba pequena você corrige. Bolha grande na face precisa de consulta. Falta de acessório precisa de consulta e registro. Nada segue para a Pintura com defeito conhecido."
           }
         ]
       },
@@ -4536,26 +4668,26 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que a Pintura precisa receber",
-            "texto": "A Pintura precisa receber a peça limpa, identificada, completa e em condição adequada. Sem resíduos, sem poeira de lixa, sem suportes esquecidos, com todos os componentes e a OT vinculada. A peça passa a ser trabalho de outro setor, e um erro seu vira retrabalho dele."
+            "texto": "A Pintura precisa receber a peça limpa, identificada, completa e em bom estado. Sem restos de resina, sem poeira de lixa, sem suportes esquecidos, com todos os componentes e ligada à tarefa. A partir daí a peça é trabalho de outro setor. Um erro seu vira retrabalho dele."
           },
           {
             "tipo": "conteudo",
             "titulo": "O custo de passar errado",
-            "texto": "Entregar uma peça ainda com resíduos ou sem um acessório transfere o retrabalho para o próximo setor e pode atrasar todo o pedido. A pintura sobre superfície suja pode descascar ou ficar irregular. Um acessório que falta é descoberto tarde, quando a figura já está pintada."
+            "texto": "Entregar uma peça com restos de resina ou sem um acessório passa o retrabalho para o próximo setor e pode atrasar o pedido inteiro. Tinta sobre superfície suja pode descascar ou ficar irregular. O acessório que falta só é descoberto tarde, quando a figura já está pintada."
           },
           {
             "tipo": "conteudo",
             "titulo": "Kit e conferência cruzada",
-            "texto": "Mantenha os componentes de um pedido juntos, por exemplo em um saco ou caixa identificada com a OT. Faça a conferência cruzada: você mesmo confere o kit e outra pessoa confere de novo, de forma independente, comparando com a OT. Só depois toque em Concluir tarefa; o sistema abre a janela Concluir etapa e mostra qual é a próxima etapa. Peças pequenas saem em embalagem fechada para não se perderem."
+            "texto": "Kit é o conjunto dos componentes de um pedido. Mantenha o kit junto, por exemplo em um saco ou caixa identificada com a tarefa. Faça a conferência cruzada: você confere o kit e outra pessoa confere de novo, sozinha, comparando com a tarefa. Só depois toque em Concluir tarefa. O sistema abre a janela Concluir etapa e mostra qual é a próxima etapa. Peças pequenas saem em embalagem fechada para não se perderem."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "qualidade_entrega",
             "pergunta": "Marque o que precisa estar certo antes de entregar para a Pintura.",
             "itens": [
-              "Todos os componentes da OT presentes",
-              "Peça sem poeira ou resíduo de resina",
-              "Identificação da OT junto ao kit",
+              "Todos os componentes da tarefa presentes",
+              "Peça sem poeira e sem resto de resina",
+              "Identificação da tarefa junto ao kit",
               "Suportes ainda presos para proteger a peça",
               "Defeitos conhecidos avisados, não escondidos"
             ],
@@ -4566,36 +4698,36 @@ var TREINAMENTO_TRILHAS = {
               4
             ],
             "feedbackCerto": "Isso mesmo. Completa, limpa e identificada.",
-            "feedbackErrado": "Suporte esquecido é retrabalho para a Pintura. O kit deve vir limpo e completo."
+            "feedbackErrado": "Suporte esquecido é retrabalho para a Pintura. O kit deve ir limpo e completo."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "qualidade_entrega",
-            "pergunta": "Para quê serve a conferência cruzada na entrega do kit?",
+            "pergunta": "Para que serve a conferência cruzada na entrega do kit?",
             "opcoes": [
               "Para dividir a responsabilidade e conferir menos",
               "Para acelerar a entrega",
-              "Para a Pintura não precisar conferir o recebimento",
-              "Para uma segunda pessoa confirmar de forma independente que o kit bate com a OT"
+              "Para a Pintura não precisar conferir o que recebe",
+              "Para uma segunda pessoa confirmar, sozinha, que o kit bate com a tarefa"
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. Um segundo olhar independente encontra o que o primeiro não viu.",
+            "feedbackCerto": "Certo. Uma segunda pessoa, olhando sozinha, acha o que a primeira não viu.",
             "feedbackPorOpcao": [
-              "A responsabilidade continua sua.",
-              "Conferir de novo é checagem, não pressa.",
-              "A Pintura continua conferindo seu recebimento.",
+              "A responsabilidade continua sendo sua.",
+              "Conferir de novo é cuidado, não pressa.",
+              "A Pintura continua conferindo o que recebe.",
               null
             ]
           },
           {
             "tipo": "conteudo",
             "titulo": "A janela Concluir etapa",
-            "texto": "Ao tocar em Concluir tarefa numa etapa de produção, o sistema abre a janela Concluir etapa. Nela você informa quantas peças ficaram prontas e quantas precisam voltar para a fase anterior, com o motivo. A janela também mostra qual é a próxima etapa. Se a quantidade da tarefa é 1, aparecem só dois botões: Etapa concluída e Houve problema. Informe o que realmente aconteceu: contar como pronta uma peça com defeito é marcar como feito o que não foi feito."
+            "texto": "Quando você toca em Concluir tarefa numa etapa de produção, o sistema abre a janela Concluir etapa. Nela você informa quantas peças ficaram prontas e quantas precisam voltar para a fase anterior, com o motivo. A janela também mostra qual é a próxima etapa. Se a quantidade da tarefa é 1, aparecem só dois botões: Etapa concluída e Houve problema. Informe o que aconteceu de verdade. Contar como pronta uma peça com defeito é marcar como feito o que não foi feito."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "qualidade_entrega",
-            "pergunta": "A OT pede 3 conjuntos. Dois estão limpos e completos, e um tem rachadura no braço, já comunicada ao responsável. Ao tocar em Concluir tarefa, o que você informa na janela Concluir etapa?",
+            "pergunta": "A tarefa pede 3 conjuntos. Dois estão limpos e completos. Um tem rachadura no braço, já avisada ao responsável. Ao tocar em Concluir tarefa, o que você informa na janela Concluir etapa?",
             "opcoes": [
               "3 prontas, e avisa a rachadura só por conversa",
               "2 prontas e 0 voltando, para não atrasar o pedido",
@@ -4603,12 +4735,12 @@ var TREINAMENTO_TRILHAS = {
               "0 prontas, porque um conjunto tem problema"
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. O sistema separa o que está pronto do que volta, e o motivo fica registrado.",
+            "feedbackCerto": "Certo. O sistema separa o que está pronto do que volta. O motivo fica registrado.",
             "feedbackPorOpcao": [
               "Contar peça com defeito como pronta e avisar só de boca é esconder defeito no sistema.",
-              "Peça com defeito não pode seguir como pronta; a janela existe para registrar o que volta.",
+              "Peça com defeito não pode seguir como pronta. A janela serve para registrar o que volta.",
               null,
-              "Os dois conjuntos bons estão prontos e devem ser contados como tal."
+              "Os dois conjuntos bons estão prontos e devem ser contados como prontos."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -4619,7 +4751,7 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "qualidade_entrega",
             "local": "Bancada de entrega (área física)",
-            "instrucao": "Monte com um conjunto de treino um kit de entrega identificado com a OT e peça a um colega ou ao líder para fazer a conferência cruzada, comparando com a lista de componentes. Anote qualquer divergência encontrada."
+            "instrucao": "Com um conjunto de treino, monte um kit de entrega identificado com a tarefa. Peça a um colega ou ao líder para fazer a conferência cruzada, comparando com a lista de componentes. Anote qualquer diferença encontrada."
           }
         ]
       },
@@ -4631,12 +4763,12 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "A missão",
-            "texto": "Você vai aplicar o curso inteiro em uma situação simulada: receber, conferir, tratar, inspecionar e decidir o que avança. O que mais conta é saber parar diante de um defeito, não a velocidade de empurrar tudo para a Pintura. Nenhum dado real é alterado."
+            "texto": "Você vai usar o curso inteiro em uma situação simulada: receber, conferir, tratar, inspecionar e decidir o que segue. O que mais conta é saber parar diante de um defeito. Não é a pressa de mandar tudo para a Pintura. Nenhum dado real é alterado."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como será avaliado",
-            "texto": "Cada decisão tem consequência: conferir antes de trabalhar, proteger-se, respeitar a referência e comunicar defeitos. Não existe resposta que dependa de tempo, produto ou número específico da Valente. Quando faltar informação, a resposta certa é consultar o procedimento ou o responsável."
+            "texto": "Cada decisão tem consequência: conferir antes de trabalhar, se proteger, respeitar a referência e avisar os defeitos. Nenhuma resposta depende de tempo, produto ou número específico da Valente. Quando faltar informação, a resposta certa é consultar o procedimento ou o responsável."
           },
           {
             "tipo": "cenario",
@@ -4645,31 +4777,31 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "Você recebe a OT de 3 conjuntos de resina: cada um com figura, base e dois acessórios. Na bancada chegaram 3 figuras, 3 bases e 5 acessórios. O que faz?",
+                "cliente": "Você recebe a tarefa de 3 conjuntos de resina. Cada um tem figura, base e dois acessórios. Na bancada chegaram 3 figuras, 3 bases e 5 acessórios. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Começa a limpar e lixar as figuras, os acessórios sobram depois.",
+                    "label": "Começa a limpar e lixar as figuras. Os acessórios ficam para depois.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Trabalhar sem fechar a conta mistura tudo e esconde a falta.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Confere contra a OT, identifica que falta um acessório, registra e consulta antes de seguir.",
+                    "label": "Confere com a tarefa, vê que falta um acessório, registra e consulta antes de seguir.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Conferência antes de trabalhar.",
+                    "feedback": "Certo. Conferir antes de trabalhar.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Considera que 5 está perto de 6 e segue.",
+                    "label": "Acha que 5 está perto de 6 e segue.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Presumir que está completo é erro crítico.",
+                    "feedback": "Supor que está completo é erro crítico.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Junta as peças de outros pedidos para completar.",
+                    "label": "Junta peças de outros pedidos para completar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Misturar peças de outro pedido é erro crítico.",
@@ -4678,27 +4810,27 @@ var TREINAMENTO_TRILHAS = {
                 ]
               },
               "b": {
-                "cliente": "Na hora de lavar a resina, você nota que não tem luvas adequadas à mão e o exaustor está desligado. O que faz?",
+                "cliente": "Na hora de lavar a resina, você vê que não tem luvas adequadas à mão e que o exaustor, que puxa o ar, está desligado. O que você faz?",
                 "opcoes": [
                   {
                     "label": "Lava rápido sem luvas e liga o exaustor depois.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Ignorar EPI e ventilação com resina e IPA é erro crítico.",
+                    "feedback": "Deixar de lado EPI e ventilação com resina e IPA é erro crítico.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Para, veste EPI, ventila o ambiente, segue o procedimento de lavagem e cura e descarta o IPA sujo no local correto.",
+                    "label": "Para, coloca o EPI, ventila o ambiente, segue o procedimento de lavagem e cura e descarta o IPA sujo no local certo.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Segurança antes de produção.",
+                    "feedback": "Certo. Segurança vem antes da produção.",
                     "proximo": "c"
                   },
                   {
                     "label": "Pede a um colega para lavar sem proteção.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Expor outra pessoa é erro crítico.",
+                    "feedback": "Pôr outro em risco é erro crítico.",
                     "proximo": "c"
                   },
                   {
@@ -4711,7 +4843,7 @@ var TREINAMENTO_TRILHAS = {
                 ]
               },
               "c": {
-                "cliente": "Na inspeção, uma das figuras tem uma rachadura no braço. As outras duas estão limpas. O prazo está apertado. O que faz?",
+                "cliente": "Na inspeção, uma das figuras tem uma rachadura no braço. As outras duas estão limpas. O prazo está apertado. O que você faz?",
                 "opcoes": [
                   {
                     "label": "Passa massa e envia as três para a Pintura sem avisar.",
@@ -4720,13 +4852,13 @@ var TREINAMENTO_TRILHAS = {
                     "feedback": "Esconder defeito é erro crítico."
                   },
                   {
-                    "label": "Envia as duas aprovadas, retém a peça rachada, comunica o defeito para decisão e, em Concluir etapa, informa 2 prontas e 1 que volta para a fase anterior, com o motivo.",
+                    "label": "Envia as duas aprovadas, segura a peça rachada e avisa o defeito para decisão. Em Concluir etapa, informa 2 prontas e 1 que volta para a fase anterior, com o motivo.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Parar diante do defeito e comunicar."
+                    "feedback": "Certo. Parar diante do defeito e avisar."
                   },
                   {
-                    "label": "Envia as três; a Pintura cobre.",
+                    "label": "Envia as três, porque a Pintura cobre.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Pintura não esconde falha estrutural."
@@ -4745,27 +4877,27 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "missao",
             "competencia": "qualidade_entrega",
             "titulo": "Missão Pós-impressão",
-            "objetivo": "Mostrar que você conduz um conjunto do recebimento à entrega com segurança e qualidade, sabendo parar e consultar.",
-            "contexto": "Pedido fictício: 3 conjuntos de resina, cada um com figura, base e 2 acessórios. A OT descreve a quantidade e os componentes. Um supervisor acompanha, pois prática real exige supervisão e procedimentos de segurança aprovados.",
+            "objetivo": "Mostrar que você leva um conjunto do recebimento à entrega com segurança e qualidade, sabendo parar e consultar.",
+            "contexto": "Pedido de treino: 3 conjuntos de resina, cada um com figura, base e 2 acessórios. A tarefa diz a quantidade e os componentes. Um supervisor acompanha, porque a prática real exige supervisão e procedimentos de segurança aprovados.",
             "tarefas": [
-              "Conferir o recebido contra a OT, contando e identificando cada componente, e registrar divergências",
-              "Verificar EPIs e ventilação e descrever como seria a lavagem, a cura e o descarte conforme o procedimento da Valente",
-              "Planejar a remoção de suportes, apontando pontos frágeis, e a sequência de lixamento do grão mais grosso ao mais fino",
-              "Fazer teste de encaixe sem cola e inspecionar defeitos, classificando cada peça como aprovada, corrigível ou consulta",
-              "Montar o kit de entrega identificado com a OT, fazer a conferência cruzada, avisar qualquer defeito antes de avançar e descrever como preencheria a janela Concluir etapa (quantas prontas, quantas voltam para a fase anterior, com motivo)"
+              "Conferir o que chegou com a tarefa, contando e identificando cada componente, e registrar as diferenças",
+              "Conferir EPIs e ventilação e explicar como seria a lavagem, a cura e o descarte conforme o procedimento da Valente",
+              "Planejar a retirada dos suportes, apontando os pontos frágeis, e a ordem das lixas, do grão mais grosso ao mais fino",
+              "Testar o encaixe sem cola e inspecionar defeitos, classificando cada peça como aprovada, corrigível ou consulta",
+              "Montar o kit de entrega identificado com a tarefa, fazer a conferência cruzada, avisar qualquer defeito antes de seguir e explicar como preencheria a janela Concluir etapa (quantas prontas, quantas voltam para a fase anterior, com o motivo)"
             ],
-            "criterioConclusao": "Você conferiu na entrada, usou EPI e ventilação, não inventou tempos nem produtos, parou diante dos defeitos, comunicou e entregou um kit limpo, completo e identificado."
+            "criterioConclusao": "Você conferiu na entrada, usou EPI e ventilação, não inventou tempos nem produtos, parou diante dos defeitos, avisou e entregou um kit limpo, completo e identificado."
           }
         ]
       }
     ]
   },
-  pintura: {
+  "pintura": {
     "id": "pintura",
     "nome": "Pintura",
     "descricao": "Aprenda a preparar, pintar, corrigir e inspecionar miniaturas seguindo a referência numerada da Valente.",
     "icone": "🎨",
-    "versao": 2,
+    "versao": 3,
     "cargosPermitidos": null,
     "competencias": [
       "Estação de pintura",
@@ -4775,50 +4907,50 @@ var TREINAMENTO_TRILHAS = {
       "Técnicas de pintura",
       "Inspeção e liberação"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Interpretar referências, demonstrar preparo e acabamento em peça de treino, identificar falhas e explicar os cuidados. O responsável avalia a qualidade antes de liberar trabalho independente.",
     "dias": [
       {
         "dia": 1,
         "titulo": "Minha estação de pintura",
-        "subtitulo": "Materiais, referências, EPI e organização",
+        "subtitulo": "Materiais, referências, proteção e organização",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O que existe na estação",
-            "texto": "A estação de pintura reúne tintas, pincéis de formatos diferentes, paleta ou godê para misturar e apoiar tinta, água ou diluente para limpar e afinar, papel absorvente, iluminação boa e, quando a Valente usa, o aerógrafo. O aerógrafo é uma pequena pistola que borrifa tinta bem fina. Cada material tem um uso. Só use tintas, diluentes e ferramentas autorizados pela Valente. Se um item não for conhecido, pergunte antes de usar."
+            "texto": "Na estação de pintura você encontra tintas, pincéis de vários formatos e a paleta ou godê, que serve para misturar e apoiar a tinta. Tem também água ou diluente para limpar e afinar a tinta, papel absorvente e luz boa. Quando a Valente usa, tem o aerógrafo, uma pequena pistola que borrifa tinta bem fina. Cada material tem um uso. Use só tintas, diluentes e ferramentas autorizados pela Valente. Não conhece um item? Pergunte antes de usar."
           },
           {
             "tipo": "conteudo",
             "titulo": "A referência oficial é o pote",
-            "texto": "Na Valente, cada cor tem uma referência numerada, de Cor 01 a Cor 33. O número fica na etiqueta do pote. A tarefa de pintura traz as fotos de referência da peça, e a tela de Cores, no tablet Samsung, mostra as cores numeradas. Telas distorcem tons, então o número do pote vale mais que a cor que você vê na tela. Pode haver três tipos de verde na prateleira: confira sempre a etiqueta, nunca o olho."
+            "texto": "Na Valente, cada cor tem um número, de Cor 01 a Cor 33. O número fica na etiqueta do pote. A tarefa de pintura mostra as fotos de referência da peça. A tela de Cores, no computador ou no tablet Samsung, mostra as cores numeradas. A tela pode mudar o tom da cor. Por isso, o número do pote vale mais que a cor que você vê na tela. A prateleira pode ter três tipos de verde. Confira sempre a etiqueta. Não confie só no olho."
           },
           {
             "tipo": "conteudo",
             "titulo": "Por que não usar a cor parecida",
-            "texto": "Usar a cor que parece a mais próxima, sem conferir o número, quebra o padrão entre peças do mesmo lote. O cliente recebe miniaturas que deveriam ser iguais e vê uma diferente. Se o pote da cor pedida acabou ou está sem etiqueta, não troque por outro: avise o responsável e siga o procedimento da Valente."
+            "texto": "Não use a cor que parece mais próxima sem conferir o número. Isso quebra o padrão entre as peças do mesmo lote. O cliente recebe miniaturas que deviam ser iguais e vê uma diferente. O pote da cor pedida acabou ou está sem etiqueta? Não troque por outro. Avise o responsável e siga o procedimento da Valente."
           },
           {
             "tipo": "conteudo",
             "titulo": "EPI, ventilação e organização",
-            "texto": "Tintas e solventes pedem ventilação e, quando o procedimento indicar, luvas e máscara adequada. No aerógrafo e no lixamento, o cuidado com partículas e névoa é maior. Mantenha potes tampados, pincéis limpos e separados por uso, e a bancada livre. Peças aguardando pintura ficam na área indicada, as do pedido real não são mexidas durante o treino. Em dúvida sobre um material, consulte o responsável."
+            "texto": "EPI é o equipamento de proteção, como luvas e máscara. Tintas e solventes pedem lugar ventilado. Quando o procedimento mandar, use luvas e a máscara certa. No aerógrafo e ao lixar, o cuidado com pó e névoa é maior. Deixe os potes tampados, os pincéis limpos e separados por uso, e a bancada livre. As peças que esperam pintura ficam na área indicada. Não mexa nas peças de pedido real durante o treino. Tem dúvida sobre um material? Consulte o responsável."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "preparacao_estacao",
-            "pergunta": "Na referência da tarefa, a parte da peça mostra um verde, mas na prateleira há três potes de verde diferentes. Como escolher o certo?",
+            "pergunta": "A referência da tarefa mostra um verde em uma parte da peça. Na prateleira há três potes de verde diferentes. Como escolher o certo?",
             "opcoes": [
-              "Escolher o verde que mais se parece com o que aparece na tela",
+              "Escolher o verde mais parecido com o que aparece na tela",
               "Misturar os três verdes até chegar perto da imagem",
-              "Usar o pote cuja etiqueta tem o mesmo número de Cor indicado para aquela parte",
+              "Usar o pote que tem na etiqueta o mesmo número de Cor indicado para aquela parte",
               "Usar o verde que você já usou em outra peça parecida"
             ],
             "correta": 2,
-            "feedbackCerto": "Isso mesmo. O número é a referência; a cor na tela pode estar distorcida.",
+            "feedbackCerto": "Isso mesmo. O número é a referência. A cor na tela pode estar diferente.",
             "feedbackPorOpcao": [
-              "A tela distorce tons. Compare números, não impressões.",
+              "A tela muda o tom da cor. Compare os números, não o que parece.",
               "Misturar sem receita oficial quebra o padrão do lote.",
               null,
-              "A memória não substitui o número indicado para este pedido."
+              "A memória não vale mais que o número indicado para este pedido."
             ],
             "erroCriticoOpcoes": [
               3
@@ -4829,89 +4961,89 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "preparacao_estacao",
             "pergunta": "Quais itens fazem parte de uma estação de pintura organizada e segura?",
             "itens": [
-              "Potes tampados e com etiqueta de Cor legível",
-              "Ventilação adequada e EPI conforme o procedimento",
+              "Potes tampados, com etiqueta de Cor fácil de ler",
+              "Lugar ventilado e EPI conforme o procedimento",
               "Peça de pedido real usada para testar pincel",
               "Pincéis limpos, separados por uso",
-              "Pote sem etiqueta usado por parecer a cor certa"
+              "Pote sem etiqueta usado porque parece a cor certa"
             ],
             "corretos": [
               0,
               1,
               3
             ],
-            "feedbackCerto": "Correto. Etiqueta legível, ventilação e pincéis limpos protegem você e o padrão.",
-            "feedbackErrado": "Peça de pedido real não é lugar de teste, e pote sem etiqueta não é referência confiável."
+            "feedbackCerto": "Certo. Etiqueta fácil de ler, ventilação e pincéis limpos protegem você e o padrão.",
+            "feedbackErrado": "Peça de pedido real não é lugar de teste. E pote sem etiqueta não é referência confiável."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "preparacao_estacao",
-            "local": "Tarefa de pintura, tela de Cores e prateleira de tintas",
-            "instrucao": "Sem alterar nenhum trabalho real, abra uma tarefa de pintura, veja as fotos de referência e o número de Cor de uma parte, confira a tela de Cores no tablet Samsung e localize na prateleira o pote com esse número. Localize também a área de peças aguardando pintura. Confirme que fez a consulta."
+            "local": "No computador ou no tablet Samsung, com o responsável, e na prateleira de tintas",
+            "instrucao": "Não altere nenhum trabalho real. Junto com o responsável, só olhando, veja em uma tarefa de pintura as fotos de referência e o número de Cor de uma parte, e confira esse número na tela de Cores. Depois ache na prateleira o pote com esse número. Ache também a área das peças que esperam pintura. Confirme que fez a consulta."
           }
         ]
       },
       {
         "dia": 2,
         "titulo": "Entendendo o que vou pintar",
-        "subtitulo": "Pedido, OT, referência e versão correta",
+        "subtitulo": "Pedido, tarefa, referência e versão certa",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Pintura começa na leitura",
-            "texto": "Antes de abrir qualquer tinta, entenda o trabalho. Consulte o pedido no Kanban, na etapa Pintura, e a tarefa (OT) na Missão ou Inbox de tarefas. A OT tem título, instruções, checklist e quantidade. Veja também a imagem de referência e o número de Cor de cada parte, os componentes da peça e as observações do pedido."
+            "texto": "Antes de abrir qualquer tinta, entenda o trabalho. Veja o pedido no Kanban, na coluna Pintura. Veja a tarefa na aba Tarefas, no computador, ou em Minhas funções, no tablet. A tarefa tem título, instruções, checklist e quantidade. Veja também a imagem de referência, o número de Cor de cada parte, os componentes da peça e as observações do pedido."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sua missão na tela da tarefa",
-            "texto": "Ao abrir uma tarefa de pintura, o topo mostra a caixa SUA MISSÃO, em destaque. Exemplo: Pintar 8 de 18 unidades de Saia da peça Aluno Colégio Militar Menina. Quando a tarefa já avançou, ela mostra o que FALTA (8 de 18) e a linha Já feitas nesta tarefa: 10. Mostra também quantas unidades são necessárias para fechar o pedido, quantas já foram pintadas antes e quantas impressas estão disponíveis. O seu PIN identifica você como executor: seu nome aparece no topo e fica gravado como responsável pelo que você inicia ou conclui."
+            "texto": "Ao abrir uma tarefa de pintura, você vê no topo a caixa SUA MISSÃO, em destaque. Exemplo: Pintar 8 de 18 unidades de Saia da peça Aluno Colégio Militar Menina. Quando a tarefa já andou, a caixa mostra o que FALTA (8 de 18) e a linha Já feitas nesta tarefa: 10. Mostra também quantas unidades o pedido precisa, quantas já foram pintadas antes e quantas impressas estão disponíveis. O seu PIN mostra quem está fazendo a tarefa. Seu nome aparece no topo e fica gravado como responsável pelo que você inicia ou conclui."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pegar as peças e achar a próxima tarefa",
-            "texto": "Para buscar peças, use o botão 📦 Retirar do estoque dentro da tarefa. Ele mostra só o componente da tarefa (por exemplo, Saia), ou todos os componentes se a tarefa é da peça inteira, e pede Quantas peças? A retirada guiada diz o endereço de cada componente (na pintura, as sem pintura primeiro) e leva os itens para a Mesa de separação. No tablet, Minhas funções abre uma fila única com as tarefas da sua função, com filtro por tipo, como Pintura, e o botão ▶ Próxima da fila. Outras funções mostra tarefas de colegas, para ajudar."
+            "texto": "Para buscar peças, toque no botão 📦 Retirar do estoque, dentro da tarefa. Ele mostra só o componente da tarefa, por exemplo Saia. Se a tarefa é da peça inteira, mostra todos os componentes. Depois ele pergunta Quantas peças? A retirada guiada mostra o endereço de cada componente e leva os itens para a Mesa de separação. Na pintura, ela indica primeiro as peças sem pintura. No tablet, Minhas funções abre uma fila só, com as tarefas da sua função. Lá tem filtro por tipo, como Pintura, e o botão ▶ Próxima da fila. Outras funções mostra tarefas de colegas, para você ajudar."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quem decide é a referência",
-            "texto": "Uma figura pode ter versões diferentes: outro uniforme, outro tom, acessório a mais ou a menos. A memória do pintor não substitui a referência do pedido. Mesmo que você já tenha pintado aquele modelo cem vezes, confirme qual versão está na sua frente e qual foi pedida."
+            "texto": "A mesma figura pode ter versões diferentes: outro uniforme, outro tom, um acessório a mais ou a menos. A memória do pintor não vale mais que a referência do pedido. Mesmo que você já tenha pintado aquele modelo cem vezes, confira qual versão está na sua frente e qual foi pedida."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como agir",
-            "texto": "Antes de abrir tinta, confirme: a versão da peça, a quantidade, as cores por parte e as observações. Se algo estiver faltando ou contraditório, não adivinhe. Não saber é normal; inventar é erro. Consulte a ficha, a OT e, se ainda restar dúvida, o responsável. Só então comece."
+            "texto": "Antes de abrir a tinta, confirme a versão da peça, a quantidade, as cores de cada parte e as observações. Falta alguma coisa ou uma informação não bate com a outra? Não adivinhe. Não saber é normal. Inventar é erro. Consulte a ficha e a tarefa. Se a dúvida continuar, pergunte ao responsável. Só depois comece."
           },
           {
             "tipo": "ordenar",
             "competencia": "leitura_pedido",
             "instrucao": "Coloque na ordem em que você deve conferir o trabalho antes de abrir qualquer tinta.",
             "itens": [
-              "Abrir a OT e ler título, instruções e quantidade",
+              "Abrir a tarefa e ler título, instruções e quantidade",
               "Ver a imagem de referência e o número de Cor de cada parte",
-              "Comparar a peça em mãos com a versão pedida",
-              "Registrar dúvidas e consultar o responsável se algo não bater",
-              "Só então separar os potes e começar"
+              "Comparar a peça que está na mão com a versão pedida",
+              "Anotar as dúvidas e consultar o responsável se algo não bater",
+              "Só depois separar os potes e começar"
             ],
-            "feedbackCerto": "Isso mesmo: primeiro entender, depois executar.",
-            "feedbackErrado": "A leitura vem antes da tinta. Releia a aula: OT, referência, comparação, dúvidas e só então começar."
+            "feedbackCerto": "Isso mesmo. Primeiro entender, depois fazer.",
+            "feedbackErrado": "A leitura vem antes da tinta. Veja a aula de novo: tarefa, referência, comparação, dúvidas e só depois começar."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "leitura_pedido",
-            "pergunta": "Você pintou uma figura de guerreiro ontem, e hoje chega outro pedido do mesmo modelo. Qual atitude evita erro?",
+            "pergunta": "Ontem você pintou uma figura de guerreiro. Hoje chega outro pedido do mesmo modelo. O que você faz para não errar?",
             "opcoes": [
-              "Conferir a referência e as observações do novo pedido, pois a versão pode ser diferente",
-              "Repetir as cores de ontem, que você lembra bem",
-              "Perguntar ao colega ao lado qual cor ele usaria",
-              "Começar e conferir só ao terminar"
+              "Confiro a referência e as observações do novo pedido, porque a versão pode ser diferente",
+              "Repito as cores de ontem, que eu lembro bem",
+              "Pergunto ao colega do lado qual cor ele usaria",
+              "Começo a pintar e confiro só quando terminar"
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Cada pedido tem sua referência, e a versão pode mudar.",
+            "feedbackCerto": "Certo. Cada pedido tem a sua referência, e a versão pode mudar.",
             "feedbackPorOpcao": [
               null,
-              "A memória não substitui a referência do pedido.",
+              "A memória não vale mais que a referência do pedido.",
               "A fonte é o pedido e a referência, não a opinião de um colega.",
-              "Descobrir o erro no fim obriga a refazer o trabalho todo."
+              "Achar o erro só no fim obriga a refazer o trabalho todo."
             ],
             "erroCriticoOpcoes": [
               1
@@ -4920,32 +5052,35 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "multipla_escolha",
             "competencia": "leitura_pedido",
-            "pergunta": "A SUA MISSÃO diz Pintar 8 de 18 unidades, e logo abaixo aparece Já feitas nesta tarefa: 10. Como interpretar?",
+            "pergunta": "A caixa SUA MISSÃO diz Pintar 8 de 18 unidades. Logo abaixo aparece Já feitas nesta tarefa: 10. O que isso quer dizer?",
             "opcoes": [
               "Faltam 18 peças e 8 já foram feitas",
               "Você deve pintar 8 hoje e 18 amanhã",
               "Faltam 10 peças, que são as já feitas",
-              "Faltam 8 unidades; a tarefa tem 18 e 10 já foram pintadas"
+              "Faltam 8 unidades. A tarefa tem 18 e 10 já foram pintadas"
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. O primeiro número é o que falta; o segundo é o total da tarefa.",
+            "feedbackCerto": "Certo. O primeiro número é o que falta. O segundo é o total da tarefa.",
             "feedbackPorOpcao": [
-              "Está invertido: 8 é o que falta, não o que foi feito.",
-              "A missão mostra o que falta da tarefa, não uma divisão por dias.",
-              "As 10 já feitas são separadas do que falta.",
+              "Está trocado. 8 é o que falta, não o que foi feito.",
+              "A caixa mostra o que falta da tarefa. Ela não divide o trabalho por dias.",
+              "As 10 já feitas não entram no que falta.",
               null
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "leitura_pedido",
-            "pergunta": "Abra, só para consulta, a OT ou pedido em Pintura que o supervisor indicar e descreva: qual a versão, a quantidade, quais Cores aparecem e se há observação especial.",
-            "pontosEsperados": [
-              "Versão da peça identificada",
-              "Quantidade conferida (total da tarefa, quanto falta e quanto já foi feito)",
-              "Números de Cor por parte citados",
-              "Observações do pedido lidas ou registro de que não há"
-            ]
+            "pergunta": "Antes de abrir a tinta, o que você precisa confirmar na tarefa e no pedido?",
+            "opcoes": [
+              "Só a quantidade, porque as cores você já conhece do modelo",
+              "Só a cor que aparece na foto da tela",
+              "A versão da peça, a quantidade, o número de Cor de cada parte e as observações",
+              "Só o título da tarefa, e o resto você vê no fim"
+            ],
+            "correta": 2,
+            "feedbackCerto": "Isso mesmo. Versão, quantidade, número de Cor de cada parte e observações. Se algo faltar, consulte o responsável.",
+            "feedbackErrado": "Não é só isso. Confirme a versão da peça, a quantidade, o número de Cor de cada parte e as observações do pedido."
           }
         ]
       },
@@ -4956,66 +5091,66 @@ var TREINAMENTO_TRILHAS = {
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Tinta não corrige superfície ruim",
-            "texto": "A tinta mostra o que está embaixo. Resíduo de resina, oleosidade dos dedos, pó de lixamento, marcas de suporte e linhas de camada aparecem mais depois de pintar. Pintar sobre resíduo ou defeito torna a correção mais difícil depois. Antes de tudo, olhe a peça sob luz boa e passe os dedos com cuidado para sentir áreas ásperas ou pegajosas."
+            "titulo": "Tinta não conserta superfície ruim",
+            "texto": "A tinta mostra o que está embaixo dela. Resto de resina, gordura dos dedos, pó de lixa, marcas de suporte e linhas de camada aparecem mais depois da pintura. Se você pinta por cima de sujeira ou defeito, fica mais difícil corrigir depois. Antes de tudo, olhe a peça em luz boa. Passe os dedos com cuidado para sentir áreas ásperas ou pegajosas."
           },
           {
             "tipo": "conteudo",
             "titulo": "Limpeza e defeitos",
-            "texto": "A limpeza remove pó e gordura, conforme o procedimento da Valente. Procure marcas de suporte, rebarbas, bolhas, superfície pegajosa e partes quebradas. Pequenas rebarbas podem ser tratadas se isso fizer parte do seu processo, usando EPI e ventilação ao lixar. Se o defeito vem da impressão ou do pós-impressão, não esconda: separe a peça e trate conforme o fluxo."
+            "texto": "A limpeza tira pó e gordura, conforme o procedimento da Valente. Procure marcas de suporte, rebarbas (sobras de material na borda), bolhas, superfície pegajosa e partes quebradas. Você pode tratar rebarbas pequenas se isso fizer parte do seu processo. Ao lixar, use EPI e trabalhe em lugar ventilado. O defeito vem da impressão ou da pós-impressão? Não esconda. Separe a peça e trate conforme o fluxo."
           },
           {
             "tipo": "conteudo",
             "titulo": "Primer: para que serve",
-            "texto": "Primer é uma tinta de base. Ele ajuda a tinta seguinte a aderir e deixa a cor da peça uniforme. Passe em camada fina, para não apagar detalhes. Marca, tipo e momento de usar seguem o processo adotado pela Valente, e nem toda peça usa primer. Consulte o procedimento ou o responsável. Aplique com ventilação e EPI, longe de peças já prontas."
+            "texto": "Primer é uma tinta de base. Ele ajuda a tinta seguinte a grudar e deixa a cor da peça igual por inteiro. Passe em camada fina, para não apagar os detalhes. A marca, o tipo e a hora de usar seguem o processo da Valente. Nem toda peça usa primer. Consulte o procedimento ou o responsável. Aplique em lugar ventilado, com EPI, longe das peças já prontas."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "preparacao_superficie",
-            "cliente": "Colega: Essa peça está com marca de suporte bem visível no ombro. Passa uma camada grossa de primer que esconde, o prazo está apertado.",
+            "cliente": "Colega: Essa peça está com uma marca de suporte bem visível no ombro. Passa uma camada grossa de primer que esconde. O prazo está apertado.",
             "opcoes": [
               {
-                "label": "Concordo, camada grossa cobre a marca e ganhamos tempo",
+                "label": "Concordo. A camada grossa cobre a marca e a gente ganha tempo",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Primer grosso apaga detalhe e não elimina a marca. Esconder defeito é erro crítico."
+                "feedback": "Primer grosso apaga detalhe e não tira a marca. Esconder defeito é erro crítico."
               },
               {
-                "label": "Vou separar a peça e tratar a marca conforme o fluxo, ou consultar o responsável, antes de pintar",
+                "label": "Antes de pintar, vou separar a peça e tratar a marca conforme o fluxo, ou consultar o responsável",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Defeito de etapa anterior é separado e tratado, não escondido."
+                "feedback": "Certo. Defeito de etapa anterior é separado e tratado, não escondido."
               },
               {
                 "label": "Passo primer, pinto e vejo se o cliente reclama",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Avançar peça defeituosa transfere o problema para o cliente."
+                "feedback": "Passar adiante uma peça com defeito joga o problema para o cliente."
               },
               {
-                "label": "Pinto direto com a tinta final, que é mais espessa",
+                "label": "Pinto direto com a tinta final, que é mais grossa",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Tinta espessa também não corrige marca e piora a perda de detalhe."
+                "feedback": "Tinta grossa também não tira a marca e apaga ainda mais os detalhes."
               }
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "preparacao_superficie",
-            "pergunta": "Qual é a função do primer, de forma geral?",
+            "pergunta": "De modo geral, para que serve o primer?",
             "opcoes": [
               "Esconder defeitos da impressão",
-              "Substituir a camada de cor final",
-              "Tornar desnecessária a limpeza",
-              "Ajudar a tinta a aderir e uniformizar a base da peça"
+              "Ficar no lugar da camada de cor final",
+              "Dispensar a limpeza da peça",
+              "Ajudar a tinta a grudar e deixar a base da peça com a cor igual"
             ],
             "correta": 3,
-            "feedbackCerto": "Correto, em camada fina e seguindo o processo da Valente.",
+            "feedbackCerto": "Certo. Sempre em camada fina e seguindo o processo da Valente.",
             "feedbackPorOpcao": [
-              "Primer não conserta defeito, e camada grossa apaga detalhe.",
-              "Ele é base, não cor final.",
-              "Sem limpeza o primer adere mal.",
+              "Primer não conserta defeito. E camada grossa apaga detalhe.",
+              "Ele é base, não é a cor final.",
+              "Sem limpeza, o primer gruda mal.",
               null
             ]
           },
@@ -5023,40 +5158,40 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "preparacao_superficie",
             "local": "Peça de treino na bancada",
-            "instrucao": "Com uma peça de treino, inspecione sob luz boa: procure resíduo, marcas de suporte, rebarbas e áreas pegajosas. Anote o que encontrou e o que faria. Não mexa em peças de pedidos reais."
+            "instrucao": "Pegue uma peça de treino e olhe em luz boa. Procure sujeira, marcas de suporte, rebarbas e áreas pegajosas. Anote o que achou e o que faria. Não mexa em peças de pedidos reais."
           }
         ]
       },
       {
         "dia": 4,
         "titulo": "Cor e referência",
-        "subtitulo": "Padrão, iluminação e consistência no lote",
+        "subtitulo": "Padrão, luz e peças iguais no lote",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Comparar sempre",
-            "texto": "A cor da peça deve ser comparada com a referência e com o padrão do lote. Iluminação, base e número de camadas mudam a percepção da cor. Uma tinta pode parecer mais clara no pote e mais escura seca. Compare com a mesma luz, sempre que possível luz neutra e boa, e com a referência ao lado."
+            "texto": "Compare a cor da peça com a referência e com o padrão do lote. A luz, a base e o número de camadas mudam o jeito como você vê a cor. Uma tinta pode parecer mais clara no pote e mais escura depois de seca. Compare sempre com a mesma luz. Se der, use luz neutra e boa. Deixe a referência ao lado."
           },
           {
             "tipo": "conteudo",
             "titulo": "Número de Cor, não gosto pessoal",
-            "texto": "Quando o pedido especifica a cor, não improvise outra porque fica bonita. Use o pote com o número de Cor indicado. Receitas, misturas e paletas oficiais seguem o procedimento definido pela Valente: se for preciso misturar ou ajustar, consulte o responsável e não crie receita própria."
+            "texto": "Quando o pedido diz qual é a cor, não troque por outra só porque fica bonita. Use o pote com o número de Cor indicado. Receitas, misturas e paletas oficiais seguem o procedimento da Valente. Precisa misturar ou ajustar uma cor? Consulte o responsável. Não crie receita própria."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Consistência do lote",
-            "texto": "Duas miniaturas do mesmo lote com uniformes visualmente diferentes parecem erro ao cliente, mesmo que cada uma isoladamente esteja bem pintada. Por isso pinte a mesma cor em todas as peças de uma vez, use o mesmo pote, sem diluir diferente entre peças, e compare as peças lado a lado ao longo do trabalho."
+            "titulo": "Peças iguais no lote",
+            "texto": "Duas miniaturas do mesmo lote com uniformes de tons diferentes parecem erro para o cliente. Isso vale mesmo que cada uma esteja bem pintada. Por isso, pinte a mesma cor em todas as peças de uma vez. Use o mesmo pote. Não dilua a tinta de um jeito em uma peça e de outro jeito em outra. Compare as peças lado a lado durante o trabalho."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "fidelidade_cor",
-            "pergunta": "Quais fatores podem fazer a mesma tinta parecer outra cor?",
+            "pergunta": "O que pode fazer a mesma tinta parecer outra cor?",
             "itens": [
-              "Luz diferente no local de comparação",
-              "Cor da base ou do primer por baixo",
+              "Luz diferente no lugar onde você compara",
+              "Cor da base ou do primer que está por baixo",
               "Número de camadas aplicadas",
               "Nome do pincel usado",
-              "Telas que distorcem tons"
+              "Telas, que mudam o tom da cor"
             ],
             "corretos": [
               0,
@@ -5064,26 +5199,26 @@ var TREINAMENTO_TRILHAS = {
               2,
               4
             ],
-            "feedbackCerto": "Correto. Luz, base, camadas e telas alteram a percepção; o número do pote é a referência.",
+            "feedbackCerto": "Certo. Luz, base, camadas e telas mudam o jeito de ver a cor. O número do pote é a referência.",
             "feedbackErrado": "O nome do pincel não muda a cor. Luz, base, camadas e tela mudam."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "fidelidade_cor",
-            "pergunta": "No lote de 6 miniaturas, a Cor indicada está no fim e você pintou 4 peças. As 2 últimas parecem um pouco mais escuras. O que fazer?",
+            "pergunta": "O lote tem 6 miniaturas. O pote da Cor indicada está no fim e você já pintou 4 peças. As 2 últimas parecem um pouco mais escuras. O que fazer?",
             "opcoes": [
-              "Seguir assim, é pouca diferença",
-              "Comparar as 6 lado a lado, conferir se o pote e a diluição são os mesmos e consultar o responsável se a diferença persistir",
+              "Seguir assim, porque a diferença é pequena",
+              "Comparar as 6 lado a lado, conferir se o pote e a diluição são os mesmos e consultar o responsável se a diferença continuar",
               "Clarear as 2 com outra tinta que parece combinar",
               "Repintar as 4 primeiras com o que sobrou do pote"
             ],
             "correta": 1,
-            "feedbackCerto": "Correto. Comparar o conjunto e investigar a causa mantém o padrão do lote.",
+            "feedbackCerto": "Certo. Comparar o conjunto e procurar a causa mantém o padrão do lote.",
             "feedbackPorOpcao": [
-              "Em lote, diferença pequena já parece erro ao cliente.",
+              "Em lote, uma diferença pequena já parece erro para o cliente.",
               null,
-              "Improvisar outra cor quebra o padrão e a referência.",
-              "Sem investigar a causa, você pode aumentar a diferença."
+              "Usar outra cor por conta própria quebra o padrão e a referência.",
+              "Sem procurar a causa, você pode aumentar a diferença."
             ],
             "erroCriticoOpcoes": [
               2
@@ -5092,8 +5227,8 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "confirmacao_pratica",
             "competencia": "fidelidade_cor",
-            "local": "Tarefa de pintura e tela de Cores",
-            "instrucao": "Na tarefa de pintura e na tela de Cores, observe a imagem de referência e o número de Cor de cada parte de uma peça. Localize os potes e confirme os números nas etiquetas. Veja se a cor na tela e a do pote diferem. Apenas consulta."
+            "local": "No computador ou no tablet Samsung, com o responsável",
+            "instrucao": "Junto com o responsável, só olhando, veja na tarefa de pintura e na tela de Cores a imagem de referência e o número de Cor de cada parte de uma peça. Ache os potes e confira os números nas etiquetas. Veja se a cor da tela e a cor do pote são diferentes. É só consulta."
           }
         ]
       },
@@ -5105,31 +5240,31 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Planejar a sequência",
-            "texto": "Planejar a ordem reduz retrabalho e contaminação, que é tinta indo onde não deve. Observe a peça e defina a sequência antes de começar. Pintar um detalhe delicado cedo demais pode obrigar a refazê-lo quando as áreas vizinhas forem trabalhadas."
+            "texto": "Planejar a ordem evita refazer trabalho. Evita também a contaminação, que é a tinta ir para onde não deve. Olhe a peça e decida a sequência antes de começar. Se você pinta um detalhe delicado cedo demais, pode ter que refazer esse detalhe quando pintar as áreas vizinhas."
           },
           {
             "tipo": "conteudo",
             "titulo": "A ordem geral",
-            "texto": "De modo geral: primeiro a base, que são as cores principais das áreas grandes. Depois as sombras, que escurecem reentrâncias e dão profundidade. Depois as luzes, que clareiam as áreas altas. Por último os detalhes, como olhos, distintivos e pequenos acessórios, e aplicações como decalques. A proteção final só entra se o processo Valente previr. Siga o procedimento da Valente."
+            "texto": "De modo geral, a ordem é esta. Primeiro a base, que são as cores principais das áreas grandes. Depois as sombras, que escurecem as partes fundas e dão profundidade. Depois as luzes, que clareiam as partes altas. Por último os detalhes, como olhos, distintivos e pequenos acessórios, e as aplicações, como decalques. A proteção final só entra se o processo da Valente pedir. Siga o procedimento da Valente."
           },
           {
             "tipo": "conteudo",
             "titulo": "Em lote e com cuidado",
-            "texto": "Em lotes, busque consistência: faça a mesma etapa em todas as peças antes de passar à próxima. Espere cada camada secar antes de trabalhar a vizinha, para não manchar. Se uma peça tem áreas que se tocam, pense em qual cor vem primeiro para ficar mais fácil acertar a borda."
+            "texto": "Em lote, as peças precisam ficar iguais. Faça a mesma etapa em todas as peças antes de passar para a próxima etapa. Espere cada camada secar antes de pintar a área vizinha, para não manchar. A peça tem áreas que se tocam? Pense em qual cor vem primeiro, para ficar mais fácil acertar a borda."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pintura em vários dias: Produção do dia",
-            "texto": "Lote grande raramente termina em um dia. Em tarefa de pintura com mais de uma peça, a pintura é registrada por dia: ao tocar Concluir (ou o botão 📝 Produção do dia no tablet, ou Registrar produção do turno no PC), aparece Produção do dia, com quantas peças você pintou hoje, quantas estragaram e anotações para amanhã. A tarefa fica pausada e volta no dia seguinte, somando as pintadas. Use as anotações para o próximo turno saber onde você parou, qual Cor e o que cuidar."
+            "texto": "Lote grande quase nunca termina em um dia. Em tarefa de pintura com mais de uma peça, você registra a pintura por dia. Toque em Concluir, ou no botão 📝 Produção do dia no tablet, ou em Registrar produção do turno no computador. Aparece Produção do dia. Ali você informa quantas peças pintou hoje, quantas estragaram e as anotações para amanhã. A tarefa fica pausada e volta no dia seguinte, somando as peças pintadas. Use as anotações para o próximo turno saber onde você parou, qual Cor usou e o que cuidar."
           },
           {
             "tipo": "ordenar",
             "competencia": "leitura_pedido",
-            "instrucao": "Ordene as etapas de pintura de uma figura, da primeira para a última.",
+            "instrucao": "Coloque em ordem as etapas de pintura de uma figura, da primeira para a última.",
             "itens": [
               "Base: cores principais nas áreas grandes",
-              "Sombras nas reentrâncias",
-              "Luzes nas áreas altas",
+              "Sombras nas partes fundas",
+              "Luzes nas partes altas",
               "Detalhes: olhos, distintivos e pequenos itens"
             ],
             "feedbackCerto": "Isso mesmo: base, sombras, luzes e detalhes.",
@@ -5138,28 +5273,28 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "tecnica_pintura",
-            "afirmacao": "Em um lote de 10 miniaturas, o melhor para manter o padrão é terminar uma peça completa antes de começar a outra.",
+            "afirmacao": "Em um lote de 10 miniaturas, o melhor jeito de manter o padrão é terminar uma peça inteira antes de começar a outra.",
             "correta": false,
-            "feedbackCerto": "Correto. Fazer a mesma etapa em todas as peças ajuda a manter a consistência.",
-            "feedbackErrado": "Falso. Em lote, a mesma etapa é feita em todas as peças antes de seguir, favorecendo o padrão."
+            "feedbackCerto": "Certo. Fazer a mesma etapa em todas as peças ajuda a deixar todas iguais.",
+            "feedbackErrado": "É falso. Em lote, você faz a mesma etapa em todas as peças antes de seguir. Isso ajuda a manter o padrão."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "tecnica_pintura",
-            "pergunta": "Hoje você pintou 5 peças boas de uma tarefa de 18, e 1 peça estragou ao cair. Ao tocar Concluir, o que registrar em Produção do dia?",
+            "pergunta": "Hoje você pintou 5 peças boas de uma tarefa de 18. Uma peça caiu e estragou. Ao tocar em Concluir, o que você registra em Produção do dia?",
             "opcoes": [
               "18 pintadas, para a tarefa sair da fila",
               "5 pintadas, 1 estragada e uma anotação para amanhã dizendo onde você parou",
-              "Só as 5 pintadas, sem citar a estragada, para não parecer erro",
-              "Nada: o registro é feito só quando o lote inteiro acabar"
+              "Só as 5 pintadas, sem falar da estragada, para não parecer erro",
+              "Nada. O registro é feito só quando o lote inteiro acabar"
             ],
             "correta": 1,
-            "feedbackCerto": "Correto. Números reais e uma anotação clara permitem que a tarefa continue amanhã.",
+            "feedbackCerto": "Certo. Com os números reais e uma anotação clara, a tarefa continua amanhã sem confusão.",
             "feedbackPorOpcao": [
               "Marcar como feito o que não foi feito é erro crítico.",
               null,
-              "Esconder a peça estragada falseia a contagem. Registre também o que deu errado.",
-              "A tarefa pausa a cada dia justamente para acumular o que foi pintado em cada turno."
+              "Esconder a peça estragada deixa a contagem falsa. Registre também o que deu errado.",
+              "A tarefa pausa a cada dia para somar o que foi pintado em cada turno."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -5167,15 +5302,18 @@ var TREINAMENTO_TRILHAS = {
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "leitura_pedido",
-            "pergunta": "Observe uma peça de treino e descreva a sequência de pintura que você planeja: quais áreas vêm primeiro, onde ficam os detalhes e por quê.",
-            "pontosEsperados": [
-              "Base nas áreas grandes primeiro",
-              "Sombras e luzes antes dos detalhes",
-              "Detalhes delicados por último",
-              "Cuidado com secagem entre áreas vizinhas"
-            ]
+            "pergunta": "Você vai planejar a pintura de uma peça de treino. Qual plano está certo?",
+            "opcoes": [
+              "Base nas áreas grandes, depois sombras e luzes, e detalhes delicados por último, esperando secar antes de pintar a área vizinha",
+              "Olhos e distintivos primeiro, depois a base nas áreas grandes",
+              "Base, depois os detalhes, e sombras e luzes no fim",
+              "Tudo de uma vez, sem esperar secar, para ganhar tempo"
+            ],
+            "correta": 0,
+            "feedbackCerto": "Isso mesmo. Base primeiro, sombras e luzes depois, detalhes por último. E cada camada seca antes de você pintar ao lado.",
+            "feedbackErrado": "Não é essa a ordem. Primeiro a base nas áreas grandes, depois sombras e luzes, e os detalhes delicados por último. Espere secar antes de pintar a área vizinha, para não manchar."
           }
         ]
       },
@@ -5187,50 +5325,50 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Camadas finas",
-            "texto": "Cobertura uniforme costuma vir de várias camadas finas, e não de uma camada grossa. Tinta insuficiente deixa cobertura irregular, e camada grossa apaga detalhe. Retire o excesso do pincel no papel absorvente e deixe secar entre as camadas. Tintas muito espessas podem ser afinadas, conforme o procedimento da Valente, para não deixar marcas de pincel."
+            "texto": "Para a tinta cobrir por igual, o melhor costuma ser passar várias camadas finas, e não uma camada grossa. Pouca tinta deixa a cobertura falhada. Camada grossa apaga detalhe. Tire o excesso de tinta do pincel no papel absorvente. Deixe secar entre uma camada e outra. Tinta muito grossa pode ser afinada, conforme o procedimento da Valente, para não deixar marcas de pincel."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pincel seco e lavagem",
-            "texto": "Pincel seco é quando você tira quase toda a tinta do pincel no papel e passa de leve nas áreas em relevo, deixando as luzes nas bordas. Lavagem é uma tinta bem diluída que escorre para as reentrâncias e cria sombra. Ambas dependem de controle de quantidade de tinta, e o resultado é visto aos poucos."
+            "texto": "No pincel seco, você tira quase toda a tinta do pincel no papel e passa de leve nas partes em relevo. Assim as bordas ficam mais claras. Lavagem é uma tinta bem diluída, que escorre para as partes fundas e cria sombra. As duas técnicas dependem de controlar a quantidade de tinta. O resultado aparece aos poucos."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pincel ou aerógrafo",
-            "texto": "O pincel dá controle para detalhes. O aerógrafo cobre áreas maiores de forma uniforme, mas exige ventilação, máscara adequada, limpeza e treino. Nem toda peça usa aerógrafo. As técnicas reais adotadas pela Valente são demonstradas na prática supervisionada: treine em peça de treino antes de qualquer pedido real."
+            "texto": "O pincel dá controle para os detalhes. O aerógrafo cobre áreas maiores por igual. Mas ele pede lugar ventilado, a máscara certa, limpeza e treino. Nem toda peça usa aerógrafo. As técnicas que a Valente usa de verdade são mostradas na prática com o supervisor. Treine em peça de treino antes de qualquer pedido real."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "tecnica_pintura",
-            "pergunta": "A tinta do pote está espessa e a peça tem detalhes finos no rosto. O que fazer?",
+            "pergunta": "A tinta do pote está grossa. A peça tem detalhes finos no rosto. O que fazer?",
             "opcoes": [
-              "Aplicar uma camada grossa para terminar rápido",
-              "Adicionar água sem limite até ficar bem líquida",
-              "Aplicar camadas finas, com controle de tinta no pincel, e secar entre camadas, seguindo o procedimento da Valente",
+              "Passar uma camada grossa para terminar rápido",
+              "Pôr água sem limite até a tinta ficar bem líquida",
+              "Passar camadas finas, com pouca tinta no pincel, e deixar secar entre as camadas, seguindo o procedimento da Valente",
               "Passar a segunda camada com a primeira ainda úmida"
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. Camadas finas preservam o detalhe.",
+            "feedbackCerto": "Certo. Camadas finas preservam o detalhe.",
             "feedbackPorOpcao": [
               "Camada grossa apaga detalhe e escorre.",
               "Tinta líquida demais cobre mal e escorre. Siga o procedimento.",
               null,
-              "Tinta úmida sobre úmida mancha e arrasta a camada de baixo."
+              "Tinta úmida sobre tinta úmida mancha e arrasta a camada de baixo."
             ]
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "tecnica_pintura",
-            "afirmacao": "Pincel seco é usado para realçar as áreas em relevo, com pouca tinta no pincel.",
+            "afirmacao": "O pincel seco serve para destacar as partes em relevo, com pouca tinta no pincel.",
             "correta": true,
-            "feedbackCerto": "Correto. Pouca tinta e movimento leve realçam as bordas.",
-            "feedbackErrado": "Verdadeiro. Pincel seco usa pouca tinta e realça relevo."
+            "feedbackCerto": "Certo. Pouca tinta e mão leve destacam as bordas.",
+            "feedbackErrado": "É verdadeiro. O pincel seco usa pouca tinta e destaca o relevo."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "tecnica_pintura",
             "local": "Bancada de treino com supervisor",
-            "instrucao": "Em prática supervisionada, em peça de treino, repita duas camadas finas e um pincel seco. Aguarde a validação do supervisor antes de qualquer pedido real. Confirme depois que realizou."
+            "instrucao": "Com o supervisor, em uma peça de treino, passe duas camadas finas e faça um pincel seco. Espere o supervisor validar antes de pintar qualquer pedido real. Depois confirme que fez."
           }
         ]
       },
@@ -5242,68 +5380,68 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Detalhes pedem referência",
-            "texto": "Olhos, distintivos, decalques, DTF e pequenos detalhes exigem alinhamento, referência e sequência. Nem todo produto usa todas essas técnicas: veja na OT quais valem. Um distintivo bonito, mas pertencente a outra versão, é erro. Antes de aplicar, confira identidade e posição na referência."
+            "texto": "Olhos, distintivos, decalques, DTF e pequenos detalhes pedem alinhamento, referência e ordem. Nem todo produto usa todas essas técnicas. Veja na tarefa quais valem. Um distintivo bonito, mas de outra versão, é erro. Antes de aplicar, confira na referência se o detalhe é o certo e em que posição ele fica."
           },
           {
             "tipo": "conteudo",
             "titulo": "Decalque em passos",
-            "texto": "Decalque é uma película com desenho transferida para a peça. Em geral: recortar perto do desenho, molhar o suficiente, deslizar para a posição, ajustar com pincel macio, retirar o excesso de água com cuidado e deixar secar. A superfície deve estar lisa e limpa. Um decalque correto aplicado torto continua sendo um defeito, por isso teste a posição antes de fixar."
+            "texto": "Decalque é uma película com desenho que você passa para a peça. Em geral, os passos são estes. Recorte perto do desenho. Molhe o suficiente. Deslize para a posição. Ajuste com pincel macio. Tire o excesso de água com cuidado. Deixe secar. A superfície deve estar lisa e limpa. Um decalque certo, mas aplicado torto, continua sendo defeito. Por isso, teste a posição antes de fixar."
           },
           {
             "tipo": "conteudo",
             "titulo": "DTF e olhos",
-            "texto": "DTF é um transfer impresso que também é aplicado com procedimento próprio, que a Valente define. Siga o treinamento ou consulte o responsável. Olhos pedem mão firme, ponto mínimo de tinta e simetria entre os dois lados. Faça por último, depois das áreas vizinhas, e compare os dois olhos antes de secar."
+            "texto": "DTF é um desenho impresso que também é passado para a peça. Ele tem procedimento próprio, definido pela Valente. Siga o treinamento ou consulte o responsável. Olhos pedem mão firme, um ponto bem pequeno de tinta e os dois lados iguais. Faça os olhos por último, depois das áreas vizinhas. Compare os dois olhos antes de a tinta secar."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "inspecao_liberacao",
-            "cliente": "Colega: Terminei o decalque do distintivo, mas ficou um pouco torto e já secou. Vamos deixar assim, ninguém vai notar.",
+            "cliente": "Colega: Terminei o decalque do distintivo, mas ficou um pouco torto e já secou. Vamos deixar assim. Ninguém vai notar.",
             "opcoes": [
               {
-                "label": "Sim, está seco, vamos seguir",
+                "label": "Sim, já secou, vamos seguir",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Torto continua sendo defeito, e esconder falha é erro crítico."
+                "feedback": "Torto continua sendo defeito. Esconder falha é erro crítico."
               },
               {
-                "label": "Confiro com a referência, classifico o defeito e consulto o responsável sobre como corrigir",
+                "label": "Comparo com a referência, vejo que tipo de defeito é e consulto o responsável sobre como corrigir",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Comparar, classificar e consultar é o caminho."
+                "feedback": "Certo. Comparar, entender o defeito e consultar é o caminho."
               },
               {
                 "label": "Raspo o decalque com lixa forte",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Lixar forte pode danificar a pintura e a peça."
+                "feedback": "Lixar forte pode estragar a pintura e a peça."
               },
               {
-                "label": "Cubro com tinta por cima e refaço outro",
+                "label": "Cubro com tinta por cima e aplico outro",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Camadas aleatórias acumulam problema e não resolvem a posição."
+                "feedback": "Camadas passadas sem método juntam mais problema e não acertam a posição."
               }
             ]
           },
           {
             "tipo": "ordenar",
             "competencia": "tecnica_pintura",
-            "instrucao": "Ordene os passos para aplicar um decalque.",
+            "instrucao": "Coloque em ordem os passos para aplicar um decalque.",
             "itens": [
-              "Conferir na referência identidade e posição",
+              "Conferir na referência qual é o decalque e a posição",
               "Recortar o decalque perto do desenho",
               "Molhar o suficiente e deslizar para a posição",
-              "Ajustar com pincel macio e retirar o excesso de água",
+              "Ajustar com pincel macio e tirar o excesso de água",
               "Deixar secar sem mexer"
             ],
             "feedbackCerto": "Isso mesmo.",
-            "feedbackErrado": "Revise: confira, recorte, molhe e deslize, ajuste e deixe secar."
+            "feedbackErrado": "Veja de novo: confira, recorte, molhe e deslize, ajuste e deixe secar."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "inspecao_liberacao",
-            "local": "Peça de treino ou referência da OT",
-            "instrucao": "Em peça de treino, simule o posicionamento de um decalque ou detalhe sem fixar: confira identidade e posição na referência. Se a peça for real, apenas observe. Confirme."
+            "local": "Peça de treino ou referência da tarefa",
+            "instrucao": "Em uma peça de treino, teste a posição de um decalque ou detalhe, sem fixar. Confira na referência se é o detalhe certo e a posição certa. Se a peça for de pedido real, só olhe. Confirme que fez."
           }
         ]
       },
@@ -5315,27 +5453,27 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Erros comuns",
-            "texto": "Os erros mais comuns: excesso de tinta, que forma grumos; mancha; escorrimento, quando a tinta desce e forma gota; cobertura ruim, com a cor de baixo aparecendo; diferença de tonalidade entre peças; e falha de detalhe, como olho borrado. Reconhecer cedo facilita a correção."
+            "texto": "Os erros mais comuns são estes. Excesso de tinta, que forma grumos (bolinhas de tinta). Mancha. Escorrimento, quando a tinta desce e forma gota. Cobertura ruim, quando a cor de baixo aparece. Diferença de tom entre as peças. Falha de detalhe, como olho borrado. Quem reconhece o erro cedo corrige mais fácil."
           },
           {
             "tipo": "conteudo",
             "titulo": "Corrigir com método",
-            "texto": "Tentar esconder mancha com mais tinta pode apagar textura e ampliar o problema. Se a tinta ainda está úmida, retire com cuidado com pincel ou cotonete. Se secou, espere, lixe de leve se o procedimento permitir e repinte em camada fina. Evite acumular camadas aleatórias."
+            "texto": "Tentar esconder uma mancha com mais tinta pode apagar a textura e aumentar o problema. A tinta ainda está úmida? Tire com cuidado, com pincel ou cotonete. A tinta secou? Espere, lixe de leve se o procedimento permitir e repinte em camada fina. Não vá juntando camadas sem método."
           },
           {
             "tipo": "conteudo",
             "titulo": "Classifique antes de agir",
-            "texto": "Pergunte: posso corrigir com procedimento conhecido? Preciso consultar? Ou a peça precisa retornar a uma etapa anterior, como pós-impressão? Peça com defeito de impressão não se resolve com tinta. Em caso de dúvida, consulte o responsável e registre o que aconteceu."
+            "texto": "Classificar é decidir que tipo de caso é. Pergunte: posso corrigir com um procedimento que eu conheço? Preciso consultar? Ou a peça precisa voltar para uma etapa anterior, como a pós-impressão? Defeito de impressão não se resolve com tinta. Na dúvida, consulte o responsável e registre o que aconteceu."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "tecnica_pintura",
-            "pergunta": "Quais situações exigem consultar o responsável ou devolver a peça a outra etapa?",
+            "pergunta": "Em quais situações você deve consultar o responsável ou devolver a peça para outra etapa?",
             "itens": [
-              "Defeito de impressão visível que a tinta não resolve",
-              "Mancha pequena em tinta úmida que você sabe retirar",
-              "Diferença de tonalidade entre peças do lote sem causa clara",
-              "Cor errada aplicada e dúvida sobre como remover",
+              "Defeito de impressão visível, que a tinta não resolve",
+              "Mancha pequena em tinta úmida, que você sabe tirar",
+              "Diferença de tom entre peças do lote, sem causa clara",
+              "Cor errada aplicada e dúvida sobre como tirar",
               "Escorrimento que você já corrige com o método ensinado"
             ],
             "corretos": [
@@ -5343,25 +5481,25 @@ var TREINAMENTO_TRILHAS = {
               2,
               3
             ],
-            "feedbackCerto": "Correto. Quando não há procedimento conhecido ou o defeito vem de etapa anterior, consulte ou devolva.",
-            "feedbackErrado": "Mancha úmida e escorrimento com método ensinado você corrige. O restante exige consulta ou retorno."
+            "feedbackCerto": "Certo. Quando você não conhece o procedimento ou o defeito vem de etapa anterior, consulte ou devolva.",
+            "feedbackErrado": "Mancha úmida e escorrimento com método ensinado você mesmo corrige. Os outros casos pedem consulta ou devolução."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "inspecao_liberacao",
-            "pergunta": "Uma peça seca com um escorrimento no braço. Qual é o caminho correto?",
+            "pergunta": "Uma peça seca com um escorrimento no braço. Qual é o caminho certo?",
             "opcoes": [
               "Passar mais tinta por cima para nivelar",
-              "Deixar assim e colocar a peça entre as aprovadas",
-              "Lixar forte até remover toda a tinta do braço",
+              "Deixar assim e colocar a peça junto das aprovadas",
+              "Lixar forte até tirar toda a tinta do braço",
               "Esperar secar, tratar o ponto com o método ensinado e repintar em camada fina, ou consultar se não souber"
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. Corrigir com método preserva a textura.",
+            "feedbackCerto": "Certo. Corrigir com método preserva a textura.",
             "feedbackPorOpcao": [
-              "Mais tinta amplia o problema.",
-              "Avançar peça com defeito é erro crítico.",
-              "Lixar forte pode apagar detalhe e danificar.",
+              "Mais tinta aumenta o problema.",
+              "Passar adiante uma peça com defeito é erro crítico.",
+              "Lixar forte pode apagar detalhe e estragar a peça.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -5369,15 +5507,18 @@ var TREINAMENTO_TRILHAS = {
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "inspecao_liberacao",
-            "pergunta": "Pense em um erro possível (mancha, escorrimento ou cobertura ruim) e classifique: você corrige, consulta ou devolve a peça? Explique o motivo.",
-            "pontosEsperados": [
-              "Erro nomeado",
-              "Classificação entre corrigir, consultar ou devolver",
-              "Motivo coerente com o procedimento",
-              "Menção de não acumular camadas aleatórias"
-            ]
+            "pergunta": "Uma peça secou com uma mancha. Você não conhece o jeito certo de corrigir. O que fazer?",
+            "opcoes": [
+              "Passar várias camadas de tinta por cima até a mancha sumir",
+              "Consultar o responsável e registrar o que aconteceu, sem juntar camadas por cima",
+              "Colocar a peça junto das aprovadas, porque a mancha é pequena",
+              "Corrigir do seu jeito e não contar para ninguém"
+            ],
+            "correta": 1,
+            "feedbackCerto": "Isso mesmo. Sem procedimento conhecido, o caso é de consulta. Juntar camadas sem método aumenta o problema.",
+            "feedbackErrado": "Não é esse o caminho. Quando você não conhece o procedimento, consulte o responsável e registre o que aconteceu. Não junte camadas de tinta sem método."
           }
         ]
       },
@@ -5389,22 +5530,22 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Terminar não é liberar",
-            "texto": "Terminar de pintar não significa liberar. Compare referência, pedido, padrão, quantidade e acabamento. Olhe a peça de todos os lados, sob boa luz e a distância normal e de perto. Verifique bordas, olhos, decalques, cobertura e marcas de dedo."
+            "texto": "Terminar de pintar não quer dizer liberar. Compare a peça com a referência, o pedido e o padrão. Confira a quantidade e o acabamento. Olhe a peça de todos os lados, em luz boa, de perto e na distância normal. Confira bordas, olhos, decalques, cobertura e marcas de dedo."
           },
           {
             "tipo": "conteudo",
             "titulo": "O conjunto importa",
-            "texto": "Em lote, uma unidade pode estar ótima e ainda assim destoar das demais. Coloque todas lado a lado e compare tonalidades e detalhes. Confira a quantidade com a OT. Se uma peça destoa, separe-a para correção, não deixe passar."
+            "texto": "Em lote, uma peça pode estar ótima e mesmo assim ficar diferente das outras. Coloque todas lado a lado e compare os tons e os detalhes. Confira a quantidade com a tarefa. Uma peça ficou diferente? Separe para correção. Não deixe passar."
           },
           {
             "tipo": "conteudo",
             "titulo": "Separar e registrar",
-            "texto": "Use um checklist visual e mantenha peças aprovadas separadas das que precisam de correção, em lugares claros. Seguir para a próxima etapa do Kanban, Preparar p/ envio, é feito conforme o procedimento da Valente. Se um padrão visual exige validação, o responsável valida. Em dúvida, consulte."
+            "texto": "Use um checklist visual. Deixe as peças aprovadas separadas das que precisam de correção, em lugares bem claros. A passagem para a próxima coluna do Kanban, Preparar p/ envio, segue o procedimento da Valente. Se um padrão visual precisa de validação, quem valida é o responsável. Na dúvida, consulte."
           },
           {
             "tipo": "conteudo",
             "titulo": "Fechar a pintura",
-            "texto": "Quando todas as peças da tarefa estão pintadas, abre a janela Fechar a pintura. Ela pede quantas peças ficaram prontas no total e quantas voltam para a fase anterior, com o motivo. Marque como prontas só as que passaram na inspeção do conjunto. Peça com defeito de impressão, ou que você não consegue corrigir, volta para a fase anterior com o motivo escrito com clareza. Registrar certo mantém verdadeira a contagem de produção do pedido."
+            "texto": "Quando todas as peças da tarefa estão pintadas, abre a janela Fechar a pintura. Ela pergunta quantas peças ficaram prontas no total e quantas voltam para a fase anterior, com o motivo. Marque como prontas só as que passaram na inspeção do conjunto. Peça com defeito de impressão, ou que você não consegue corrigir, volta para a fase anterior. Escreva o motivo de forma clara. Registrar certo mantém verdadeira a contagem de produção do pedido."
           },
           {
             "tipo": "resposta_cliente",
@@ -5412,56 +5553,56 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Líder: Seu lote de 8 está pronto? O cliente espera hoje.",
             "opcoes": [
               {
-                "label": "Está pronto, todas ficaram boas pelo que vi da última",
+                "label": "Está pronto. Pelo que vi da última, todas ficaram boas",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Avaliar só a última peça ignora o conjunto."
+                "feedback": "Olhar só a última peça deixa o conjunto sem conferir."
               },
               {
-                "label": "Ainda estou comparando as 8 lado a lado com a referência e a OT. Há uma que destoa, separei para correção",
+                "label": "Ainda estou comparando as 8 lado a lado com a referência e a tarefa. Uma ficou diferente e eu separei para correção",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Correto. Comparar o conjunto e separar a que destoa."
+                "feedback": "Certo. Compare o conjunto e separe a peça diferente."
               },
               {
-                "label": "Posso liberar as 8 e corrigir depois se reclamarem",
+                "label": "Posso liberar as 8 e corrigir depois, se reclamarem",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Liberar peça com defeito é erro crítico."
               },
               {
-                "label": "Conto só a quantidade; se for 8, está liberado",
+                "label": "Conto só a quantidade. Se der 8, está liberado",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Quantidade é só um item do checklist."
+                "feedback": "A quantidade é só um item do checklist."
               }
             ]
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "inspecao_liberacao",
-            "afirmacao": "Se uma peça do lote está bem pintada isoladamente, ela pode ser liberada mesmo que destoe das outras.",
+            "afirmacao": "Se uma peça do lote está bem pintada quando vista sozinha, ela pode ser liberada mesmo que esteja diferente das outras.",
             "correta": false,
-            "feedbackCerto": "Correto. O cliente enxerga o conjunto.",
-            "feedbackErrado": "Falso. Em lote, uma peça que destoa parece erro, mesmo bem pintada."
+            "feedbackCerto": "Certo. O cliente olha o conjunto.",
+            "feedbackErrado": "É falso. Em lote, uma peça diferente das outras parece erro, mesmo bem pintada."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "inspecao_liberacao",
-            "pergunta": "Você pintou as 10 peças da tarefa. Na inspeção do conjunto, 9 passaram e 1 tem defeito de impressão no rosto. Na janela Fechar a pintura, o que registrar?",
+            "pergunta": "Você pintou as 10 peças da tarefa. Na inspeção do conjunto, 9 passaram e 1 tem defeito de impressão no rosto. Na janela Fechar a pintura, o que você registra?",
             "opcoes": [
               "10 prontas, e corrigir depois se o cliente reclamar",
-              "9 prontas, sem mencionar a outra, para não atrasar o pedido",
+              "9 prontas, sem falar da outra, para não atrasar o pedido",
               "9 prontas e 1 voltando para a fase anterior, com o motivo escrito",
               "Nenhuma pronta até o cliente avaliar o lote"
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. Prontas são só as aprovadas; a com defeito volta com o motivo.",
+            "feedbackCerto": "Certo. Prontas são só as aprovadas. A peça com defeito volta, com o motivo.",
             "feedbackPorOpcao": [
               "Liberar peça com defeito é erro crítico.",
-              "Esconder a peça falsifica a contagem e o pedido segue errado.",
+              "Esconder a peça deixa a contagem falsa, e o pedido segue errado.",
               null,
-              "O cliente não avalia antes: a inspeção é sua, e a janela pede o total pronto."
+              "O cliente não avalia antes. A inspeção é sua, e a janela pede o total de peças prontas."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -5472,7 +5613,7 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "inspecao_liberacao",
             "local": "Bancada de inspeção",
-            "instrucao": "Com peças de treino, faça uma inspeção usando o checklist visual: referência, quantidade, acabamento, conjunto. Separe aprovadas e a corrigir. Confirme que fez."
+            "instrucao": "Com peças de treino, faça uma inspeção com o checklist visual: referência, quantidade, acabamento e conjunto. Separe as aprovadas das que precisam de correção. Confirme que fez."
           }
         ]
       },
@@ -5483,19 +5624,19 @@ var TREINAMENTO_TRILHAS = {
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "O fluxo da pintura",
-            "texto": "Você recebe uma peça de treino, a referência e uma OT simulada. O fluxo: ler a SUA MISSÃO e a referência, conferir Cor 01 a 33 pelo pote, preparar a superfície, planejar a ordem base, sombras, luzes e detalhes, aplicar técnicas básicas, fazer detalhes e decalques, corrigir com método, inspecionar o conjunto e, no sistema, registrar a Produção do dia e Fechar a pintura."
+            "titulo": "O caminho da pintura",
+            "texto": "Você recebe uma peça de treino, a referência e uma tarefa simulada. O caminho é este. Ler a SUA MISSÃO e a referência. Conferir a Cor, de 01 a 33, pelo pote. Preparar a superfície. Planejar a ordem: base, sombras, luzes e detalhes. Usar as técnicas básicas. Fazer detalhes e decalques. Corrigir com método. Inspecionar o conjunto. No sistema, registrar a Produção do dia e Fechar a pintura."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Como será avaliado",
-            "texto": "A avaliação considera preparação, fidelidade à referência, organização, correção de erros e conferência final. Somente o supervisor pode validar competências práticas que exigem padrão visual ou técnico. Este treinamento não altera dados reais do sistema."
+            "titulo": "Como será a avaliação",
+            "texto": "A avaliação olha a preparação, se a peça ficou igual à referência, a organização, a correção de erros e a conferência final. Só o supervisor pode validar as práticas que dependem de padrão visual ou técnico. Este treinamento não altera dados reais do sistema."
           },
           {
             "tipo": "checklist",
             "titulo": "Checklist da missão",
             "itens": [
-              "OT e referência lidas",
+              "Tarefa e referência lidas",
               "Número de Cor conferido no pote",
               "Superfície inspecionada",
               "Sequência de pintura planejada",
@@ -5512,40 +5653,40 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "OT simulada: pintar 4 soldados, uniforme conforme a referência. Você abre a OT e a referência. A referência mostra um verde e na prateleira existem três potes de verde. O que faz primeiro?",
+                "cliente": "Tarefa simulada: pintar 4 soldados, com o uniforme igual ao da referência. Você abre a tarefa e a referência. A referência mostra um verde. Na prateleira há três potes de verde. O que você faz primeiro?",
                 "opcoes": [
                   {
-                    "label": "Confiro o número de Cor da referência e uso o pote com a mesma etiqueta",
+                    "label": "Confiro o número de Cor da referência e uso o pote com o mesmo número na etiqueta",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. O número do pote é a fonte da verdade.",
+                    "feedback": "Certo. O número do pote é a referência que vale.",
                     "proximo": "b"
                   },
                   {
                     "label": "Uso o verde que parece mais próximo na tela",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Telas distorcem tons. Usar cor parecida quebra o padrão.",
+                    "feedback": "A tela muda o tom da cor. Usar cor parecida quebra o padrão.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Mistura dois verdes até ficar parecido",
+                    "label": "Misturo dois verdes até ficar parecido",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Mistura sem receita oficial é improviso.",
+                    "feedback": "Misturar sem receita oficial é improviso.",
                     "proximo": "b"
                   },
                   {
                     "label": "Começo a pintar e confiro depois",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Conferir depois pode obrigar a refazer tudo.",
+                    "feedback": "Conferir depois pode obrigar você a refazer tudo.",
                     "proximo": "b"
                   }
                 ]
               },
               "b": {
-                "cliente": "Ao inspecionar as peças antes de pintar, você vê uma marca de suporte e uma superfície pegajosa em um soldado. O que faz?",
+                "cliente": "Você inspeciona as peças antes de pintar. Um soldado tem uma marca de suporte e a superfície pegajosa. O que você faz?",
                 "opcoes": [
                   {
                     "label": "Passo primer grosso para esconder",
@@ -5555,30 +5696,30 @@ var TREINAMENTO_TRILHAS = {
                     "proximo": "c"
                   },
                   {
-                    "label": "Separo essa peça e trato conforme o fluxo ou consulto o responsável, e sigo com as demais",
+                    "label": "Separo essa peça, trato conforme o fluxo ou consulto o responsável, e sigo com as outras",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Defeito de etapa anterior é separado e tratado.",
+                    "feedback": "Certo. Defeito de etapa anterior é separado e tratado.",
                     "proximo": "c"
                   },
                   {
                     "label": "Pinto assim mesmo, a tinta resolve",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Tinta não corrige superfície ruim.",
+                    "feedback": "Tinta não conserta superfície ruim.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Descarto a peça sem avisar ninguém",
+                    "label": "Jogo a peça fora sem avisar ninguém",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Qualquer decisão sobre a peça deve ser comunicada e seguir o fluxo.",
+                    "feedback": "Toda decisão sobre a peça deve ser avisada e seguir o fluxo.",
                     "proximo": "c"
                   }
                 ]
               },
               "c": {
-                "cliente": "Você pintou os 4 soldados. Um deles está com um escorrimento seco no braço e o tom parece mais escuro. Como liberar?",
+                "cliente": "Você pintou os 4 soldados. Um deles tem um escorrimento seco no braço e o tom parece mais escuro. Como liberar?",
                 "opcoes": [
                   {
                     "label": "Libero os 4, o erro é pequeno",
@@ -5587,16 +5728,16 @@ var TREINAMENTO_TRILHAS = {
                     "feedback": "Liberar peça com defeito é erro crítico."
                   },
                   {
-                    "label": "Passo mais tinta sobre o escorrimento",
+                    "label": "Passo mais tinta por cima do escorrimento",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Camadas aleatórias ampliam o problema."
+                    "feedback": "Camadas passadas sem método aumentam o problema."
                   },
                   {
-                    "label": "Comparo os 4 lado a lado com a referência e a OT, separo o que destoa, corrijo com método ou consulto, e libero só as aprovadas",
+                    "label": "Comparo os 4 lado a lado com a referência e a tarefa, separo o que está diferente, corrijo com método ou consulto, e libero só os aprovados",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Conjunto, método e separação."
+                    "feedback": "Certo. Conjunto, método e separação."
                   },
                   {
                     "label": "Refaço as 4 peças do zero sem avisar",
@@ -5612,18 +5753,18 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "missao",
             "competencia": "inspecao_liberacao",
             "titulo": "Missão Pintura",
-            "objetivo": "Executar o fluxo completo de pintura em uma peça de treino e decidir se ela está pronta para seguir.",
-            "contexto": "Você recebeu uma peça de treino, uma imagem de referência e uma OT simulada de 1 unidade, com 3 cores e um detalhe. Nenhum dado real deve ser alterado.",
+            "objetivo": "Fazer o caminho completo da pintura em uma peça de treino e decidir se ela está pronta para seguir.",
+            "contexto": "Você recebeu uma peça de treino, uma imagem de referência e uma tarefa simulada de 1 unidade, com 3 cores e um detalhe. Não altere nenhum dado real.",
             "tarefas": [
-              "Ler a SUA MISSÃO, a OT e a referência e anotar versão, quantidade (total e quanto falta) e números de Cor",
-              "Descrever como registraria a Produção do dia e o Fechar a pintura se a OT tivesse 8 unidades feitas em dois dias (apenas explicar, sem registrar)",
-              "Localizar os potes pelos números de etiqueta",
+              "Ler a SUA MISSÃO, a tarefa e a referência e anotar a versão, a quantidade (total e quanto falta) e os números de Cor",
+              "Explicar como você registraria a Produção do dia e o Fechar a pintura se a tarefa tivesse 8 unidades feitas em dois dias (só explicar, sem registrar)",
+              "Achar os potes pelos números das etiquetas",
               "Inspecionar e preparar a superfície",
               "Planejar e anotar a sequência: base, sombras, luzes e detalhes",
-              "Executar a pintura autorizada em camadas finas, com supervisor",
+              "Fazer a pintura autorizada em camadas finas, com o supervisor",
               "Inspecionar a peça e decidir: liberar, corrigir ou devolver"
             ],
-            "criterioConclusao": "O supervisor valida a prática: preparação, fidelidade à referência, organização, correção de erros e conferência final."
+            "criterioConclusao": "O supervisor valida a prática: preparação, peça igual à referência, organização, correção de erros e conferência final."
           }
         ]
       }
@@ -5637,12 +5778,12 @@ var TREINAMENTO_TRILHAS = {
       "inspecao_liberacao": "Inspeção e liberação"
     }
   },
-  expedicao: {
+  "expedicao": {
     "id": "expedicao",
     "nome": "Preparação, Embalagem e Expedição",
     "descricao": "Aprenda a conferir, embalar, identificar e despachar pedidos com segurança, registrando o envio no Valente OS.",
     "icone": "📦",
-    "versao": 2,
+    "versao": 3,
     "cargosPermitidos": null,
     "competencias": [
       "Conferência do pedido",
@@ -5652,50 +5793,50 @@ var TREINAMENTO_TRILHAS = {
       "Dados de envio",
       "Despacho e Kanban"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Conferir pedido fictício, integridade, identificação, embalagem e dados de envio; identificar peça colecionável rotulada incorretamente; simular registro sem despacho real. Requer conferência do responsável.",
     "dias": [
       {
         "dia": 1,
         "titulo": "Minha estação de expedição",
-        "subtitulo": "Conheça o lugar e o papel da última conferência",
+        "subtitulo": "Conheça o lugar e a última conferência",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Expedição é a última barreira",
-            "texto": "Expedição não é só colocar a peça em uma caixa. É a última barreira interna antes de o produto chegar ao cliente. Tudo o que foi feito antes, como modelagem, impressão, pós-impressão e pintura, só vale para o cliente se a peça certa, inteira e bem protegida chegar até ele. Se algo errado passar por você, o próximo a descobrir será o cliente."
+            "texto": "Expedição não é só colocar a peça em uma caixa. É a última conferência dentro da empresa antes de o produto ir para o cliente. Antes de você vieram a modelagem, a impressão, a pós-impressão e a pintura. Todo esse trabalho só vale se a peça certa chegar inteira e bem protegida. Se um erro passar por você, quem vai descobrir é o cliente."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que existe na sua estação",
-            "texto": "Sua estação reúne alguns elementos. Materiais de embalagem, como caixas, proteção interna e fita. Etiquetas e identificação. O sistema, ou seja, o Valente OS no tablet, onde você consulta o pedido e a tarefa de Expedição. Ferramentas básicas, como tesoura ou estilete, que exigem cuidado ao cortar. E uma área de conferência, uma bancada limpa e organizada onde você compara o que recebeu com o que o pedido diz. Os materiais e padrões aprovados são os definidos pela Valente."
+            "texto": "Na sua estação você encontra cinco coisas. Materiais de embalagem: caixas, proteção interna e fita. Etiquetas e identificação. O Valente OS no tablet, onde você consulta o pedido e a tarefa de Expedição. Ferramentas simples, como tesoura ou estilete. Tome cuidado ao cortar. E a área de conferência: uma bancada limpa e arrumada, onde você compara o que recebeu com o que o pedido diz. A Valente define quais materiais e padrões são aprovados."
           },
           {
             "tipo": "conteudo",
             "titulo": "Um exemplo para guardar",
-            "texto": "Uma embalagem bonita com produto errado continua sendo uma falha grave. O cliente não avalia a caixa se abrir e encontrar a miniatura trocada, faltando um acessório ou quebrada. Por isso, sua primeira pergunta nunca é como embalar. É: o que eu estou recebendo e está tudo certo? Manter a bancada organizada, com um pedido de cada vez, ajuda a evitar mistura entre pedidos."
+            "texto": "Caixa bonita com produto errado é falha grave. O cliente não liga para a caixa se abrir e achar a miniatura trocada, quebrada ou sem um acessório. Por isso, a primeira pergunta nunca é como embalar. A primeira pergunta é: o que eu estou recebendo e está tudo certo? Deixe a bancada arrumada e trabalhe um pedido de cada vez. Isso ajuda a não misturar pedidos."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sua missão na tela da tarefa",
-            "texto": "Ao abrir uma tarefa, o topo mostra a caixa SUA MISSÃO, com o que você deve fazer e quanto falta. Seu PIN identifica você como responsável pelas tarefas que inicia e conclui. No tablet, Minhas funções abre uma fila única, e o botão Próxima da fila leva à tarefa seguinte. O Kanban atualiza sozinho a cada 60 segundos, mas a tarefa é a fonte do que fazer."
+            "texto": "Quando você abre uma tarefa, a caixa SUA MISSÃO aparece no topo. Ela mostra o que você deve fazer e quanto falta. O seu PIN mostra que você é o responsável pelas tarefas que inicia e conclui. No tablet, Minhas funções abre uma fila única. O botão Próxima da fila leva à tarefa seguinte. O Kanban atualiza sozinho a cada 60 segundos. Mas é a tarefa que diz o que você deve fazer."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "conferencia_final",
-            "pergunta": "Um pedido chega à expedição, e a miniatura dentro da caixa de transporte pronta é de outra versão do que consta no pedido. Como isso deve ser tratado?",
+            "pergunta": "Um pedido chega à expedição já dentro da caixa de transporte. A miniatura que está na caixa é de outra versão, diferente da que está no pedido. Como tratar isso?",
             "opcoes": [
-              "É falha leve, pois a caixa está bonita e bem fechada e o cliente pode trocar depois",
-              "É falha de quem embalou, então basta refazer a caixa mantendo a peça",
-              "É uma falha grave, mesmo com a embalagem perfeita; deve ser parado e levado ao responsável",
-              "Depende do cliente: se ele não perceber, o envio segue normalmente"
+              "É falha leve. A caixa está bonita e bem fechada, e o cliente pode trocar depois.",
+              "É falha de quem embalou. Basta refazer a caixa com a mesma peça.",
+              "É falha grave, mesmo com a embalagem perfeita. Você para e leva ao responsável.",
+              "Depende do cliente. Se ele não perceber, o envio segue normal."
             ],
             "correta": 2,
-            "feedbackCerto": "Isso mesmo. Embalagem bonita com produto errado é falha grave, e você é a última barreira interna.",
+            "feedbackCerto": "Isso mesmo. Caixa bonita com produto errado é falha grave. Você é a última barreira da empresa.",
             "feedbackPorOpcao": [
-              "Embalagem bonita não compensa produto errado. O erro chegaria ao cliente.",
-              "Refazer a caixa não resolve: o problema é a peça, não a embalagem.",
+              "Caixa bonita não conserta produto errado. O erro chegaria ao cliente.",
+              "Refazer a caixa não resolve. O problema é a peça, não a embalagem.",
               null,
-              "Contar com o cliente não perceber é esconder o defeito, e isso não é aceitável."
+              "Torcer para o cliente não perceber é esconder o defeito. Isso não é aceito."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -5705,8 +5846,8 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "confirmacao_pratica",
             "competencia": "conferencia_pedido",
-            "local": "Valente OS (tablet) > aba Pedidos (Kanban), coluna Preparar p/ envio, e a área de conferência da expedição",
-            "instrucao": "Sem alterar nenhum dado, abra a aba Pedidos e localize a coluna Preparar p/ envio. Escolha um pedido apenas para consultar. Depois, caminhe até a estação e identifique onde ficam os materiais de embalagem, as etiquetas e a área de conferência. Marque como feito quando souber onde está cada um."
+            "local": "No computador ou no tablet Samsung, com o responsável",
+            "instrucao": "Peça ao responsável para abrir a aba Pedidos e mostrar a coluna Preparar p/ envio. Só olhe um pedido, sem mudar nada. Depois, vá até a estação de expedição e veja onde ficam os materiais de embalagem, as etiquetas e a área de conferência. Marque como feito quando souber onde está cada um."
           }
         ]
       },
@@ -5718,48 +5859,48 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Consulte antes de abrir",
-            "texto": "Antes de embalar qualquer coisa, consulte o pedido no Valente OS e na tarefa de Expedição. Veja o cliente, a quantidade de peças, os componentes ou acessórios, o acabamento pedido e as observações. As observações costumam guardar detalhes importantes, como um pedido para tratar a peça de forma especial. Se uma informação não estiver clara, não complete por suposição: consulte a ficha ou o responsável."
+            "texto": "Antes de embalar, consulte o pedido no Valente OS e na tarefa de Expedição. Veja o cliente, a quantidade de peças, os componentes ou acessórios, o acabamento pedido e as observações. Leia as observações com atenção. Elas costumam trazer detalhes importantes, como um cuidado especial com a peça. Alguma informação não está clara? Não adivinhe. Consulte a ficha ou o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Compare o físico com o registro",
-            "texto": "Depois de ler o registro, olhe o que chegou fisicamente à bancada e compare item a item. Registro e realidade precisam bater. Um pedido de duas peças com acessórios não pode ser conferido contando apenas duas caixas, porque as caixas podem estar certas e um acessório faltando. Conte conteúdo, não volume."
+            "texto": "Depois de ler o pedido, olhe o que chegou na bancada. Compare item por item. O que está no sistema e o que está na bancada precisam ser iguais. Exemplo: o pedido tem duas peças com acessórios. Não basta contar duas caixas. As caixas podem estar certas e um acessório estar faltando. Conte o que há dentro, não o número de caixas."
           },
           {
             "tipo": "conteudo",
             "titulo": "Checklist por conteúdo",
-            "texto": "O jeito mais seguro é montar uma lista pelo conteúdo esperado. Por exemplo: peça A, peça B, acessório da peça A, base, observação especial. Marque cada item à medida que o vê com seus olhos. Itens que você presume que estão lá, sem ver, não contam como conferidos. Se algo não aparecer, pare e consulte o responsável, em vez de seguir esperando que apareça depois."
+            "texto": "O jeito mais seguro é fazer uma lista do que o pedido deve ter. Exemplo: peça A, peça B, acessório da peça A, base, observação especial. Marque cada item só quando você vir o item com seus olhos. Item que você acha que está lá, mas não viu, não conta como conferido. Algum item não apareceu? Pare e consulte o responsável. Não siga esperando que ele apareça depois."
           },
           {
             "tipo": "conteudo",
             "titulo": "Retirar do estoque",
-            "texto": "As peças prontas ficam guardadas em endereços, como G1-E01-P02. Na tarefa de separação, conferência, embalagem ou expedição, toque em Retirar do estoque. Ele mostra só o componente da tarefa, ou todos os componentes se a tarefa é da peça inteira, e pede Quantas peças. Na aba Estoque, a Retirada guiada diz em qual endereço pegar cada item. Ao confirmar Retirar, os itens vão para a Mesa de separação; marcar Enviado na mesa dá a baixa."
+            "texto": "As peças prontas ficam guardadas em endereços, como G1-E01-P02. Na tarefa de separação, conferência, embalagem ou expedição, toque em Retirar do estoque. Ele mostra só o componente da tarefa. Se a tarefa é da peça inteira, mostra todos os componentes. Depois pede Quantas peças. Na aba Estoque, a Retirada guiada diz em qual endereço pegar cada item. Quando você confirma Retirar, os itens vão para a Mesa de separação. A baixa no estoque só acontece quando se marca Enviado na mesa."
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "conferencia_pedido",
-            "afirmacao": "Ao confirmar Retirar na Retirada guiada, o estoque já é baixado de forma definitiva, antes de qualquer outra ação.",
+            "afirmacao": "Quando você confirma Retirar na Retirada guiada, o estoque já é baixado de vez, antes de qualquer outra ação.",
             "correta": false,
-            "feedbackCerto": "Correto. Os itens vão para a Mesa de separação e a baixa acontece quando se marca Enviado na mesa.",
-            "feedbackErrado": "Falso. Retirar leva os itens para a Mesa de separação; a baixa só ocorre quando Enviado é marcado na mesa."
+            "feedbackCerto": "Certo. Os itens vão para a Mesa de separação. A baixa só acontece quando se marca Enviado na mesa.",
+            "feedbackErrado": "Falso. Retirar leva os itens para a Mesa de separação. A baixa só acontece quando se marca Enviado na mesa."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "conferencia_pedido",
-            "pergunta": "O pedido registra duas miniaturas e um acessório para cada uma. Na bancada há duas caixas. Qual é a conferência correta?",
+            "pergunta": "O pedido tem duas miniaturas e um acessório para cada uma. Na bancada há duas caixas. Qual é a conferência certa?",
             "opcoes": [
-              "Abrir e verificar peça por peça e acessório por acessório, comparando com o registro do pedido",
-              "Contar as caixas: se são duas, o pedido está completo",
-              "Confiar na etiqueta das caixas, pois quem as fechou já conferiu",
-              "Embalar e conferir depois, quando o rastreio for gerado"
+              "Abrir e ver peça por peça e acessório por acessório, comparando com o pedido.",
+              "Contar as caixas. Se são duas, o pedido está completo.",
+              "Confiar na etiqueta das caixas, porque quem fechou já conferiu.",
+              "Embalar agora e conferir depois, quando o rastreio for gerado."
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Conferir por conteúdo evita que uma falta passe despercebida.",
+            "feedbackCerto": "Certo. Conferir o conteúdo evita que uma falta passe sem ninguém ver.",
             "feedbackPorOpcao": [
               null,
-              "Contar volume não confirma conteúdo; um acessório pode estar faltando.",
-              "A conferência anterior não substitui a sua; a expedição é a última barreira.",
-              "Depois de despachar, uma falta já chegou ao cliente."
+              "Contar caixas não mostra o que há dentro. Um acessório pode estar faltando.",
+              "A conferência de outra pessoa não vale no lugar da sua. A expedição é a última barreira.",
+              "Depois que o pacote sai, a falta já chegou ao cliente."
             ],
             "erroCriticoOpcoes": [
               2,
@@ -5769,8 +5910,8 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "confirmacao_pratica",
             "competencia": "conferencia_pedido",
-            "local": "Valente OS (tablet) > aba Pedidos (Kanban) e o pedido na área de conferência",
-            "instrucao": "Sem alterar dados, abra um pedido em Preparar p/ envio apenas para consulta. Anote mentalmente cliente, quantidade, componentes, acabamento e observações. Depois monte, em um papel ou na cabeça, um checklist por conteúdo. Marque como feito quando conseguir listar todos os itens esperados sem contar apenas caixas."
+            "local": "No computador ou no tablet Samsung, com o responsável",
+            "instrucao": "Peça ao responsável para abrir um pedido da coluna Preparar p/ envio. Só olhe, sem mudar nada. Veja cliente, quantidade, componentes, acabamento e observações. Depois faça, no papel ou de cabeça, uma lista do conteúdo esperado. Marque como feito quando conseguir listar todos os itens, sem contar só as caixas."
           }
         ]
       },
@@ -5782,69 +5923,87 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que você verifica",
-            "texto": "Na conferência final, você verifica seis pontos. Produto correto, quantidade certa, versão certa, acabamento conforme pedido, integridade da peça e todos os componentes presentes. Olhe a peça com boa luz e em mãos. Procure rachaduras, partes soltas, detalhes finos quebrados, marcas de manuseio, tinta descascada e sujeira. Se for o caso, compare com a descrição do pedido."
+            "texto": "Na conferência final, você olha seis pontos. O produto é o certo? A quantidade está certa? A versão é a certa? O acabamento está como no pedido? A peça está inteira? Todos os componentes estão ali? Segure a peça e olhe com boa luz. Procure rachaduras, partes soltas, detalhes finos quebrados, marcas de manuseio, tinta descascada e sujeira. Se precisar, compare com a descrição do pedido."
           },
           {
             "tipo": "conteudo",
             "titulo": "Detectar antes de fechar",
-            "texto": "Esta etapa existe para detectar troca, falta ou dano antes de fechar a embalagem. Depois de lacrada, a caixa esconde o problema, e o cliente o descobrirá. Se uma peça apresenta quebra, não a embale esperando que o cliente aceite. Separe a peça, não envie, registre Encontrei problema na tarefa e avise o responsável, que aciona o fluxo de correção definido pela Valente."
+            "texto": "Esta etapa serve para achar troca, falta ou dano antes de fechar a embalagem. Depois de fechada, a caixa esconde o problema. Quem vai achar é o cliente. A peça está quebrada? Não embale esperando que o cliente aceite. Separe a peça e não envie. Registre Encontrei problema na tarefa e avise o responsável. Ele aciona a correção definida pela Valente."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Cuidado ao identificar a peça",
+            "texto": "Na conferência final, veja se a miniatura de resina está inteira e se tem partes pequenas ou frágeis. Confira se o pedido e a identificação tratam a peça como colecionável, e não como brinquedo. Achou alguma diferença? Pare e avise o responsável antes de embalar."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "seguranca_produto",
+            "pergunta": "A identificação de uma miniatura de resina diz \"brinquedo infantil\". O que você faz?",
+            "opcoes": [
+              "Envio, porque a etiqueta já está pronta.",
+              "Apago a informação sem avisar ninguém.",
+              "Paro a expedição e aviso o responsável para corrigir a informação."
+            ],
+            "correta": 2,
+            "feedbackCerto": "Certo. Não envie uma peça com identificação errada.",
+            "feedbackErrado": "Releia a orientação sobre o uso da peça. Antes de vender, confirme para que a peça serve. As miniaturas de resina da linha atual não são brinquedos."
           },
           {
             "tipo": "conteudo",
             "titulo": "Uma decisão de qualidade",
-            "texto": "Aprovar para embalagem é uma decisão de qualidade, não um passo burocrático. Se você aprova, está dizendo que aquele produto pode chegar ao cliente. Se estiver em dúvida, a dúvida é um sinal para parar e consultar, não para seguir. Parar e avisar não é erro. Esconder ou ignorar um defeito é."
+            "texto": "Aprovar para embalagem é uma decisão de qualidade. Não é só mais um passo. Quando você aprova, está dizendo que aquele produto pode chegar ao cliente. Está em dúvida? A dúvida é sinal para parar e consultar, não para seguir. Parar e avisar não é erro. Esconder ou ignorar um defeito é erro."
           },
           {
             "tipo": "conteudo",
             "titulo": "Tudo certo ou Encontrei problema",
-            "texto": "Ao concluir a tarefa de Conferência, o tablet abre uma janela com duas respostas. Tudo certo libera o pedido para a Embalagem. Encontrei problema pede o motivo e quantas peças são afetadas, e o pedido não segue enquanto o problema não for resolvido. Responda Tudo certo apenas depois de passar pelos seis pontos com a peça em mãos."
+            "texto": "Quando você conclui a tarefa de Conferência, o tablet abre uma janela com duas respostas. Tudo certo libera o pedido para a Embalagem. Encontrei problema pede o motivo e quantas peças têm o problema. O pedido não segue enquanto o problema não for resolvido. Só responda Tudo certo depois de passar pelos seis pontos com a peça na mão."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "conferencia_final",
-            "cliente": "Colega: A miniatura tem uma rachadura na base, pequena. O prazo está apertado, vamos embalar logo, o cliente nem vai notar.",
+            "cliente": "Colega: A miniatura tem uma rachadura pequena na base. O prazo está apertado. Vamos embalar logo, o cliente nem vai notar.",
             "opcoes": [
               {
-                "label": "Concordo: é pequena, o prazo pesa mais. Embalo e sigo.",
+                "label": "Concordo. É pequena e o prazo pesa mais. Embalo e sigo.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Embalar um defeito conhecido é esconder o problema. O cliente notará."
+                "feedback": "Embalar um defeito que você já viu é esconder o problema. O cliente vai notar."
               },
               {
                 "label": "Separo a peça, não embalo, registro Encontrei problema na tarefa e aviso o responsável.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Certo. Quebra ou rachadura não segue: você registra Encontrei problema, o pedido para e o responsável aciona a correção."
+                "feedback": "Certo. Peça quebrada ou rachada não segue. Você registra Encontrei problema, o pedido para e o responsável aciona a correção."
               },
               {
-                "label": "Embalo, mas coloco um bilhete avisando da rachadura para o cliente.",
+                "label": "Embalo, mas coloco um bilhete avisando o cliente da rachadura.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Transferir o defeito ao cliente não corrige a falha. A decisão não é sua nem é o cliente quem deve resolver."
+                "feedback": "Passar o defeito para o cliente não corrige a falha. Essa decisão não é sua, e não é o cliente quem deve resolver."
               },
               {
-                "label": "Marco a tarefa como concluída e deixo para o próximo turno decidir.",
+                "label": "Marco a tarefa como concluída e deixo o próximo turno decidir.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Marcar como feito sem resolver passa o defeito adiante e engana o registro."
+                "feedback": "Marcar como feito sem resolver passa o defeito adiante e deixa o registro falso."
               }
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "conferencia_final",
-            "pergunta": "Ao terminar a conferência, você encontrou uma peça com tinta descascada em um pedido de três peças. Como responde na janela da tarefa?",
+            "pergunta": "O pedido tem três peças. No fim da conferência, você achou uma peça com tinta descascada. O que responder na janela da tarefa?",
             "opcoes": [
-              "Tudo certo, pois duas das três peças estão boas",
-              "Tudo certo, e aviso o cliente por bilhete dentro da caixa",
-              "Concluo a tarefa sem responder, deixando para a Embalagem decidir",
-              "Encontrei problema, com o motivo e a quantidade de peças afetadas"
+              "Tudo certo, porque duas das três peças estão boas.",
+              "Tudo certo, e aviso o cliente com um bilhete dentro da caixa.",
+              "Concluo a tarefa sem responder e deixo a Embalagem decidir.",
+              "Encontrei problema, com o motivo e quantas peças têm o problema."
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. O problema registrado impede o pedido de seguir sem resolução.",
+            "feedbackCerto": "Certo. Com o problema registrado, o pedido não segue sem solução.",
             "feedbackPorOpcao": [
-              "Aprovar com defeito conhecido é esconder o problema.",
-              "Transferir o defeito ao cliente não resolve a falha.",
+              "Aprovar com defeito que você já viu é esconder o problema.",
+              "Passar o defeito para o cliente não resolve a falha.",
               "Deixar para outra etapa é passar o defeito adiante.",
               null
             ],
@@ -5856,55 +6015,55 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "conferencia_final",
-            "afirmacao": "Se você tem dúvida sobre se a pintura de uma peça está conforme o pedido, o certo é aprovar e deixar o cliente reportar qualquer problema.",
+            "afirmacao": "Se você tem dúvida se a pintura de uma peça está como no pedido, o certo é aprovar e deixar o cliente reclamar se houver problema.",
             "correta": false,
-            "feedbackCerto": "Correto. Dúvida é motivo para parar e consultar a ficha ou o responsável.",
-            "feedbackErrado": "Falso. Dúvida não autoriza aprovar. Consulte a ficha e o responsável antes de liberar."
+            "feedbackCerto": "Certo. Dúvida é motivo para parar e consultar a ficha ou o responsável.",
+            "feedbackErrado": "Falso. Dúvida não deixa você aprovar. Consulte a ficha e o responsável antes de liberar."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "conferencia_final",
             "local": "Área de conferência da expedição",
-            "instrucao": "Pegue uma peça de treino ou observe uma peça de um pedido com permissão do responsável, sem alterar dados. Passe pelos seis pontos: produto, quantidade, versão, acabamento, integridade e componentes. Marque como feito quando tiver olhado a peça inteira com boa luz."
+            "instrucao": "Pegue uma peça de treino. Ou, com permissão do responsável, olhe uma peça de um pedido, sem mudar nada no sistema. Passe pelos seis pontos: produto, quantidade, versão, acabamento, peça inteira e componentes. Marque como feito quando tiver olhado a peça toda com boa luz."
           }
         ]
       },
       {
         "dia": 4,
         "titulo": "Montagem final",
-        "subtitulo": "Sequência, encaixe e acessórios antes de fechar",
+        "subtitulo": "Ordem, encaixe e acessórios antes de fechar",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Quando há montagem",
-            "texto": "Alguns produtos saem da pintura em partes separadas e precisam ser montados antes do envio, como uma figura com base, braço ou acessório encaixado. Quais produtos são montados na expedição e qual é o procedimento são definidos pela Valente. Siga o procedimento definido pela Valente ou consulte o responsável. Não monte por conta própria algo que a ficha não pede."
+            "texto": "Alguns produtos saem da pintura em partes separadas. Eles precisam ser montados antes do envio. Exemplo: uma figura com base, braço ou acessório de encaixar. A Valente define quais produtos são montados na expedição e como montar. Siga o procedimento definido pela Valente ou consulte o responsável. Não monte por conta própria o que a ficha não pede."
           },
           {
             "tipo": "conteudo",
             "titulo": "Sequência e teste de encaixe",
-            "texto": "Quando houver montagem, siga a sequência e o padrão definidos. Antes de fixar qualquer coisa, teste o encaixe sem força: as partes devem entrar com facilidade. Se estiver apertado demais, não force, pois detalhes finos de miniaturas quebram com facilidade. Pare e consulte o responsável. Confirme também que cada acessório está na posição certa, de acordo com a ficha ou foto de referência."
+            "texto": "Quando houver montagem, siga a ordem e o padrão definidos. Antes de fixar, teste o encaixe sem força. As partes devem entrar fácil. Está apertado demais? Não force. Os detalhes finos da miniatura quebram fácil. Pare e consulte o responsável. Veja também se cada acessório está no lugar certo, conforme a ficha ou a foto de referência."
           },
           {
             "tipo": "conteudo",
             "titulo": "O risco da pressa",
-            "texto": "Montagem apressada pode inverter um componente ou causar um dano que não existia ao sair da pintura. Uma peça que passou na conferência e quebra durante a montagem vira problema seu. Trabalhe com calma, com a bancada limpa e as peças à vista. Se algo se soltar ou quebrar, pare, não esconda e avise o responsável."
+            "texto": "Montar com pressa pode inverter um componente. Também pode causar um dano que a peça não tinha quando saiu da pintura. Se a peça passou na conferência e quebrou na montagem, o problema passa a ser seu. Trabalhe com calma, com a bancada limpa e as peças à vista. Algo soltou ou quebrou? Pare, não esconda e avise o responsável."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "conferencia_final",
-            "pergunta": "Ao testar o encaixe de um braço numa miniatura, a peça entra apertada e você sente resistência. O que fazer?",
+            "pergunta": "Você testa o encaixe de um braço em uma miniatura. A peça entra apertada e você sente que ela resiste. O que fazer?",
             "opcoes": [
-              "Forçar até entrar, pois peças bem apertadas ficam firmes",
-              "Lixar a ponta do encaixe por conta própria para dar folga",
-              "Deixar o braço solto dentro da caixa e avisar o cliente na mensagem",
-              "Parar, não forçar e consultar a ficha e o responsável"
+              "Forçar até entrar, porque peça bem apertada fica firme.",
+              "Lixar a ponta do encaixe por conta própria para dar folga.",
+              "Deixar o braço solto dentro da caixa e avisar o cliente por mensagem.",
+              "Parar, não forçar e consultar a ficha e o responsável."
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. Em caso de resistência, você para e consulta, nunca força.",
+            "feedbackCerto": "Certo. Se a peça resiste, você para e consulta. Nunca força.",
             "feedbackPorOpcao": [
-              "Forçar pode quebrar um detalhe fino ou danificar a pintura.",
-              "Alterar a peça sem procedimento aprovado pode estragá-la.",
-              "Mudar o produto final sem autorização é decidir algo que não é seu.",
+              "Forçar pode quebrar um detalhe fino ou estragar a pintura.",
+              "Mexer na peça sem procedimento aprovado pode estragar a peça.",
+              "Mudar o produto final sem autorização é tomar uma decisão que não é sua.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -5916,78 +6075,78 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "confirmacao_pratica",
             "competencia": "conferencia_final",
             "local": "Valente OS (tablet) > tarefa de Expedição do pedido, instruções e checklist",
-            "instrucao": "Sem alterar dados, abra a tarefa de Expedição de um pedido e leia título, instruções e checklist, procurando qualquer menção a montagem final. Se não houver, anote que você consultaria o responsável. Marque como feito quando souber onde olhar para saber se um produto precisa ser montado."
+            "instrucao": "Sem mudar nada, abra a tarefa de Expedição de um pedido. Leia o título, as instruções e o checklist. Procure se fala em montagem final. Se não falar, lembre que você consultaria o responsável. Marque como feito quando souber onde olhar para saber se um produto precisa ser montado."
           }
         ]
       },
       {
         "dia": 5,
         "titulo": "Escolha e preparação da embalagem",
-        "subtitulo": "Proteção compatível com o transporte",
+        "subtitulo": "Proteção certa para o transporte",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O que a embalagem faz",
-            "texto": "A embalagem existe para proteger a peça contra movimento e impactos compatíveis com o transporte esperado. Durante o transporte, a caixa é empilhada, virada, balançada e pode cair. Quanto mais frágil a peça, mais cuidado. Tamanho, fragilidade e componentes influenciam na escolha. Miniaturas têm detalhes finos, como dedos, armas e adornos, que quebram com pouco impacto."
+            "texto": "A embalagem protege a peça dos movimentos e das batidas do transporte. No caminho, a caixa é empilhada, virada, balançada e pode cair. Quanto mais frágil a peça, mais cuidado. O tamanho, a fragilidade e os componentes pesam na escolha da embalagem. Miniaturas têm detalhes finos, como dedos, armas e enfeites. Eles quebram com uma batida leve."
           },
           {
             "tipo": "conteudo",
             "titulo": "Folga demais, aperto demais",
-            "texto": "Caixa grande demais sem imobilização permite que a peça bata internamente, e o impacto contra a parede da caixa quebra detalhes. Caixa apertada demais pode pressionar partes frágeis e danificá-las só pelo contato. O objetivo é a peça firme, sem folga para balançar, mas sem pressão sobre os detalhes. Proteja cada peça separadamente quando houver mais de uma, para que não se toquem."
+            "texto": "Em caixa grande demais, com a peça solta, a peça bate por dentro. A batida na parede da caixa quebra os detalhes. Caixa apertada demais aperta as partes frágeis e pode estragar só de encostar. O certo é a peça firme, sem espaço para balançar e sem aperto nos detalhes. Se houver mais de uma peça, proteja cada uma separada, para uma não encostar na outra."
           },
           {
             "tipo": "conteudo",
             "titulo": "Padrões aprovados",
-            "texto": "Use materiais e padrões aprovados para cada categoria quando disponíveis. Não invente embalagens improvisadas se existir um padrão definido. Se não houver padrão para aquele caso, consulte o responsável em vez de decidir sozinho. Depois de embalar, balance levemente a caixa fechada: se ouvir ou sentir a peça se mexendo, a imobilização não está boa."
+            "texto": "Use os materiais e os padrões aprovados para cada categoria, quando houver. Não improvise embalagem se já existe um padrão definido. Não existe padrão para aquele caso? Consulte o responsável. Não decida sozinho. Depois de embalar, balance de leve a caixa fechada. Se você ouvir ou sentir a peça se mexer, ela não está bem presa."
           },
           {
             "tipo": "conteudo",
             "titulo": "Janela de Embalagem",
-            "texto": "Ao concluir a tarefa de Embalagem, o tablet abre uma janela com duas respostas: Tudo certo ou Encontrei problema. Se algo estiver errado, como peça trincada, proteção insuficiente ou item faltando, toque em Encontrei problema e informe o motivo e quantas peças. O problema impede o pedido de seguir até ser resolvido. Tudo certo só vale se você realmente conferiu."
+            "texto": "Quando você conclui a tarefa de Embalagem, o tablet abre uma janela com duas respostas: Tudo certo ou Encontrei problema. Algo está errado, como peça trincada, pouca proteção ou item faltando? Toque em Encontrei problema e diga o motivo e quantas peças. O pedido não segue enquanto o problema não for resolvido. Só responda Tudo certo se você conferiu de verdade."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "embalagem_protecao",
-            "pergunta": "Você coloca uma miniatura delicada, de braços finos, numa caixa muito maior que ela, sem nada ao redor. Qual é o principal risco?",
+            "pergunta": "Você coloca uma miniatura delicada, de braços finos, em uma caixa muito maior que ela, sem nada em volta. Qual é o maior risco?",
             "opcoes": [
-              "A caixa ficar cara demais, sem relação com a qualidade da peça",
-              "A peça se deslocar e bater contra as paredes, quebrando detalhes finos",
-              "A peça descolorir por falta de contato com a proteção interna",
-              "A etiqueta não caber na caixa grande"
+              "A caixa ficar cara demais para a peça.",
+              "A peça se mexer e bater nas paredes da caixa, quebrando detalhes finos.",
+              "A peça perder a cor por não encostar na proteção interna.",
+              "A etiqueta não caber na caixa grande."
             ],
             "correta": 1,
-            "feedbackCerto": "Correto. Folga sem imobilização deixa a peça bater dentro da caixa.",
+            "feedbackCerto": "Certo. Com folga e sem nada para prender, a peça bate dentro da caixa.",
             "feedbackPorOpcao": [
-              "O problema principal é de proteção, não de aparência.",
+              "O maior problema é a proteção da peça, não o preço ou a aparência da caixa.",
               null,
-              "Cor não muda por folga; o risco é o impacto físico.",
-              "A etiqueta cabe; o risco real é o movimento interno."
+              "Folga não muda a cor. O risco é a batida.",
+              "A etiqueta cabe. O risco de verdade é a peça se mexer lá dentro."
             ]
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "embalagem_protecao",
-            "pergunta": "Marque o que indica uma embalagem bem preparada.",
+            "pergunta": "Marque o que mostra que a embalagem foi bem preparada.",
             "itens": [
-              "A peça fica firme, sem balançar ao mexer de leve na caixa",
-              "Os detalhes frágeis não são pressionados pela proteção",
-              "Vários itens soltos na mesma caixa, encostando uns nos outros",
-              "Foi usado o material padrão aprovado para a categoria",
-              "Sobrou espaço vazio para a peça se acomodar durante o transporte"
+              "A peça fica firme e não balança quando você mexe a caixa de leve.",
+              "A proteção não aperta os detalhes frágeis.",
+              "Vários itens soltos na mesma caixa, encostando uns nos outros.",
+              "Foi usado o material padrão aprovado para a categoria.",
+              "Sobrou espaço vazio para a peça se ajeitar no transporte."
             ],
             "corretos": [
               0,
               1,
               3
             ],
-            "feedbackCerto": "Correto. Firme, sem pressão e com material aprovado.",
-            "feedbackErrado": "Revise: peças encostando e espaço vazio são risco de dano; firme, sem pressão e padrão aprovado são os sinais certos."
+            "feedbackCerto": "Certo. Peça firme, sem aperto e com material aprovado.",
+            "feedbackErrado": "Revise. Peças encostando e espaço vazio trazem risco de dano. Os sinais certos são peça firme, sem aperto e com o padrão aprovado."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "embalagem_protecao",
             "local": "Estação de expedição, área de materiais de embalagem",
-            "instrucao": "Observe os tipos de caixa e proteção disponíveis na estação, sem consumir material. Escolha mentalmente qual usaria para uma peça pequena e frágil e como a deixaria imobilizada. Em caso de dúvida sobre o padrão, consulte o responsável. Marque como feito depois de conferir onde está o padrão aprovado."
+            "instrucao": "Olhe os tipos de caixa e de proteção que há na estação, sem gastar material. Pense em qual você usaria para uma peça pequena e frágil e como deixaria a peça firme. Se tiver dúvida sobre o padrão, consulte o responsável. Marque como feito depois de ver onde está o padrão aprovado."
           }
         ]
       },
@@ -5999,54 +6158,54 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que identificar",
-            "texto": "Cada pacote precisa de identificação clara do cliente, do pedido, do conteúdo e das etiquetas necessárias. As informações vêm do pedido no Valente OS. A identificação deve sobreviver ao manuseio: etiqueta solta, borrada ou presa em lugar que descola não serve. Identificar protege a rastreabilidade, ou seja, a capacidade de saber de qual pedido aquele pacote veio."
+            "texto": "Cada pacote precisa mostrar com clareza o cliente, o pedido e o conteúdo, e levar as etiquetas necessárias. Essas informações vêm do pedido no Valente OS. A identificação precisa aguentar o manuseio. Etiqueta solta, borrada ou colada em lugar que descola não serve. Identificar protege a rastreabilidade. Rastreabilidade é conseguir saber de qual pedido aquele pacote veio."
           },
           {
             "tipo": "conteudo",
             "titulo": "O perigo das caixas iguais",
-            "texto": "Duas caixas iguais lado a lado sem identificação são um convite à troca. Em um dia corrido, é fácil pegar a caixa errada e despachar para o cliente errado. Por isso, identifique cada pacote logo depois de fechado, antes de iniciar o próximo pedido. Trabalhe um pedido por vez na bancada e não deixe pacotes sem identificação perto uns dos outros."
+            "texto": "Duas caixas iguais, lado a lado e sem identificação, são um convite à troca. Em dia corrido, é fácil pegar a caixa errada e mandar para o cliente errado. Por isso, identifique cada pacote logo depois de fechar, antes de começar o próximo pedido. Trabalhe um pedido de cada vez na bancada. Não deixe pacotes sem identificação perto uns dos outros."
           },
           {
             "tipo": "conteudo",
             "titulo": "Antes de perder a rastreabilidade",
-            "texto": "Identifique antes de perder a rastreabilidade. Depois que dois pacotes se misturam sem etiqueta, você só consegue saber o que há em cada um abrindo de novo. Antes de colar, confira se o nome e o pedido na etiqueta batem com o registro no sistema. Se algo estiver ilegível ou divergente, não improvise: confirme na fonte ou com o responsável."
+            "texto": "Identifique antes de perder a rastreabilidade. Se dois pacotes sem etiqueta se misturam, você só descobre o que há em cada um abrindo de novo. Antes de colar, confira se o nome e o pedido da etiqueta são iguais aos do sistema. Algo está difícil de ler ou diferente? Não improvise. Confirme no sistema ou com o responsável."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "identificacao_envio",
-            "pergunta": "Marque o que deve ser verificado antes de fechar a identificação de um pacote.",
+            "pergunta": "Marque o que você deve conferir antes de terminar a identificação de um pacote.",
             "itens": [
-              "O pedido na etiqueta é o mesmo do sistema",
-              "O nome do cliente está correto e legível",
-              "A etiqueta pode ser colada depois, quando o pacote chegar à transportadora",
-              "A etiqueta está firme, em local que não descola com o manuseio",
-              "Basta confiar na memória sobre qual caixa é de qual pedido"
+              "O pedido da etiqueta é o mesmo do sistema.",
+              "O nome do cliente está certo e dá para ler bem.",
+              "A etiqueta pode ser colada depois, quando o pacote chegar à transportadora.",
+              "A etiqueta está firme, em lugar que não descola com o manuseio.",
+              "Basta confiar na memória para saber qual caixa é de qual pedido."
             ],
             "corretos": [
               0,
               1,
               3
             ],
-            "feedbackCerto": "Correto. Conferir com o sistema e garantir durabilidade evita troca.",
-            "feedbackErrado": "Revise: deixar para depois e confiar na memória são justamente as causas de troca."
+            "feedbackCerto": "Certo. Conferir com o sistema e colar bem a etiqueta evita troca.",
+            "feedbackErrado": "Revise. Deixar para depois e confiar na memória são as causas da troca."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "identificacao_envio",
-            "pergunta": "Você terminou de fechar duas caixas idênticas de pedidos diferentes e ainda não as identificou. O que fazer agora?",
+            "pergunta": "Você acabou de fechar duas caixas iguais, de pedidos diferentes. Elas ainda estão sem identificação. O que fazer agora?",
             "opcoes": [
-              "Separar as caixas, conferir pedido e cliente no sistema e identificar cada uma na hora",
-              "Colocá-las juntas e identificar no final do dia, com tudo pronto",
-              "Identificar uma e supor que a outra é a restante",
-              "Deixar para quem for despachar descobrir pelo peso"
+              "Separar as caixas, conferir pedido e cliente no sistema e identificar cada uma na hora.",
+              "Deixar as duas juntas e identificar no fim do dia, com tudo pronto.",
+              "Identificar uma e achar que a outra é a que sobrou.",
+              "Deixar quem for despachar descobrir pelo peso."
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Identificar logo depois de fechar preserva a rastreabilidade.",
+            "feedbackCerto": "Certo. Identificar logo depois de fechar mantém a rastreabilidade.",
             "feedbackPorOpcao": [
               null,
               "Quanto mais tempo sem identificação, maior o risco de troca.",
-              "Suposição não é identificação; confirme as duas.",
-              "Peso não é critério confiável de identificação."
+              "Achar não é identificar. Confirme as duas.",
+              "O peso não serve para identificar um pacote com segurança."
             ],
             "erroCriticoOpcoes": [
               2
@@ -6055,8 +6214,8 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "confirmacao_pratica",
             "competencia": "identificacao_envio",
-            "local": "Valente OS (tablet) > aba Pedidos (Kanban) e estação de expedição",
-            "instrucao": "Sem alterar dados, abra um pedido em consulta e leia nome do cliente e número do pedido. Verifique, na estação, onde ficam as etiquetas e como você as fixaria numa caixa. Marque como feito quando souber onde conferir os dados e onde colar a identificação."
+            "local": "No computador ou no tablet Samsung, com o responsável",
+            "instrucao": "Peça ao responsável para abrir um pedido na aba Pedidos. Só olhe, sem mudar nada. Leia o nome do cliente e o número do pedido. Depois, na estação de expedição, veja onde ficam as etiquetas e como você colaria uma na caixa. Marque como feito quando souber onde conferir os dados e onde colar a identificação."
           }
         ]
       },
@@ -6068,64 +6227,64 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Fonte dos dados",
-            "texto": "Os dados de envio, como destinatário, endereço, número, complemento, CEP e contato, devem ser consultados no pedido e conferidos. A fonte é o registro do pedido no Valente OS, e não a memória, uma conversa antiga ou um endereço parecido de outro pedido. Compare o que está na etiqueta com o que está no registro, campo por campo."
+            "texto": "Os dados de envio são: destinatário, endereço, número, complemento, CEP e contato. Consulte esses dados no pedido e confira. A fonte é o registro do pedido no Valente OS. Não é a memória, nem uma conversa antiga, nem um endereço parecido de outro pedido. Compare a etiqueta com o registro, campo por campo."
           },
           {
             "tipo": "conteudo",
             "titulo": "Um número errado estraga tudo",
-            "texto": "Um número de casa incorreto pode inutilizar todo o trabalho anterior: a modelagem, a impressão, a pintura e a embalagem. O pacote pode voltar, atrasar ou ir para outro endereço. Erro de dado de envio é difícil de corrigir depois que o pacote saiu. Por isso a regra é: CONFERIR, NÃO PRESUMIR."
+            "texto": "Um número de casa errado pode jogar fora todo o trabalho feito antes: a modelagem, a impressão, a pintura e a embalagem. O pacote pode voltar, atrasar ou ir para outro endereço. Depois que o pacote saiu, é difícil corrigir um dado de envio errado. Por isso a regra é: CONFERIR, NÃO PRESUMIR. Presumir é achar que sabe sem conferir."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quando falta ou duvida",
-            "texto": "Se faltar um dado, como o complemento, ou se algo parecer estranho, não complete por suposição. Solicite confirmação pelo canal correto, que normalmente passa pelo Comercial ou pelo responsável. Enquanto isso, o pedido não deve ser despachado com dado duvidoso. Dizer não sei e consultar é o comportamento certo; inventar um dado não é."
+            "texto": "Faltou um dado, como o complemento? Algo parece estranho? Não complete por conta própria. Peça a confirmação pelo canal correto. Normalmente, esse canal é o Comercial ou o responsável. Enquanto a dúvida não for resolvida, o pedido não deve ser despachado. Dizer não sei e consultar é o certo. Inventar um dado é errado."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "dados_envio",
-            "cliente": "Colega do Comercial: o endereço do pedido está sem o número da casa, mas o cliente mora na mesma rua de outro pedido dele, no 120. Usa o 120 aí.",
+            "cliente": "Colega do Comercial: o endereço do pedido está sem o número da casa. Mas o cliente mora na mesma rua de outro pedido dele, no 120. Usa o 120 aí.",
             "opcoes": [
               {
-                "label": "Uso o 120, pois é a mesma rua e deve ser a mesma casa.",
+                "label": "Uso o 120, porque é a mesma rua e deve ser a mesma casa.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Presumir o número pode mandar o pacote ao lugar errado."
+                "feedback": "Presumir o número pode mandar o pacote para o lugar errado."
               },
               {
-                "label": "Peço que a confirmação do número seja feita com o cliente pelo canal correto e aguardo antes de despachar.",
+                "label": "Peço que o número seja confirmado com o cliente pelo canal correto e espero antes de despachar.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Certo. Dado faltante é confirmado, nunca presumido."
+                "feedback": "Certo. Dado que falta é confirmado, nunca presumido."
               },
               {
-                "label": "Escrevo sem número e deixo a transportadora procurar.",
+                "label": "Escrevo sem o número e deixo a transportadora procurar.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Endereço incompleto aumenta o risco de atraso e extravio."
+                "feedback": "Endereço incompleto aumenta o risco de o pacote atrasar ou se perder."
               },
               {
                 "label": "Despacho assim mesmo e depois corrijo no sistema.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Despachar com dado incompleto ignora a regra de conferir antes."
+                "feedback": "Despachar com dado incompleto vai contra a regra de conferir antes."
               }
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "dados_envio",
-            "pergunta": "Ao conferir, a etiqueta traz um CEP diferente do que está no pedido no Valente OS. O que fazer?",
+            "pergunta": "Na conferência, o CEP da etiqueta está diferente do CEP do pedido no Valente OS. O que fazer?",
             "opcoes": [
-              "Confiar na etiqueta, pois foi impressa por um sistema",
-              "Corrigir a etiqueta pelo CEP que você lembra da região",
-              "Parar, comparar com o registro do pedido e, se a divergência continuar, confirmar pelo canal correto",
-              "Despachar e aguardar a transportadora avisar se der problema"
+              "Confiar na etiqueta, porque foi impressa por um sistema.",
+              "Corrigir a etiqueta com o CEP que você lembra da região.",
+              "Parar e comparar com o registro do pedido. Se a diferença continuar, confirmar pelo canal correto.",
+              "Despachar e esperar a transportadora avisar se der problema."
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. Divergência é motivo para parar e confirmar na fonte.",
+            "feedbackCerto": "Certo. Dado diferente é motivo para parar e confirmar na fonte.",
             "feedbackPorOpcao": [
-              "Etiqueta também pode ter erro; o registro do pedido deve ser conferido.",
-              "Memória não é fonte de dado.",
+              "A etiqueta também pode ter erro. Confira com o registro do pedido.",
+              "A memória não é fonte de dado.",
               null,
               "O erro seria descoberto tarde demais."
             ],
@@ -6135,58 +6294,62 @@ var TREINAMENTO_TRILHAS = {
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "dados_envio",
-            "pergunta": "Descreva como você conferiria os dados de envio de um pedido antes de despachar. O que você compara com o quê e o que faz se faltar um dado?",
-            "pontosEsperados": [
-              "Compara os dados da etiqueta com o registro do pedido no Valente OS, campo por campo",
-              "Não completa dado por memória ou suposição",
-              "Solicita confirmação pelo canal correto e não despacha até resolver"
-            ]
+            "pergunta": "Você vai conferir os dados de envio de um pedido antes de despachar. Qual é o jeito certo?",
+            "opcoes": [
+              "Olhar só o nome do cliente. Se estiver certo, o resto também está.",
+              "Comparar a etiqueta com o endereço que você lembra de outro pedido do cliente.",
+              "Comparar a etiqueta com o pedido no Valente OS. Se faltar um dado, despachar e pedir a confirmação depois.",
+              "Comparar a etiqueta com o pedido no Valente OS, campo por campo. Se faltar um dado, pedir a confirmação pelo canal correto e não despachar até resolver."
+            ],
+            "correta": 3,
+            "feedbackCerto": "Certo. Você compara a etiqueta com o registro, campo por campo, e não despacha com dado faltando.",
+            "feedbackErrado": "Revise. A fonte é o registro do pedido no Valente OS, comparado campo por campo. Dado que falta é confirmado pelo canal correto antes do despacho, nunca completado de memória."
           }
         ]
       },
       {
         "dia": 8,
         "titulo": "Despacho e rastreio",
-        "subtitulo": "O pacote realmente saiu",
+        "subtitulo": "O pacote saiu de verdade",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Despacho é um fato",
-            "texto": "Despacho é o momento em que o pacote realmente sai da empresa para a entrega. Etiqueta impressa não significa pacote enviado. Código gerado também pode não significar postagem concluída. Só vale como enviado quando houve a entrega do pacote à transportadora ou o envio pela forma definida. Transportadoras, comprovantes e registro seguem o procedimento definido pela Valente ou o responsável."
+            "texto": "Despacho é o momento em que o pacote sai de verdade da empresa para a entrega. Etiqueta impressa não quer dizer pacote enviado. Código gerado também não quer dizer que o pacote foi postado. Só vale como enviado quando o pacote foi entregue à transportadora ou enviado pela forma definida. Sobre transportadoras, comprovantes e registro, siga o procedimento definido pela Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que registrar",
-            "texto": "Após o despacho, registre as informações exigidas e o rastreio quando aplicável. Na tarefa de Expedição do tablet, você informa a transportadora ou forma de envio e o código de rastreio. Isso permite ao cliente e à equipe saber que o pacote saiu e acompanhar o caminho. Confira o código com cuidado: um dígito errado torna o rastreio inútil."
+            "texto": "Depois do despacho, registre as informações pedidas e o rastreio, quando houver. Rastreio é o código para acompanhar o caminho do pacote. Na tarefa de Expedição, no tablet, você informa a transportadora ou a forma de envio e o código de rastreio. Assim o cliente e a equipe sabem que o pacote saiu e acompanham o caminho. Confira o código com cuidado. Um número errado deixa o rastreio sem uso."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que o tablet faz",
-            "texto": "Ainda na tarefa de Expedição, você informa se o saldo está quitado ou combinado e toca em Marcar como enviado. Esse toque move o pedido para Enviado no Kanban e cria automaticamente a tarefa de Pós-compra para o Comercial, para 5 dias depois. Concluir a tarefa sem marcar como enviado não é o caminho. Por isso o toque só pode ser feito quando o pacote saiu de verdade."
+            "texto": "Ainda na tarefa de Expedição, você informa se o saldo está quitado ou combinado. Depois toca em Marcar como enviado. Esse toque move o pedido para Enviado no Kanban. Ele também cria sozinho a tarefa de Pós-compra para o Comercial, para 5 dias depois. Concluir a tarefa sem marcar como enviado não é o caminho. Por isso, só toque quando o pacote saiu de verdade."
           },
           {
             "tipo": "conteudo",
             "titulo": "Saldo e pagamento na entrega",
-            "texto": "Na hora de marcar como enviado, o saldo pode estar quitado ou combinado. Pedidos de instituições públicas podem ter pagamento por empenho, pago na entrega, e o número do empenho precisa existir antes de a produção começar. Nesse caso o saldo pode ficar como combinado, em vez de quitado. Confira o que o pedido registra e, se algo não bater, consulte o Comercial. Você não cobra nem negocia pagamento."
+            "texto": "Na hora de marcar como enviado, o saldo pode estar quitado ou combinado. Instituições públicas podem ter pedido com empenho. Nesse caso, o recebimento acontece conforme o contrato e os trâmites do órgão. O número do empenho precisa existir antes de a produção começar. Nesse tipo de pedido, o saldo pode ficar como combinado, e não quitado. Confira o que o pedido registra. Se algo não bater, consulte o Comercial. Você não cobra nem negocia pagamento."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "despacho_kanban",
-            "pergunta": "A etiqueta de envio foi impressa e o código de rastreio já foi gerado, mas o pacote ainda está na sua bancada. O pedido pode ser marcado como enviado?",
+            "pergunta": "A etiqueta de envio foi impressa e o código de rastreio já foi gerado. Mas o pacote ainda está na sua bancada. Você pode marcar o pedido como enviado?",
             "opcoes": [
-              "Sim, com etiqueta e código tudo está pronto para a transportadora",
-              "Sim, o rastreio avisará se algo der errado",
-              "Sim, desde que o Comercial esteja ciente",
-              "Não, pois etiqueta e código não provam que o pacote saiu"
+              "Sim. Com etiqueta e código, está tudo pronto para a transportadora.",
+              "Sim. O rastreio avisa se algo der errado.",
+              "Sim, desde que o Comercial saiba.",
+              "Não. Etiqueta e código não provam que o pacote saiu."
             ],
             "correta": 3,
-            "feedbackCerto": "Correto. O registro só vale depois do despacho real.",
+            "feedbackCerto": "Certo. O registro só vale depois que o pacote saiu de verdade.",
             "feedbackPorOpcao": [
               "Pronto não é o mesmo que despachado.",
-              "O rastreio não corrige um registro falso de envio.",
-              "A ciência do Comercial não torna verdadeiro um envio que não ocorreu.",
+              "O rastreio não conserta um registro falso de envio.",
+              "O Comercial saber não torna verdadeiro um envio que não aconteceu.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -6198,75 +6361,75 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "despacho_kanban",
-            "afirmacao": "Na tarefa de Expedição, basta tocar em Concluir tarefa depois de embalar; marcar como enviado é opcional.",
+            "afirmacao": "Na tarefa de Expedição, basta tocar em Concluir tarefa depois de embalar. Marcar como enviado é opcional.",
             "correta": false,
-            "feedbackCerto": "Correto. O caminho da Expedição é Marcar como enviado, depois do despacho real.",
-            "feedbackErrado": "Falso. Concluir a Expedição sem marcar como enviado não é o caminho: o pedido não vai para Enviado e a Pós-compra não é criada."
+            "feedbackCerto": "Certo. O caminho da Expedição é Marcar como enviado, depois que o pacote saiu de verdade.",
+            "feedbackErrado": "Falso. Concluir a Expedição sem marcar como enviado não é o caminho. O pedido não vai para Enviado e a tarefa de Pós-compra não é criada."
           },
           {
             "tipo": "ordenar",
             "competencia": "despacho_kanban",
-            "instrucao": "Coloque na ordem correta as ações de despacho e registro.",
+            "instrucao": "Coloque na ordem certa as ações de despacho e registro.",
             "itens": [
-              "Conferir dados de envio e identificação do pacote",
-              "Entregar o pacote à transportadora ou realizar o envio",
+              "Conferir os dados de envio e a identificação do pacote",
+              "Entregar o pacote à transportadora ou fazer o envio",
               "Informar transportadora/forma de envio e código de rastreio na tarefa",
               "Informar o saldo (quitado ou combinado)",
               "Tocar em Marcar como enviado"
             ],
-            "feedbackCerto": "Correto. Primeiro o fato, depois o registro.",
-            "feedbackErrado": "A ordem começa por conferir, depois despachar de verdade, e só então registrar e marcar como enviado."
+            "feedbackCerto": "Certo. Primeiro o fato, depois o registro.",
+            "feedbackErrado": "Primeiro você confere. Depois despacha de verdade. Só então registra e marca como enviado."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "despacho_kanban",
             "local": "Valente OS (tablet) > tarefa de Expedição",
-            "instrucao": "Em modo de consulta, sem tocar em Marcar como enviado, abra uma tarefa de Expedição e localize os campos de transportadora/forma de envio, código de rastreio e saldo, além do botão Marcar como enviado. Marque como feito quando souber onde cada um fica."
+            "instrucao": "Abra uma tarefa de Expedição só para olhar. Não toque em Marcar como enviado. Ache os campos de transportadora/forma de envio, código de rastreio e saldo, e o botão Marcar como enviado. Marque como feito quando souber onde fica cada um."
           }
         ]
       },
       {
         "dia": 9,
         "titulo": "Atualizando o Kanban",
-        "subtitulo": "Enviado representa um fato",
+        "subtitulo": "Enviado é um fato",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O significado de Enviado",
-            "texto": "As etapas do Kanban refletem a realidade do pedido: Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. A etapa Enviado representa um fato: o envio ocorreu conforme critério da empresa. Embalagem pronta não é envio. Aquele pedido ainda é Preparar p/ envio enquanto o pacote não saiu."
+            "texto": "As etapas do Kanban mostram a situação real do pedido: Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. A etapa Enviado mostra um fato: o envio aconteceu, conforme o critério da empresa. Embalagem pronta não é envio. Enquanto o pacote não saiu, o pedido continua em Preparar p/ envio."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quem depende do status",
-            "texto": "Marcar Enviado antes do despacho pode fazer o Comercial informar ao cliente algo que ainda não aconteceu. Como Marcar como enviado cria a tarefa de Pós-compra para 5 dias depois, o cliente também passa a ser contatado com base nessa data. Um status errado gera informação errada para o cliente e para a equipe."
+            "texto": "Se você marca Enviado antes do despacho, o Comercial pode dizer ao cliente algo que ainda não aconteceu. Marcar como enviado também cria a tarefa de Pós-compra para 5 dias depois. Então o contato com o cliente é contado a partir dessa data. Situação errada no sistema leva informação errada para o cliente e para a equipe."
           },
           {
             "tipo": "conteudo",
             "titulo": "Regra de ouro",
-            "texto": "Atualize somente quando a condição real da etapa estiver atendida. Isso vale também para as outras etapas do Kanban e para marcar tarefas como concluídas. Marcar como feito algo que não foi feito é erro crítico. Se você marcou Enviado por engano, avise o responsável imediatamente; não tente esconder."
+            "texto": "Só atualize quando a etapa aconteceu de verdade. Isso vale também para as outras etapas do Kanban e para marcar tarefas como concluídas. Marcar como feito algo que não foi feito é erro crítico. Marcou Enviado por engano? Avise o responsável na hora. Não tente esconder."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que vem depois do envio",
-            "texto": "Depois do envio, o Comercial faz o contato de Pós-compra e registra uma de quatro respostas. Recebeu e está satisfeito: pede a avaliação e encerra. Ainda não recebeu: confere o rastreio e volta a falar em 2 dias. Há um problema: descreve e abre uma tarefa de resolução. Não respondeu: tenta de novo em 2 dias. Seu registro de rastreio é o que o Comercial usa para responder o cliente."
+            "texto": "Depois do envio, o Comercial faz o contato de Pós-compra e registra uma de quatro respostas. Recebeu e está satisfeito: pede a avaliação e encerra. Ainda não recebeu: confere o rastreio e volta a falar em 2 dias. Há um problema: descreve e abre uma tarefa de resolução. Não respondeu: tenta de novo em 2 dias. O Comercial usa o rastreio que você registrou para responder ao cliente."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "despacho_kanban",
             "pergunta": "Na Pós-compra, o cliente diz que ainda não recebeu o pedido. O que o Comercial consulta primeiro para responder?",
             "opcoes": [
-              "A foto da peça pintada, para provar a qualidade",
-              "A tarefa de Pintura, para ver quem executou",
-              "O código de rastreio e a transportadora registrados na Expedição",
-              "O Kanban de Negociação, para ver o valor do pedido"
+              "A foto da peça pintada, para provar a qualidade.",
+              "A tarefa de Pintura, para ver quem fez.",
+              "O código de rastreio e a transportadora registrados na Expedição.",
+              "O Kanban de Negociação, para ver o valor do pedido."
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. Por isso o rastreio registrado na expedição precisa estar certo.",
+            "feedbackCerto": "Certo. Por isso o rastreio registrado na expedição precisa estar certo.",
             "feedbackPorOpcao": [
-              "A qualidade da peça não responde onde o pacote está.",
-              "A pintura não diz nada sobre o paradeiro do pacote.",
+              "A qualidade da peça não diz onde o pacote está.",
+              "A pintura não diz onde o pacote está.",
               null,
-              "O valor não ajuda a localizar o pacote."
+              "O valor não ajuda a achar o pacote."
             ]
           },
           {
@@ -6274,54 +6437,58 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "despacho_kanban",
             "afirmacao": "Se a caixa está fechada, identificada e pronta na prateleira, o pedido já pode ser marcado como Enviado para adiantar o trabalho do Comercial.",
             "correta": false,
-            "feedbackCerto": "Correto. Pronto para sair não é enviado; só marque depois do despacho.",
-            "feedbackErrado": "Falso. Enviado é um fato que ocorreu. Marcar antes faz o Comercial informar algo que não aconteceu."
+            "feedbackCerto": "Certo. Pronto para sair não é enviado. Só marque depois do despacho.",
+            "feedbackErrado": "Falso. Enviado é um fato que já aconteceu. Marcar antes faz o Comercial dizer algo que não aconteceu."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "despacho_kanban",
-            "pergunta": "Ao tocar em Marcar como enviado, o que acontece automaticamente no sistema?",
+            "pergunta": "Quando você toca em Marcar como enviado, o que o sistema faz sozinho?",
             "opcoes": [
-              "Só a cor do cartão muda no Kanban, sem tarefa nova",
-              "O pedido vai para Enviado e é criada uma tarefa de Pós-compra para o Comercial 5 dias depois",
-              "O cliente recebe a foto final da peça tirada pelo tablet",
-              "O pedido volta para Pós-impressão para revisão"
+              "Só muda a cor do cartão no Kanban, sem criar tarefa nova.",
+              "Leva o pedido para Enviado e cria uma tarefa de Pós-compra para o Comercial, para 5 dias depois.",
+              "Manda para o cliente a foto final da peça tirada pelo tablet.",
+              "Volta o pedido para Pós-impressão para revisão."
             ],
             "correta": 1,
-            "feedbackCerto": "Correto. Por isso o toque só vale com o envio real.",
+            "feedbackCerto": "Certo. Por isso o toque só vale com o envio de verdade.",
             "feedbackPorOpcao": [
-              "Além do status, cria-se a tarefa de Pós-compra.",
+              "Além de mudar a etapa, o sistema cria a tarefa de Pós-compra.",
               null,
               "A foto final é feita em outro aparelho, não pelo tablet.",
-              "Esse toque leva o pedido adiante, para Enviado."
+              "Esse toque leva o pedido para a frente, para Enviado."
             ]
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "despacho_kanban",
-            "pergunta": "Explique por que você só deve marcar um pedido como Enviado depois do despacho real, e o que pode acontecer com o Comercial e o cliente se marcar antes.",
-            "pontosEsperados": [
-              "Enviado representa um fato: o pacote realmente saiu",
-              "O Comercial pode informar ao cliente algo que não aconteceu",
-              "A tarefa de Pós-compra é criada automaticamente com base nessa data"
-            ]
+            "pergunta": "Por que você só deve marcar um pedido como Enviado depois que o pacote saiu de verdade?",
+            "opcoes": [
+              "Porque Enviado é um fato. Se você marca antes, o Comercial pode dizer ao cliente algo que não aconteceu, e a tarefa de Pós-compra é criada contando a partir dessa data.",
+              "Porque o Kanban só atualiza depois que a transportadora confirma a entrega ao cliente.",
+              "Porque marcar antes só atrapalha a expedição. O Comercial e o cliente não são afetados.",
+              "Porque marcar antes apaga o código de rastreio do pedido."
+            ],
+            "correta": 0,
+            "feedbackCerto": "Certo. Enviado mostra que o pacote saiu de verdade. Marcar antes leva informação errada ao Comercial e ao cliente.",
+            "feedbackErrado": "Revise. Enviado é um fato: o pacote saiu. Se você marca antes, o Comercial pode dizer ao cliente algo que não aconteceu, e a tarefa de Pós-compra é criada a partir da data errada."
           }
         ]
       },
       {
         "dia": 10,
         "titulo": "Missão Expedição",
-        "subtitulo": "Fluxo completo com um pedido simulado",
+        "subtitulo": "O caminho completo com um pedido simulado",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Como funciona a missão",
-            "texto": "Você vai receber um pedido finalizado simulado e percorrer o fluxo do curso: conferir conteúdo, notar um erro proposital, escolher a embalagem, validar dados, preparar a identificação e simular o registro do despacho. A missão verifica se você prefere parar e corrigir a enviar algo duvidoso. Tudo aqui é simulação e não altera dados reais."
+            "texto": "Você vai receber um pedido pronto, de treino, e fazer todo o caminho do curso. Conferir o conteúdo. Achar um erro colocado de propósito. Escolher a embalagem. Conferir os dados. Preparar a identificação. Simular o registro do despacho. A missão mostra se você prefere parar e corrigir em vez de enviar algo duvidoso. Tudo aqui é simulação e não muda dados reais."
           },
           {
             "tipo": "conteudo",
             "titulo": "Antes de começar",
-            "texto": "Lembre-se do caminho: consultar o pedido, conferir por conteúdo, aprovar só o que está certo, embalar com proteção, identificar, conferir dados, despachar e só então registrar. Em qualquer dúvida, consulte a ficha, o Valente OS ou o responsável. Não saber não é erro; inventar é."
+            "texto": "Lembre o caminho: consultar o pedido, conferir o conteúdo, aprovar só o que está certo, embalar com proteção, identificar, conferir os dados, despachar e só então registrar. Teve dúvida? Consulte a ficha, o Valente OS ou o responsável. Não saber não é erro. Inventar é erro."
           },
           {
             "tipo": "cenario",
@@ -6330,81 +6497,81 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "O pedido simulado registra duas miniaturas pintadas e um acessório para cada. Na bancada há duas miniaturas e apenas um acessório. A pressa é grande, pois o cliente já perguntou do pedido. O que você faz?",
+                "cliente": "O pedido simulado tem duas miniaturas pintadas e um acessório para cada uma. Na bancada há duas miniaturas e só um acessório. A pressa é grande, porque o cliente já perguntou do pedido. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Embalo as duas miniaturas com o acessório que há e envio o restante depois, sem avisar.",
+                    "label": "Embalo as duas miniaturas com o acessório que tem e mando o resto depois, sem avisar.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Esconder a falta é erro crítico. A diferença deve ser tratada, não omitida."
+                    "feedback": "Esconder a falta é erro crítico. A falta deve ser tratada, não escondida."
                   },
                   {
-                    "label": "Paro a conferência, toco em Encontrei problema com o motivo e as peças afetadas e aviso o responsável antes de embalar.",
+                    "label": "Paro a conferência, toco em Encontrei problema, informo o motivo e as peças afetadas e aviso o responsável antes de embalar.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Você detectou a falta antes de fechar.",
+                    "feedback": "Certo. Você achou a falta antes de fechar a caixa.",
                     "proximo": "b"
                   },
                   {
                     "label": "Conto as caixas, que estão certas, e sigo.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Contar volume não confirma conteúdo.",
+                    "feedback": "Contar caixas não mostra o que há dentro.",
                     "proximo": "b"
                   },
                   {
                     "label": "Pego um acessório parecido de outro pedido para completar.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Usar item de outro pedido gera troca e perda de rastreabilidade.",
+                    "feedback": "Usar item de outro pedido causa troca e faz perder a rastreabilidade.",
                     "proximo": "b"
                   }
                 ]
               },
               "b": {
-                "cliente": "O responsável resolveu a falta e o pedido está completo. Agora você precisa escolher a embalagem. As miniaturas têm detalhes finos e há duas peças com acessórios. Como prepara?",
+                "cliente": "O responsável resolveu a falta e o pedido está completo. Agora você escolhe a embalagem. As miniaturas têm detalhes finos. São duas peças com acessórios. Como você prepara?",
                 "opcoes": [
                   {
-                    "label": "Uso uma caixa grande e coloco tudo solto, pois o importante é caber.",
+                    "label": "Uso uma caixa grande e coloco tudo solto. O importante é caber.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Folga permite que as peças batam entre si.",
+                    "feedback": "Com folga, as peças batem umas nas outras.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Uso o padrão aprovado, protegendo cada peça separadamente e imobilizando para que nada balance.",
+                    "label": "Uso o padrão aprovado. Protejo cada peça separada e deixo tudo firme, sem balançar.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Correto. Proteção individual e imobilização com padrão aprovado.",
+                    "feedback": "Certo. Cada peça protegida, tudo firme e com o padrão aprovado.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Aperto bastante tudo numa caixa pequena para não se mexer.",
+                    "label": "Aperto bem tudo em uma caixa pequena para não se mexer.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Pressão excessiva pode danificar detalhes frágeis.",
+                    "feedback": "Aperto demais pode estragar os detalhes frágeis.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Improviso uma embalagem diferente do padrão, porque é mais rápido.",
+                    "label": "Improviso uma embalagem fora do padrão, porque é mais rápido.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Ignorar o padrão aprovado sem consultar é arriscado.",
+                    "feedback": "Deixar o padrão aprovado de lado sem consultar é arriscado.",
                     "proximo": "c"
                   }
                 ]
               },
               "c": {
-                "cliente": "A caixa está pronta. Ao conferir, o endereço da etiqueta está sem complemento, e o pedido no Valente OS tem uma observação que não esclarece. A transportadora vem buscar daqui a pouco. O que faz?",
+                "cliente": "A caixa está pronta. Na conferência, você vê que o endereço da etiqueta está sem complemento. O pedido no Valente OS tem uma observação que não esclarece. A transportadora vem buscar daqui a pouco. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Complemento é detalhe: despacho assim mesmo e marco como enviado.",
+                    "label": "Complemento é detalhe. Despacho assim mesmo e marco como enviado.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Despachar com dado duvidoso e marcar como enviado são erros."
+                    "feedback": "Despachar com dado duvidoso é erro. Marcar como enviado nessa situação também."
                   },
                   {
-                    "label": "Invento um complemento comum para a região para não atrasar.",
+                    "label": "Invento um complemento comum na região para não atrasar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Inventar dado é erro crítico. Conferir, não presumir."
@@ -6413,13 +6580,13 @@ var TREINAMENTO_TRILHAS = {
                     "label": "Marco como enviado agora para adiantar e confirmo o complemento depois.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Enviado é um fato; marcar antes cria informação falsa."
+                    "feedback": "Enviado é um fato. Marcar antes cria informação falsa."
                   },
                   {
-                    "label": "Não despacho, peço a confirmação pelo canal correto, identifico a caixa e só registro o envio depois que o pacote realmente sair.",
+                    "label": "Não despacho. Peço a confirmação pelo canal correto, identifico a caixa e só registro o envio depois que o pacote sair de verdade.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Você conferiu, não presumiu e só registrou o fato real."
+                    "feedback": "Certo. Você conferiu, não presumiu e só registrou o que aconteceu de verdade."
                   }
                 ]
               }
@@ -6429,28 +6596,28 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "missao",
             "competencia": "despacho_kanban",
             "titulo": "Missão Expedição",
-            "objetivo": "Percorrer o fluxo completo de expedição de um pedido simulado, parando e corrigindo antes de enviar algo duvidoso.",
-            "contexto": "Você recebeu um pedido finalizado simulado com duas miniaturas pintadas e acessórios. Este exercício é uma simulação: não altere dados reais nem marque pedidos reais como enviados.",
+            "objetivo": "Fazer o caminho completo da expedição com um pedido simulado. Parar e corrigir antes de enviar algo duvidoso.",
+            "contexto": "Você recebeu um pedido pronto, de treino, com duas miniaturas pintadas e acessórios. Este exercício é uma simulação. Não mude dados reais e não marque pedidos reais como enviados.",
             "tarefas": [
-              "Consultar o pedido e montar um checklist por conteúdo, comparando o físico com o registro",
-              "Identificar o erro proposital (falta, troca ou dano), separar o pedido, simular o registro de Encontrei problema (motivo e quantas peças) e avisar o responsável",
-              "Escolher a embalagem pelo padrão aprovado e imobilizar a peça",
+              "Consultar o pedido e fazer uma lista do conteúdo, comparando o que está na bancada com o registro",
+              "Achar o erro colocado de propósito (falta, troca ou dano), separar o pedido, simular o registro de Encontrei problema (motivo e quantas peças) e avisar o responsável",
+              "Escolher a embalagem pelo padrão aprovado e deixar a peça firme",
               "Conferir os dados de envio e a identificação do pacote, sem presumir nada",
-              "Simular o registro do despacho: transportadora/forma de envio, rastreio, saldo (quitado ou combinado) e Marcar como enviado, somente depois do envio real simulado",
-              "Aguardar a conferência do responsável para a liberação prática"
+              "Simular o registro do despacho: transportadora/forma de envio, rastreio, saldo (quitado ou combinado) e Marcar como enviado, só depois do envio real simulado",
+              "Esperar a conferência do responsável para a liberação prática"
             ],
-            "criterioConclusao": "Você identificou o erro, parou em vez de enviar algo duvidoso, escolheu embalagem e identificação adequadas, conferiu os dados e o registro de despacho só foi simulado após o envio. A liberação prática depende da conferência do responsável."
+            "criterioConclusao": "Você achou o erro. Parou em vez de enviar algo duvidoso. Escolheu a embalagem e a identificação certas. Conferiu os dados. Só simulou o registro do despacho depois do envio. A liberação prática depende da conferência do responsável."
           }
         ]
       }
     ]
   },
-  gestao_producao: {
+  "gestao_producao": {
     "id": "gestao_producao",
     "nome": "Gestão da Produção",
     "descricao": "Aprenda a ler o Kanban, priorizar, planejar capacidade, tratar gargalos e retrabalho, distribuir trabalho e usar indicadores com gestão enxuta.",
     "icone": "📊",
-    "versao": 2,
+    "versao": 3,
     "cargosPermitidos": [
       "admin",
       "supervisor"
@@ -6463,54 +6630,54 @@ var TREINAMENTO_TRILHAS = {
       "Qualidade e melhoria",
       "Distribuição de trabalho"
     ],
-    "criteriosConclusao": null,
+    "criteriosConclusao": "Montar um plano fictício de prioridades, explicar impactos de prazo, segurança e capacidade; tratar pendências sem liberar produção indevidamente. Decisões reais exigem autorização do responsável.",
     "dias": [
       {
         "dia": 1,
-        "titulo": "Visão geral da fábrica pelo Kanban",
-        "subtitulo": "Ler o quadro como um sistema, não como enfeite",
+        "titulo": "A fábrica vista pelo Kanban",
+        "subtitulo": "O quadro mostra o trabalho de verdade, não é enfeite",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "O Kanban é um retrato da operação",
-            "texto": "Kanban é um quadro visual em que cada pedido é um cartão e cada coluna é uma etapa do trabalho. No Valente OS, a aba Pedidos mostra as colunas Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. O objetivo do quadro não é ficar bonito. É representar a operação real. Se o cartão diz Imprimindo, mas a peça já está na bancada de acabamento, o quadro está mentindo, e qualquer decisão tomada em cima dele nasce errada."
+            "titulo": "O Kanban é um retrato da fábrica",
+            "texto": "Kanban é um quadro. Cada pedido é um cartão. Cada coluna é uma etapa do trabalho. No Valente OS, a aba Pedidos mostra as colunas Negociação, Pago, Modelando, Imprimindo, Pós-impressão, Pintura, Preparar p/ envio e Enviado. O quadro não existe para ficar bonito. Ele existe para mostrar o que acontece de verdade na fábrica. Se o cartão diz Imprimindo, mas a peça já está na bancada de acabamento, o quadro está errado. E toda decisão tomada com ele sai errada."
           },
           {
             "tipo": "conteudo",
             "titulo": "O que o cartão mostra hoje",
-            "texto": "Cada cartão do Kanban mostra a etapa atual da produção do pedido, como modelagem, impressão ou pintura, e a tela se atualiza sozinha a cada 60 segundos. Você não precisa recarregar. Isso facilita ler o quadro, mas o cartão depende do que foi registrado no sistema. Observe também que pedido novo aparece em Aguardando liberação, e que pedido de instituição sem empenho registrado não pode ser movido para uma etapa de produção."
+            "texto": "Cada cartão mostra em que etapa da produção o pedido está, como modelagem, impressão ou pintura. A tela se atualiza sozinha a cada 60 segundos. Você não precisa recarregar. Mas o cartão só mostra o que alguém registrou no sistema. Veja também duas coisas. Pedido novo aparece em Aguardando liberação. E pedido de instituição sem empenho registrado não pode ser movido para uma etapa de produção."
           },
           {
             "tipo": "conteudo",
             "titulo": "Três sinais que o gestor aprende a notar",
-            "texto": "O primeiro sinal é acúmulo: muitos cartões numa mesma coluna. O segundo é o cartão parado: um pedido que está no mesmo lugar há muito mais tempo que os outros. O terceiro é o trabalho que avança sem informação: o cartão muda de coluna, mas falta foto, observação ou registro do que foi feito. Esses sinais não dizem a causa. Dizem onde olhar. Na gestão enxuta, o quadro serve para fazer boas perguntas, não para dar respostas prontas."
+            "texto": "O primeiro sinal é o acúmulo: muitos cartões na mesma coluna. O segundo é o cartão parado: um pedido que está no mesmo lugar há muito mais tempo que os outros. O terceiro é o trabalho que anda sem informação: o cartão muda de coluna, mas falta foto, observação ou registro do que foi feito. Esses sinais não dizem a causa. Eles dizem onde olhar. O quadro serve para você fazer boas perguntas. Ele não dá a resposta pronta."
           },
           {
             "tipo": "conteudo",
             "titulo": "Exemplo: dez cartões em Pintura",
-            "texto": "Imagine dez cartões em Pintura. Pode ser capacidade insuficiente na pintura. Pode ser um lote que chegou todo de uma vez. Pode ser atraso lá atrás, que empurrou tudo para o mesmo dia. Ou pode ser só status desatualizado: peças que já foram para embalagem e ninguém moveu o cartão. Cada causa pede uma ação diferente. Por isso a regra é: antes de agir, descubra a causa. Pergunte à pessoa que está na bancada, olhe a peça, confira a OT e só depois decida."
+            "texto": "Imagine dez cartões em Pintura. Pode faltar gente ou tempo na pintura. Pode ser um lote que chegou todo de uma vez. Pode ser um atraso lá atrás, que empurrou tudo para o mesmo dia. Ou o quadro pode estar desatualizado: as peças já foram para a embalagem e ninguém moveu o cartão. Cada causa pede uma ação diferente. Por isso a regra é: descubra a causa antes de agir. Pergunte a quem está na bancada, olhe a peça e confira a tarefa. Só depois decida."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como agir na prática",
-            "texto": "Ao olhar o quadro, siga uma sequência curta. Primeiro, anote o que você vê: colunas cheias, vazias e cartões parados. Segundo, escreva hipóteses, ou seja, explicações possíveis. Terceiro, liste os dados que você precisa confirmar para saber qual hipótese é a verdadeira, como a OT, a conversa com quem executa e o estado físico da peça. Só então faça uma mudança. Se faltar informação, consultar a fonte é o certo. Não sei não é erro. Inventar uma causa é."
+            "texto": "Ao olhar o quadro, siga estes passos. Primeiro, anote o que você vê: colunas cheias, colunas vazias e cartões parados. Segundo, escreva as explicações possíveis. Terceiro, liste o que você precisa conferir para saber qual explicação é a verdadeira: a tarefa, a conversa com quem faz o trabalho e a peça na bancada. Só então mude alguma coisa. Se faltar informação, procure a fonte. Dizer que não sabe não é erro. Inventar uma causa é erro."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "leitura_kanban",
-            "pergunta": "A coluna Pintura tem dez cartões e as outras estão quase vazias. Qual é o melhor primeiro passo?",
+            "pergunta": "A coluna Pintura tem dez cartões. As outras estão quase vazias. Qual é o melhor primeiro passo?",
             "opcoes": [
-              "Confirmar na bancada e nas OTs se as peças estão mesmo em pintura, antes de decidir qualquer mudança",
-              "Cobrar mais velocidade de quem pinta, já que o acúmulo é lá",
-              "Mover os cartões para Preparar p/ envio para limpar a coluna",
+              "Conferir na bancada e nas tarefas se as peças estão mesmo em pintura, antes de mudar qualquer coisa",
+              "Cobrar mais rapidez de quem pinta, já que o acúmulo está lá",
+              "Mover os cartões para Preparar p/ envio para esvaziar a coluna",
               "Pedir ao Comercial que avise os clientes de que todos os pedidos vão atrasar"
             ],
             "correta": 0,
-            "feedbackCerto": "Isso mesmo. Confirmar o estado real separa acúmulo verdadeiro de status desatualizado.",
+            "feedbackCerto": "Isso mesmo. Conferir a bancada mostra se o acúmulo é de verdade ou se o quadro está desatualizado.",
             "feedbackPorOpcao": [
               null,
-              "Acúmulo é um sinal, não a causa. Cobrar velocidade sem investigar pode atingir a pessoa errada.",
-              "Mover cartões sem a peça estar pronta faz o quadro mentir e esconde o problema real.",
+              "Acúmulo é um sinal, não é a causa. Cobrar rapidez sem investigar pode pressionar a pessoa errada.",
+              "Mover o cartão sem a peça estar pronta deixa o quadro errado e esconde o problema.",
               "Avisar atraso sem saber a causa é inventar informação. Primeiro levante os fatos."
             ],
             "erroCriticoOpcoes": [
@@ -6521,19 +6688,19 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "leitura_kanban",
-            "afirmacao": "Como o Kanban se atualiza sozinho a cada 60 segundos, o cartão sempre mostra exatamente onde a peça está na bancada.",
+            "afirmacao": "O Kanban se atualiza sozinho a cada 60 segundos. Por isso o cartão sempre mostra exatamente onde a peça está na bancada.",
             "correta": false,
-            "feedbackCerto": "Correto. A tela atualiza o que está registrado, mas a bancada ainda precisa ser conferida.",
-            "feedbackErrado": "Falso. A atualização automática só traz o que foi registrado. Se o registro atrasou, o cartão atrasa. Confira a peça."
+            "feedbackCerto": "Certo. A tela mostra o que foi registrado. A bancada ainda precisa ser conferida.",
+            "feedbackErrado": "Falso. A tela só mostra o que foi registrado. Se o registro atrasou, o cartão também atrasa. Confira a peça."
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "leitura_kanban",
-            "pergunta": "Quais destes itens são sinais no quadro que merecem investigação?",
+            "pergunta": "Quais destes são sinais no quadro que você deve investigar?",
             "itens": [
               "Muitos cartões acumulados em uma coluna",
               "Um cartão parado há muito mais tempo que os outros",
-              "Cartão que mudou de coluna sem nenhum registro do que foi feito",
+              "Cartão que mudou de coluna sem registro do que foi feito",
               "Coluna Enviado com pedidos concluídos",
               "Uma coluna vazia por poucos minutos entre uma entrega e outra"
             ],
@@ -6542,59 +6709,59 @@ var TREINAMENTO_TRILHAS = {
               1,
               2
             ],
-            "feedbackCerto": "Certo. Acúmulo, cartão parado e avanço sem registro são sinais. Eles indicam onde olhar, não a causa.",
-            "feedbackErrado": "Releia os três sinais: acúmulo, cartão parado e trabalho avançando sem informação. Pedidos enviados e uma pausa normal não são sinais de problema."
+            "feedbackCerto": "Certo. Acúmulo, cartão parado e avanço sem registro são sinais. Eles mostram onde olhar, não a causa.",
+            "feedbackErrado": "Releia os três sinais: acúmulo, cartão parado e trabalho que anda sem informação. Pedido enviado e uma pausa normal não são sinais de problema."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "leitura_kanban",
-            "local": "Valente OS, aba Pedidos (Kanban)",
-            "instrucao": "Apenas observando, sem mover nenhum cartão, olhe o quadro, incluindo a etapa atual mostrada em cada cartão, e anote em um papel: duas colunas com mais cartões, um cartão que parece parado, uma hipótese para cada um e o dado que você precisaria confirmar. Não altere nada no sistema."
+            "local": "Valente OS no computador, aba Pedidos (Kanban)",
+            "instrucao": "Só olhe o quadro, sem mover nenhum cartão. Anote em um papel as duas colunas com mais cartões e um cartão que parece parado. Para cada um, escreva uma explicação possível e o que você precisaria conferir. Não altere nada no sistema."
           }
         ]
       },
       {
         "dia": 2,
-        "titulo": "Pedidos, OTs e prioridades",
-        "subtitulo": "Prioridade tem critério, e tudo urgente não é prioridade",
+        "titulo": "Pedidos, tarefas e prioridades",
+        "subtitulo": "Prioridade tem regra. Se tudo é urgente, nada é prioridade",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O que é prioridade",
-            "texto": "Prioridade é a ordem em que o trabalho deve ser feito quando não dá para fazer tudo ao mesmo tempo. Para decidir, o gestor olha vários critérios: a urgência real do cliente, a ordem de entrada dos pedidos, compromissos comerciais já assumidos, dependências (o que precisa estar pronto antes) e o impacto de atrasar. Quando tudo vira urgente, a palavra perde o sentido, porque a equipe não sabe mais o que fazer primeiro."
+            "texto": "Prioridade é a ordem em que o trabalho deve ser feito quando não dá para fazer tudo ao mesmo tempo. Para decidir, o gestor olha várias coisas: a urgência real do cliente, a ordem de entrada dos pedidos, o que o Comercial já prometeu, o que precisa ficar pronto antes e o prejuízo de atrasar. Quando tudo vira urgente, a palavra perde o sentido. A equipe não sabe mais o que fazer primeiro."
           },
           {
             "tipo": "conteudo",
             "titulo": "Cuidado com a interrupção",
-            "texto": "Trocar de trabalho tem custo. Se um lote está quase concluído e você interrompe para começar outro pedido que parece mais importante, a impressora precisa ser preparada de novo, o lote parado espera, e o atraso total pode aumentar. Em gestão enxuta, terminar o que já está em andamento costuma ser melhor do que começar coisa nova. Interrompa só quando houver motivo claro, e registre o motivo."
+            "texto": "Trocar de trabalho tem custo. Veja um exemplo. Um lote está quase pronto. Você para o lote para começar outro pedido que parece mais importante. A impressora precisa ser preparada de novo. O lote parado fica esperando. O atraso total pode aumentar. Terminar o que já está em andamento costuma ser melhor do que começar coisa nova. Interrompa só quando houver motivo claro. E registre o motivo."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Pedidos e OTs falando a mesma língua",
-            "texto": "O pedido é o que o cliente comprou e aparece como cartão no Kanban. A OT, ordem de tarefa, é o trabalho que alguém executa, com título, instruções, checklist e quantidade, e no tablet tem Iniciar tarefa, Pausar, Retomar e Concluir tarefa. Ao priorizar, confira se a ordem dos cartões e a ordem das OTs contam a mesma história. Quem define os critérios oficiais de prioridade e quem pode alterá-los é a Valente: siga o procedimento definido pela Valente ou consulte o responsável."
+            "titulo": "Pedido e tarefa contam a mesma história",
+            "texto": "O pedido é o que o cliente comprou. Ele aparece como cartão no Kanban. A tarefa é o trabalho que alguém faz. Ela tem título, instruções, checklist e quantidade. No tablet, ela tem os botões Iniciar tarefa, Pausar, Retomar e Concluir tarefa. Ao definir a prioridade, confira se a ordem dos cartões e a ordem das tarefas contam a mesma história. Quem define as regras de prioridade e quem pode mudar é a Valente. Siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Do pedido novo à produção: o botão Liberar",
-            "texto": "Pedido novo fica em Aguardando liberação. No cartão do Kanban há o botão Liberar, que gera a ordem de produção, o plano e as tarefas. Se falta pagamento ou empenho, o botão avisa a pendência. Ao priorizar, lembre que pedido sem liberação ainda não tem tarefas na fila da produção. Quem decide liberar e em que condição segue o procedimento da Valente ou o responsável."
+            "texto": "Pedido novo fica em Aguardando liberação. No cartão do Kanban existe o botão Liberar. Ele cria a ordem de produção, o plano e as tarefas. Se falta pagamento ou empenho, o botão avisa a pendência. Lembre: pedido sem liberação ainda não tem tarefas na fila da produção. Para saber quem libera e em que condição, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "priorizacao",
-            "pergunta": "Um pedido aparece em Aguardando liberação e o Comercial pede para pô-lo na frente da fila. Qual é o melhor primeiro passo?",
+            "pergunta": "Um pedido está em Aguardando liberação. O Comercial pede para colocar esse pedido na frente da fila. Qual é o melhor primeiro passo?",
             "opcoes": [
-              "Começar a peça pela conversa, sem liberar, para ganhar tempo",
+              "Começar a peça só pela conversa, sem liberar, para ganhar tempo",
               "Mover o cartão à mão para Imprimindo",
-              "Ver se há pagamento ou empenho e usar Liberar; se o botão apontar pendência, tratar com o Comercial antes de priorizar",
+              "Ver se há pagamento ou empenho e usar Liberar. Se o botão avisar pendência, resolver com o Comercial antes de priorizar",
               "Deixar o pedido parado até alguém lembrar de liberar"
             ],
             "correta": 2,
-            "feedbackCerto": "Certo. Primeiro a pendência, depois a prioridade.",
+            "feedbackCerto": "Certo. Primeiro resolva a pendência. Depois veja a prioridade.",
             "feedbackPorOpcao": [
               "Sem liberação não existem tarefas nem registro. O trabalho fica fora do sistema.",
-              "O cartão não é o jeito de pular a liberação, e a produção precisa das tarefas.",
+              "Mover o cartão não substitui a liberação. A produção precisa das tarefas.",
               null,
-              "Esperar sem ação cria um atraso evitável. Veja a pendência."
+              "Esperar sem fazer nada cria um atraso que dava para evitar. Veja a pendência."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -6604,122 +6771,125 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "resposta_cliente",
             "competencia": "priorizacao",
-            "cliente": "Gestor, esse pedido novo é urgente! Para o cliente é para ontem. Para e começa ele agora, o lote da outra impressora já está quase acabando, mas deixa pra lá.",
+            "cliente": "Gestor, esse pedido novo é urgente! O cliente quer para ontem. Para tudo e começa ele agora. O lote da outra impressora está quase acabando, mas deixa pra lá.",
             "opcoes": [
               {
-                "label": "Entendo a urgência. Vou olhar a OT e ver quanto falta no lote atual, qual o prazo real do novo pedido e se dá para encaixar sem desmontar o que está quase pronto.",
+                "label": "Entendo a urgência. Vou olhar a tarefa e ver quanto falta no lote atual, qual é o prazo real do pedido novo e se dá para encaixar sem parar o que está quase pronto.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Boa. Você considera o custo de interromper e verifica o prazo real antes de decidir."
+                "feedback": "Boa. Você pensa no custo de interromper e confere o prazo real antes de decidir."
               },
               {
                 "label": "Pode parar o lote agora. Urgente sempre passa na frente.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Interromper um lote quase concluído pode aumentar o atraso total. Urgência precisa ser verificada."
+                "feedback": "Parar um lote quase pronto pode aumentar o atraso total. A urgência precisa ser conferida."
               },
               {
-                "label": "Vou deixar o novo pedido por último, porque ele entrou depois.",
+                "label": "Vou deixar o pedido novo por último, porque ele entrou depois.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Ordem de entrada é um critério, mas não é o único. Ignorar urgência real e compromisso comercial também gera problema."
+                "feedback": "A ordem de entrada conta, mas não é a única regra. Ignorar a urgência real e o que o Comercial prometeu também dá problema."
               },
               {
-                "label": "Não sei o prazo, mas marque o novo como urgente e o do lote também, assim ninguém fica de fora.",
+                "label": "Não sei o prazo. Marque o novo como urgente e o do lote também. Assim ninguém fica de fora.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Marcar tudo como urgente elimina a ideia de prioridade e deixa a equipe sem direção."
+                "feedback": "Marcar tudo como urgente acaba com a prioridade. A equipe fica sem saber o que fazer primeiro."
               }
             ]
           },
           {
             "tipo": "ordenar",
             "competencia": "priorizacao",
-            "instrucao": "Coloque na ordem uma boa decisão de prioridade quando chega um pedido que se diz urgente.",
+            "instrucao": "Chegou um pedido que dizem ser urgente. Coloque na ordem certa os passos de uma boa decisão de prioridade.",
             "itens": [
-              "Levantar o prazo real e o compromisso comercial do pedido novo",
-              "Verificar o que está em andamento e quanto falta para terminar",
-              "Checar dependências, como arquivo, material e etapa seguinte",
+              "Levantar o prazo real do pedido novo e o que o Comercial prometeu",
+              "Ver o que está em andamento e quanto falta para terminar",
+              "Conferir o que precisa estar pronto antes, como arquivo, material e etapa seguinte",
               "Decidir a ordem e registrar o motivo",
               "Avisar a equipe e o Comercial sobre a decisão"
             ],
-            "feedbackCerto": "Isso. Primeiro fatos, depois decisão, depois comunicação.",
-            "feedbackErrado": "Comece pelos fatos (prazo real e o que está em andamento), depois dependências, e só então decida e comunique."
+            "feedbackCerto": "Isso. Primeiro os fatos, depois a decisão, depois o aviso.",
+            "feedbackErrado": "Comece pelos fatos: o prazo real e o que está em andamento. Depois confira o que precisa estar pronto antes. Só então decida e avise."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "priorizacao",
-            "pergunta": "Descreva uma situação em que interromper um trabalho em andamento seria uma má ideia e uma em que seria justificável. Quais critérios você usaria?",
-            "pontosEsperados": [
-              "Cita o custo de interromper trabalho quase concluído",
-              "Considera prazo real e impacto no atraso total",
-              "Menciona consultar a regra da Valente ou o responsável sobre quem altera prioridade",
-              "Registra o motivo da mudança"
-            ]
+            "pergunta": "Quando vale a pena interromper um trabalho que já está em andamento?",
+            "opcoes": [
+              "Sempre que alguém disser que outro pedido é urgente",
+              "Só com motivo claro, depois de ver o prazo real e quanto falta, e registrando o motivo",
+              "Nunca, mesmo que exista um motivo claro",
+              "Quando você mesmo decide mudar a regra de prioridade"
+            ],
+            "correta": 1,
+            "feedbackCerto": "Certo. Parar um trabalho quase pronto tem custo. Só interrompa com motivo claro, e registre o motivo.",
+            "feedbackErrado": "Interromper tem custo e pode aumentar o atraso total. Veja o prazo real e quanto falta. Só pare com motivo claro e registre o motivo. As regras de prioridade são da Valente."
           }
         ]
       },
       {
         "dia": 3,
-        "titulo": "Capacidade das máquinas e pessoas",
-        "subtitulo": "Planejar o fluxo, não apenas usar máquina",
+        "titulo": "Capacidade das máquinas e das pessoas",
+        "subtitulo": "Planeje o caminho todo, não só a máquina",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Capacidade é mais que impressoras",
-            "texto": "Capacidade é quanto trabalho a fábrica consegue entregar num período. Muita gente conta só as impressoras, mas capacidade tem várias partes: disponibilidade da máquina, tempo de ciclo (quanto tempo cada peça leva do início ao fim), manutenção, material disponível, competência de quem opera e capacidade dos setores seguintes. A capacidade real é a menor dessas partes, pois a corrente é tão forte quanto o elo mais fraco."
+            "texto": "Capacidade é quanto trabalho a fábrica consegue entregar em um período. Muita gente conta só as impressoras. Mas a capacidade tem várias partes: máquina disponível, tempo de ciclo (o tempo que cada peça leva do início ao fim), manutenção, material, pessoa que sabe operar e capacidade dos setores seguintes. A capacidade real é a menor dessas partes. É como uma corrente: ela é tão forte quanto o elo mais fraco."
           },
           {
             "tipo": "conteudo",
             "titulo": "Máquina, pessoa e etapa seguinte",
-            "texto": "Pense em três perguntas. Máquinas: quais estão disponíveis, em manutenção ou sem material? Pessoas: quem está presente e liberado para cada tarefa, lembrando que em uma equipe pequena a mesma pessoa pode cobrir várias funções? Etapas seguintes: pós-impressão, pintura e embalagem conseguem absorver o que sai da impressora? Se você só olha a primeira pergunta, enche a impressão e o resto sufoca."
+            "texto": "Faça três perguntas. Máquinas: quais estão disponíveis, em manutenção ou sem material? Pessoas: quem está presente e liberado para cada tarefa? Lembre que, em equipe pequena, a mesma pessoa pode cobrir várias funções. Etapas seguintes: a pós-impressão, a pintura e a embalagem dão conta do que sai da impressora? Se você olha só a primeira pergunta, enche a impressão e o resto fica sufocado."
           },
           {
             "tipo": "conteudo",
             "titulo": "Exemplo: o gargalo que só muda de lugar",
-            "texto": "Aumentar a impressão sem capacidade de pós-processo apenas desloca o gargalo. As peças saem mais rápido, mas ficam empilhadas esperando limpeza, cura e acabamento. Os cartões se acumulam em Pós-impressão e o pedido não anda mais rápido. Por isso, a regra é planejar fluxo, não utilização de máquina. Uma impressora parada pode ser a decisão certa se a etapa seguinte já está lotada."
+            "texto": "Gargalo é o ponto que segura o trabalho. Imprimir mais sem capacidade nas etapas depois da impressão só muda o gargalo de lugar. As peças saem mais rápido, mas ficam empilhadas esperando limpeza, cura e acabamento. Os cartões se acumulam em Pós-impressão e o pedido não anda mais rápido. Por isso a regra é planejar o caminho todo, não só o uso da máquina. Deixar uma impressora parada pode ser a decisão certa se a etapa seguinte já está lotada."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pintura: ritmo por dia e estoque",
-            "texto": "Na pintura de várias peças, ao tocar Concluir aparece a Produção do dia: quantas peças foram pintadas, quantas estragaram e anotações para amanhã. A tarefa fica pausada e volta no dia seguinte acumulando as pintadas, e a SUA MISSÃO mostra o que falta, por exemplo 8 de 18, com Já feitas 10. Use isso para enxergar o ritmo real, sem inventar meta. Já a aba Estoque guarda peças por endereço, sem pintura ou pintado, e a Retirada guiada diz onde pegar. Estoque físico é diferente da contagem de produção."
+            "texto": "Na pintura de várias peças, ao tocar Concluir aparece a Produção do dia. Ela pergunta quantas peças foram pintadas, quantas estragaram e as anotações para amanhã. A tarefa fica pausada. No dia seguinte ela volta e soma as peças já pintadas. A caixa SUA MISSÃO mostra o que falta, por exemplo 8 de 18, com Já feitas 10. Use isso para ver o ritmo real, sem inventar meta. Já a aba Estoque guarda peças por endereço, sem pintura ou pintado. A Retirada guiada diz onde pegar. O estoque físico é diferente da contagem de produção."
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "capacidade_fluxo",
-            "afirmacao": "Quando uma pintura de várias peças não termina no dia, o certo é registrar a Produção do dia, e a tarefa volta no dia seguinte acumulando as já pintadas.",
+            "afirmacao": "Quando a pintura de várias peças não termina no dia, o certo é registrar a Produção do dia. A tarefa volta no dia seguinte e soma as peças já pintadas.",
             "correta": true,
-            "feedbackCerto": "Certo. A produção por dia dá ao gestor o ritmo real da pintura.",
-            "feedbackErrado": "Verdadeiro. A tarefa fica pausada e volta no outro dia somando as pintadas. Isso mostra o ritmo real."
+            "feedbackCerto": "Certo. A produção por dia mostra ao gestor o ritmo real da pintura.",
+            "feedbackErrado": "É verdadeiro. A tarefa fica pausada e volta no outro dia somando as pintadas. Isso mostra o ritmo real."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "capacidade_fluxo",
-            "pergunta": "A equipe quer ligar todas as impressoras ao máximo porque há três paradas. A pós-impressão já tem peças esperando. O que isso provavelmente causará?",
+            "pergunta": "Três impressoras estão paradas. A equipe quer ligar todas no máximo. Mas a pós-impressão já tem peças esperando. O que deve acontecer?",
             "opcoes": [
-              "Entregas mais rápidas, porque mais peças saem das máquinas",
-              "Aumento natural da capacidade de acabamento, pois haverá mais prática",
-              "Mais peças esperando na pós-impressão, o gargalo apenas muda de lugar",
-              "Nenhum efeito, pois a pós-impressão se organiza sozinha"
+              "As entregas ficam mais rápidas, porque saem mais peças das máquinas",
+              "O acabamento passa a dar conta de mais peças, porque a equipe pratica mais",
+              "Mais peças ficam esperando na pós-impressão. O gargalo só muda de lugar",
+              "Nada muda, porque a pós-impressão se organiza sozinha"
             ],
             "correta": 2,
-            "feedbackCerto": "Correto. Planejar fluxo significa olhar a etapa seguinte antes de abrir mais impressão.",
+            "feedbackCerto": "Correto. Antes de imprimir mais, olhe se a etapa seguinte dá conta.",
             "feedbackPorOpcao": [
-              "Peça impressa não é peça entregue. Sem capacidade nas etapas seguintes, o pedido não anda.",
-              "Mais peças não criam mais capacidade de pessoas nem de bancada.",
+              "Peça impressa não é peça entregue. Se as etapas seguintes não dão conta, o pedido não anda.",
+              "Mais peças não criam mais pessoas nem mais bancada.",
               null,
-              "Sem planejar o fluxo, a fila só cresce e o gargalo passa para essa etapa."
+              "Sem planejar o caminho todo, a fila só cresce e o gargalo passa para essa etapa."
             ]
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "capacidade_fluxo",
-            "pergunta": "Marque tudo o que entra no cálculo de capacidade real da fábrica.",
+            "pergunta": "Marque tudo o que entra na conta da capacidade real da fábrica.",
             "itens": [
-              "Máquinas disponíveis e sem manutenção",
+              "Máquinas disponíveis e fora de manutenção",
               "Material disponível para imprimir",
               "Pessoas presentes e liberadas para a tarefa",
-              "Capacidade das etapas seguintes à impressão",
+              "Capacidade das etapas depois da impressão",
               "Quantidade de cartões na coluna Enviado do mês passado"
             ],
             "corretos": [
@@ -6728,98 +6898,98 @@ var TREINAMENTO_TRILHAS = {
               2,
               3
             ],
-            "feedbackCerto": "Certo. Capacidade junta máquina, material, pessoas e etapas seguintes.",
-            "feedbackErrado": "Capacidade olha para o que está disponível agora: máquinas, material, pessoas e etapas seguintes. Pedidos já enviados são histórico, não capacidade."
+            "feedbackCerto": "Certo. A capacidade junta máquina, material, pessoas e etapas seguintes.",
+            "feedbackErrado": "A capacidade olha o que está disponível agora: máquinas, material, pessoas e etapas seguintes. Pedido já enviado é passado, não é capacidade."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "capacidade_fluxo",
-            "local": "Área de produção e Valente OS, aba Pedidos",
-            "instrucao": "Sem alterar nada, percorra a produção e o Kanban e anote: quantas máquinas estão disponíveis hoje, quem está presente, e para cada etapa seguinte (pós-impressão, pintura, preparar para envio) se ela tem fila ou folga. Qual é a menor capacidade da lista?"
+            "local": "Área de produção e Valente OS no computador, aba Pedidos",
+            "instrucao": "Sem alterar nada, ande pela produção e olhe o Kanban. Anote quantas máquinas estão disponíveis hoje e quem está presente. Anote também se a pós-impressão, a pintura e o preparo para envio têm fila ou folga. Qual é a menor capacidade da lista?"
           }
         ]
       },
       {
         "dia": 4,
         "titulo": "Prazos e filas de produção",
-        "subtitulo": "Prometer só o que o fluxo sustenta",
+        "subtitulo": "Prometa só o que a produção consegue cumprir",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Prazo comercial e capacidade conversam",
-            "texto": "O prazo que o Comercial promete ao cliente precisa conversar com a capacidade operacional. Quem enxerga a fila real é o gestor da produção. Por isso ele deve fornecer informação realista e sinalizar risco antes do vencimento, não depois. Avisar com antecedência permite negociar com o cliente. Avisar quando o prazo já estourou só transfere o problema e queima a confiança."
+            "titulo": "Prazo e capacidade precisam combinar",
+            "texto": "O prazo que o Comercial promete ao cliente precisa combinar com a capacidade da produção. Quem enxerga a fila real é o gestor da produção. Por isso ele deve passar informação realista e avisar do risco antes de o prazo vencer, não depois. Avisar cedo dá tempo de negociar com o cliente. Avisar quando o prazo já venceu só passa o problema adiante e acaba com a confiança."
           },
           {
             "tipo": "conteudo",
             "titulo": "Fila: quanto trabalho vem antes",
-            "texto": "Fila é o conjunto de trabalhos esperando antes do seu pedido. Quanto maior a fila, maior o tempo de espera, mesmo que cada tarefa seja rápida. Um pedido novo não passa a ser feito na hora só porque entrou: ele só entra na produção depois de liberado e, então, no fim da fila, a menos que se decida por prioridade. Para estimar um prazo, some o tempo das etapas, inclua a espera entre elas e use dados do fluxo, não palpite."
+            "texto": "Fila é todo o trabalho que está esperando antes do seu pedido. Quanto maior a fila, maior a espera, mesmo que cada tarefa seja rápida. Um pedido novo não começa a ser feito na hora só porque entrou. Ele só entra na produção depois de liberado. E entra no fim da fila, a não ser que alguém decida dar prioridade. Para calcular um prazo, some o tempo das etapas e a espera entre elas. Use os dados da produção, não palpite."
           },
           {
             "tipo": "conteudo",
             "titulo": "Pagamento e empenho antes da produção",
-            "texto": "Um pedido só vira trabalho depois de liberado, e a produção depende do pagamento. Quando o pagamento é Pix, transferência ou dinheiro, a tarefa Confirmar pagamento registra o valor e o pedido vai para Pago. Instituições públicas podem pagar por empenho, na entrega, mas o número do empenho precisa existir antes de iniciar. Sem ele, o pedido fica Aguardando empenho, o Kanban bloqueia mover para etapa de produção e a tarefa Cobrar empenho volta a cada 7 dias. Ao estimar prazo, considere se esse pedido já pode começar."
+            "texto": "Um pedido só vira trabalho depois de liberado, e a produção depende do pagamento. Quando o pagamento é Pix, transferência ou dinheiro, a tarefa Confirmar pagamento registra o valor e o pedido vai para Pago. Instituições públicas podem contratar com empenho e pagar conforme contrato e trâmites do órgão. Mas o número do empenho precisa existir antes de iniciar. Sem ele, o pedido fica Aguardando empenho. O Kanban bloqueia mover para etapa de produção. E a tarefa Cobrar empenho volta a cada 7 dias. Ao calcular o prazo, veja se esse pedido já pode começar."
           },
           {
             "tipo": "conteudo",
             "titulo": "Exemplo: cinco urgentes no mesmo dia",
-            "texto": "Aceitar cinco pedidos urgentes para o mesmo dia não cria cinco vezes mais capacidade. A fábrica continua com as mesmas máquinas, pessoas e etapas. O resultado provável é atrasar os cinco, e ainda os pedidos que já estavam na fila. Evite promessas baseadas apenas em otimismo. Se não houver dado, diga: preciso confirmar. Os prazos oficiais e margens seguem o procedimento definido pela Valente ou o responsável."
+            "texto": "Aceitar cinco pedidos urgentes para o mesmo dia não cria cinco vezes mais capacidade. A fábrica continua com as mesmas máquinas, pessoas e etapas. O mais provável é atrasar os cinco e também os pedidos que já estavam na fila. Não prometa só por otimismo. Se não tiver o dado, diga: preciso confirmar. Os prazos oficiais e as margens seguem o procedimento da Valente ou o responsável."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "capacidade_fluxo",
-            "cliente": "Fala do Comercial: O cliente quer cinco peças personalizadas amanhã. Posso confirmar? Você acha que dá, né?",
+            "cliente": "Fala do Comercial: O cliente quer cinco peças personalizadas para amanhã. Posso confirmar? Você acha que dá, né?",
             "opcoes": [
               {
-                "label": "Deixa eu olhar a fila, a capacidade de cada etapa e o material. Em pouco tempo te respondo com o que dá para prometer e o que é risco.",
+                "label": "Deixa eu olhar a fila, a capacidade de cada etapa e o material. Daqui a pouco te digo o que dá para prometer e o que é risco.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Boa. Resposta baseada em dados e sem promessa no escuro."
+                "feedback": "Boa. Você responde com dados e não promete no escuro."
               },
               {
                 "label": "Confirma. A gente dá um jeito, sempre dá.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Otimismo sem dados é como se prometem prazos que não se cumprem."
+                "feedback": "Otimismo sem dados gera prazo que não se cumpre."
               },
               {
-                "label": "Não confirma nada, a fila está sempre cheia.",
+                "label": "Não confirma nada. A fila está sempre cheia.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Recusar sem olhar os dados também não ajuda. A resposta precisa ser baseada no fluxo real."
+                "feedback": "Recusar sem olhar os dados também não ajuda. A resposta precisa vir da fila real."
               },
               {
-                "label": "Confirma e depois eu aviso se atrasar.",
+                "label": "Confirma. Se atrasar, eu aviso depois.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Sinalizar risco precisa acontecer antes do vencimento, não depois."
+                "feedback": "O aviso de risco tem que vir antes de o prazo vencer, não depois."
               }
             ]
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "capacidade_fluxo",
-            "cliente": "Comercial: Fechei com a prefeitura, pagamento por empenho, mas o número ainda não chegou. A prefeitura quer rápido. Move o cartão para Imprimindo para a gente adiantar?",
+            "cliente": "Comercial: Fechei com a prefeitura. O pagamento é por empenho, mas o número ainda não chegou. A prefeitura quer rápido. Move o cartão para Imprimindo para a gente adiantar?",
             "opcoes": [
               {
-                "label": "Movo, assim ganhamos tempo e o número chega depois.",
+                "label": "Movo. Assim ganhamos tempo e o número chega depois.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Sem número do empenho não se inicia o trabalho, e o Kanban bloqueia essa movimentação."
+                "feedback": "Sem o número do empenho o trabalho não começa. E o Kanban bloqueia essa mudança."
               },
               {
-                "label": "Não dá para começar sem o número. Mantenho Aguardando empenho, deixo a cobrança em andamento e aviso que o prazo depende dele.",
+                "label": "Não dá para começar sem o número. Deixo em Aguardando empenho, mantenho a cobrança andando e aviso que o prazo depende dele.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Certo. Você respeita o bloqueio e sinaliza o risco de prazo cedo."
+                "feedback": "Certo. Você respeita o bloqueio e avisa cedo do risco de prazo."
               },
               {
                 "label": "Aviso o cliente de que todos os pedidos vão atrasar.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "O problema é só este pedido. Avisar tudo gera ruído sem dados."
+                "feedback": "O problema é só neste pedido. Avisar sobre todos cria confusão sem ter dados."
               },
               {
-                "label": "Prometo começar em dois dias de qualquer forma.",
+                "label": "Prometo começar em dois dias de qualquer jeito.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "É promessa sem dado e contra a regra do empenho."
@@ -6829,66 +6999,68 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "verdadeiro_falso",
             "competencia": "capacidade_fluxo",
-            "afirmacao": "Aceitar vários pedidos urgentes para o mesmo dia aumenta proporcionalmente a capacidade da produção.",
+            "afirmacao": "Aceitar vários pedidos urgentes para o mesmo dia aumenta a capacidade da produção na mesma medida.",
             "correta": false,
             "feedbackCerto": "Correto. A capacidade continua a mesma. O risco é atrasar todos os pedidos.",
-            "feedbackErrado": "Falso. Máquinas, pessoas e etapas não se multiplicam por causa de um pedido urgente."
+            "feedbackErrado": "Falso. Máquinas, pessoas e etapas não aumentam por causa de um pedido urgente."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "capacidade_fluxo",
-            "pergunta": "Você tem uma fila de pedidos e o Comercial pergunta um prazo para um pedido novo. Liste quais dados você levantaria para responder e como avisaria um risco de atraso.",
-            "pontosEsperados": [
-              "Fila atual e tempo de cada etapa, incluindo espera",
-              "Capacidade de máquinas, pessoas e etapas seguintes",
-              "Disponibilidade de material e arquivo",
-              "Sinalizar o risco ao Comercial antes do vencimento",
-              "Admite não saber e confirma a fonte"
-            ]
+            "pergunta": "O Comercial pede o prazo de um pedido novo. Você ainda não olhou os dados. O que você faz?",
+            "opcoes": [
+              "Dá um prazo curto para agradar o cliente e ajusta depois, se precisar",
+              "Soma só o tempo de impressão, sem contar a fila e a espera entre as etapas",
+              "Diz que não dá para atender, porque a fila está sempre cheia",
+              "Diz que precisa confirmar, olha a fila, a capacidade e o material, e avisa do risco antes de o prazo vencer"
+            ],
+            "correta": 3,
+            "feedbackCerto": "Certo. O prazo vem dos dados: fila, tempo e espera das etapas, capacidade, material e arquivo. E o risco se avisa antes de o prazo vencer.",
+            "feedbackErrado": "Prazo não se dá por palpite. Diga que precisa confirmar. Olhe a fila, o tempo e a espera das etapas, a capacidade, o material e o arquivo. Avise o Comercial do risco antes de o prazo vencer."
           }
         ]
       },
       {
         "dia": 5,
-        "titulo": "Identificação de gargalos",
-        "subtitulo": "Investigar a causa antes de cobrar velocidade",
+        "titulo": "Como achar gargalos",
+        "subtitulo": "Descubra a causa antes de cobrar rapidez",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O que é gargalo",
-            "texto": "Gargalo é o ponto que limita o fluxo naquele momento. É como o gargalo de uma garrafa: por mais água que entre, só sai o que passa por ali. Ele pode ser uma máquina, uma pessoa, uma aprovação do cliente, um arquivo com erro, falta de material ou falta de informação. E muda de lugar: resolveu um, outro aparece. Por isso o gestor precisa reavaliar sempre."
+            "texto": "Gargalo é o ponto que segura o trabalho naquele momento. É como o gargalo de uma garrafa: por mais água que entre, só sai o que passa por ali. O gargalo pode ser uma máquina, uma pessoa, uma aprovação do cliente, um arquivo com erro, falta de material ou falta de informação. E ele muda de lugar: você resolve um e aparece outro. Por isso o gestor precisa olhar de novo sempre."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Acúmulo é sinal, não causa",
-            "texto": "Cartões acumulados mostram que algo está segurando o fluxo, mas não dizem o quê. Cartões parados em Modelando, por exemplo, podem decorrer de falta de referência do cliente, não de lentidão do modelador. Se o gestor cobra velocidade sem investigar, pressiona a pessoa errada e o problema continua. A regra é: investigue a causa antes de cobrar velocidade."
+            "titulo": "Acúmulo é sinal, não é causa",
+            "texto": "Cartões acumulados mostram que algo está segurando o trabalho. Mas não dizem o quê. Veja um exemplo. Há cartões parados em Modelando. Pode ser que falte a referência do cliente, e não que o modelador esteja lento. Se o gestor cobra rapidez sem investigar, pressiona a pessoa errada e o problema continua. A regra é: descubra a causa antes de cobrar rapidez."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como investigar",
-            "texto": "Siga um caminho simples. Observe onde o trabalho espera mais. Pergunte a quem executa o que está impedindo, sem acusar. Confirme com a OT, o arquivo e o pedido. Teste a hipótese: se a causa fosse essa, o que mudaria ao resolver? Por fim, trate a causa e registre. Um bom truque é perguntar cinco vezes o porquê, até chegar em algo que dá para consertar, como um processo ou uma informação que faltava."
+            "texto": "Siga um caminho simples. Veja onde o trabalho espera mais. Pergunte a quem faz o trabalho o que está impedindo, sem acusar. Confira a tarefa, o arquivo e o pedido. Teste a sua ideia: se a causa for essa, o que muda quando ela for resolvida? Por fim, trate a causa e registre. Uma boa dica é perguntar cinco vezes o porquê, até chegar em algo que dá para consertar, como um jeito de trabalhar ou uma informação que faltava."
           },
           {
             "tipo": "conteudo",
             "titulo": "Gargalos que não estão na bancada",
-            "texto": "Nem todo pedido parado está esperando uma máquina. Um pedido novo pode estar em Aguardando liberação. Um pedido de instituição pública pode estar em Aguardando empenho, sem produção até existir o número. A arte pode esperar a aprovação do cliente. Quando o cliente pede ajustes, nasce uma tarefa de Modelagem de ajuste, e Aprovar arte fica bloqueada até ela concluir; então é liberada automaticamente. Antes de cobrar a produção, olhe o cartão e as tarefas do pedido para saber em qual desses casos ele está."
+            "texto": "Nem todo pedido parado está esperando uma máquina. Um pedido novo pode estar em Aguardando liberação. Um pedido de instituição pública pode estar em Aguardando empenho, sem produção até existir o número. A arte pode estar esperando a aprovação do cliente. Quando o cliente pede ajustes, nasce uma tarefa de Modelagem de ajuste. A tarefa Aprovar arte fica bloqueada até ela terminar. Depois é liberada sozinha. Antes de cobrar a produção, olhe o cartão e as tarefas do pedido para saber em qual desses casos ele está."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "gargalos",
-            "pergunta": "O cliente pediu ajustes na arte. Surgiu a tarefa Modelagem de ajuste e Aprovar arte está bloqueada. O que acontece quando a modelagem do ajuste conclui?",
+            "pergunta": "O cliente pediu ajustes na arte. Surgiu a tarefa Modelagem de ajuste e a tarefa Aprovar arte está bloqueada. O que acontece quando a modelagem do ajuste termina?",
             "opcoes": [
-              "Alguém precisa reabrir manualmente a tarefa Aprovar arte",
-              "A arte é considerada aprovada e a impressão é liberada",
-              "O pedido volta para Negociação e recomeça",
-              "Aprovar arte é liberada automaticamente, para o cliente ver a nova versão"
+              "Alguém precisa reabrir à mão a tarefa Aprovar arte",
+              "A arte passa a valer como aprovada e a impressão é liberada",
+              "O pedido volta para Negociação e começa de novo",
+              "Aprovar arte é liberada sozinha, para o cliente ver a nova versão"
             ],
             "correta": 3,
-            "feedbackCerto": "Certo. A tarefa bloqueada é liberada automaticamente quando a anterior conclui.",
+            "feedbackCerto": "Certo. A tarefa bloqueada é liberada sozinha quando a anterior termina.",
             "feedbackPorOpcao": [
               "O sistema libera sozinho. Esperar alguém reabrir cria um gargalo que não existe.",
-              "Só o cliente aprova a arte. Considerar aprovada sem resposta libera impressão com versão errada.",
-              "Nada manda o pedido para trás. A aprovação apenas volta para ser refeita.",
+              "Só o cliente aprova a arte. Dar como aprovada sem resposta libera a impressão com a versão errada.",
+              "Nada manda o pedido para trás. Só a aprovação volta para ser feita de novo.",
               null
             ],
             "erroCriticoOpcoes": [
@@ -6898,20 +7070,20 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "multipla_escolha",
             "competencia": "gargalos",
-            "pergunta": "Há seis cartões parados em Modelando e o prazo apertou. Qual abordagem é a mais adequada?",
+            "pergunta": "Há seis cartões parados em Modelando e o prazo apertou. O que é melhor fazer?",
             "opcoes": [
-              "Cobrar do modelador que acelere, pois é ele quem está com os cartões",
-              "Perguntar ao modelador e checar os pedidos para ver se falta referência, aprovação ou arquivo antes de cobrar",
+              "Cobrar do modelador que acelere, porque os cartões estão com ele",
+              "Perguntar ao modelador e olhar os pedidos para ver se falta referência, aprovação ou arquivo, antes de cobrar",
               "Mover os cartões para Imprimindo para destravar a fila",
-              "Contratar ajuda para modelar, porque a modelagem é claramente o gargalo"
+              "Contratar ajuda para modelar, porque está claro que a modelagem é o gargalo"
             ],
             "correta": 1,
-            "feedbackCerto": "Isso. O acúmulo é um sinal. A investigação aponta a causa real.",
+            "feedbackCerto": "Isso. O acúmulo é um sinal. Investigar mostra a causa real.",
             "feedbackPorOpcao": [
-              "Pode ser falta de informação do cliente. Cobrar velocidade pressiona a pessoa errada.",
+              "Pode estar faltando informação do cliente. Cobrar rapidez pressiona a pessoa errada.",
               null,
-              "Avançar trabalho sem o modelo pronto gera retrabalho e esconde o problema.",
-              "Concluir a causa antes de investigar é suposição. Pode nem ser capacidade."
+              "Avançar sem o modelo pronto gera retrabalho e esconde o problema.",
+              "Decidir a causa antes de investigar é palpite. Pode nem ser falta de capacidade."
             ],
             "erroCriticoOpcoes": [
               2
@@ -6920,11 +7092,11 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "selecionar_itens",
             "competencia": "gargalos",
-            "pergunta": "Marque tudo o que pode ser um gargalo no fluxo de produção.",
+            "pergunta": "Marque tudo o que pode ser um gargalo na produção.",
             "itens": [
               "Uma máquina com manutenção atrasada",
               "Um cliente que demora a aprovar o orçamento ou a arte",
-              "Um arquivo com erro que precisa voltar à modelagem",
+              "Um arquivo com erro que precisa voltar para a modelagem",
               "Falta de material de impressão",
               "Uma coluna do Kanban com cor diferente"
             ],
@@ -6934,64 +7106,67 @@ var TREINAMENTO_TRILHAS = {
               2,
               3
             ],
-            "feedbackCerto": "Certo. Gargalo pode ser máquina, aprovação, arquivo, material ou informação.",
-            "feedbackErrado": "Gargalo é qualquer ponto que limita o fluxo: máquina, pessoa, aprovação, arquivo, material ou informação. A cor da coluna não limita nada."
+            "feedbackCerto": "Certo. O gargalo pode ser máquina, aprovação, arquivo, material ou informação.",
+            "feedbackErrado": "Gargalo é qualquer ponto que segura o trabalho: máquina, pessoa, aprovação, arquivo, material ou informação. A cor da coluna não segura nada."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "gargalos",
-            "pergunta": "Escolha uma coluna do Kanban com acúmulo e descreva três possíveis causas diferentes e como você confirmaria cada uma.",
-            "pontosEsperados": [
-              "Apresenta pelo menos três causas diferentes",
-              "Diferencia máquina, pessoa, informação ou etapa seguinte",
-              "Indica como confirmar (OT, conversa, observação da peça)",
-              "Não culpa a pessoa antes de investigar"
-            ]
+            "pergunta": "Uma coluna do Kanban está com muitos cartões acumulados. O que isso mostra?",
+            "opcoes": [
+              "Que algo segura o trabalho ali. Pode ser máquina, pessoa, informação ou a etapa seguinte, e você precisa conferir",
+              "Que a pessoa daquela etapa está lenta e precisa ser cobrada",
+              "Que falta máquina naquela etapa",
+              "Que o quadro está errado e basta mover os cartões"
+            ],
+            "correta": 0,
+            "feedbackCerto": "Certo. O acúmulo tem várias causas possíveis. Confira com a tarefa, a conversa com quem faz e a peça, sem culpar ninguém antes.",
+            "feedbackErrado": "Acúmulo é sinal, não é causa. Pode ser máquina, pessoa, informação ou a etapa seguinte. Confira com a tarefa, a conversa com quem faz e a peça. Não culpe ninguém antes de investigar."
           }
         ]
       },
       {
         "dia": 6,
         "titulo": "Falhas, retrabalho e reimpressões",
-        "subtitulo": "Tratar a causa, não só pagar de novo pelo erro",
+        "subtitulo": "Trate a causa, não pague de novo pelo mesmo erro",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "Retrabalho custa capacidade",
-            "texto": "Retrabalho é refazer algo que já deveria estar certo, como reimprimir uma peça com falha, repintar ou corrigir um arquivo. Além de gastar material e tempo, ele consome capacidade que poderia produzir novos pedidos. Em uma equipe pequena, uma reimpressão tira horas de máquina e de gente do que está na fila. Quanto mais retrabalho, menos entrega."
+            "texto": "Retrabalho é fazer de novo o que já devia estar certo. Exemplos: reimprimir uma peça que falhou, pintar de novo ou corrigir um arquivo. Ele gasta material e tempo. E ainda ocupa a máquina e as pessoas que podiam estar fazendo pedidos novos. Em uma equipe pequena, uma reimpressão tira horas de máquina e de gente do que está na fila. Quanto mais retrabalho, menos entrega."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Registrar para enxergar padrões",
-            "texto": "Para agir na causa, é preciso registrar a ocorrência com o suficiente para identificar padrões: o que falhou, em qual etapa, em qual máquina ou material, e o que foi feito. Se várias impressões falham pelo mesmo motivo e só reimprimimos, estamos pagando repetidamente pela mesma causa. O objetivo do registro não é punir quem relata. Quando a pessoa tem medo, esconde a falha e o padrão nunca aparece."
+            "titulo": "Registrar para ver o que se repete",
+            "texto": "Para tratar a causa, você precisa registrar a falha: o que falhou, em qual etapa, em qual máquina ou material e o que foi feito. Com isso dá para ver o que se repete. Se várias impressões falham pelo mesmo motivo e a equipe só reimprime, a Valente paga várias vezes pela mesma causa. O registro não serve para punir quem avisa. Quando a pessoa tem medo, ela esconde a falha. E a repetição nunca aparece."
           },
           {
             "tipo": "conteudo",
             "titulo": "Correção imediata e ação preventiva",
-            "texto": "São duas coisas diferentes. A correção imediata resolve o pedido de agora: reimprimir, repintar, refazer. A ação preventiva trata a causa para não repetir, como revisar o suporte do modelo, conferir o nivelamento, checar o estado do material ou ajustar a instrução da OT. Faça as duas. Só a primeira apaga o incêndio. A segunda evita o próximo. Procedimentos específicos de reimpressão seguem o que a Valente definir ou o responsável."
+            "texto": "São duas coisas diferentes. A correção imediata resolve o pedido de agora: reimprimir, pintar de novo, refazer. A ação preventiva trata a causa para a falha não voltar. Exemplos: revisar o suporte do modelo, conferir o nivelamento, olhar o estado do material ou ajustar a instrução da tarefa. Faça as duas. A primeira só apaga o incêndio. A segunda evita o próximo. Para reimpressão, siga o procedimento da Valente ou consulte o responsável."
           },
           {
             "tipo": "conteudo",
             "titulo": "Como o sistema registra falha e retrabalho",
-            "texto": "Cada janela de conclusão guarda dados que o gestor usa para achar padrões. Na impressão, as respostas são Tudo certo, Saiu só parte, Falhou e Cancelada, com registro por fornada. Nas etapas de produção, Concluir etapa pergunta quantas ficaram prontas e quantas voltam para a fase anterior, com motivo. Na pintura, a Produção do dia e o Fechar a pintura registram peças estragadas e as que voltam. Na Conferência e Embalagem, Encontrei problema pede motivo e quantidade. Leia esses motivos antes de decidir a ação preventiva."
+            "texto": "Cada janela de conclusão guarda dados. O gestor usa esses dados para ver o que se repete. Na impressão, as respostas são Tudo certo, Saiu só parte, Falhou e Cancelada, com registro por fornada. Nas etapas de produção, Concluir etapa pergunta quantas peças ficaram prontas e quantas voltam para a fase anterior, com o motivo. Na pintura, a Produção do dia e o Fechar a pintura registram as peças estragadas e as que voltam. Na Conferência e Embalagem, Encontrei problema pede o motivo e a quantidade. Leia esses motivos antes de escolher a ação preventiva."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "qualidade_melhoria",
-            "pergunta": "Ao concluir uma etapa de 10 peças, 3 estão com defeito e precisam voltar. Como o registro deve ficar?",
+            "pergunta": "Você conclui uma etapa de 10 peças. 3 estão com defeito e precisam voltar. Como deve ficar o registro?",
             "opcoes": [
-              "10 prontas, e o defeito se corrige depois sem registro",
+              "10 prontas. O defeito se corrige depois, sem registro",
               "7 prontas e 3 voltando para a fase anterior, com o motivo",
               "Deixar a etapa aberta e não registrar nada até resolver",
               "Contar as 3 como prontas e avisar só por conversa"
             ],
             "correta": 1,
-            "feedbackCerto": "Certo. Quantidade e motivo ficam registrados, e o padrão pode ser achado depois.",
+            "feedbackCerto": "Certo. A quantidade e o motivo ficam registrados. Depois dá para ver se a falha se repete.",
             "feedbackPorOpcao": [
-              "Marcar como pronto o que não está pronto esconde o defeito e deixa ele avançar.",
+              "Marcar como pronto o que não está pronto esconde o defeito. E ele segue adiante.",
               null,
-              "Sem registro, o motivo some e o padrão nunca aparece.",
-              "Conversa não deixa rastro. Defeito avançando como pronto é erro crítico."
+              "Sem registro, o motivo se perde e ninguém vê que a falha se repete.",
+              "Conversa não fica registrada. Deixar o defeito seguir como pronto é erro grave."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -7001,129 +7176,129 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "resposta_cliente",
             "competencia": "qualidade_melhoria",
-            "cliente": "Colega: Falhou de novo a peça do lote. Eu só aperto reimprimir e pronto, né? Não vou ficar anotando que falhou, senão vão achar que errei.",
+            "cliente": "Colega: A peça do lote falhou de novo. Eu só aperto reimprimir e pronto, né? Não vou anotar que falhou, senão vão achar que eu errei.",
             "opcoes": [
               {
-                "label": "Reimprima para atender o pedido, mas anote o que falhou, onde e em qual material. O registro não é para punir, é para achar a causa e evitar que se repita.",
+                "label": "Reimprima para atender o pedido. Mas anote o que falhou, onde e com qual material. O registro não é para punir. É para achar a causa e a falha não voltar.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Certo. Correção imediata mais registro para a ação preventiva, sem culpar."
+                "feedback": "Certo. Correção imediata e registro para a ação preventiva, sem culpar ninguém."
               },
               {
                 "label": "Reimprime e esquece. Se anotar, vai dar problema para você.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Esconder a falha impede de achar o padrão e repete o custo."
+                "feedback": "Esconder a falha impede de ver o que se repete. E o custo volta."
               },
               {
-                "label": "Para tudo e investiga até ter certeza da causa antes de reimprimir qualquer coisa.",
+                "label": "Para tudo e investiga até ter certeza da causa. Só depois reimprime.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Parar tudo é exagero. A correção imediata e a prevenção podem andar juntas."
               },
               {
-                "label": "Reimprima e diga ao cliente que a peça já foi feita normalmente.",
+                "label": "Reimprima e diga ao cliente que a peça foi feita normalmente.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Esconder a falha do cliente e da equipe é informação falsa."
+                "feedback": "Esconder a falha do cliente e da equipe é passar informação falsa."
               }
             ]
           },
           {
             "tipo": "ordenar",
             "competencia": "qualidade_melhoria",
-            "instrucao": "Ordene o tratamento de uma falha repetida de impressão.",
+            "instrucao": "Uma falha de impressão se repetiu. Coloque na ordem certa o que fazer.",
             "itens": [
-              "Garantir a segurança e parar o que está com risco",
+              "Cuidar da segurança e parar o que está com risco",
               "Corrigir o pedido atual (reimprimir ou refazer)",
-              "Registrar o que falhou, onde e em qual condição",
-              "Comparar com outras ocorrências para achar o padrão",
-              "Definir e aplicar a ação preventiva"
+              "Registrar o que falhou, onde e em que condição",
+              "Comparar com outras falhas para ver o que se repete",
+              "Escolher e aplicar a ação preventiva"
             ],
             "feedbackCerto": "Isso. Do imediato ao preventivo, sempre com registro.",
-            "feedbackErrado": "Primeiro segurança e correção do pedido, depois registro, padrão e prevenção."
+            "feedbackErrado": "Primeiro a segurança e a correção do pedido. Depois o registro, a comparação com outras falhas e a prevenção."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "qualidade_melhoria",
-            "local": "Valente OS, Missão/Inbox de tarefas (OTs) e área de produção",
-            "instrucao": "Apenas consultando, pense em uma falha recente que você viu ou ouviu falar. Escreva em um papel: a correção imediata, a causa provável e uma ação preventiva possível. Não altere dados reais."
+            "local": "Valente OS (aba Tarefas no computador ou Minhas funções no tablet) e área de produção",
+            "instrucao": "Só consulte, sem alterar dados reais. Pense em uma falha recente que você viu ou de que ouviu falar. Escreva em um papel a correção imediata, a causa provável e uma ação preventiva possível."
           }
         ]
       },
       {
         "dia": 7,
         "titulo": "Distribuição de trabalho",
-        "subtitulo": "Quem pode fazer o quê, e não apenas quem está livre",
+        "subtitulo": "Quem pode fazer o quê, e não só quem está livre",
         "etapas": [
           {
             "tipo": "conteudo",
-            "titulo": "Critérios para distribuir",
-            "texto": "Distribuir trabalho é decidir quem faz qual tarefa. Considere cinco coisas: qualificação (a pessoa sabe e está liberada?), disponibilidade (tem tempo?), complexidade da tarefa, prioridade e continuidade (quem já começou o trabalho tem contexto e evita troca desnecessária). Numa equipe de três pessoas com funções delegadas livremente, isso é ainda mais importante, pois qualquer um pode acabar fazendo qualquer coisa."
+            "titulo": "O que olhar para distribuir",
+            "texto": "Distribuir trabalho é decidir quem faz cada tarefa. Olhe cinco coisas. Qualificação: a pessoa sabe fazer e está liberada? Disponibilidade: ela tem tempo? Dificuldade da tarefa. Prioridade. E continuidade: quem já começou o trabalho conhece o caso, e manter essa pessoa evita troca sem necessidade. Em uma equipe de três pessoas, em que as funções passam de um para outro, isso pesa ainda mais. Qualquer um pode acabar fazendo qualquer coisa."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Livre não significa liberado",
-            "texto": "Uma pessoa pode estar parada e mesmo assim não estar liberada para determinada competência. Colocar um colaborador não treinado numa tarefa crítica só porque está disponível gera risco de retrabalho, de acidente e de peça perdida. A matriz de qualificação é uma tabela que mostra quem está liberado em cada competência. Ela evita esse erro e também mostra quem precisa de treinamento."
+            "titulo": "Livre não quer dizer liberado",
+            "texto": "Uma pessoa pode estar parada e mesmo assim não estar liberada para aquele tipo de trabalho. Colocar alguém sem treino em uma tarefa crítica, só porque está livre, traz risco de retrabalho, de acidente e de peça perdida. A matriz de qualificação é uma tabela. Ela mostra quem está liberado em cada competência, que é cada tipo de trabalho que a pessoa aprendeu. Ela evita esse erro e também mostra quem precisa de treinamento."
           },
           {
             "tipo": "conteudo",
             "titulo": "Status de competência",
-            "texto": "Quando o sistema estiver implementado, use os status de competência: Não iniciado, Em capacitação, Prática supervisionada, Liberado e Reciclagem. Quem está em Prática supervisionada pode executar, mas com acompanhamento. Quem está em Reciclagem precisa rever o conteúdo. Se faltar o dado, consulte o responsável. Quem define as regras de liberação é a Valente. Não presuma que uma pessoa está liberada."
+            "texto": "Quando o sistema estiver pronto, use os status de competência: Não iniciado, Em capacitação, Prática supervisionada, Liberado e Reciclagem. Quem está em Prática supervisionada pode fazer a tarefa, mas com alguém acompanhando. Quem está em Reciclagem precisa rever o conteúdo. Se faltar o dado, consulte o responsável. Quem define as regras de liberação é a Valente. Não suponha que uma pessoa está liberada."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quem fez e onde ver o trabalho",
-            "texto": "O PIN identifica o executor: o nome aparece no topo da tela e fica gravado como responsável nas tarefas que a pessoa inicia ou conclui. Por isso o registro só é fiel se cada um usa o seu PIN. No tablet, Minhas funções abre uma fila única com as tarefas da função da pessoa, com filtros por tipo e o botão Próxima da fila. Outras funções mostra tarefas de colegas, para ajudar. No PC, a aba Tarefas lista as tarefas designadas, e cada tarefa abre com a caixa SUA MISSÃO, que diz o que falta fazer."
+            "texto": "O PIN mostra quem fez o trabalho. O nome aparece no topo da tela e fica gravado como responsável nas tarefas que a pessoa inicia ou conclui. Por isso o registro só é verdadeiro se cada um usa o seu PIN. No tablet, Minhas funções abre uma fila única com as tarefas da função da pessoa, com filtros por tipo e o botão Próxima da fila. Outras funções mostra tarefas de colegas, para você ajudar. No computador, a aba Tarefas lista as tarefas passadas para a pessoa. Cada tarefa abre com a caixa SUA MISSÃO, que diz o que falta fazer."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "distribuicao_trabalho",
-            "cliente": "Colega: O tablet ficou com o PIN do Pedro, então vou iniciar essa pintura por ele mesmo. Ele está ocupado e nem vai notar.",
+            "cliente": "Colega: O tablet ficou com o PIN do Pedro. Vou iniciar essa pintura no nome dele mesmo. Ele está ocupado e nem vai notar.",
             "opcoes": [
               {
-                "label": "Pode usar, o importante é a tarefa andar.",
+                "label": "Pode usar. O importante é a tarefa andar.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "O responsável gravado seria o Pedro, que não executou. O registro fica falso."
+                "feedback": "O responsável gravado seria o Pedro, que não fez o trabalho. O registro fica falso."
               },
               {
                 "label": "Peça para o Pedro iniciar quando puder e deixe a tarefa parada até lá.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Parar o trabalho sem necessidade atrasa o fluxo. Quem vai executar deve entrar com o próprio PIN."
+                "feedback": "Parar o trabalho sem necessidade atrasa tudo. Quem vai fazer deve entrar com o próprio PIN."
               },
               {
-                "label": "Entre com o seu PIN e pegue a tarefa por Outras funções, se for ajudar. Assim fica gravado quem fez de verdade.",
+                "label": "Entre com o seu PIN e pegue a tarefa em Outras funções, se for ajudar. Assim fica gravado quem fez de verdade.",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Certo. O PIN identifica o executor, e Outras funções existe justamente para ajudar."
+                "feedback": "Certo. O PIN mostra quem fez. E Outras funções existe para você ajudar."
               },
               {
-                "label": "Inicie com o PIN do Pedro e conclua com o seu, que fica equilibrado.",
+                "label": "Inicie com o PIN do Pedro e conclua com o seu. Assim fica dividido.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Misturar PINs mistura os responsáveis e esconde quem fez cada parte."
+                "feedback": "Misturar os PINs mistura os responsáveis e esconde quem fez cada parte."
               }
             ]
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "distribuicao_trabalho",
-            "pergunta": "O Pedro, que está sem tarefa, é Em capacitação em pintura. Chegou uma peça de pintura com prazo apertado. O que fazer?",
+            "pergunta": "O Pedro está sem tarefa. Em pintura, o status dele é Em capacitação. Chegou uma peça de pintura com prazo apertado. O que fazer?",
             "opcoes": [
-              "Dar a ele só a parte que o status permite, com acompanhamento, e reservar a tarefa crítica para quem está Liberado",
-              "Entregar a tarefa inteira a ele, porque está livre e é a forma de aprender",
+              "Dar a ele só a parte que o status permite, com acompanhamento, e deixar a tarefa crítica para quem está Liberado",
+              "Passar a tarefa inteira para ele, porque está livre e assim aprende",
               "Deixar o Pedro parado e adiar a peça até todos estarem liberados",
-              "Entregar a tarefa inteira à pessoa mais experiente, mesmo que ela esteja ocupada com outra urgente"
+              "Passar a tarefa inteira para a pessoa mais experiente, mesmo que ela esteja ocupada com outra urgente"
             ],
             "correta": 0,
-            "feedbackCerto": "Correto. Equilíbrio entre qualificação, supervisão e disponibilidade.",
+            "feedbackCerto": "Correto. Você equilibra qualificação, acompanhamento e disponibilidade.",
             "feedbackPorOpcao": [
               null,
-              "Livre não é liberado. Tarefa crítica sem qualificação gera retrabalho e risco.",
-              "Existe meio-termo: atividade supervisionada compatível com o status.",
-              "Sobrecarregar sem checar disponibilidade e prioridade cria novo gargalo."
+              "Livre não é liberado. Tarefa crítica sem qualificação traz retrabalho e risco.",
+              "Existe um meio-termo: uma parte acompanhada, que combine com o status dele.",
+              "Sobrecarregar alguém sem olhar disponibilidade e prioridade cria um novo gargalo."
             ],
             "erroCriticoOpcoes": [
               1
@@ -7132,12 +7307,12 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "selecionar_itens",
             "competencia": "distribuicao_trabalho",
-            "pergunta": "Marque os fatores que o gestor deve considerar ao distribuir uma tarefa.",
+            "pergunta": "Marque o que o gestor deve olhar ao distribuir uma tarefa.",
             "itens": [
               "Se a pessoa está liberada na competência",
-              "Disponibilidade de tempo",
-              "Complexidade da tarefa",
-              "Continuidade de quem já começou o trabalho",
+              "Se a pessoa tem tempo disponível",
+              "A dificuldade da tarefa",
+              "A continuidade de quem já começou o trabalho",
               "Quem reclama menos"
             ],
             "corretos": [
@@ -7146,14 +7321,14 @@ var TREINAMENTO_TRILHAS = {
               2,
               3
             ],
-            "feedbackCerto": "Certo. Qualificação, disponibilidade, complexidade, prioridade e continuidade.",
-            "feedbackErrado": "Os critérios são qualificação, disponibilidade, complexidade, prioridade e continuidade. Quem reclama menos não é critério de gestão."
+            "feedbackCerto": "Certo. Qualificação, disponibilidade, dificuldade, prioridade e continuidade.",
+            "feedbackErrado": "O que conta é qualificação, disponibilidade, dificuldade, prioridade e continuidade. Quem reclama menos não é motivo para escolher."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "distribuicao_trabalho",
-            "local": "Centro de Capacitação e Valente OS, Missão/Inbox de tarefas",
-            "instrucao": "Sem alterar nada, escolha uma tarefa da produção e liste: qual competência ela exige, quem na equipe você acredita estar liberado e como você confirmaria isso na fonte (status de competência ou responsável)."
+            "local": "Centro de Capacitação e Valente OS (aba Tarefas no computador ou Minhas funções no tablet)",
+            "instrucao": "Sem alterar nada, escolha uma tarefa da produção. Anote qual competência ela exige e quem da equipe você acha que está liberado. Anote como você confirmaria isso na fonte: no status de competência ou com o responsável."
           }
         ]
       },
@@ -7165,38 +7340,38 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Três estados diferentes",
-            "texto": "Uma tarefa executada, uma tarefa conferida e uma tarefa liberada são três estados diferentes. Executada: alguém diz que fez. Conferida: outra verificação confirmou. Liberada: está aprovada para seguir à próxima etapa ou ao cliente. A autodeclaração terminei não substitui a inspeção quando o processo exige validação. Em trabalhos críticos, a conferência é uma proteção para a pessoa, para o cliente e para a Valente."
+            "texto": "Tarefa feita, tarefa conferida e tarefa liberada são três coisas diferentes. Feita: alguém diz que fez. Conferida: outra pessoa olhou e confirmou. Liberada: está aprovada para ir à próxima etapa ou ao cliente. Dizer terminei não substitui a conferência quando o processo pede validação. Em trabalhos críticos, a conferência protege a pessoa, o cliente e a Valente."
           },
           {
             "tipo": "conteudo",
             "titulo": "Ponto de controle",
-            "texto": "Ponto de controle é o momento do fluxo em que alguém confere antes de o trabalho seguir. Exemplos gerais: antes de passar da impressão para o acabamento, antes da pintura, antes de embalar. Quanto antes o defeito é pego, menos custa. Uma peça defeituosa que avança acumula custo de pintura, embalagem e envio. Nunca avance trabalho defeituoso apenas para cumprir o prazo."
+            "texto": "Ponto de controle é o momento em que alguém confere o trabalho antes de ele seguir. Exemplos: antes de passar da impressão para o acabamento, antes da pintura, antes de embalar. Quanto mais cedo o defeito é achado, menos ele custa. Uma peça com defeito que segue adiante soma o custo de pintura, embalagem e envio. Nunca passe adiante um trabalho com defeito só para cumprir o prazo."
           },
           {
             "tipo": "conteudo",
             "titulo": "Quem valida",
-            "texto": "O gestor deve definir quem pode validar competências e trabalhos críticos. Em uma equipe pequena, isso evita que a mesma pessoa execute e libere sem olhar de novo. Quais são os pontos de controle e os responsáveis por liberação na Valente? Siga o procedimento definido pela Valente ou consulte o responsável. Não crie regra própria."
+            "texto": "O gestor deve definir quem pode validar competências e trabalhos críticos. Em uma equipe pequena, isso evita que a mesma pessoa faça e libere sem ninguém olhar de novo. Quais são os pontos de controle e quem libera na Valente? Siga o procedimento da Valente ou consulte o responsável. Não crie regra própria."
           },
           {
             "tipo": "conteudo",
             "titulo": "Conferência, embalagem e o botão Liberar",
-            "texto": "No tablet, Conferência e Embalagem terminam com duas respostas: Tudo certo ou Encontrei problema, com o motivo e quantas peças. Um problema registrado impede o pedido de seguir. Na Expedição, o caminho é Marcar como enviado, com forma de envio e rastreio; concluir sem marcar enviado não é o certo. Cuidado com a palavra liberar: o botão Liberar do Kanban libera o pedido novo para a produção, gerando as tarefas. Não é a liberação de qualidade. Quem confere e quem libera cada etapa segue o procedimento da Valente."
+            "texto": "No tablet, Conferência e Embalagem terminam com duas respostas: Tudo certo ou Encontrei problema, com o motivo e quantas peças. Um problema registrado impede o pedido de seguir. Na Expedição, o caminho é Marcar como enviado, com a forma de envio e o rastreio. Concluir sem marcar como enviado não é o certo. Cuidado com a palavra liberar. O botão Liberar do Kanban libera o pedido novo para a produção e cria as tarefas. Ele não é a liberação de qualidade. Quem confere e quem libera cada etapa segue o procedimento da Valente."
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "qualidade_melhoria",
-            "afirmacao": "Se na Conferência alguém registra Encontrei problema, o pedido não segue para a próxima etapa até o problema ser tratado.",
+            "afirmacao": "Se alguém registra Encontrei problema na Conferência, o pedido não segue para a próxima etapa até o problema ser tratado.",
             "correta": true,
-            "feedbackCerto": "Certo. O registro de problema é um ponto de controle: impede o pedido de seguir com defeito.",
-            "feedbackErrado": "Verdadeiro. Encontrei problema, com motivo e quantidade, impede o pedido de seguir. É isso que protege o cliente."
+            "feedbackCerto": "Certo. O registro de problema é um ponto de controle. Ele impede o pedido de seguir com defeito.",
+            "feedbackErrado": "É verdadeiro. Encontrei problema, com motivo e quantidade, impede o pedido de seguir. É isso que protege o cliente."
           },
           {
             "tipo": "resposta_cliente",
             "competencia": "qualidade_melhoria",
-            "cliente": "Colega: Terminei a pintura do lote. Pode marcar como liberado e seguir para embalagem, ninguém precisa olhar de novo.",
+            "cliente": "Colega: Terminei a pintura do lote. Pode marcar como liberado e mandar para a embalagem. Ninguém precisa olhar de novo.",
             "opcoes": [
               {
-                "label": "Ótimo que terminou. Vou conferir conforme o procedimento da Valente ou chamar quem faz a liberação antes de seguir.",
+                "label": "Que bom que terminou. Vou conferir pelo procedimento da Valente ou chamar quem faz a liberação antes de seguir.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Terminar não é liberar. A conferência vem antes."
@@ -7205,35 +7380,35 @@ var TREINAMENTO_TRILHAS = {
                 "label": "Pode seguir, confio em você.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Confiança não substitui validação quando o processo a exige."
+                "feedback": "Confiança não substitui a validação quando o processo pede."
               },
               {
-                "label": "Marca como liberado agora e a gente confere depois, se der tempo.",
+                "label": "Marca como liberado agora. A gente confere depois, se der tempo.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Avançar sem conferir pode levar defeito ao cliente."
+                "feedback": "Seguir sem conferir pode levar defeito ao cliente."
               },
               {
-                "label": "Refaça tudo para garantir.",
+                "label": "Refaça tudo, por segurança.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Refazer sem avaliar gera retrabalho desnecessário. Confira primeiro."
+                "feedback": "Refazer sem avaliar gera retrabalho sem necessidade. Confira primeiro."
               }
             ]
           },
           {
             "tipo": "verdadeiro_falso",
             "competencia": "qualidade_melhoria",
-            "afirmacao": "Quando uma pessoa declara que terminou, o trabalho já pode ser considerado liberado.",
+            "afirmacao": "Quando uma pessoa diz que terminou, o trabalho já pode ser considerado liberado.",
             "correta": false,
-            "feedbackCerto": "Correto. Terminar e liberar são estados diferentes. A conferência vem antes quando exigida.",
-            "feedbackErrado": "Falso. Executada, conferida e liberada são estados diferentes."
+            "feedbackCerto": "Correto. Terminar e liberar são coisas diferentes. Quando o processo pede, a conferência vem antes.",
+            "feedbackErrado": "Falso. Feita, conferida e liberada são três coisas diferentes."
           },
           {
             "tipo": "confirmacao_pratica",
             "competencia": "qualidade_melhoria",
-            "local": "Valente OS, aba Pedidos e Missão/Inbox de tarefas",
-            "instrucao": "Escolha uma etapa do Kanban e escreva em um papel: onde você colocaria um ponto de controle, o que seria conferido e quem você perguntaria sobre o responsável oficial pela liberação. Não altere nada no sistema."
+            "local": "Valente OS no computador, aba Pedidos e aba Tarefas",
+            "instrucao": "Sem alterar nada no sistema, escolha uma etapa do Kanban. Escreva em um papel onde você colocaria um ponto de controle e o que seria conferido. Escreva também a quem você perguntaria quem é o responsável oficial pela liberação."
           }
         ]
       },
@@ -7245,83 +7420,86 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Indicador serve para decidir",
-            "texto": "Indicador é uma medida que ajuda a tomar decisão. Os mais comuns em produção são prazo (entregas no dia combinado), retrabalho, gargalos, produtividade, qualidade e capacidade. Eles só são úteis quando os dados são confiáveis. Se o quadro está desatualizado, qualquer indicador sai errado. Não crie métricas apenas porque são fáceis de contar. Vale também para o registro: executor, falhas e produção do dia só viram bom dado se forem registrados com cuidado em cada tarefa."
+            "texto": "Indicador é uma medida que ajuda a tomar decisão. Os mais comuns na produção são prazo (entregas no dia combinado), retrabalho, gargalos, produtividade, qualidade e capacidade. Eles só servem quando os dados são confiáveis. Se o quadro está desatualizado, todo indicador sai errado. Não crie uma medida só porque ela é fácil de contar. O mesmo vale para o registro. Quem fez, as falhas e a produção do dia só viram dado bom se forem registrados com cuidado em cada tarefa."
           },
           {
             "tipo": "conteudo",
-            "titulo": "Uma métrica isolada engana",
-            "texto": "O número de cartões movidos pode subir enquanto o retrabalho também sobe: a equipe parece mais produtiva, mas está só refazendo. Por isso, olhe indicadores em conjunto. Produtividade junto com retrabalho e prazo. Evite também usar indicador para punir, porque as pessoas passam a ajustar os dados para parecer bem. As metas numéricas são definidas pela Valente. Aqui você aprende a pensar, não a criar metas."
+            "titulo": "Um número sozinho engana",
+            "texto": "O número de cartões movidos pode subir enquanto o retrabalho também sobe. A equipe parece produzir mais, mas está só refazendo. Por isso, olhe os indicadores juntos: produtividade junto com retrabalho e prazo. Também não use indicador para punir. Quando isso acontece, as pessoas mexem nos dados para parecer bem. As metas em número são definidas pela Valente. Aqui você aprende a pensar, não a criar metas."
           },
           {
             "tipo": "conteudo",
             "titulo": "Melhoria contínua",
-            "texto": "Melhoria contínua é um ciclo simples: planejar uma mudança pequena, executar, verificar o que mudou nos dados e ajustar. Faça uma coisa por vez, para saber o que funcionou. Registre o que testou. A pergunta que guia tudo é: que decisão este indicador melhora? Se ninguém decidiria nada diferente com ele, ele não precisa existir."
+            "texto": "Melhoria contínua é um ciclo simples. Planeje uma mudança pequena. Faça. Veja o que mudou nos dados. Ajuste. Mude uma coisa por vez, para saber o que funcionou. Registre o que você testou. A pergunta que guia tudo é: que decisão este indicador melhora? Se ninguém decidiria nada diferente com ele, ele não precisa existir."
           },
           {
             "tipo": "multipla_escolha",
             "competencia": "qualidade_melhoria",
-            "pergunta": "O número de cartões movidos por semana subiu, mas as reimpressões também subiram. Como interpretar?",
+            "pergunta": "O número de cartões movidos por semana subiu. Mas as reimpressões também subiram. Como entender isso?",
             "opcoes": [
               "A produtividade melhorou, então não há problema",
               "O retrabalho subiu porque as pessoas estão mais rápidas",
               "Parar de medir cartões movidos e medir só reimpressões",
-              "Olhar os dois juntos: a produtividade aparente pode estar escondendo retrabalho"
+              "Olhar os dois juntos: a produtividade pode ser só aparência e esconder retrabalho"
             ],
             "correta": 3,
-            "feedbackCerto": "Certo. Indicadores se leem em conjunto, sempre com dados confiáveis.",
+            "feedbackCerto": "Certo. Os indicadores são lidos juntos, sempre com dados confiáveis.",
             "feedbackPorOpcao": [
-              "Uma métrica isolada engana. O retrabalho também subiu.",
-              "Sem dados da causa, é suposição. Investigue antes de concluir.",
-              "Um único indicador também engana. O ideal é combinar e perguntar que decisão cada um apoia.",
+              "Um número sozinho engana. O retrabalho também subiu.",
+              "Sem dados da causa, isso é palpite. Investigue antes de concluir.",
+              "Um indicador só também engana. O melhor é juntar os dois e perguntar que decisão cada um ajuda a tomar.",
               null
             ]
           },
           {
             "tipo": "selecionar_itens",
             "competencia": "qualidade_melhoria",
-            "pergunta": "Quais destes são bons critérios para escolher um indicador?",
+            "pergunta": "Quais destes são bons motivos para escolher um indicador?",
             "itens": [
               "Ajuda a tomar uma decisão",
               "Os dados são confiáveis",
               "Pode ser lido junto com outros indicadores",
               "É fácil de contar, mesmo que ninguém use",
-              "Serve para apontar quem errou mais"
+              "Serve para mostrar quem errou mais"
             ],
             "corretos": [
               0,
               1,
               2
             ],
-            "feedbackCerto": "Certo. Indicador bom apoia decisão, tem dado confiável e se lê em conjunto.",
-            "feedbackErrado": "Fácil de contar e punir não são bons critérios. Indicador serve para decidir."
+            "feedbackCerto": "Certo. Indicador bom ajuda a decidir, tem dado confiável e é lido junto com outros.",
+            "feedbackErrado": "Ser fácil de contar e servir para punir não são bons motivos. Indicador serve para decidir."
           },
           {
-            "tipo": "texto_livre",
+            "tipo": "multipla_escolha",
             "competencia": "qualidade_melhoria",
-            "pergunta": "Escolha um indicador (prazo, retrabalho, gargalo, produtividade, qualidade ou capacidade) e diga que decisão ele ajudaria a tomar, qual dado seria preciso e que outro indicador você leria junto.",
-            "pontosEsperados": [
-              "Liga o indicador a uma decisão concreta",
-              "Cita a fonte de dados e sua confiabilidade",
-              "Combina com outro indicador",
-              "Não inventa meta numérica da Valente"
-            ]
+            "pergunta": "Você vai acompanhar o indicador de retrabalho. Qual é o jeito certo de usar?",
+            "opcoes": [
+              "Criar por conta própria uma meta em número para a equipe",
+              "Olhar só o retrabalho, sem comparar com mais nada",
+              "Ligar a uma decisão, usar dados confiáveis e ler junto com outro indicador, como o prazo",
+              "Usar para mostrar quem errou mais"
+            ],
+            "correta": 2,
+            "feedbackCerto": "Certo. O indicador serve a uma decisão, precisa de dado confiável e é lido junto com outro.",
+            "feedbackErrado": "Indicador bom ajuda a tomar uma decisão, usa dados confiáveis e é lido junto com outro. As metas em número são da Valente. E indicador não serve para punir."
           }
         ]
       },
       {
         "dia": 10,
         "titulo": "Missão Gestão: um dia problemático",
-        "subtitulo": "Aplicar o fluxo inteiro num dia de imprevistos",
+        "subtitulo": "Usar tudo o que você aprendeu em um dia de imprevistos",
         "etapas": [
           {
             "tipo": "conteudo",
             "titulo": "O cenário",
-            "texto": "Hoje é um dia difícil, fictício, de treinamento. Uma impressora parou. Surgiu um pedido urgente. Há uma reimpressão em andamento. Um colega faltou. E chegaram novos pedidos. Tudo ao mesmo tempo. Não existe ponto extra por declarar tudo prioridade. A avaliação olha coerência, rastreabilidade das decisões e uso correto da autonomia."
+            "texto": "Hoje é um dia difícil, inventado para o treinamento. Uma impressora parou. Chegou um pedido urgente. Há uma reimpressão em andamento. Um colega faltou. E entraram pedidos novos. Tudo ao mesmo tempo. Dizer que tudo é prioridade não vale ponto. A avaliação olha três coisas: se as suas decisões combinam entre si, se ficam registradas e se você usa bem a sua autonomia."
           },
           {
             "tipo": "conteudo",
             "titulo": "O roteiro do gestor",
-            "texto": "Use a sequência do curso. Primeiro levante os fatos: o que parou, o que está em andamento, quem está presente. Confira se o pedido novo já foi liberado e se tem pagamento ou empenho registrado. Proteja segurança e qualidade. Identifique o gargalo atual. Priorize com critério e registre o motivo. Redistribua apenas para pessoas qualificadas. Comunique o impacto de prazo antes do vencimento. Quando faltar informação, consulte a fonte e o responsável. Não invente."
+            "texto": "Use a sequência do curso. Primeiro levante os fatos: o que parou, o que está em andamento, quem está presente. Confira se o pedido novo já foi liberado e se tem pagamento ou empenho registrado. Proteja a segurança e a qualidade. Ache o gargalo de agora. Defina a prioridade com regra e registre o motivo. Passe tarefas só para pessoas qualificadas. Avise do risco de prazo antes de ele vencer. Se faltar informação, consulte a fonte e o responsável. Não invente."
           },
           {
             "tipo": "cenario",
@@ -7330,67 +7508,67 @@ var TREINAMENTO_TRILHAS = {
             "noInicial": "a",
             "nos": {
               "a": {
-                "cliente": "Logo cedo: a impressora 2 parou com um lote pela metade, um colega avisou que faltará hoje, e o Comercial pede para encaixar um pedido urgente. O que você faz primeiro?",
+                "cliente": "Logo cedo: a impressora 2 parou com um lote pela metade. Um colega avisou que vai faltar hoje. E o Comercial pede para encaixar um pedido urgente. O que você faz primeiro?",
                 "opcoes": [
                   {
-                    "label": "Levanto os fatos: o que está parado, o estado do lote, quem está presente e o que está na fila, e só depois decido.",
+                    "label": "Levanto os fatos: o que está parado, como está o lote, quem está presente e o que está na fila. Só depois decido.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Fatos antes de decisões.",
+                    "feedback": "Certo. Fatos antes das decisões.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Aceito o urgente na hora para não perder o cliente e vejo depois como resolver.",
+                    "label": "Aceito o urgente na hora para não perder o cliente. Depois vejo como resolver.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Prometer sem dados de capacidade é o erro de otimismo que o curso ensinou.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Peço à equipe que tente fazer tudo ao mesmo tempo, tudo é urgente hoje.",
+                    "label": "Peço à equipe para tentar fazer tudo ao mesmo tempo. Hoje tudo é urgente.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Tudo urgente elimina a prioridade e sobrecarrega.",
+                    "feedback": "Se tudo é urgente, não existe prioridade. E a equipe fica sobrecarregada.",
                     "proximo": "b"
                   },
                   {
                     "label": "Troco todo o plano da semana sem olhar o quadro.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Sem leitura do quadro, a decisão não tem base.",
+                    "feedback": "Sem olhar o quadro, a decisão não tem base.",
                     "proximo": "b"
                   }
                 ]
               },
               "b": {
-                "cliente": "Fatos levantados: a máquina parada precisa de verificação, a pós-impressão está cheia, e o colega ausente era o único liberado em pintura. O urgente chegou. Como redistribuir?",
+                "cliente": "Fatos levantados: a máquina parada precisa de verificação. A pós-impressão está cheia. O colega que faltou era o único liberado em pintura. O urgente chegou. Como redistribuir?",
                 "opcoes": [
                   {
-                    "label": "Priorizo por critério, protejo o que está quase pronto, e passo a pintura apenas a quem está Liberado, com supervisão para quem está em prática supervisionada.",
+                    "label": "Defino a prioridade com regra e protejo o que está quase pronto. Passo a pintura só a quem está Liberado, com acompanhamento para quem está em Prática supervisionada.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Critério, continuidade e qualificação.",
+                    "feedback": "Certo. Regra, continuidade e qualificação.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Passo a pintura a quem estiver livre, sem checar status de competência.",
+                    "label": "Passo a pintura a quem estiver livre, sem olhar o status de competência.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Livre não é liberado. Risco de retrabalho.",
+                    "feedback": "Livre não é liberado. Há risco de retrabalho.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Peço que a máquina parada volte a funcionar logo, mesmo que sem verificar a causa.",
+                    "label": "Peço que a máquina parada volte a funcionar logo, mesmo sem verificar a causa.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Voltar sem verificar é ignorar segurança e qualidade.",
+                    "feedback": "Voltar sem verificar é ignorar a segurança e a qualidade.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Mando imprimir tudo que entrou para ocupar as máquinas.",
+                    "label": "Mando imprimir tudo o que entrou para ocupar as máquinas.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Imprimir mais sem capacidade nas etapas seguintes só desloca o gargalo.",
+                    "feedback": "Imprimir mais sem capacidade nas etapas seguintes só muda o gargalo de lugar.",
                     "proximo": "c"
                   }
                 ]
@@ -7399,28 +7577,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "No fim do dia, o prazo de dois pedidos está em risco. O Comercial pergunta como está. Como você responde?",
                 "opcoes": [
                   {
-                    "label": "Informo o risco antes do vencimento, com dados do fluxo, o que mudou, o que permanece em risco e a nova previsão confirmada na fonte.",
+                    "label": "Aviso do risco antes de o prazo vencer, com dados da produção: o que mudou, o que continua em risco e a nova previsão, confirmada na fonte.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Comunicação antecipada e baseada em dados."
+                    "feedback": "Certo. Aviso cedo e com dados."
                   },
                   {
                     "label": "Digo que está tudo certo e resolvo depois.",
                     "correta": false,
                     "erroCritico": true,
-                    "feedback": "Esconder risco é informação falsa."
+                    "feedback": "Esconder o risco é passar informação falsa."
                   },
                   {
                     "label": "Digo que atrasou por culpa do colega que faltou.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Culpar não ajuda e não é fato verificado. Comunique impacto e plano."
+                    "feedback": "Culpar não ajuda e não é fato conferido. Fale do efeito no prazo e do plano."
                   },
                   {
                     "label": "Não respondo até ter certeza total do prazo.",
                     "correta": false,
                     "erroCritico": false,
-                    "feedback": "Silêncio atrapalha. Comunique o risco e diga o que ainda precisa ser confirmado."
+                    "feedback": "O silêncio atrapalha. Avise do risco e diga o que ainda falta confirmar."
                   }
                 ]
               }
@@ -7430,18 +7608,18 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "missao",
             "competencia": "priorizacao",
             "titulo": "Missão Gestão: um dia problemático",
-            "objetivo": "Montar o plano de um dia de imprevistos usando o fluxo do curso, sem inventar regras e sem alterar dados reais.",
-            "contexto": "Treinamento fictício. Uma impressora parou, há um pedido urgente, uma reimpressão em andamento, um colega faltou e entraram novos pedidos. A equipe é pequena e as funções são delegadas.",
+            "objetivo": "Montar o plano de um dia de imprevistos usando o que o curso ensinou, sem inventar regras e sem alterar dados reais.",
+            "contexto": "Treinamento com situação inventada. Uma impressora parou. Há um pedido urgente e uma reimpressão em andamento. Um colega faltou e entraram pedidos novos. A equipe é pequena e as funções passam de um para outro.",
             "tarefas": [
-              "Liste os fatos conhecidos e o que ainda precisa ser confirmado, indicando a fonte",
-              "Confira no Kanban se o pedido urgente já foi liberado e se o pagamento ou o empenho está registrado, antes de encaixá-lo",
-              "Descreva os critérios de prioridade que usou e o motivo de cada decisão",
-              "Identifique o gargalo atual e a causa provável antes de cobrar velocidade",
-              "Redistribua tarefas apenas para pessoas qualificadas, citando o status de competência",
-              "Separe a correção imediata da ação preventiva para a falha ocorrida",
-              "Escreva o que comunicaria ao Comercial sobre o impacto de prazo, os riscos que permanecem e quem precisa ser avisado"
+              "Liste os fatos que você já sabe e o que ainda precisa confirmar. Diga a fonte de cada um",
+              "Antes de encaixar o pedido urgente, confira no Kanban se ele já foi liberado e se o pagamento ou o empenho está registrado",
+              "Diga quais regras de prioridade você usou e o motivo de cada decisão",
+              "Ache o gargalo de agora e a causa provável, antes de cobrar rapidez",
+              "Passe tarefas só para pessoas qualificadas e cite o status de competência",
+              "Separe a correção imediata da ação preventiva para a falha que aconteceu",
+              "Escreva o que você diria ao Comercial sobre o efeito no prazo, os riscos que continuam e quem precisa ser avisado"
             ],
-            "criterioConclusao": "Você registrou o plano, o que foi alterado, os riscos que permanecem e quem deve ser comunicado, sem inventar números ou regras da Valente."
+            "criterioConclusao": "Você registrou o plano, o que mudou, os riscos que continuam e quem deve ser avisado, sem inventar números ou regras da Valente."
           }
         ]
       }
@@ -7454,6 +7632,427 @@ var TREINAMENTO_TRILHAS = {
       "qualidade_melhoria": "Qualidade e melhoria",
       "distribuicao_trabalho": "Distribuição de trabalho"
     }
+  },
+  "academia_gestao": {
+    "id": "academia_gestao",
+    "nome": "Academia de Gestão — Introdução",
+    "descricao": "Introdução à administração do estúdio, com exemplos fictícios e atividades orientadas. Não substitui a formação completa em gestão.",
+    "icone": "🎓",
+    "versao": 4,
+    "cargosPermitidos": [
+      "admin",
+      "supervisor"
+    ],
+    "competencias": [
+      "Comunicação objetiva",
+      "Decisão conjunta",
+      "Disciplina e acordos",
+      "Intervenção imediata",
+      "Responsabilidade",
+      "Antecipação"
+    ],
+    "criteriosConclusao": "Explicar com palavras próprias o conteúdo dos seis dias; resolver exemplos fictícios de comunicação, prazo, estoque e caixa; não alterar dados reais; obter avaliação do tutor. Esta trilha é introdutória e não substitui formação completa em administração.",
+    "dias": [
+      {
+        "dia": 1,
+        "titulo": "Conhecer o Valente OS e trabalhar com segurança",
+        "subtitulo": "Como navegar, consultar e respeitar seus limites",
+        "etapas": [
+          {
+            "tipo": "conteudo",
+            "titulo": "Objetivo da aula",
+            "texto": "Hoje você vai ver a diferença entre administrar e produzir. Vai ver também por que o acesso de cada pessoa e os limites protegem a equipe. O foco é administrar. O sistema é um apoio. Use só exemplos inventados e não mude dados reais."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "O que é administrar",
+            "texto": "Administrar é planejar, organizar, acompanhar e corrigir. O Valente OS junta as informações do trabalho. Mas ele não confere os fatos por você. Antes de qualquer ação, veja qual é o pedido, quem é o responsável, qual é a etapa e o que a mudança vai causar."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Conheça as áreas",
+            "texto": "Veja as abas liberadas para o seu perfil: Pedidos, Propostas, Orçamento, Caixa, Estoque, Produção e Centro de Capacitação. Nem todas aparecem para todos os cargos. Não tente passar por cima das permissões."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Exemplo resolvido: perfis de acesso",
+            "texto": "Ana entra com o PIN dela, que é o código pessoal de entrada, e vê Produção e Capacitação. A gestora entra com o próprio PIN e vê também os relatórios administrativos. A diferença vem das permissões de cada perfil, não do número de pedidos. Cada pessoa usa só o seu acesso."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Primeira regra da Academia",
+            "texto": "Nesta trilha, olhe as telas reais só para consultar. Nas respostas, use exemplos inventados. Não crie, edite, mova nem apague pedidos, lançamentos ou estoques de produção sem autorização clara e sem ambiente de teste aprovado."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "responsabilidade",
+            "pergunta": "Uma colaboradora entra no Valente OS com o PIN dela e vê menos menus que a administradora. Por que isso acontece?",
+            "opcoes": [
+              "O PIN mostra quem é a pessoa, e as permissões do perfil dela definem os menus",
+              "A quantidade de pedidos cadastrados define os menus",
+              "A ordem em que as telas foram abertas define os menus para sempre"
+            ],
+            "correta": 0,
+            "feedbackCerto": "Isso mesmo. O PIN mostra quem é a pessoa. As permissões do perfil definem o que ela pode usar.",
+            "feedbackErrado": "Não é isso. Volte ao exemplo da Ana e da gestora e veja de onde vem a diferença entre os menus."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "pergunta": "Qual destas atividades é administrar, e não produzir?",
+            "opcoes": [
+              "Imprimir uma miniatura",
+              "Pintar uma peça",
+              "Planejar e acompanhar os pedidos da semana"
+            ],
+            "correta": 2,
+            "feedbackCerto": "Isso mesmo. Administrar é planejar, organizar, acompanhar e corrigir. Produzir é transformar material e trabalho em produto.",
+            "feedbackErrado": "Não é isso. Imprimir e pintar são produzir, porque transformam material e trabalho em produto. Administrar é planejar, organizar, acompanhar e corrigir."
+          },
+          {
+            "tipo": "checklist",
+            "titulo": "Autoavaliação (não substitui a correção do instrutor)",
+            "itens": [
+              "Li as orientações da aula",
+              "Respondi às perguntas e comparei minhas respostas com as explicações",
+              "Se tive uma dúvida, sei o que preciso confirmar com o responsável"
+            ]
+          }
+        ]
+      },
+      {
+        "dia": 2,
+        "titulo": "Falar de forma direta e registrar as decisões",
+        "subtitulo": "O combinado precisa ser entendido e cumprido",
+        "etapas": [
+          {
+            "tipo": "conteudo",
+            "titulo": "Objetivo da aula",
+            "texto": "Hoje você vai aprender a comunicar um fato, o que ele causa e uma proposta. Vai ver também quem precisa decidir antes de mudar um combinado. O foco é administrar. O sistema é um apoio. Use só exemplos inventados e não mude dados reais."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Falar sem rodeios",
+            "texto": "Uma boa comunicação diz o fato, a consequência, a proposta e a decisão que você precisa. Exemplo: “Faltam 200 g de resina para o pedido X. A impressão está marcada para amanhã. Sugiro ver a compra hoje. Podemos autorizar?”"
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Decisão em conjunto",
+            "texto": "Quando uma mudança mexe em custo, prazo, qualidade ou no que foi combinado com o cliente, fale com o responsável antes de fazer. Anote o que foi decidido, quem autorizou e quando."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Exemplo resolvido: registro de decisão",
+            "texto": "Uma compra de resina precisa mudar de fornecedor. Antes da troca, a responsável informa o preço, o prazo e se o material serve. A decisão é tomada em conjunto e anotada com data e responsável. Só depois a compra é alterada."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Não mude o plano em silêncio",
+            "texto": "Teve uma ideia melhor? Mostre os ganhos, os riscos e os custos. Até a decisão ser revista, siga o combinado. A exceção é quando for preciso parar uma ação insegura ou evitar um dano que está para acontecer."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "decisao_conjunta",
+            "pergunta": "Um fornecedor oferece um material diferente, que parece mais barato. O que você faz?",
+            "opcoes": [
+              "Compra uma unidade para testar e troca o lote sem registrar",
+              "Vê se o material serve, informa custos e riscos e pede a decisão antes de mudar a compra",
+              "Mantém a compra antiga e só fala da oferta no fechamento do mês"
+            ],
+            "correta": 1,
+            "feedbackCerto": "Isso mesmo. Mudança importante é conversada e registrada antes de ser feita.",
+            "feedbackErrado": "Não é isso. Volte ao exemplo da troca de fornecedor e veja o que a responsável fez antes de mudar a compra."
+          },
+          {
+            "tipo": "ordenar",
+            "instrucao": "Coloque na ordem certa as partes de uma mensagem sobre falta de resina:",
+            "itens": [
+              "Fato: faltam 200 g de resina para o pedido X",
+              "Consequência: a impressão está marcada para amanhã",
+              "Proposta: sugiro ver a compra hoje",
+              "Decisão pedida: podemos autorizar?"
+            ],
+            "feedbackCerto": "Isso mesmo. Primeiro o fato, depois a consequência, a proposta e o pedido de decisão ao responsável.",
+            "feedbackErrado": "Não é essa a ordem. Primeiro vem o fato, depois a consequência, depois a proposta e por último o pedido de decisão."
+          },
+          {
+            "tipo": "checklist",
+            "titulo": "Autoavaliação (não substitui a correção do instrutor)",
+            "itens": [
+              "Li as orientações da aula",
+              "Respondi às perguntas e comparei minhas respostas com as explicações",
+              "Se tive uma dúvida, sei o que preciso confirmar com o responsável"
+            ]
+          }
+        ]
+      },
+      {
+        "dia": 3,
+        "titulo": "Pedidos, propostas e compromisso com prazos",
+        "subtitulo": "Do combinado com o cliente até o trabalho feito",
+        "etapas": [
+          {
+            "tipo": "conteudo",
+            "titulo": "Objetivo da aula",
+            "texto": "Hoje você vai avaliar uma mudança de prazo. Você olha a capacidade (quanto dá para produzir), o acabamento e os compromissos já assumidos. O foco é administrar. O sistema é um apoio. Use só exemplos inventados e não mude dados reais."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Leia o pedido inteiro",
+            "texto": "Antes de agir, confira o cliente, o produto, a quantidade, a versão, o prazo, as condições de venda e a situação do pagamento. Faltou algum dado? Procure na fonte e avise sobre a dúvida."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "O Kanban mostra a realidade",
+            "texto": "O Kanban é o quadro das etapas dos pedidos. A etapa marcada tem que ser a etapa real. Mover um cartão só para parecer que avançou esconde o problema e atrapalha as decisões."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Exemplo resolvido: prazo de entrega",
+            "texto": "O cliente pede a entrega dois dias antes. A atendente olha as tarefas em andamento e consulta o responsável pela produção. Ela só informa uma nova data se houver confirmação."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Toda mudança tem consequência",
+            "texto": "Trocar quantidade, material ou prazo mexe na produção e no orçamento. Não confirme novas condições ao cliente sem ver a capacidade e combinar com a equipe."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "disciplina",
+            "pergunta": "O cliente pede para adiantar o prazo. Qual é a atitude certa?",
+            "opcoes": [
+              "Confirmar a nova data com base no prazo médio de pedidos antigos",
+              "Consultar a capacidade e os responsáveis antes de confirmar",
+              "Confirmar a data se houver impressora livre, sem ver o acabamento"
+            ],
+            "correta": 1,
+            "feedbackCerto": "Isso mesmo. Prazo é compromisso, não é palpite.",
+            "feedbackErrado": "Não é isso. Volte ao exemplo do prazo de entrega e veja o que a atendente fez antes de informar a nova data."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "pergunta": "Em um pedido inventado, o cliente pede a entrega dois dias antes. O que você confere antes de responder?",
+            "opcoes": [
+              "O prazo combinado, as tarefas em andamento, o acabamento e a capacidade, junto com o responsável",
+              "Só se há uma impressora livre naquele dia",
+              "Só o prazo médio dos pedidos antigos",
+              "Nada. Você confirma a data e avisa a produção depois"
+            ],
+            "correta": 0,
+            "feedbackCerto": "Isso mesmo. Você confere os dados com o responsável e só promete a nova data depois da confirmação.",
+            "feedbackErrado": "Não é isso. Confira o prazo combinado, as tarefas em andamento, o acabamento e a capacidade com o responsável. Não prometa a data antes da confirmação."
+          },
+          {
+            "tipo": "checklist",
+            "titulo": "Autoavaliação (não substitui a correção do instrutor)",
+            "itens": [
+              "Li as orientações da aula",
+              "Respondi às perguntas e comparei minhas respostas com as explicações",
+              "Se tive uma dúvida, sei o que preciso confirmar com o responsável"
+            ]
+          }
+        ]
+      },
+      {
+        "dia": 4,
+        "titulo": "Estoque, produção e ação imediata",
+        "subtitulo": "Achar a falha antes que ela vire prejuízo",
+        "etapas": [
+          {
+            "tipo": "conteudo",
+            "titulo": "Objetivo da aula",
+            "texto": "Hoje você vai aprender a comparar o material que existe com o material necessário. Vai aprender também a avisar sobre uma diferença antes que ela cause retrabalho. O foco é administrar. O sistema é um apoio. Use só exemplos inventados e não mude dados reais."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Estoque não é só quantidade",
+            "texto": "Confira o material, a unidade, quanto está disponível, quanto vai ser gasto e o prazo para repor. Uma contagem sozinha pode esconder material já reservado para outros pedidos."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Agir na hora",
+            "texto": "Se você notar diferença entre o pedido, a peça e o sistema, pare só a atividade que é sua, quando for preciso para evitar dano. Avise o responsável na hora e registre o que aconteceu."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Exemplo resolvido: diferença na tarefa",
+            "texto": "A tarefa pede 15 cm e a peça mede 13 cm. A responsável separa a peça para ela não seguir adiante. Depois confere o pedido original e avisa da diferença na hora. Ela não altera a tarefa por conta própria."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Investigar antes de culpar",
+            "texto": "Acúmulo em Pintura pode ser gargalo real (etapa sobrecarregada) ou cartão desatualizado. Compare Kanban, tarefa e situação real antes de propor redistribuir o trabalho."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "intervencao",
+            "pergunta": "Você vê uma peça com medida diferente da tarefa. O que você faz?",
+            "opcoes": [
+              "Registra a diferença e continua até a próxima conferência",
+              "Avisa na hora, não deixa a peça seguir e confirma a medida certa com o responsável",
+              "Pede nova impressão antes de confirmar qual é a medida certa"
+            ],
+            "correta": 1,
+            "feedbackCerto": "Isso mesmo. Agir cedo reduz retrabalho e custo. A correção precisa ser autorizada.",
+            "feedbackErrado": "Não é isso. Volte ao exemplo da peça de 13 cm e veja o que a responsável fez ao notar a diferença."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "pergunta": "Uma peça inventada mede 13 cm e a tarefa pede 15 cm. Qual é o aviso certo ao responsável e o próximo passo seguro?",
+            "opcoes": [
+              "Não avisar e mudar a tarefa para 13 cm",
+              "Avisar que a peça saiu errada e já pedir nova impressão",
+              "Avisar só na próxima conferência e deixar a peça seguir",
+              "Avisar que a peça mede 13 cm e a tarefa pede 15 cm, separar a peça e esperar a decisão"
+            ],
+            "correta": 3,
+            "feedbackCerto": "Isso mesmo. Você informa as duas medidas, não deixa a peça seguir e pede a decisão antes de alterar a tarefa ou imprimir de novo.",
+            "feedbackErrado": "Não é isso. Informe a medida da peça e a medida da tarefa, separe a peça e peça a decisão do responsável antes de alterar a tarefa ou imprimir de novo."
+          },
+          {
+            "tipo": "checklist",
+            "titulo": "Autoavaliação (não substitui a correção do instrutor)",
+            "itens": [
+              "Li as orientações da aula",
+              "Respondi às perguntas e comparei minhas respostas com as explicações",
+              "Se tive uma dúvida, sei o que preciso confirmar com o responsável"
+            ]
+          }
+        ]
+      },
+      {
+        "dia": 5,
+        "titulo": "Caixa, custos e responsabilidade pelos resultados",
+        "subtitulo": "Separar receita, custo e resultado",
+        "etapas": [
+          {
+            "tipo": "conteudo",
+            "titulo": "Objetivo da aula",
+            "texto": "Hoje você vai separar receita (o dinheiro das vendas) de resultado (o que sobra). Vai fazer uma conta estimada e dizer quais custos ainda faltam. O foco é administrar. O sistema é um apoio. Use só exemplos inventados e não mude dados reais."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Receita não é lucro",
+            "texto": "Se você vende 10 peças a R$ 70, a receita é R$ 700. Para estimar o resultado, desconte os custos e as despesas que fazem parte da venda, inclusive taxas e tributos (impostos)."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Antes de registrar",
+            "texto": "Confirme a data, a categoria, o valor, o comprovante e o responsável. Nunca lance números inventados no caixa real para treinar. Tem dúvida sobre a categoria? Tire a dúvida antes de registrar."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Exemplo resolvido: resultado estimado",
+            "texto": "A receita é R$ 700. Tire R$ 100 de materiais e R$ 350 de outros custos e despesas. Sobram R$ 250. Isso vale se não houver mais nada para descontar neste exemplo."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Ser responsável é conferir",
+            "texto": "Não saber faz parte de aprender. O certo é perguntar, pesquisar e confirmar antes de uma ação que possa dar prejuízo. Erro encontrado deve ser avisado, não escondido."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "responsabilidade",
+            "pergunta": "Uma venda de R$ 700 teve R$ 100 de custos de materiais e R$ 350 de outros custos e despesas. Qual é o resultado neste exemplo?",
+            "opcoes": [
+              "R$ 700",
+              "R$ 600",
+              "R$ 250"
+            ],
+            "correta": 2,
+            "feedbackCerto": "Isso mesmo. 700 - 100 - 350 = R$ 250, antes de qualquer outro item que não esteja no exemplo.",
+            "feedbackErrado": "Não é isso. Volte ao exemplo resolvido e refaça a conta: receita menos materiais menos outros custos e despesas."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "pergunta": "Você vende 12 miniaturas a R$ 55 cada. Qual é a receita, e esse valor já mostra o lucro?",
+            "opcoes": [
+              "R$ 660, e esse valor já é o lucro",
+              "R$ 660, mas ainda falta descontar os custos e as despesas",
+              "R$ 600, mas ainda falta descontar os custos e as despesas",
+              "R$ 67, e esse valor já é o lucro"
+            ],
+            "correta": 1,
+            "feedbackCerto": "Isso mesmo. 12 x 55 = R$ 660 de receita. Para saber o lucro, falta descontar materiais, trabalho, embalagem, taxas, tributos e outros custos e despesas.",
+            "feedbackErrado": "Não é isso. 12 x 55 = R$ 660 de receita. E receita não é lucro, porque ainda falta descontar os custos e as despesas."
+          },
+          {
+            "tipo": "checklist",
+            "titulo": "Autoavaliação (não substitui a correção do instrutor)",
+            "itens": [
+              "Li as orientações da aula",
+              "Respondi às perguntas e comparei minhas respostas com as explicações",
+              "Se tive uma dúvida, sei o que preciso confirmar com o responsável"
+            ]
+          }
+        ]
+      },
+      {
+        "dia": 6,
+        "titulo": "Visão do todo, vendas pela internet e antecipação",
+        "subtitulo": "Preparar decisões com dados confiáveis",
+        "etapas": [
+          {
+            "tipo": "conteudo",
+            "titulo": "Objetivo da aula",
+            "texto": "Hoje você vai aprender a prever os riscos de uma venda e a explicar uma decisão com custos, prazo e dados que falta confirmar. O foco é administrar. O sistema é um apoio. Use só exemplos inventados e não mude dados reais."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Marketplace não é só vitrine",
+            "texto": "Marketplace é um site de vendas, como Shopee, Mercado Livre ou Elo7. Antes de cadastrar um produto, avalie comissão atual, frete, embalagem, tributos, devoluções, prazo e margem (o que sobra). As taxas mudam. Confira sempre as regras atuais."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Olhar para frente",
+            "texto": "Uma gestora olha os pedidos perto de vencer, os estoques no limite, os atrasos, os pagamentos pendentes e as etapas congestionadas. Veja o risco antes que ele vire prejuízo."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Exemplo resolvido: revisão de anúncio",
+            "texto": "Antes de anunciar uma miniatura, a gestora consulta a tabela atual de tarifas do site. Depois calcula o custo total por pedido e vê se o preço cobre os custos e a margem desejada."
+          },
+          {
+            "tipo": "conteudo",
+            "titulo": "Fechamento do ciclo",
+            "texto": "Comunique o problema de forma direta. Mostre as opções. Combine a decisão. Faça o que foi autorizado. Acompanhe e registre o resultado."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "competencia": "antecipacao",
+            "pergunta": "A comissão de um site de vendas mudou. O que fazer antes de anunciar?",
+            "opcoes": [
+              "Usar a taxa do anúncio anterior, se o produto for parecido",
+              "Ver a taxa atual, refazer a conta da margem e combinar o preço",
+              "Manter o preço antigo e rever só depois da primeira venda"
+            ],
+            "correta": 1,
+            "feedbackCerto": "Isso mesmo. Decisão de venda pede dados atuais e conta feita antes do compromisso.",
+            "feedbackErrado": "Não é isso. Volte ao exemplo da revisão de anúncio e veja o que a gestora consulta e calcula antes de anunciar."
+          },
+          {
+            "tipo": "multipla_escolha",
+            "pergunta": "Você planeja um anúncio inventado de miniatura. O que precisa estar feito antes de publicar?",
+            "opcoes": [
+              "Só escolher o preço, porque os custos aparecem depois da venda",
+              "Só copiar as taxas de um anúncio antigo parecido",
+              "Listar os custos conhecidos e os que falta confirmar, ver prazo e capacidade e pedir aprovação do preço"
+            ],
+            "correta": 2,
+            "feedbackCerto": "Isso mesmo. Você considera material, embalagem, frete, taxas atuais, tributos e devoluções. Vê prazo e capacidade e combina o preço antes de publicar.",
+            "feedbackErrado": "Não é isso. Antes de publicar, liste os custos conhecidos e os que falta confirmar, veja prazo e capacidade e peça a aprovação do preço."
+          },
+          {
+            "tipo": "checklist",
+            "titulo": "Autoavaliação (não substitui a correção do instrutor)",
+            "itens": [
+              "Li as orientações da aula",
+              "Respondi às perguntas e comparei minhas respostas com as explicações",
+              "Se tive uma dúvida, sei o que preciso confirmar com o responsável"
+            ]
+          }
+        ]
+      }
+    ]
   }
 };
 
@@ -7502,8 +8101,10 @@ var TREIN_COMPETENCIA_NOME_EXTRA = {
   "capacidade_fluxo": "Capacidade e fluxo",
   "gargalos": "Gargalos",
   "qualidade_melhoria": "Qualidade e melhoria",
-  "distribuicao_trabalho": "Distribuição de trabalho"
+  "distribuicao_trabalho": "Distribuição de trabalho",
+  "seguranca_produto": "Segurança do produto",
+  "decisao_conjunta": "Decisão conjunta",
+  "disciplina": "Disciplina e acordos",
+  "intervencao": "Intervenção imediata",
+  "antecipacao": "Antecipação"
 };
-
-/* Academia revisada: versão separada do histórico anterior. */
-TREINAMENTO_TRILHAS.academia_gestao = {"id":"academia_gestao","nome":"Academia Valente — Gestão","descricao":"Trilha introdutória revisada de gestão e uso responsável do Valente OS. Observação e simulações, sem alteração de dados reais.","icone":"🎓","versao":3,"cargosPermitidos":["admin","supervisor"],"competencias":["Comunicação objetiva","Decisão conjunta","Disciplina e acordos","Intervenção imediata","Responsabilidade","Antecipação"],"criteriosConclusao":null,"dias":[{"dia":1,"titulo":"Conhecer o Valente OS e trabalhar com segurança","subtitulo":"Navegação, consulta e limites de atuação","etapas":[{"tipo":"conteudo","titulo":"Objetivo da aula","texto":"Diferenciar administrar de produzir e explicar por que a identidade e os limites de acesso protegem a equipe. A administração é o foco; o sistema serve como apoio. Use somente situações fictícias e não altere dados reais."},{"tipo":"conteudo","titulo":"O que é administrar","texto":"Administrar significa planejar, organizar, acompanhar e corrigir. O Valente OS reúne informações da operação; ele não substitui a conferência dos fatos. Antes de qualquer ação, identifique o pedido, o responsável, a etapa e a consequência da alteração."},{"tipo":"conteudo","titulo":"Reconheça as áreas","texto":"Observe as abas liberadas ao seu perfil: Pedidos, Propostas, Orçamento, Caixa, Estoque, Produção e Centro de Capacitação. Nem todas aparecem para todos os cargos. Não tente contornar permissões."},{"tipo":"conteudo","titulo":"Exemplo resolvido: perfis de acesso","texto":"Ana entra com seu PIN e vê Produção e Capacitação. A gestora entra com o próprio PIN e vê também relatórios administrativos. A diferença é determinada pelas permissões do perfil, não pelo número de pedidos. Cada pessoa usa somente seu próprio acesso."},{"tipo":"conteudo","titulo":"Primeira regra da Academia","texto":"Durante esta trilha, observe telas reais apenas para consulta. Use exemplos fictícios nas respostas. Não crie, edite, mova ou exclua pedidos, lançamentos ou estoques de produção sem autorização explícita e ambiente de teste validado."},{"tipo":"multipla_escolha","competencia":"responsabilidade","pergunta":"Uma colaboradora acessa o Valente OS com seu PIN e vê menos menus que a administradora. O que explica essa diferença?","opcoes":["O PIN identifica a pessoa, e as permissões de seu perfil definem os menus disponíveis","A quantidade de pedidos cadastrados determina os menus disponíveis","A ordem de abertura das telas define permanentemente quais menus aparecem"],"correta":0,"feedbackCerto":"O PIN identifica o usuário; as permissões associadas ao perfil controlam as funções disponíveis.","feedbackErrado":"A resposta não corresponde ao procedimento demonstrado nesta aula. Volte ao exemplo resolvido e compare as condições do enunciado."},{"tipo":"texto_livre","pergunta":"Explique administrar e produzir com suas palavras e dê um exemplo fictício de cada atividade.","pontosEsperados":["Administrar envolve planejar, organizar, acompanhar e corrigir.","Produzir transforma materiais e trabalho em produtos.","Identificação e permissões não substituem autorização para executar alterações."]},{"tipo":"checklist","titulo":"Autoavaliação — não substitui correção por instrutor","itens":["Li as orientações da aula","Registrei minha resposta fictícia e comparei com os critérios apresentados","Se surgiu uma dúvida, identifiquei o que preciso confirmar com o responsável"]}]},{"dia":2,"titulo":"Comunicação direta e decisões registradas","subtitulo":"O combinado deve ser compreendido e cumprido","etapas":[{"tipo":"conteudo","titulo":"Objetivo da aula","texto":"Comunicar um fato, seu impacto e uma proposta, identificando quem precisa decidir antes de mudar um acordo. A administração é o foco; o sistema serve como apoio. Use somente situações fictícias e não altere dados reais."},{"tipo":"conteudo","titulo":"Comunicar sem rodeios","texto":"Uma comunicação útil informa fato, consequência, proposta e decisão necessária. Exemplo: “Faltam 200 g de resina para o pedido X; a impressão está prevista para amanhã; sugiro verificar a compra hoje. Podemos autorizar?”"},{"tipo":"conteudo","titulo":"Decisão conjunta","texto":"Quando uma mudança afetar custo, prazo, qualidade ou compromisso com o cliente, consulte o responsável antes de executá-la. Registre o que foi decidido, quem autorizou e quando."},{"tipo":"conteudo","titulo":"Exemplo resolvido: registro de decisão","texto":"Uma compra de resina precisa mudar de fornecedor. Antes da troca, a responsável informa preço, prazo e compatibilidade; a decisão conjunta é registrada com data e responsável. Só então a compra é alterada."},{"tipo":"conteudo","titulo":"Não mude o plano em silêncio","texto":"Surgiu uma ideia melhor? Apresente os ganhos, riscos e custos. Até a decisão ser revista, mantenha o combinado, salvo necessidade de interromper uma ação insegura ou evitar dano iminente."},{"tipo":"multipla_escolha","competencia":"decisao_conjunta","pergunta":"Um fornecedor oferece material diferente, aparentemente mais barato. Como proceder?","opcoes":["Comprar uma unidade para testar e substituir o lote sem registro","Avaliar compatibilidade, comunicar custos e riscos e pedir decisão antes de alterar a compra","Manter a compra anterior e comunicar a oferta apenas no fechamento mensal"],"correta":1,"feedbackCerto":"Mudanças relevantes devem ser discutidas e registradas antes da execução.","feedbackErrado":"A resposta não corresponde ao procedimento demonstrado nesta aula. Volte ao exemplo resolvido e compare as condições do enunciado."},{"tipo":"texto_livre","pergunta":"Escreva uma mensagem fictícia de até quatro frases sobre falta de resina: fato, impacto, alternativa e decisão solicitada.","pontosEsperados":["Indicar o material que falta e o pedido afetado.","Explicar a consequência para o prazo.","Apresentar alternativa e pedir decisão ao responsável antes de alterar a compra."]},{"tipo":"checklist","titulo":"Autoavaliação — não substitui correção por instrutor","itens":["Li as orientações da aula","Registrei minha resposta fictícia e comparei com os critérios apresentados","Se surgiu uma dúvida, identifiquei o que preciso confirmar com o responsável"]}]},{"dia":3,"titulo":"Pedidos, propostas e compromisso com prazos","subtitulo":"Do combinado com o cliente à execução","etapas":[{"tipo":"conteudo","titulo":"Objetivo da aula","texto":"Avaliar uma mudança de prazo com dados de capacidade, acabamento e compromissos já assumidos. A administração é o foco; o sistema serve como apoio. Use somente situações fictícias e não altere dados reais."},{"tipo":"conteudo","titulo":"Leia o pedido completo","texto":"Antes de agir, confira cliente, produto, quantidade, versão, prazo, condições comerciais e situação de pagamento. Se faltar dado, consulte a fonte e comunique a dúvida."},{"tipo":"conteudo","titulo":"O Kanban representa a realidade","texto":"A etapa registrada precisa corresponder ao estado real do trabalho. Mover um cartão para parecer que avançou mascara o problema e compromete decisões."},{"tipo":"conteudo","titulo":"Exemplo resolvido: prazo de entrega","texto":"O cliente solicita entrega dois dias antes. A atendente verifica as ordens em andamento, consulta o responsável pela produção e só comunica uma nova data se houver confirmação."},{"tipo":"conteudo","titulo":"Mudanças têm consequência","texto":"Trocar quantidade, material ou prazo afeta produção e orçamento. Não confirme novas condições ao cliente sem verificar capacidade e alinhamento interno."},{"tipo":"multipla_escolha","competencia":"disciplina","pergunta":"O cliente pede antecipação do prazo. Qual resposta é adequada?","opcoes":["Confirmar a nova data usando o prazo médio de pedidos anteriores","Consultar capacidade e responsáveis antes de confirmar","Confirmar a data se houver impressora livre, sem verificar acabamento"],"correta":1,"feedbackCerto":"Prazo é compromisso operacional, não suposição.","feedbackErrado":"A resposta não corresponde ao procedimento demonstrado nesta aula. Volte ao exemplo resolvido e compare as condições do enunciado."},{"tipo":"texto_livre","pergunta":"Em um pedido fictício, o cliente pede antecipação de dois dias. Explique quais dados você verificaria antes de responder.","pontosEsperados":["Conferir prazo combinado, quantidade e especificação.","Verificar produção em andamento, acabamento e capacidade com o responsável.","Não prometer a nova data antes da confirmação."]},{"tipo":"checklist","titulo":"Autoavaliação — não substitui correção por instrutor","itens":["Li as orientações da aula","Registrei minha resposta fictícia e comparei com os critérios apresentados","Se surgiu uma dúvida, identifiquei o que preciso confirmar com o responsável"]}]},{"dia":4,"titulo":"Estoque, produção e intervenção imediata","subtitulo":"Detectar falhas antes que se tornem prejuízos","etapas":[{"tipo":"conteudo","titulo":"Objetivo da aula","texto":"Comparar disponibilidade e necessidade de materiais e comunicar uma divergência antes de gerar retrabalho. A administração é o foco; o sistema serve como apoio. Use somente situações fictícias e não altere dados reais."},{"tipo":"conteudo","titulo":"Estoque não é apenas quantidade","texto":"Confira material, unidade, disponibilidade, consumo previsto e prazo de reposição. Uma contagem isolada pode ocultar material já comprometido com outros pedidos."},{"tipo":"conteudo","titulo":"Intervir na hora","texto":"Se notar divergência entre pedido, peça física e sistema, interrompa somente a atividade sob sua responsabilidade quando necessário para evitar dano; avise imediatamente o responsável e registre a ocorrência."},{"tipo":"conteudo","titulo":"Exemplo resolvido: divergência na OT","texto":"A OT especifica 15 cm e a peça mede 13 cm. A responsável separa a peça para evitar avanço, confere o pedido original e comunica a divergência imediatamente. Não altera a OT por conta própria."},{"tipo":"conteudo","titulo":"Investigar antes de culpar","texto":"Um acúmulo em Pintura pode decorrer de gargalo real ou cartão desatualizado. Compare Kanban, OT e situação física antes de propor redistribuição."},{"tipo":"multipla_escolha","competencia":"intervencao","pergunta":"Você percebe uma peça com medida diferente da OT. O que faz?","opcoes":["Registrar a divergência e continuar até a próxima conferência","Sinaliza imediatamente, evita que a peça avance e confirma a especificação com o responsável","Solicitar nova impressão antes de confirmar a especificação correta"],"correta":1,"feedbackCerto":"Agir cedo reduz retrabalho e custos; a correção precisa ser autorizada.","feedbackErrado":"A resposta não corresponde ao procedimento demonstrado nesta aula. Volte ao exemplo resolvido e compare as condições do enunciado."},{"tipo":"texto_livre","pergunta":"Uma peça fictícia mede 13 cm e a OT indica 15 cm. Escreva a comunicação ao responsável e o próximo passo seguro.","pontosEsperados":["Informar a medida observada e a especificação da OT.","Evitar avanço da peça divergente dentro de sua responsabilidade.","Confirmar a especificação e solicitar decisão antes de alterar OT ou reimprimir."]},{"tipo":"checklist","titulo":"Autoavaliação — não substitui correção por instrutor","itens":["Li as orientações da aula","Registrei minha resposta fictícia e comparei com os critérios apresentados","Se surgiu uma dúvida, identifiquei o que preciso confirmar com o responsável"]}]},{"dia":5,"titulo":"Caixa, custos e responsabilidade pelos resultados","subtitulo":"Separar receita, custo e resultado","etapas":[{"tipo":"conteudo","titulo":"Objetivo da aula","texto":"Distinguir receita de resultado e calcular uma estimativa, explicitando quais custos ainda faltam. A administração é o foco; o sistema serve como apoio. Use somente situações fictícias e não altere dados reais."},{"tipo":"conteudo","titulo":"Receita não é lucro","texto":"Se 10 peças forem vendidas a R$ 70, a receita será R$ 700. Para estimar resultado, desconte os custos e despesas pertinentes, inclusive taxas e tributos aplicáveis."},{"tipo":"conteudo","titulo":"Antes de registrar","texto":"Confirme data, categoria, valor, comprovante e responsável. Nunca lance números inventados no caixa real para treinar. Dúvida sobre classificação deve ser esclarecida antes do registro."},{"tipo":"conteudo","titulo":"Exemplo resolvido: resultado estimado","texto":"Receita de R$ 700 menos R$ 100 de materiais e R$ 350 de outros custos e despesas resulta em R$ 250, desde que não existam outros itens a deduzir na hipótese."},{"tipo":"conteudo","titulo":"Responsabilidade significa verificar","texto":"Não saber algo faz parte do aprendizado. O procedimento correto é perguntar, pesquisar e confirmar antes de uma ação que possa gerar prejuízo. Erros identificados devem ser comunicados, não escondidos."},{"tipo":"multipla_escolha","competencia":"responsabilidade","pergunta":"Uma venda de R$ 700 gerou R$ 100 de custos de materiais e R$ 350 de outros custos e despesas. Qual resultado ilustrativo?","opcoes":["R$ 700","R$ 600","R$ 250"],"correta":2,"feedbackCerto":"700 - 100 - 350 = R$ 250, antes de qualquer item adicional não incluído na hipótese.","feedbackErrado":"A resposta não corresponde ao procedimento demonstrado nesta aula. Volte ao exemplo resolvido e compare as condições do enunciado."},{"tipo":"texto_livre","pergunta":"Calcule a receita de 12 miniaturas a R$ 55 e explique por que esse valor não basta para conhecer o lucro.","pontosEsperados":["12 × 55 = R$ 660 de receita.","Faltam materiais, trabalho, embalagem, taxas, tributos e demais custos/despesas pertinentes.","Resultado estimado é receita menos os custos e despesas considerados; explicitar lacunas."]},{"tipo":"checklist","titulo":"Autoavaliação — não substitui correção por instrutor","itens":["Li as orientações da aula","Registrei minha resposta fictícia e comparei com os critérios apresentados","Se surgiu uma dúvida, identifiquei o que preciso confirmar com o responsável"]}]},{"dia":6,"titulo":"Visão integrada, vendas digitais e antecipação","subtitulo":"Preparar decisões com dados confiáveis","etapas":[{"tipo":"conteudo","titulo":"Objetivo da aula","texto":"Antecipar riscos de uma venda e justificar uma decisão com custos, prazo e informações a confirmar. A administração é o foco; o sistema serve como apoio. Use somente situações fictícias e não altere dados reais."},{"tipo":"conteudo","titulo":"Marketplace não é só vitrine","texto":"Antes de cadastrar um produto na Shopee, Mercado Livre ou Elo7, avalie comissão vigente, frete, embalagem, tributos, devoluções, prazo e margem. Taxas mudam: confira sempre as regras atuais da plataforma."},{"tipo":"conteudo","titulo":"Olhar para frente","texto":"Uma gestora deve observar pedidos a vencer, estoques críticos, atrasos, pagamentos pendentes e etapas congestionadas. Identifique o risco antes que se torne prejuízo."},{"tipo":"conteudo","titulo":"Exemplo resolvido: revisão de anúncio","texto":"Antes de anunciar uma miniatura, a gestora consulta a tabela vigente de tarifas da plataforma, calcula o custo total por pedido e verifica se o preço cobre os custos e a margem pretendida."},{"tipo":"conteudo","titulo":"Fechamento do ciclo","texto":"Comunique o problema de modo objetivo, apresente opções, combine a decisão, execute o autorizado, acompanhe e registre o resultado."},{"tipo":"multipla_escolha","competencia":"antecipacao","pergunta":"A comissão de uma plataforma mudou. O que fazer antes de anunciar?","opcoes":["Usar a taxa do anúncio anterior se o produto for semelhante","Verificar a taxa atual, recalcular margem e alinhar o preço","Manter o preço anterior e revisar somente após a primeira venda"],"correta":1,"feedbackCerto":"Decisões comerciais exigem dados atuais e cálculo antes do compromisso.","feedbackErrado":"A resposta não corresponde ao procedimento demonstrado nesta aula. Volte ao exemplo resolvido e compare as condições do enunciado."},{"tipo":"texto_livre","pergunta":"Planeje no papel um anúncio fictício de miniatura. Registre preço hipotético, custos conhecidos, custos a confirmar e a decisão necessária antes de publicar.","pontosEsperados":["Identificar produto e preço como hipóteses.","Considerar material, embalagem, frete, taxas vigentes, tributos e devoluções.","Verificar prazo e capacidade; alinhar preço e aprovação antes de publicar."]},{"tipo":"checklist","titulo":"Autoavaliação — não substitui correção por instrutor","itens":["Li as orientações da aula","Registrei minha resposta fictícia e comparei com os critérios apresentados","Se surgiu uma dúvida, identifiquei o que preciso confirmar com o responsável"]}]}]};
