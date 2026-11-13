@@ -3282,6 +3282,20 @@ function bvProx(d) { BV.i = Math.max(0, Math.min(BV.aula.etapas.length - 1, BV.i
 function bvCapacitacao() { BV.ativo = false; abrirTreinamento(); }
 
 
+/* Botão de ajuda dentro de cada tarefa (v186): abre o mesmo passo a passo da tela de boas-vindas */
+var _bvRDB = renderDetalheBase;
+renderDetalheBase = function() { _bvRDB(); try { bvBotaoTarefa(); } catch (eH) {} };
+function bvBotaoTarefa() {
+  var ot = S.ot, cont = document.getElementById('cont');
+  if (!ot || !cont || ot.status === 'concluida' || ot.status === 'cancelada') { return; }
+  if (!bvAula(codTipo()) || document.getElementById('bvBtnAjuda')) { return; }
+  var b = document.createElement('div'); b.id = 'bvBtnAjuda';
+  b.innerHTML = '<button class="btn btn-ref" style="font-size:1.25rem;padding-top:18px;padding-bottom:18px;margin-bottom:10px" onclick="bvAjudaTarefa()">💡 Ajuda: como fazer esta tarefa</button>';
+  var acoes = cont.querySelector('.acoes');
+  if (acoes) { cont.insertBefore(b, acoes); } else { cont.appendChild(b); }
+}
+function bvAjudaTarefa() { BV.ot = S.ot; BV.aula = bvAula(codTipo()); BV.ativo = true; bvAjuda(); }
+
 </script>
 <script src="etiquetas.js"></script>
 <script src="treino-conteudo-es5.js"></script>
