@@ -1863,10 +1863,11 @@ function goNorm(s) {
   return String(s || '').toLowerCase().replace(/[^\u0000-\u007f]/g, function(ch) { return m[ch] || ch; }).replace(/^\s+|\s+$/g, '');
 }
 function guardarOndeAposFechar(ot, codigo, qtdBoa) {
-  if (!ot || !(qtdBoa > 0) || (codigo !== 'impressao' && codigo !== 'pintura')) { return; }
+  if (ot && codigo === 'cura') { guardarAposCura(ot); return; }
+  if (!ot || !(qtdBoa > 0) || (codigo !== 'impressao' && codigo !== 'pintura' && codigo !== 'cura_item')) { return; }
   var pecaId = (S.peca && S.peca.id) || ot.peca_id;
   if (!pecaId && !ot.componente_id) { return; }
-  var ehPint = codigo === 'pintura';
+  var ehPint = codigo === 'pintura', ehCura = codigo === 'cura_item', ehImp = codigo === 'impressao';
   var qs = ot.componente_id ? 'id=eq.' + ot.componente_id + '&select=id,nome,peca_id' : 'peca_id=eq.' + pecaId + '&select=id,nome,peca_id&order=created_at';
   sbGet('peca_componentes', qs, function(e1, comps) {
     if (e1 || !comps || !comps.length) { toast('Componente não identificado: guarde na prateleira e avise o supervisor.', true); return; }
@@ -1901,6 +1902,7 @@ function guardarOndeAposFechar(ot, codigo, qtdBoa) {
                 else if (irm[inv[k].entity_id]) { b.irmao = true; }
               }
             }
+            if (ehImp) { guardarNaMesa(comp, qtdBoa, mesaId, brut, inv); return; }
             var lista = [];
             for (k = 0; k < ends.length; k++) {
               var e = porEnd[ends[k].id];
@@ -1910,7 +1912,7 @@ function guardarOndeAposFechar(ot, codigo, qtdBoa) {
               lista.push({ id: ends[k].id, codigo: ends[k].codigo, score: score, why: why, n: e.nItens });
             }
             lista.sort(function(a, b2) { return a.score !== b2.score ? a.score - b2.score : (a.codigo < b2.codigo ? -1 : 1); });
-            GO = { ot: ot, comp: comp, qtd: qtdBoa, ehPint: ehPint, etapa: etapaAlvo, brut: brut, mesaId: mesaId, lista: lista, sel: lista.length ? lista[0].id : null, inv: inv, codPorId: {} };
+            GO = { ot: ot, comp: comp, qtd: qtdBoa, ehPint: ehPint, ehCura: ehCura, etapa: etapaAlvo, brut: brut, mesaId: mesaId, lista: lista, sel: lista.length ? lista[0].id : null, inv: inv, codPorId: {} };
             for (k = 0; k < ends.length; k++) { GO.codPorId[ends[k].id] = ends[k].codigo; }
             if (!lista.length) { toast('Nenhum endereço G1 cadastrado. Rode o SQL da grade.', true); return; }
             abrirGuardarOnde();
@@ -1920,9 +1922,34 @@ function guardarOndeAposFechar(ot, codigo, qtdBoa) {
     });
   });
 }
+/* impressão concluída: as peças ainda vão para lavagem e cura, então ficam na Mesa de separação, sem perguntar nada */
+function guardarNaMesa(comp, qtd, mesaId, brut, inv) {
+  if (!mesaId) { toast('Mesa de separação não cadastrada: deixe as peças na bancada e avise o supervisor.', true); return; }
+  var resp = S.colaborador ? S.colaborador.nome : null, ex = null, i;
+  for (i = 0; i < inv.length; i++) { if (inv[i].endereco_id === mesaId && inv[i].entity_type === 'componente' && inv[i].entity_id === comp.id && (inv[i].etapa_id || null) === (brut || null)) { ex = inv[i]; } }
+  var fim = function(err) {
+    if (err) { toast('Erro ao registrar na mesa: ' + err.message, true); return; }
+    sbPost('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: comp.id, endereco_origem_id: null, endereco_destino_id: mesaId, quantidade: qtd,
+      etapa_origem_id: null, etapa_destino_id: brut || null, motivo: 'entrada_producao', responsavel: resp, observacao: 'Impresso, aguardando lavagem e cura (terminal)' }, function() {});
+    toast('Peças na Mesa de separação até a cura. 📦');
+  };
+  if (ex) { sbPatch('inventario_fisico', 'id=eq.' + ex.id, { quantidade: (parseFloat(ex.quantidade) || 0) + qtd }, fim); }
+  else { sbPost('inventario_fisico', { id: uuidT(), endereco_id: mesaId, entity_type: 'componente', entity_id: comp.id, quantidade: qtd, etapa_id: brut || null }, fim); }
+}
+/* cura concluída: pergunta a prateleira de cada componente impresso desse pedido (um de cada vez; dá para "Guardar depois") */
+function guardarAposCura(ot) {
+  if (!ot || !ot.plano_id) { return; }
+  sbGet('ordens_trabalho', 'plano_id=eq.' + ot.plano_id + '&titulo=like.' + encodeURIComponent('Imprimir*') + '&select=id,titulo,componente_id,peca_id,quantidade_concluida', function(e, l) {
+    if (e || !l) { return; }
+    var fila = [], i;
+    for (i = 0; i < l.length; i++) { if (l[i].componente_id && (l[i].quantidade_concluida || 0) > 0) { fila.push({ ot: { id: l[i].id, titulo: l[i].titulo, componente_id: l[i].componente_id, peca_id: l[i].peca_id }, boa: l[i].quantidade_concluida, cod: 'cura_item' }); } }
+    if (!fila.length) { return; }
+    BDJ.fila = fila; setTimeout(bdjProxGuardar, 600);
+  });
+}
 function abrirGuardarOnde() {
   var g = GO, h = '', i, o;
-  h += '<div style="font-size:1.05rem;color:#f1f5f9;margin-bottom:4px"><b>' + g.qtd + ' un.</b> · ' + esc(String(g.comp.nome || '').replace(/\s+$/, '')) + ' <span style="color:#94a3b8;font-size:.8rem">(' + (g.ehPint ? 'pintado' : 'sem pintura') + ')</span></div>';
+  h += '<div style="font-size:1.05rem;color:#f1f5f9;margin-bottom:4px"><b>' + g.qtd + ' un.</b> · ' + esc(String(g.comp.nome || '').replace(/\s+$/, '')) + ' <span style="color:#94a3b8;font-size:.8rem">(' + (g.ehPint ? 'pintado' : (g.ehCura ? 'curado, pronto para pintar' : 'sem pintura')) + ')</span></div>';
   h += '<div style="' + JF_LBL + '">GUARDE EM</div><div id="go-op">';
   for (i = 0; i < g.lista.length && i < 4; i++) {
     o = g.lista[i];
@@ -1930,7 +1957,7 @@ function abrirGuardarOnde() {
   }
   h += '</div><div style="' + JF_LBL + '">OU OUTRO ENDEREÇO</div><select id="go-sel" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;font-size:1rem"><option value="">— escolher —</option>';
   for (i = 0; i < g.lista.length; i++) { h += '<option value="' + g.lista[i].id + '">' + esc(g.lista[i].codigo) + ' (' + (g.lista[i].n ? g.lista[i].n + ' item(ns)' : 'vazia') + ')</option>'; }
-  h += '</select><div style="font-size:.72rem;color:#64748b;margin-top:8px">' + (g.ehPint ? 'Ao guardar, as peças sem pintura desta tarefa saem do estoque bruto.' : 'Cole a etiqueta da caixa se ainda não tiver.') + '</div>';
+  h += '</select><div style="font-size:.72rem;color:#64748b;margin-top:8px">' + (g.ehPint ? 'Ao guardar, as peças sem pintura desta tarefa saem do estoque bruto.' : (g.ehCura ? 'Ao guardar, as peças saem da Mesa de separação e vão para a prateleira. Não sabe onde? Toque em Guardar depois.' : 'Cole a etiqueta da caixa se ainda não tiver.')) + '</div>';
   janelaFim('GUARDAR ONDE?', esc(g.ot.titulo || ''), h, 'Guardar aqui', guardarOndeConfirmar);
   document.getElementById('jf-cancel').innerHTML = 'Guardar depois';
   var its = document.querySelectorAll('.go-it'), j;
@@ -1954,7 +1981,7 @@ function guardarOndeConfirmar() {
     var fim = function(err) {
       if (err) { toast('Erro: ' + err.message, true); if (ok) { ok.disabled = false; } return; }
       sbPostSeguro('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: null, endereco_destino_id: dest, quantidade: g.qtd,
-        etapa_origem_id: null, etapa_destino_id: g.etapa || null, motivo: 'entrada_producao', responsavel: resp, observacao: 'Guardado ao concluir ' + (g.ehPint ? 'pintura' : 'impressão') + ' (terminal)' });
+        etapa_origem_id: null, etapa_destino_id: g.etapa || null, motivo: 'entrada_producao', responsavel: resp, observacao: 'Guardado ao concluir ' + (g.ehPint ? 'pintura' : (g.ehCura ? 'cura' : 'impressão')) + ' (terminal)' });
       fecharJanelaFim();
       toast('Guardado em ' + (g.codPorId[dest] || '?') + ' ✅');
       GO = null;
@@ -1962,7 +1989,7 @@ function guardarOndeConfirmar() {
     if (existente) { sbPatch('inventario_fisico', 'id=eq.' + existente.id, { quantidade: (parseFloat(existente.quantidade) || 0) + g.qtd }, fim); }
     else { sbPost('inventario_fisico', { id: uuidT(), endereco_id: dest, entity_type: 'componente', entity_id: g.comp.id, quantidade: g.qtd, etapa_id: g.etapa || null }, fim); }
   };
-  if (!g.ehPint || !g.brut) { guardar(); return; }
+  if (!(g.ehPint || g.ehCura) || !g.brut) { guardar(); return; }
   /* pintura: baixa o mesmo tanto do estoque "sem pintura" (mesa primeiro, depois prateleira) */
   var rows = [], k;
   for (k = 0; k < g.inv.length; k++) { if (g.inv[k].entity_type === 'componente' && g.inv[k].entity_id === g.comp.id && g.inv[k].etapa_id === g.brut) { rows.push(g.inv[k]); } }
@@ -1978,7 +2005,7 @@ function guardarOndeConfirmar() {
     sbPatch('inventario_fisico', 'id=eq.' + p.row.id, { quantidade: resta < 0 ? 0 : resta }, function(err) {
       if (err) { toast('Erro: ' + err.message, true); if (ok) { ok.disabled = false; } return; }
       sbPostSeguro('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: p.row.endereco_id, endereco_destino_id: null, quantidade: p.t,
-        etapa_origem_id: g.brut, etapa_destino_id: null, motivo: 'consumo_pintura', responsavel: resp, observacao: 'Consumido na pintura (terminal)' });
+        etapa_origem_id: g.brut, etapa_destino_id: null, motivo: 'consumo_pintura', responsavel: resp, observacao: (g.ehCura ? 'Retirado da mesa ao guardar peça curada (terminal)' : 'Consumido na pintura (terminal)') });
       proximo(ix + 1);
     });
   };
@@ -2623,7 +2650,7 @@ fecharJanelaFim = function() { _bdjFJ(); if (BDJ.fila.length) { setTimeout(bdjPr
 function bdjProxGuardar() {
   var it = BDJ.fila.shift();
   if (!it) { return; }
-  try { guardarOndeAposFechar(it.ot, 'impressao', it.boa); } catch (eG) {}
+  try { guardarOndeAposFechar(it.ot, it.cod || 'impressao', it.boa); } catch (eG) {}
 }
 
 function bdjPos() {
@@ -2830,7 +2857,7 @@ function bdjConcluir() {
         x = itens[j];
         try { liberarBloqueadas(ots[j].id); } catch (eL) {}
         sbPostSeguro('ot_eventos', { ot_id: ots[j].id, tipo: 'concluida', descricao: 'Fechamento em bandeja ' + (b.codigo || '') + ' · Boas: ' + x.boa + ' · Perdas: ' + x.perdida + ' (terminal)', estacao_id: null, motivo: null });
-        if (x.boa > 0 && (ots[j].componente_id || ots[j].id === atual)) { BDJ.fila.push({ ot: { id: ots[j].id, titulo: ots[j].titulo, componente_id: ots[j].componente_id, peca_id: ots[j].peca_id }, boa: x.boa }); }
+        if (x.boa > 0 && (ots[j].componente_id || ots[j].id === atual)) { try { guardarOndeAposFechar({ id: ots[j].id, titulo: ots[j].titulo, componente_id: ots[j].componente_id, peca_id: ots[j].peca_id }, 'impressao', x.boa); } catch (eG2) {} }
       }
       var fila0 = BDJ.fila.length;
       var guardar = BDJ.fila;
