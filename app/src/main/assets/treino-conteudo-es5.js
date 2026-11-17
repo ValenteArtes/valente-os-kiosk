@@ -100,6 +100,12 @@
 // miniatura de resina (colecionável, não brinquedo) e redação de empenho revisada.
 // Estrutura e gabaritos das questões originais preservados. Todas as trilhas subiram de versao
 // (o progresso anterior fica guardado e o colaborador recomeça).
+//
+// v186 — TEXTOS REESCRITOS em linguagem simples (frases curtas, "tarefa" no lugar de "OT"),
+// respostas escritas (texto_livre) trocadas por múltipla escolha ou ordenar, orientação sobre
+// miniatura de resina (colecionável, não brinquedo) e redação de empenho revisada.
+// Estrutura e gabaritos das questões originais preservados. Todas as trilhas subiram de versao
+// (o progresso anterior fica guardado e o colaborador recomeça).
 
 var TREINAMENTO_TRILHAS = {
   "integracao": {
@@ -176,9 +182,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "visao_processo",
             "pergunta": "Você recebeu uma tarefa. Você não sabe o que a empresa prometeu ao cliente nesse trabalho. O que você faz?",
             "opcoes": [
-              "Faço do jeito mais comum, que quase sempre dá certo.",
-              "Começo logo e pergunto depois, se aparecer algum problema.",
-              "Procuro no Valente OS ou na ficha do pedido. Se a dúvida continuar, pergunto ao responsável."
+              "Faço do jeito mais comum, que costuma dar certo nas outras tarefas parecidas.",
+              "Começo logo e pergunto depois, se aparecer algum problema no meio.",
+              "Procuro no Valente OS ou na ficha do pedido. Se não achar, pergunto."
             ],
             "correta": 2,
             "feedbackCerto": "Isso mesmo. Primeiro você procura a informação. Se não achar, pergunta ao responsável. Não saber não é erro.",
@@ -290,22 +296,22 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "Palpite não é informação. Ele pode levar o colega a decidir errado. É melhor dizer que não sabe do que supor."
               },
               {
-                "label": "Abro a aba Pedidos, procuro o cartão da Marina e digo a etapa que aparece.",
+                "label": "Abro a aba Pedidos, acho o cartão da Marina e digo a etapa que vejo.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Isso. O sistema é o primeiro lugar para olhar. Você responde com uma informação conferida."
               },
               {
-                "label": "Peço para ele perguntar ao líder, que deve saber.",
+                "label": "Peço para ele perguntar ao líder do setor, porque o líder deve saber.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Você tem acesso à informação. Interromper o líder sem olhar antes dá trabalho sem necessidade."
               },
               {
-                "label": "Digo que pedidos assim sempre estão em Imprimindo.",
+                "label": "Digo que pedidos assim costumam ficar em Imprimindo nessa fase.",
                 "correta": false,
                 "erroCritico": true,
-                "feedback": "Dizer que é sempre assim é inventar. Cada pedido anda do seu jeito."
+                "feedback": "Dizer o que costuma ser é inventar. Cada pedido anda do seu jeito."
               }
             ]
           },
@@ -441,10 +447,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "informacao_completa",
             "pergunta": "Na tarefa de uma peça, o campo de quantidade está em branco. O que você faz?",
             "opcoes": [
-              "Imprimo uma unidade, que é o mais comum",
-              "Procuro a informação no pedido do Valente OS e, se não achar, pergunto ao responsável",
-              "Pergunto a um colega que deve lembrar",
-              "Imprimo várias para não faltar e guardo o que sobrar"
+              "Imprimo uma unidade, que é a quantidade mais comum nos pedidos",
+              "Olho no pedido do Valente OS e, se faltar, pergunto ao responsável",
+              "Pergunto a um colega de outro setor que deve lembrar da quantidade",
+              "Imprimo várias para não faltar e guardo o que sobrar no estoque"
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Primeiro a fonte oficial, depois o responsável. Nada de adivinhar.",
@@ -464,10 +470,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "informacao_completa",
             "pergunta": "Você recebeu a tarefa: 'Fazer a miniatura do João.' Ela não diz modelo, tamanho, quantidade nem versão. O que você faz antes de começar?",
             "opcoes": [
-              "Uso o modelo e o tamanho mais pedidos e começo",
+              "Uso o modelo e o tamanho mais pedidos pelos clientes e começo",
               "Começo o trabalho e acerto os dados depois, se alguém reclamar",
-              "Pergunto a um colega e sigo o que ele lembrar",
-              "Procuro os dados no pedido do Valente OS ou na ficha e, se não achar, pergunto ao responsável"
+              "Pergunto a um colega e sigo o que ele lembrar do pedido do João",
+              "Procuro no pedido ou na ficha e, se não achar, pergunto ao responsável"
             ],
             "correta": 3,
             "feedbackCerto": "Isso mesmo. Você viu o que faltava, procurou na fonte e não começou com palpite.",
@@ -513,10 +519,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "responsabilidade",
             "pergunta": "Na pasta há dois arquivos: 'dragao_v2.stl' e 'dragao_v2_final.stl'. A tarefa só diz 'imprimir o dragão'. Qual é o melhor passo?",
             "opcoes": [
-              "Usar o mais novo, porque 'final' deve ser o certo",
-              "Imprimir os dois, para ter certeza de que um deles serve",
-              "Conferir no pedido ou na tarefa qual versão vale e, se não estiver claro, perguntar ao responsável",
-              "Usar o que tem o nome mais curto"
+              "Usar o arquivo mais novo, porque 'final' no nome deve ser o certo",
+              "Imprimir os dois, para ter certeza de que um deles serve e ver qual fica melhor",
+              "Ver no pedido qual versão vale e, na dúvida, perguntar ao responsável",
+              "Usar o primeiro da lista, que deve ser o arquivo original"
             ],
             "correta": 2,
             "feedbackCerto": "Certo. O pedido diz qual arquivo usar. Nome parecido não prova qual é a versão.",
@@ -524,7 +530,7 @@ var TREINAMENTO_TRILHAS = {
               "'Final' no nome não prova que é a versão aprovada.",
               "Imprimir os dois gasta material e tempo. E a dúvida sobre qual enviar continua.",
               null,
-              "O tamanho do nome não tem nada a ver com a versão certa."
+              "A posição na lista não diz qual é a versão certa."
             ],
             "erroCriticoOpcoes": [
               0,
@@ -583,7 +589,7 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "responsabilidade",
             "pergunta": "Você embalou o pedido e vai fechar a tarefa de expedição. Qual é o caminho certo no sistema?",
             "opcoes": [
-              "Marcar como enviado, informando a forma de envio, o código de rastreio e se o saldo está quitado ou combinado",
+              "Marcar como enviado, com forma de envio, rastreio e saldo quitado ou combinado",
               "Concluir a tarefa de expedição e avisar o cliente por mensagem, sem registrar o rastreio",
               "Deixar a tarefa aberta até o cliente confirmar que recebeu",
               "Mover o cartão para Enviado e deixar a tarefa de expedição para outra pessoa fechar"
@@ -612,7 +618,7 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "Entregar sem registrar deixa o sistema dizendo uma coisa diferente do que aconteceu."
               },
               {
-                "label": "Vou conferir a peça, identificar, concluir a tarefa no sistema e avisar você se houver alguma observação.",
+                "label": "Vou conferir a peça, identificar e concluir a tarefa no sistema agora.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Isso. Conferir, registrar e entregar a peça identificada é o que fecha a sua responsabilidade."
@@ -679,9 +685,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "seguranca_produto",
             "pergunta": "Uma pessoa pede uma miniatura de resina para uma criança brincar. Qual é a atitude certa?",
             "opcoes": [
-              "Explicar que a linha atual é de coleção, não serve para esse uso, e avisar o responsável.",
-              "Prometer que a resina não quebra.",
-              "Entregar sem perguntar para que a peça vai ser usada."
+              "Explicar que a linha atual é de coleção e avisar o responsável.",
+              "Dizer que a resina é resistente e que a criança pode brincar.",
+              "Entregar a miniatura sem perguntar para que a peça vai ser usada."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. A segurança vem antes da venda.",
@@ -715,25 +721,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: 'Estou com pressa. Vou lavar essa peça de resina sem luva, é rapidinho. Você vigia a porta?'",
             "opcoes": [
               {
-                "label": "Vigio, mas só desta vez.",
+                "label": "Vigio a porta, mas só desta vez, já que você está com pressa.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Deixar a segurança de lado para ganhar tempo é um erro grave. Resina na pele pode causar irritação."
               },
               {
-                "label": "Lembro que precisa de luva e ventilação, e ofereço ajuda para pegar o EPI.",
+                "label": "Lembro que precisa de luva e ventilação e ofereço pegar o EPI.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Isso. Segurança não se negocia. E você ajuda sem cobrar nem fazer piada."
               },
               {
-                "label": "Não é problema meu, cada um cuida de si.",
+                "label": "Não é problema meu, cada um cuida da própria segurança.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "A segurança é responsabilidade de todos. Avisar é a atitude certa."
               },
               {
-                "label": "Digo que, se for rápido mesmo, tudo bem.",
+                "label": "Digo que, se for rápido mesmo, tudo bem lavar sem luva.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Ser rápido não tira o risco. Tocar na resina é perigoso, mesmo por pouco tempo."
@@ -774,9 +780,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Na pintura, você vê uma trinca na base de uma peça. A tinta cobriria bem. Qual é a atitude certa?",
             "opcoes": [
               "Pintar normalmente, porque a trinca fica escondida e o cliente não vai ver",
-              "Pintar e avisar só se o cliente reclamar",
+              "Pintar a peça e avisar só se o cliente reclamar depois",
               "Consertar a trinca sozinho com o que tiver à mão e seguir",
-              "Separar a peça, registrar ou comunicar o defeito e esperar a decisão do responsável"
+              "Separar a peça, comunicar o defeito e esperar a decisão do responsável"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Defeito na estrutura não se esconde. Separar e comunicar permite a decisão certa.",
@@ -834,14 +840,14 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "A peça está separada. Agora você precisa avisar o responsável. Como você avisa?",
                 "opcoes": [
                   {
-                    "label": "Digo só que a peça veio com problema.",
+                    "label": "Aviso só que a peça veio com problema, sem dar mais detalhes.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Falta informação. Sem saber qual é o defeito, o responsável não consegue decidir.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Conto qual é o defeito, o pedido e a etapa de onde a peça veio, sem culpar ninguém.",
+                    "label": "Conto qual é o defeito, o pedido e a etapa de onde a peça veio.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Informação clara permite uma decisão rápida.",
@@ -855,7 +861,7 @@ var TREINAMENTO_TRILHAS = {
                     "proximo": "c"
                   },
                   {
-                    "label": "Espero alguém perguntar sobre a peça.",
+                    "label": "Espero o responsável passar e perguntar sobre a peça.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Esperar deixa o pedido parado e o cartão atrasado.",
@@ -867,13 +873,13 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "O responsável ainda não respondeu. A pessoa da pintura pergunta se pode começar essa peça.",
                 "opcoes": [
                   {
-                    "label": "Digo que pode começar, para ganhar tempo.",
+                    "label": "Digo que pode começar, para ganhar tempo e não atrasar o pedido.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Avançar um trabalho com defeito sem decisão é um erro grave."
                   },
                   {
-                    "label": "Digo que a peça está separada, esperando a decisão do responsável, e que ainda não deve ser pintada.",
+                    "label": "Digo que a peça está separada e que ainda não deve ser pintada.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Isso. A peça só avança depois da decisão com autorização."
@@ -940,28 +946,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Pedido de exemplo: a Bia pediu uma miniatura personalizada do cachorro dela, a partir de fotos. Falta definir o tamanho e a quantidade. O cartão está em Negociação. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Escolho um tamanho comum e deixo anotado para adiantar.",
+                    "label": "Escolho um tamanho comum e deixo anotado no pedido para adiantar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Escolher o tamanho sem confirmar é inventar. O pedido fica errado desde o começo.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Confirmo o tamanho e a quantidade com a cliente e registro no pedido.",
+                    "label": "Confirmo o tamanho e a quantidade com a cliente e registro.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Isso. Informação certa no começo evita refazer o trabalho depois.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Movo o cartão para Pago para adiantar o trabalho.",
+                    "label": "Movo o cartão para Pago, já que o cliente deve pagar logo.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Só se move o cartão depois do fato real. O pagamento não foi confirmado.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Deixo para quem for modelar perguntar depois.",
+                    "label": "Deixo para quem for modelar perguntar depois à cliente.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Isso empurra o problema. A próxima etapa vai trabalhar sem informação.",
@@ -973,7 +979,7 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Na Pós-impressão, a peça chega com marcas de suporte e uma pequena trinca em um ponto fino. O pedido segue para a pintura amanhã. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Passo tinta grossa por cima para esconder a trinca.",
+                    "label": "Passo uma tinta mais grossa por cima para esconder a trinca na peça.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Esconder defeito na estrutura da peça é um erro grave.",
@@ -987,14 +993,14 @@ var TREINAMENTO_TRILHAS = {
                     "proximo": "c"
                   },
                   {
-                    "label": "Mando direto para a pintura e deixo a pessoa de lá avaliar.",
+                    "label": "Mando direto para a pintura e deixo a pessoa de lá avaliar o defeito.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Isso passa o defeito para a próxima etapa sem tratar.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Jogo a peça fora sem avisar e peço outra.",
+                    "label": "Jogo a peça fora sem avisar e peço outra para refazer logo.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Você não tem autorização para decidir isso. E o problema fica sem registro.",
@@ -1006,25 +1012,25 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "A peça foi resolvida e pintada. Na etapa Preparar p/ envio, você confere e vai embalar. O que você faz antes de marcar como enviado?",
                 "opcoes": [
                   {
-                    "label": "Embalo e marco como enviado, porque a peça parece certa.",
+                    "label": "Embalo e marco como enviado, porque a peça parece estar certa.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Parecer certa não é o mesmo que conferir com o pedido."
                   },
                   {
-                    "label": "Confiro a peça com o pedido, embalo identificada e só uso Marcar como enviado, com o rastreio, quando ela for enviada de verdade.",
+                    "label": "Confiro com o pedido e só uso Marcar como enviado quando a peça sair.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Isso. O cartão acompanha o fato real, e a entrega sai conferida."
                   },
                   {
-                    "label": "Marco como enviado agora para o cliente ver que já está a caminho.",
+                    "label": "Marco como enviado agora, para o cliente ver que já está a caminho.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Dizer que foi enviado sem ter sido é dar uma informação falsa."
                   },
                   {
-                    "label": "Envio sem conferir, porque as etapas anteriores já conferiram.",
+                    "label": "Envio sem conferir, porque as etapas anteriores já conferiram tudo isso.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "A qualidade é de todos, mas cada etapa confere a sua parte."
@@ -1248,10 +1254,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "operacao_os",
             "pergunta": "O pedido aparece em \"Imprimindo\". O cliente pergunta: \"Já está sendo pintado?\"",
             "opcoes": [
-              "Sim, porque já está em produção.",
+              "Sim, a peça já está em produção, então a pintura deve ter começado.",
               "Não dá para afirmar. O sistema ainda mostra Imprimindo.",
-              "Sim, impressão e pintura são a mesma etapa.",
-              "Verificar o Caixa."
+              "Sim, impressão e pintura acontecem juntas no Kanban.",
+              "Olhar o Caixa para ver se o pedido já foi pago e responder."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Pintura é uma etapa que vem depois.",
@@ -1271,10 +1277,10 @@ var TREINAMENTO_TRILHAS = {
             ],
             "pergunta": "O pedido aparece em \"Pintura\". O cliente pergunta se pode retirar hoje. O que fazer?",
             "opcoes": [
-              "Confirmar a retirada na hora.",
-              "Verificar se as etapas necessárias terminaram e se está liberado.",
-              "Mover para Enviado.",
-              "Dizer que não, sem consultar."
+              "Confirmar a retirada na hora, porque a peça já está na Pintura.",
+              "Ver se as etapas que faltam terminaram e se está liberado.",
+              "Mover o cartão para Enviado para o cliente poder retirar.",
+              "Dizer que não pode retirar hoje, sem consultar o sistema."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Estar em Pintura não quer dizer que está pronto para retirada.",
@@ -1292,8 +1298,8 @@ var TREINAMENTO_TRILHAS = {
             "opcoes": [
               "O prazo que o cliente gostaria, mesmo sem confirmação.",
               "O prazo confirmado conforme o processo da empresa.",
-              "Qualquer data aproximada.",
-              "A data em que a conversa começou."
+              "Uma data aproximada, para não deixar o campo vazio.",
+              "A data em que a conversa com o cliente começou."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. O registro deve mostrar o que foi confirmado de verdade.",
@@ -1348,9 +1354,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "seguranca_produto",
             "pergunta": "Uma pessoa quer comprar uma miniatura de resina para uma criança brincar. O que você faz?",
             "opcoes": [
-              "Vendo e digo que basta ter cuidado.",
-              "Explico que a miniatura é colecionável, não é adequada para criança brincar, e não ofereço para esse uso.",
-              "Digo que qualquer peça impressa em 3D é brinquedo seguro."
+              "Vendo a miniatura e aviso que a criança precisa brincar com cuidado.",
+              "Explico que a miniatura é colecionável e não serve para criança brincar.",
+              "Digo que peça impressa em 3D é resistente e pode ser usada como brinquedo."
             ],
             "correta": 1,
             "feedbackCerto": "Isso mesmo. Confirme o uso e não venda a linha atual de resina como brinquedo.",
@@ -1366,10 +1372,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "produtos",
             "pergunta": "\"Quero esse modelo do catálogo, mas com outro nome na base.\" Que tipo de pedido é esse?",
             "opcoes": [
-              "Produto existente sem alteração",
-              "Produto personalizado",
-              "Projeto totalmente novo",
-              "Apenas impressão de STL"
+              "Produto existente, sem nenhuma alteração",
+              "Produto personalizado, com base que já existe",
+              "Projeto sob encomenda, feito do zero",
+              "Projeto com STL do próprio cliente"
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Já existe uma base, mas o cliente pediu uma mudança.",
@@ -1385,10 +1391,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "produtos",
             "pergunta": "\"Tenho STL e quero 80 unidades pintadas.\" O que o STL resolve e o que ainda falta analisar?",
             "opcoes": [
-              "Resolve tudo.",
-              "Resolve o arquivo 3D. Ainda falta analisar tamanho, quantidade, acabamento, prazo e as outras condições.",
-              "Só resolve o pagamento.",
-              "Significa que deve ser FDM."
+              "Resolve tudo. Com o arquivo pronto, já dá para fechar o pedido.",
+              "Resolve o arquivo 3D. Ainda falta ver tamanho, acabamento e prazo.",
+              "Só ajuda no pagamento, pois mostra quanto o cliente vai pagar.",
+              "Define que as 80 peças precisam ser feitas em FDM."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Arquivo pronto não resolve as outras questões da venda e da produção.",
@@ -1489,10 +1495,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "orcamento",
             "pergunta": "O cliente manda só uma fotografia e pede preço. Qual caminho você considera primeiro?",
             "opcoes": [
-              "Tratar a foto como STL.",
-              "O caminho de imagem, com avaliação ou modelagem quando for preciso.",
-              "Usar o preço de um produto parecido.",
-              "Perguntar somente a forma de pagamento."
+              "Usar o caminho Tenho STL, tratando a foto como arquivo 3D.",
+              "O caminho Só tenho imagem, com avaliação ou modelagem se precisar.",
+              "Usar o preço de um produto parecido que já foi vendido.",
+              "Perguntar primeiro a forma de pagamento e deixar o resto para depois."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Foto é referência visual, não é arquivo 3D pronto.",
@@ -1508,10 +1514,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "orcamento",
             "pergunta": "Por que não basta saber o custo do material para definir o preço?",
             "opcoes": [
-              "Porque material nunca entra no preço.",
-              "Porque existem outros custos e regras que também podem entrar na proposta.",
-              "Porque todo produto precisa ter o mesmo preço.",
-              "Porque o cliente escolhe o lucro."
+              "Porque o material não entra no preço, só a mão de obra e a margem.",
+              "Porque outros custos e regras também podem entrar na proposta.",
+              "Porque a Valente usa o mesmo preço para todo produto.",
+              "Porque o cliente escolhe o lucro da Valente na proposta."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Preço não é só o material mais um valor qualquer.",
@@ -1559,9 +1565,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "seguranca_produto",
             "pergunta": "O cliente diz: \"É para meu filho pequeno brincar\". Qual resposta é adequada?",
             "opcoes": [
-              "\"Pode levar, porque é feita em impressora 3D.\"",
-              "\"Eu prometo que não quebra.\"",
-              "\"Esta miniatura de resina é colecionável e não é adequada para criança brincar. Não posso oferecê-la para esse uso.\""
+              "\"Pode levar, a peça é impressa em 3D e aguenta brincadeira de criança sem problema.\"",
+              "\"Eu prometo que não quebra, pode deixar a criança brincar com ela.\"",
+              "\"É colecionável e não é adequada para criança brincar. Não posso oferecer para esse uso.\""
             ],
             "correta": 2,
             "feedbackCerto": "Certo. A resposta mostra o limite do produto sem prometer segurança que não foi comprovada.",
@@ -1608,10 +1614,10 @@ var TREINAMENTO_TRILHAS = {
             ],
             "pergunta": "Cliente: \"Quanto custa uma miniatura personalizada?\" Qual resposta começa melhor o atendimento?",
             "opcoes": [
-              "\"R$70.\"",
-              "\"Claro. Você já tem alguma referência, foto ou arquivo 3D do que gostaria de fazer?\"",
-              "\"Depende.\"",
-              "\"Me mande o pagamento primeiro.\""
+              "\"A personalizada sai por R$70. Posso já fechar para você?\"",
+              "\"Claro. Você tem alguma referência, foto ou arquivo 3D do que quer fazer?\"",
+              "\"Depende de cada pedido, não consigo dizer agora.\"",
+              "\"Me mande o pagamento primeiro. Quando cair, eu vejo o seu pedido com calma.\""
             ],
             "correta": 1,
             "feedbackCerto": "Certo. A resposta acolhe e já busca uma informação que define o caminho do orçamento.",
@@ -1631,10 +1637,10 @@ var TREINAMENTO_TRILHAS = {
             ],
             "pergunta": "Cliente: \"Tenho STL, quero 30 unidades de 8 cm pintadas para um evento daqui a 20 dias.\" Qual atitude é melhor?",
             "opcoes": [
-              "Repetir as seis perguntas de ouro desde o começo.",
-              "Aproveitar o que ele já disse, perguntar só o que falta e verificar orçamento e capacidade.",
-              "Dar desconto automático pela quantidade.",
-              "Prometer o prazo."
+              "Repetir as seis perguntas de ouro desde o começo, para não esquecer nenhuma informação.",
+              "Usar o que ele já disse, perguntar só o que falta e ver orçamento e capacidade.",
+              "Dar desconto automático pela quantidade, já que o pedido é grande.",
+              "Prometer os 20 dias que ele pediu para não perder a venda."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Bom atendimento aproveita o que o cliente já disse e evita interrogatório.",
@@ -1650,10 +1656,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "atendimento",
             "pergunta": "Cliente: \"Vi uma peça de vocês no Instagram e queria fazer uma parecida para minha filha.\" Qual é a melhor primeira resposta?",
             "opcoes": [
-              "\"Fazemos sim. Custa R$70 e fica pronta em 10 dias.\"",
-              "\"Depende da peça.\"",
-              "\"Que bom que gostou! Qual peça você viu? Pode me mandar a foto ou o link?\"",
-              "\"Só fazemos se você tiver o arquivo 3D.\""
+              "\"Fazemos sim. Uma peça parecida custa R$70 e fica pronta em uns 10 dias.\"",
+              "\"Depende da peça, não sei se dá para fazer uma parecida.\"",
+              "\"Que bom que gostou! Qual peça você viu? Pode mandar a foto ou o link?\"",
+              "\"Só fazemos se você já tiver o arquivo 3D da peça pronto.\""
             ],
             "correta": 2,
             "feedbackCerto": "Certo. A resposta acolhe, descobre qual é a peça e não inventa preço nem prazo.",
@@ -1704,24 +1710,24 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Sou da prefeitura. Já aprovamos o orçamento, pode começar a produzir. O número do empenho sai na semana que vem.",
             "opcoes": [
               {
-                "label": "Começar a produção e registrar o empenho depois.",
+                "label": "Começar a produção agora para ganhar tempo e registrar o número do empenho quando sair.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "O número do empenho precisa existir antes de iniciar o trabalho."
               },
               {
-                "label": "Registrar o pedido com forma de pagamento Empenho. Ele fica Aguardando empenho e a produção só começa quando o número for registrado.",
+                "label": "Registrar com forma de pagamento Empenho. Fica Aguardando empenho e a produção espera o número.",
                 "correta": true,
                 "feedback": "É assim que o sistema funciona. A tarefa Cobrar empenho volta a cada 7 dias para você acompanhar."
               },
               {
-                "label": "Registrar um número de empenho provisório para liberar.",
+                "label": "Registrar um número de empenho provisório para o pedido não ficar parado.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Inventar um número é registrar informação falsa."
               },
               {
-                "label": "Escolher Pix para o pedido não travar.",
+                "label": "Escolher Pix como forma de pagamento para o pedido não ficar travado esperando.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Registrar uma forma de pagamento diferente da combinada deixa o financeiro errado."
@@ -1742,10 +1748,10 @@ var TREINAMENTO_TRILHAS = {
             ],
             "pergunta": "O cliente diz \"pode fazer\", mas a condição de pagamento ainda não está confirmada. O que fazer?",
             "opcoes": [
-              "Marcar como Pago para adiantar.",
-              "Seguir a regra atual e confirmar o que falta antes de mostrar o pedido como pago.",
-              "Inventar 50% de entrada.",
-              "Enviar direto para impressão."
+              "Mover o pedido para Pago para adiantar o trabalho.",
+              "Seguir a regra atual e confirmar o pagamento antes de marcar Pago.",
+              "Registrar uma entrada de 50%, que parece ser o mais comum.",
+              "Enviar direto para impressão, o cliente já disse que pode fazer."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. O sistema deve mostrar fatos e regras confirmadas.",
@@ -1761,10 +1767,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "operacao_os",
             "pergunta": "Ao registrar o pedido, você nota que o prazo no WhatsApp era só um desejo do cliente e nunca foi confirmado. O que fazer?",
             "opcoes": [
-              "Registrar como prazo fechado.",
-              "Confirmar se dá para cumprir antes de registrar como compromisso.",
-              "Escolher uma data parecida.",
-              "Deixar a produção descobrir depois."
+              "Registrar como prazo fechado, já que o cliente falou no WhatsApp.",
+              "Confirmar se dá para cumprir antes de registrar o prazo.",
+              "Escolher uma data parecida com a que o cliente pediu.",
+              "Registrar o pedido e deixar a produção descobrir depois."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Desejo do cliente não é prazo confirmado.",
@@ -1814,9 +1820,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "seguranca_produto",
             "pergunta": "Qual informação deve aparecer em um anúncio de miniatura de resina da linha atual?",
             "opcoes": [
-              "Que é um brinquedo para qualquer idade.",
+              "Que é um brinquedo resistente, bom para crianças pequenas.",
               "Que é colecionável, frágil e não é para criança brincar.",
-              "Que não precisa de cuidados porque é de resina."
+              "Que não precisa de cuidado, porque resina é forte."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. O anúncio precisa deixar claro para que a peça serve e quais são os cuidados.",
@@ -1842,10 +1848,10 @@ var TREINAMENTO_TRILHAS = {
             ],
             "pergunta": "A foto está ótima, mas o preço do cadastro está diferente do material de divulgação antigo. O que fazer?",
             "opcoes": [
-              "Usar o menor preço.",
-              "Publicar e corrigir depois.",
-              "Confirmar qual informação está valendo antes de publicar.",
-              "Tirar o preço e inventar no atendimento."
+              "Usar o menor dos dois preços para vender mais.",
+              "Publicar do jeito que está e corrigir o preço depois.",
+              "Confirmar qual preço está valendo antes de publicar.",
+              "Tirar o preço do anúncio e inventar um valor no atendimento."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Quando duas fontes mostram dados diferentes, o Comercial confirma qual está valendo.",
@@ -1862,9 +1868,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Os dados do produto são: miniatura personalizada de pet, resina, 10 cm, pintura manual, prazo de 20 dias, preço R$85. Qual anúncio está certo?",
             "opcoes": [
               "Miniatura personalizada de pet em resina, 10 cm. Pintura manual. Prazo de 20 dias. R$85.",
-              "Miniatura de pet que não quebra, 10 cm. Entrega em 5 dias. R$85.",
-              "Brinquedo de pet em resina para crianças, 10 cm, pintura manual. R$85.",
-              "Miniatura de pet linda e personalizada. Preço a combinar."
+              "Miniatura de pet que não quebra, 10 cm, em resina. Entrega em 5 dias. R$85.",
+              "Brinquedo de pet em resina para crianças, 10 cm, pintura manual. Prazo de 20 dias. R$85.",
+              "Miniatura de pet linda e personalizada, 10 cm, pintura manual. Preço a combinar."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. O anúncio usa só os dados informados e mostra produto, tamanho, prazo e preço.",
@@ -1913,10 +1919,10 @@ var TREINAMENTO_TRILHAS = {
             ],
             "pergunta": "O preço na venda direta é R$70. Você pode copiar R$70 direto para qualquer marketplace?",
             "opcoes": [
-              "Sim.",
+              "Sim. O preço da peça é o mesmo em todo canal de venda.",
               "Não. É preciso considerar os custos atuais do canal.",
-              "Sim, se a peça for pequena.",
-              "Não, mas basta acrescentar 10%."
+              "Sim, se a peça for pequena, porque as taxas pesam menos.",
+              "Não, mas basta acrescentar 10% para cobrir as taxas."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Copiar o preço ou inventar uma porcentagem não substitui a ferramenta.",
@@ -1942,18 +1948,18 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "redes_sociais",
             "pergunta": "Qual contato o Comercial deve atender primeiro?",
             "opcoes": [
-              "❤️",
-              "\"Muito bonito!\"",
-              "\"Vocês fazem 30 unidades com a logo da minha empresa?\"",
-              "🔥"
+              "\"Amei! ❤️❤️❤️ Parabéns, ficou lindo demais!\"",
+              "\"Muito bonito! Parabéns pelo trabalho de vocês.\"",
+              "\"Vocês fazem 30 com a logo da minha empresa?\"",
+              "\"🔥🔥 Que peça incrível, vou mostrar para meus amigos!\""
             ],
             "correta": 2,
             "feedbackCerto": "Certo. A pessoa disse o que precisa, a quantidade e a personalização. Ela quer comprar.",
             "feedbackPorOpcao": [
-              "Reação é só sinal de atenção. Tente de novo.",
+              "Elogio com reação é só sinal de atenção. Tente de novo.",
               "Elogio não mostra o que a pessoa precisa. Tente de novo.",
               null,
-              "Reação não mostra nenhuma necessidade. Tente de novo."
+              "Elogio não mostra nenhuma necessidade. Tente de novo."
             ]
           },
           {
@@ -1996,23 +2002,23 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "O concorrente faz mais barato.",
             "opcoes": [
               {
-                "label": "\"O material dele é pior.\"",
+                "label": "\"O material dele deve ser pior, por isso o preço é menor. Não vale a pena.\"",
                 "correta": false,
                 "feedback": "Não fale mal do concorrente. Isso não melhora a sua proposta e pode nem ser verdade."
               },
               {
-                "label": "\"Então já baixo meu preço.\"",
+                "label": "\"Entendo. Então já baixo meu preço para fechar com você.\"",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Dar desconto automático para \"competir\", sem avaliar, está fora da sua autonomia."
               },
               {
-                "label": "\"Entendo. O que está incluído na proposta dele para compararmos corretamente?\"",
+                "label": "\"Entendo. O que está incluído na proposta dele, para comparar?\"",
                 "correta": true,
                 "feedback": "A resposta busca o motivo sem falar mal do concorrente e sem dar desconto automático."
               },
               {
-                "label": "\"Compre com ele.\"",
+                "label": "\"Se está mais barato, talvez seja melhor comprar com ele.\"",
                 "correta": false,
                 "feedback": "Essa resposta fecha a porta para uma venda que ainda pode acontecer."
               }
@@ -2038,10 +2044,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "negociacao",
             "pergunta": "Você falou com uma prefeitura 3 vezes e não teve resposta. O que o ritmo do sistema indica?",
             "opcoes": [
-              "Encerrar como \"Sem retorno do cliente\", como em qualquer cliente.",
-              "Marcar o pedido como perdido por achar caro.",
-              "Continuar com os intervalos maiores (até 6 tentativas) e registrar quem decide no órgão.",
-              "Ligar todos os dias até atender."
+              "Encerrar como \"Sem retorno do cliente\", como nos outros clientes.",
+              "Marcar o pedido como perdido, com o motivo \"achou caro\", e seguir para outro cliente.",
+              "Continuar com intervalos maiores, até 6 tentativas, e registrar quem decide.",
+              "Ligar para a prefeitura todos os dias até alguém atender."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Instituições têm ritmo próprio, com intervalos maiores. Registrar quem decide ajuda o próximo contato.",
@@ -2060,10 +2066,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "negociacao",
             "pergunta": "O cliente recebeu o orçamento há 3 dias e não respondeu. Qual é o melhor follow-up?",
             "opcoes": [
-              "\"O orçamento vence hoje. Feche agora ou perde o preço.\"",
-              "\"Olá! Passando para saber se ficou alguma dúvida sobre o orçamento. Posso ajudar em algo?\"",
-              "\"Como você não respondeu, baixei o preço.\"",
-              "\"Vai querer ou não?\""
+              "\"O orçamento vence hoje. Se não fechar agora, você perde esse preço.\"",
+              "\"Olá! Passando para ver se ficou alguma dúvida sobre o orçamento. Posso ajudar?\"",
+              "\"Como você não respondeu, já baixei o preço do orçamento para você fechar hoje.\"",
+              "\"Oi, vi que você ainda não respondeu. Vai querer ou não?\""
             ],
             "correta": 1,
             "feedbackCerto": "Certo. A mensagem lembra o orçamento, oferece ajuda e não pressiona.",
@@ -2079,10 +2085,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "prospeccao",
             "pergunta": "Você vai fazer o primeiro contato com uma escola. Qual é a melhor abordagem?",
             "opcoes": [
-              "\"Oi. Vocês querem comprar miniaturas?\"",
-              "\"Olá! Estamos com promoção só hoje. Fechem agora.\"",
-              "\"Olá! Segue nossa tabela de preços.\"",
-              "\"Olá! Sou da Valente Artes, estúdio de impressão 3D. Fazemos peças personalizadas que podem servir para os eventos da escola. Podemos conversar?\""
+              "\"Oi, tudo bem? Vocês querem comprar miniaturas para a escola? Temos várias opções e preços bons.\"",
+              "\"Olá! Estamos com promoção só hoje para escolas. Fechem agora e aproveitem o desconto antes que acabe.\"",
+              "\"Olá! Somos a Valente Artes. Segue a nossa tabela de preços das miniaturas, é só escolher o que quiser.\"",
+              "\"Olá! Sou da Valente Artes, estúdio de impressão 3D. Fazemos peças para eventos da escola. Vamos conversar?\""
             ],
             "correta": 3,
             "feedbackCerto": "Certo. A mensagem se apresenta, diz o motivo, mostra a utilidade e convida para conversar.",
@@ -2122,27 +2128,27 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Olá. Vi vocês no Instagram. Minha empresa fará um evento e precisamos de miniaturas personalizadas. Vocês fazem?",
                 "opcoes": [
                   {
-                    "label": "\"R$70 cada.\"",
+                    "label": "\"Cada miniatura personalizada sai por R$70. Posso já anotar o pedido da sua empresa?\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Você deu preço sem saber nada sobre o pedido. Isso é erro crítico.",
                     "proximo": "b"
                   },
                   {
-                    "label": "\"Fazemos trabalhos personalizados. Me conta um pouco mais: o que vocês imaginam e quantas unidades precisam?\"",
+                    "label": "\"Fazemos personalizados sim. Me conta: o que vocês imaginam e quantas unidades precisam?\"",
                     "correta": true,
                     "feedback": "Certo. Você usou o atendimento aprendido no Dia 5.",
                     "proximo": "b"
                   },
                   {
-                    "label": "\"Mande o pagamento.\"",
+                    "label": "\"Para começar, mande o pagamento. Depois a gente vê os detalhes da miniatura.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Pedir pagamento antes de entender o pedido é erro crítico.",
                     "proximo": "b"
                   },
                   {
-                    "label": "\"Só com STL.\"",
+                    "label": "\"Só trabalhamos com arquivo STL. Se vocês não tiverem, não dá para fazer.\"",
                     "correta": false,
                     "feedback": "Recusar de cara, sem perguntar, perde uma chance real de venda.",
                     "proximo": "b"
@@ -2153,27 +2159,27 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Seriam 100 miniaturas da nossa equipe. Tenho apenas algumas fotos. Pensamos em 10 cm, pintadas. O evento é daqui a 12 dias.",
                 "opcoes": [
                   {
-                    "label": "\"Já temos tudo e podemos prometer.\"",
+                    "label": "\"Já temos tudo para fazer e podemos prometer a entrega em 12 dias, pode ficar tranquilo com isso.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Prometer sem orçamento e sem verificar a capacidade é erro crítico.",
                     "proximo": "c"
                   },
                   {
-                    "label": "\"É um projeto a partir de fotos e pode precisar de modelagem. Quantidade, acabamento e prazo pedem orçamento e verificação de capacidade.\"",
+                    "label": "\"Pelas fotos, pode precisar de modelagem. Quantidade, acabamento e prazo pedem orçamento e capacidade.\"",
                     "correta": true,
                     "feedback": "Certo. A resposta junta os Dias 3 e 4.",
                     "proximo": "c"
                   },
                   {
-                    "label": "\"Foto é a mesma coisa que STL.\"",
+                    "label": "\"Foto é a mesma coisa que STL, então já dá para imprimir direto das fotos que você tem aí.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Foto não é arquivo 3D. Essa frase está errada.",
                     "proximo": "c"
                   },
                   {
-                    "label": "\"Basta multiplicar um preço unitário por 100.\"",
+                    "label": "\"Basta multiplicar o preço de uma miniatura por 100 e já temos o valor total do pedido.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Produzir muitas peças muda o custo de cada uma. Multiplicar direto é erro crítico.",
@@ -2185,26 +2191,26 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Se eu fizer 300, consegue melhorar o preço?",
                 "opcoes": [
                   {
-                    "label": "\"Sim, 20%.\"",
+                    "label": "\"Sim, para 300 unidades eu consigo dar 20% de desconto, pode fechar.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Prometer uma porcentagem de desconto sem consultar é erro crítico.",
                     "proximo": "d"
                   },
                   {
-                    "label": "\"Quantidade maior pode mudar a condição, mas preciso recalcular e consultar antes de confirmar.\"",
+                    "label": "\"Pode mudar a condição, mas preciso recalcular e consultar antes de confirmar.\"",
                     "correta": true,
                     "feedback": "Certo. Não promete desconto fora da autonomia.",
                     "proximo": "d"
                   },
                   {
-                    "label": "\"O preço nunca muda.\"",
+                    "label": "\"Não, o preço é o mesmo seja qual for a quantidade pedida.\"",
                     "correta": false,
                     "feedback": "Essa frase fecha uma negociação que talvez pudesse avançar.",
                     "proximo": "d"
                   },
                   {
-                    "label": "\"Faço metade.\"",
+                    "label": "\"Para 300 unidades eu faço pela metade do preço, fechado.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Prometer 50% de desconto sem nenhuma análise é erro crítico grave.",
@@ -2216,26 +2222,26 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Mas preciso em 5 dias.",
                 "opcoes": [
                   {
-                    "label": "\"Tranquilo.\"",
+                    "label": "\"Tranquilo, a gente entrega em 5 dias sem problema, pode ficar sossegado.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Prometer prazo sem verificar a capacidade é erro crítico.",
                     "proximo": "e"
                   },
                   {
-                    "label": "\"Vou verificar a capacidade de produção antes de confirmar se dá para cumprir esse prazo.\"",
+                    "label": "\"Vou ver a capacidade da produção antes de confirmar esse prazo.\"",
                     "correta": true,
                     "feedback": "Certo. O prazo precisa ser confirmado com a produção.",
                     "proximo": "e"
                   },
                   {
-                    "label": "\"Impossível.\"",
+                    "label": "\"Impossível. Em 5 dias não dá para fazer, nem adianta tentar.\"",
                     "correta": false,
                     "feedback": "Recusar sem verificar a capacidade pode perder uma venda possível.",
                     "proximo": "e"
                   },
                   {
-                    "label": "\"Se pagar hoje, eu prometo o prazo.\"",
+                    "label": "\"Se pagar hoje, eu prometo o prazo de 5 dias para você.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Prometer o prazo em troca de pagamento, sem verificar a capacidade, é erro crítico.",
@@ -2247,24 +2253,24 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Posso pagar metade agora?",
                 "opcoes": [
                   {
-                    "label": "\"Sim, sempre 50%.\"",
+                    "label": "\"Sim, 50% agora e o saldo na entrega. Esse é o padrão para todos os pedidos.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Afirmar uma regra fixa sem confirmar é erro crítico. Essa condição precisa ser consultada."
                   },
                   {
-                    "label": "\"Pode pagar 30%.\"",
+                    "label": "\"Pode pagar 30% agora e o resto depois, sem problema.\"",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Afirmar uma porcentagem sem confirmar a regra atual é erro crítico."
                   },
                   {
-                    "label": "\"Vou confirmar a condição que vale para o pedido e te explico entrada e saldo corretamente.\"",
+                    "label": "\"Vou confirmar a condição do pedido e te explico a entrada e o saldo.\"",
                     "correta": true,
                     "feedback": "Certo. Não inventa regra de pagamento."
                   },
                   {
-                    "label": "\"Só pagamento total.\"",
+                    "label": "\"Só aceitamos pagamento total, antes de começar o trabalho.\"",
                     "correta": false,
                     "feedback": "Essa frase pode nem ser verdade e fecha uma forma de pagamento sem necessidade."
                   }
@@ -2277,10 +2283,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "atendimento",
             "pergunta": "Depois dessa conversa, você monta o resumo do atendimento. Qual resumo está certo?",
             "opcoes": [
-              "Projeto com STL do cliente. 100 miniaturas de 10 cm, pintadas. Prazo pedido de 5 dias. Próximo passo: fazer o orçamento.",
-              "Projeto a partir de fotos, precisa de modelagem. 100 miniaturas de 10 cm, pintadas (perguntou sobre 300). Prazo pedido de 5 dias, a verificar. Pagamento a confirmar. Próximo passo: fazer o orçamento e verificar a capacidade.",
-              "Projeto a partir de fotos. 300 miniaturas de 10 cm, pintadas. Prazo de 5 dias confirmado. Entrada de 50%. Próximo passo: liberar a produção.",
-              "Empresa quer miniaturas personalizadas para um evento. Aguardar o cliente voltar a falar."
+              "Projeto com STL do cliente, sem modelagem. 100 miniaturas de 10 cm, pintadas (perguntou sobre 300). Prazo pedido de 5 dias, a verificar. Pagamento a confirmar. Próximo passo: fazer o orçamento.",
+              "Projeto a partir de fotos, precisa de modelagem. 100 miniaturas de 10 cm, pintadas (perguntou sobre 300). Prazo pedido de 5 dias, a verificar. Pagamento a confirmar. Próximo passo: orçamento e capacidade.",
+              "Projeto a partir de fotos, precisa de modelagem. 300 miniaturas de 10 cm, pintadas. Prazo de 5 dias confirmado. Entrada de 50% combinada. Próximo passo: liberar a produção agora.",
+              "Empresa quer miniaturas personalizadas para um evento em 12 dias e tem algumas fotos. Sem orçamento por enquanto. Aguardar o cliente voltar a falar."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. O resumo usa só o que o cliente disse, não inventa prazo nem condição e mostra o próximo passo.",
@@ -2304,15 +2310,15 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Qual opção liga cada ação à ferramenta certa?",
             "opcoes": [
               "Produto existente em Peças Próprias. Custo em Orçamento. Proposta ao cliente em Propostas. Pedido e status em Pedidos. Pagamento em Caixa. Contatos e aprovações em Tarefas.",
-              "Tudo em Caixa.",
-              "Tudo em Pedidos.",
-              "Produto em Orçamento. Pagamento em Peças Próprias."
+              "Produto existente em Pedidos. Custo em Caixa. Proposta ao cliente em Orçamento. Pedido e status em Peças Próprias. Pagamento em Tarefas. Contatos e aprovações em Propostas.",
+              "Tudo em Pedidos, porque o pedido junta produto, custo, proposta, pagamento e contatos.",
+              "Produto em Orçamento. Custo em Peças Próprias. Proposta em Caixa. Pagamento em Propostas."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. A missão fecha o que você começou a ver no Dia 1.",
             "feedbackPorOpcao": [
               null,
-              "Cada ferramenta serve para uma coisa. Não é tudo no mesmo lugar. Tente de novo.",
+              "Essas ligações estão trocadas. Reveja o Dia 1.",
               "Cada ferramenta serve para uma coisa. Não é tudo no mesmo lugar. Tente de novo.",
               "Essas ligações estão trocadas. Reveja o Dia 1."
             ]
@@ -2374,25 +2380,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega da produção: \"Ei, o cliente mandou um áudio. Ele quer o capacete maior. Já vai mexendo no arquivo que está na pasta. Depois a gente vê o pedido.\"",
             "opcoes": [
               {
-                "label": "Começo pelo arquivo da pasta. Confiro o pedido no final, quando terminar.",
+                "label": "Começo pelo arquivo da pasta, como o colega pediu. Confiro o pedido só no final, quando terminar.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Se o arquivo ou o pedido forem diferentes do que você pensa, você pode perder o trabalho todo."
               },
               {
-                "label": "Antes de mexer, abro o pedido e a tarefa no Valente OS. Confirmo o trabalho e a versão que vale. Registro no pedido o que o cliente pediu.",
+                "label": "Abro o pedido e a tarefa no Valente OS. Confirmo o trabalho e a versão que vale antes de mexer.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. O áudio é só um aviso. O briefing oficial e a versão do arquivo se confirmam na fonte."
               },
               {
-                "label": "Peço ao cliente outro arquivo novo e uso esse, sem olhar o pedido.",
+                "label": "Peço ao cliente outro arquivo novo e uso esse, sem olhar o pedido nem a tarefa.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Você deixa de usar a fonte oficial. E cria mais uma versão solta no caminho."
               },
               {
-                "label": "Aumento o capacete por conta própria, no tamanho que eu achar bom.",
+                "label": "Aumento o capacete por conta própria, no tamanho que eu achar bom, e depois aviso.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Isso é inventar uma medida. Se falta informação, consulte a fonte e o responsável."
@@ -2446,10 +2452,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_briefing",
             "pergunta": "O pedido diz: \"Quero o meu personagem do jogo, mas com a espada na outra mão\". Que tipo de pedido é esse?",
             "opcoes": [
-              "Personalização ou alteração em cima de uma reprodução. Existe um modelo base e uma mudança pedida. É preciso confirmar o que muda e o que fica igual.",
-              "Produto novo, porque o cliente pediu algo diferente do original.",
-              "Só ajuste de escala, porque o tamanho é o que mais costuma mudar.",
-              "Preparação para fabricação, porque o modelo já existe."
+              "Personalização ou alteração de uma reprodução. Existe um modelo base e uma mudança pedida.",
+              "Produto novo, porque o cliente pediu algo diferente do original e a espada muda de lado.",
+              "Só ajuste de escala, porque o tamanho é o que mais costuma mudar nas peças do cliente.",
+              "Preparação para fabricação, porque o modelo do personagem já existe e só falta imprimir."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. Saber o tipo de pedido mostra as perguntas certas: qual é o personagem base, de onde vêm as referências e o que muda.",
@@ -2485,10 +2491,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_briefing",
             "pergunta": "O pedido diz: \"Faça um busto do meu avô, igual à foto\". Só veio uma foto de frente. O que você faz antes de modelar?",
             "opcoes": [
-              "Modelo o lado e as costas da cabeça do jeito que eu imaginar.",
-              "Escolho um tamanho comum de busto e começo a modelar.",
-              "Registro as dúvidas (tamanho, lado e costas, finalidade e nível de detalhe) e consulto o responsável.",
-              "Peço mais fotos direto ao cliente pelo WhatsApp, sem registrar nada."
+              "Modelo o lado e as costas da cabeça do jeito que eu imaginar, seguindo a foto.",
+              "Escolho um tamanho comum de busto e começo a modelar, para ganhar tempo.",
+              "Registro as dúvidas de tamanho, lado, costas e detalhe e consulto o responsável.",
+              "Peço mais fotos direto ao cliente pelo WhatsApp e começo a modelar, sem registrar nada."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. A foto de frente não mostra o lado nem as costas. O que falta se registra e se pergunta.",
@@ -2521,10 +2527,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_briefing",
             "pergunta": "Você tem duas imagens do mesmo cavaleiro. Na primeira, ele tem um escudo no braço esquerdo. Na segunda, não tem. O que você faz?",
             "opcoes": [
-              "Modelo com escudo. Uma imagem mostra o escudo e é mais seguro incluir.",
-              "Modelo sem escudo, porque é mais fácil e rápido de imprimir.",
-              "Registro a contradição no pedido, aponto as imagens que não combinam e peço a decisão do responsável antes de fechar o modelo.",
-              "Modelo as duas versões e entrego as duas sem avisar nada."
+              "Modelo com escudo, porque uma das imagens mostra o escudo e é mais seguro incluir.",
+              "Modelo sem escudo, porque é mais fácil e rápido de imprimir e a segunda imagem não tem.",
+              "Registro a contradição no pedido e peço a decisão do responsável antes de modelar.",
+              "Modelo as duas versões e entrego as duas para o cliente escolher, sem avisar ninguém."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Contradição se resolve na fonte, antes de gastar tempo no modelo final.",
@@ -2551,10 +2557,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_briefing",
             "pergunta": "O pedido traz 1 foto de frente de um robô e a medida \"20 cm\". A descrição diz \"antena no topo\", mas a foto mostra a cabeça sem antena. Como você classifica essas referências e o que faz?",
             "opcoes": [
-              "Contraditórias e incompletas. Peço as vistas de lado e de costas e resolvo a antena com o responsável.",
-              "Suficientes. Tem foto e medida, então já posso modelar.",
-              "Só incompletas. Faço a antena, porque está escrito na descrição.",
-              "Só contraditórias. Sigo a foto e modelo o robô sem antena."
+              "Contraditórias e incompletas. Peço mais vistas e resolvo a antena com o responsável.",
+              "Suficientes. Tem foto e medida de 20 cm, então já posso modelar o robô inteiro.",
+              "Só incompletas. Faço a antena, porque está escrita na descrição, e peço as outras vistas.",
+              "Só contraditórias. Sigo a foto e modelo o robô sem antena, com a medida de 20 cm."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. A antena é uma contradição e só há uma vista. Você pede o que falta e não completa por suposição.",
@@ -2587,10 +2593,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "escala_medidas",
             "pergunta": "Você modelou uma figura com uma espada bem fina, pensando em 30 cm. O cliente pediu a figura com 5 cm de altura. O que você deve fazer?",
             "opcoes": [
-              "Só reduzir tudo na mesma proporção, porque o desenho é o mesmo.",
-              "Deixar a espada como está e avisar que, se quebrar, o problema é da impressão.",
-              "Tirar a espada para não ter risco, sem avisar ninguém.",
-              "Rever a espada no tamanho final. Ela pode ficar frágil ou sumir. Avalio engrossar a espada e confirmo os mínimos com a produção."
+              "Só reduzir tudo na mesma proporção, porque o desenho é o mesmo e a figura continua igual.",
+              "Deixar a espada como está e avisar que, se quebrar, o problema é da impressão e não do modelo.",
+              "Tirar a espada da figura para não ter risco de quebrar e não avisar ninguém da mudança.",
+              "Rever a espada no tamanho final, avaliar engrossar e confirmar os mínimos com a produção."
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Pense na escala final antes de fechar o detalhe. E confirme os mínimos com a produção.",
@@ -2611,25 +2617,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega da pintura: \"Você sabe qual é a espessura mínima que a gente pode usar nessa miniatura? Preciso saber para o meu modelo.\"",
             "opcoes": [
               {
-                "label": "É sempre 1 mm. Pode usar em qualquer peça.",
+                "label": "Acho que é 1 mm. Uso esse valor em toda a miniatura e a gente confere depois.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Inventar um número é arriscado. O mínimo depende do processo e do material."
               },
               {
-                "label": "Não tenho esse número documentado. Vou consultar a produção ou o responsável e usar o padrão da Valente.",
+                "label": "Não sei esse número agora. Vou consultar a produção e usar o padrão da Valente.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Dizer que não sabe e consultar a fonte é o esperado. O número oficial vem da Valente."
               },
               {
-                "label": "Qualquer espessura serve. A impressora resolve.",
+                "label": "A impressora dá conta de parte fina, então não tem espessura mínima para respeitar.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Impressoras têm limites. Partes finas demais falham ou quebram."
               },
               {
-                "label": "Deixa fino mesmo. A gente vê na impressão se quebra.",
+                "label": "Deixa fino mesmo. A gente vê na impressão se quebra e, se quebrar, faz de novo.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Isso desperdiça tempo e material da produção."
@@ -2697,10 +2703,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "modelagem_fabricacao",
             "pergunta": "Você recebeu o modelo de um mago. O cajado é muito fino, os braços estão abertos para os lados e a capa está solta no ar. O que você faz antes de liberar?",
             "opcoes": [
-              "Libero como está. Se alguma parte quebrar, a impressão resolve.",
-              "Tiro o cajado e a capa do modelo, para não ter risco.",
-              "Engrosso o cajado com a medida que eu acho boa e libero.",
-              "Engrosso o cajado, penso em apoio ou suporte para os braços e a capa, avalio dividir as peças e confirmo os mínimos com a produção."
+              "Libero como está, porque o modelo está bonito. Se alguma parte quebrar na impressão, a gente refaz.",
+              "Tiro o cajado e a capa do modelo para não ter risco e libero sem avisar quem pediu.",
+              "Engrosso o cajado na medida que eu acho boa, deixo braços e capa como estão e libero.",
+              "Engrosso o cajado, penso em suporte para braços e capa e confirmo os mínimos com a produção."
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Você viu a parte frágil e as partes sem apoio, pensou na divisão das peças e consultou a produção.",
@@ -2733,10 +2739,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "organizacao_versoes",
             "pergunta": "Na pasta de saída estão soldado.stl, soldado_final.stl e soldado_final2.stl. O pedido não diz qual é o que vale. O que você faz?",
             "opcoes": [
-              "Não escolho pelo nome. Confiro no pedido ou na tarefa e com o responsável qual é o aprovado. Depois organizo a pasta conforme o padrão.",
-              "Uso o soldado_final2.stl, porque o número maior deve ser o mais novo.",
-              "Uso o primeiro, soldado.stl, porque é o original.",
-              "Exporto um arquivo novo chamado soldado_final3.stl para resolver."
+              "Confiro no pedido ou na tarefa e pergunto ao responsável qual é a versão aprovada.",
+              "Uso o soldado_final2.stl, porque o número maior deve ser o mais novo e o mais certo.",
+              "Uso o primeiro, soldado.stl, porque é o original e não tem risco de ter sido mexido.",
+              "Exporto um arquivo novo chamado soldado_final3.stl e uso esse para resolver a dúvida."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. Na dúvida sobre a versão, quem decide é a fonte oficial e o responsável, não o nome do arquivo.",
@@ -2811,25 +2817,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega da impressão, com pressa: \"Esse arquivo já está pronto, né? Só falta você marcar como liberado. Não deu tempo de abrir o modelo, mas deve estar bom.\"",
             "opcoes": [
               {
-                "label": "Libero, porque é quase certo que está bom e o prazo é curto.",
+                "label": "Libero, porque é quase certo que o arquivo está bom e o prazo da impressão é curto.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Liberar sem conferir é erro crítico. O problema vai aparecer na impressão."
               },
               {
-                "label": "Libero e peço para você conferir a escala na hora de imprimir.",
+                "label": "Libero agora e peço para você conferir a escala na hora de imprimir o arquivo no equipamento.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Você está passando para o próximo setor uma conferência que é sua."
               },
               {
-                "label": "Marco como liberado e confiro depois, se der tempo.",
+                "label": "Marco como liberado e confiro o modelo depois, quando eu tiver um tempo livre hoje.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "A conferência vem antes, não depois."
               },
               {
-                "label": "Ainda não posso liberar. Vou conferir tamanho, malha, peças e versão agora. Se eu não conseguir confirmar algum item, registro e aviso o responsável.",
+                "label": "Ainda não libero. Confiro tamanho, malha, peças e versão agora, antes de marcar.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Sem conferência, não tem liberação."
@@ -2888,9 +2894,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Chegou para você uma tarefa de Modelagem de ajuste. O cliente viu a arte e pediu \"o escudo maior\", sem dizer quanto. O que você faz?",
             "opcoes": [
               "Concluo a tarefa logo, para a aprovação voltar ao comercial e o cliente dizer se gostou.",
-              "Aumento o escudo no tamanho que eu achar bom e salvo por cima do arquivo da arte anterior.",
-              "Registro que falta a medida. Pergunto ao responsável ou ao comercial quanto aumentar. Faço o ajuste em nova versão e só então concluo a tarefa.",
-              "Ignoro o pedido, porque a arte já tinha sido enviada ao cliente."
+              "Aumento o escudo no tamanho que eu achar bom e salvo por cima do arquivo da arte anterior, para ir rápido.",
+              "Registro que falta a medida, pergunto quanto aumentar e faço em nova versão antes de concluir.",
+              "Ignoro o pedido de ajuste, porque a arte já tinha sido enviada ao cliente antes."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. A medida não foi dada, então você pergunta. O ajuste vira nova versão. Só conclua com o trabalho feito, porque concluir devolve a aprovação ao comercial.",
@@ -2930,25 +2936,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Cliente (pelo atendimento): \"Eu aprovei o capacete A, mas agora gostei mais do B. Troca aí rapidinho no mesmo arquivo, né?\"",
             "opcoes": [
               {
-                "label": "Salvo o capacete B por cima do arquivo do capacete A, que é mais rápido.",
+                "label": "Salvo o capacete B por cima do arquivo do capacete A, que é mais rápido para todo mundo.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Você perde a versão aprovada e o histórico."
               },
               {
-                "label": "Digo que não dá para mudar depois de aprovado.",
+                "label": "Digo que não dá para mudar depois de aprovado e que o cliente precisa fazer um pedido novo do zero.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Você inventou uma regra. Quem decide se aceita e quanto custa é o responsável."
               },
               {
-                "label": "Isso é uma alteração solicitada. Registro o pedido, deixo o arquivo aprovado como está e crio uma nova versão. Passo ao responsável o que envolve o combinado, o valor ou o prazo.",
+                "label": "É alteração solicitada. Registro, crio nova versão e levo ao responsável o valor e o prazo.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. A alteração muda a decisão anterior. Ela deve ser registrada, com versão nova, e levada ao responsável."
               },
               {
-                "label": "Faço a troca e aviso depois que terminar.",
+                "label": "Faço a troca no mesmo arquivo agora e aviso o responsável depois que terminar.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "O registro e o aviso ao responsável vêm antes."
@@ -2960,10 +2966,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "versionamento",
             "pergunta": "O cliente recebeu a miniatura e diz: \"o escudo não está igual à foto\". Como você descobre se é erro ou alteração solicitada?",
             "opcoes": [
-              "Pergunto ao cliente como ele prefere o escudo e mudo no mesmo arquivo.",
-              "Comparo o arquivo entregue com o briefing e as referências aprovadas. Registro o resultado no pedido ou na tarefa.",
-              "Trato sempre como erro da modelagem e refaço o escudo.",
-              "Trato sempre como alteração solicitada, porque o cliente já tinha aprovado."
+              "Pergunto ao cliente como ele prefere o escudo e mudo no mesmo arquivo, sem registrar.",
+              "Comparo o arquivo entregue com o briefing e as referências aprovadas e registro o resultado.",
+              "Trato como erro da modelagem, sem olhar o briefing, e refaço o escudo na hora.",
+              "Trato como alteração solicitada, sem comparar com o briefing, porque o cliente já tinha aprovado."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Se o arquivo não atendia ao que estava definido, é erro. Se o cliente quer algo diferente do aprovado, é alteração solicitada. Crie nova versão, sem salvar por cima da anterior.",
@@ -3001,10 +3007,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "entrega_producao",
             "pergunta": "Qual pacote de entrega é o melhor para o operador de impressão?",
             "opcoes": [
-              "Só o STL na pasta do trabalho, porque o operador pode olhar o pedido depois.",
-              "STL com nome e versão claros, mais tamanho final, quantidade, lista de peças e observações registrados no pedido ou na tarefa.",
-              "O STL por mensagem pessoal, com a explicação falada, sem registro.",
-              "O STL mais novo da pasta, com a mensagem \"é este\"."
+              "Só o STL na pasta do trabalho, porque o operador pode olhar o pedido e descobrir o resto.",
+              "STL com nome e versão claros, mais tamanho, quantidade, peças e observações, registrados no pedido.",
+              "O STL por mensagem pessoal, com a explicação falada na hora e sem nada registrado no pedido ou na tarefa.",
+              "O STL mais novo da pasta, com a mensagem \"é este\", para o operador não perder tempo."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. O pacote precisa ser entendido sozinho, com tudo registrado.",
@@ -3068,28 +3074,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Briefing simulado no pedido: \"Quero uma miniatura da minha personagem guerreira, igual à foto, para pintar. Tamanho: o que ficar bom.\" Só há uma foto de frente e nenhuma medida. Qual é o seu primeiro passo?",
                 "opcoes": [
                   {
-                    "label": "Começo a modelar pela foto e escolho eu mesmo o tamanho.",
+                    "label": "Começo a modelar pela foto e escolho eu mesmo um tamanho que pareça bom para pintar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Você inventou o tamanho e as partes que não aparecem na foto.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Registro no pedido o que falta (tamanho, costas, acessórios, finalidade) e consulto o responsável antes de modelar.",
+                    "label": "Registro no pedido o que falta e consulto o responsável antes de começar a modelar.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. O que falta se pergunta na fonte, sem inventar.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Peço qualquer foto extra pelo WhatsApp e já começo, sem registrar nada no sistema.",
+                    "label": "Peço mais uma foto pelo WhatsApp e já começo a modelar, sem registrar nada no sistema.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Você deixa o briefing fora do Valente OS e perde o registro.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Modelo a frente e deixo as costas lisas para ganhar tempo.",
+                    "label": "Modelo a frente pela foto e deixo as costas lisas, para ganhar tempo e entregar mais rápido.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Você mudou o combinado em silêncio.",
@@ -3101,28 +3107,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "O responsável respondeu. A altura final está definida e a peça vai ser pintada. Ele enviou novas fotos de lado e de costas. Agora você precisa planejar a modelagem. O que você leva em conta?",
                 "opcoes": [
                   {
-                    "label": "Confiro se os detalhes finos funcionam na escala final. Planejo separar a espada e a cabeça para facilitar a pintura, com encaixes com tolerância no padrão da Valente.",
+                    "label": "Vejo se os detalhes finos funcionam na escala final e planejo as peças e os encaixes.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Escala, divisão e encaixes pensados para a fabricação e a pintura.",
+                    "feedback": "Certo. Escala, peças e encaixes pensados para a fabricação e a pintura.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Modelo tudo em uma peça só, sem pensar em suportes nem em pintura, e vejo na impressão.",
+                    "label": "Modelo tudo em uma peça só, sem pensar em suportes nem em pintura, e vejo como fica na impressão.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Isso ignora riscos de fabricação que dá para prever.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Uso a espessura mínima que eu acho certa, porque sei que 1 mm basta.",
+                    "label": "Uso a espessura mínima que eu acho certa, porque na minha experiência 1 mm basta para essa miniatura.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Você inventou um padrão. Os mínimos vêm da produção.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Salvo os arquivos em qualquer pasta e organizo depois.",
+                    "label": "Salvo os arquivos na primeira pasta que achar e organizo tudo depois que terminar.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Organizar versão e pasta faz parte do trabalho desde o início.",
@@ -3134,25 +3140,25 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "O modelo ficou pronto. Você exportou o STL e precisa liberar para a impressão. Qual é a atitude certa?",
                 "opcoes": [
                   {
-                    "label": "Confiro dimensões, malha, peças, versão e encaixes. Registro o pacote no pedido ou na tarefa. Espero a validação do responsável antes do status Liberado.",
+                    "label": "Confiro dimensões, malha, peças e versão. Registro o pacote e espero a validação do responsável.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. A conferência vem antes, e o responsável valida."
                   },
                   {
-                    "label": "Marco como liberado, porque o modelo está bonito na tela.",
+                    "label": "Marco como liberado, porque o modelo está bonito na tela e o prazo da impressão está curto.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Liberar sem conferir é erro crítico."
                   },
                   {
-                    "label": "Entrego só o STL e aviso a produção por mensagem.",
+                    "label": "Entrego só o STL na pasta e aviso a operadora da impressão por mensagem, sem registrar o pacote.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Falta o registro do pacote."
                   },
                   {
-                    "label": "Libero sem conferir a escala, porque não mudei o tamanho.",
+                    "label": "Libero sem conferir a escala, porque não mudei o tamanho do modelo na hora de exportar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Escala errada na exportação é comum. Ela precisa ser conferida."
@@ -3226,19 +3232,19 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: 'A impressora do canto está livre e tem resina no tanque. Pode já ir imprimindo uma peça que você acha que vai precisar, né?'",
             "opcoes": [
               {
-                "label": "Posso. Máquina livre e material na estação mostram que está liberado.",
+                "label": "Posso. A máquina está livre e já tem resina no tanque, então está liberado.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Máquina livre e material na estação não são autorização. Sem tarefa, o trabalho não está autorizado."
               },
               {
-                "label": "Só imprimo depois de abrir a tarefa no Valente OS e confirmar que posso operar essa máquina.",
+                "label": "Só imprimo depois de abrir a tarefa e ver se posso operar essa máquina.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. A tarefa diz o que produzir. A Valente define quais máquinas você pode operar."
               },
               {
-                "label": "Imprimo uma peça de teste pequena, porque gasta pouco material.",
+                "label": "Imprimo uma peça de teste pequena, porque gasta pouco material e pouco tempo.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Teste também gasta material e tempo de máquina. Pode ocupar o lugar de um trabalho real. Precisa de tarefa ou de autorização."
@@ -3298,13 +3304,13 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_ot",
             "pergunta": "A tarefa pede 16 unidades. O arquivo aberto no fatiador tem 15 peças na plataforma. O que você faz?",
             "opcoes": [
-              "Corrige a quantidade como a tarefa pede, se isso já faz parte do seu trabalho. Se o erro vem do arquivo ou da versão, avisa o responsável antes de iniciar.",
+              "Não inicia ainda e avisa o responsável sobre a diferença.",
               "Imprime as 15 e depois vê se dá tempo de fazer a que falta.",
               "Confia no arquivo, porque quem preparou deve ter calculado.",
               "Inicia com 15 e registra 16 ao concluir, para a tarefa ficar certa."
             ],
             "correta": 0,
-            "feedbackCerto": "Certo. A quantidade e o arquivo precisam bater com a tarefa antes de iniciar.",
+            "feedbackCerto": "Certo. Se a quantidade e o arquivo não batem com a tarefa, você não escolhe sozinho. Avise antes de iniciar.",
             "feedbackPorOpcao": [
               null,
               "Você já sabe que está errado e mesmo assim iniciaria. Isso faz perder tempo e deixa peça faltando.",
@@ -3321,9 +3327,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_ot",
             "pergunta": "Você abriu uma tarefa de impressão. Ela mostra a peça, o arquivo e a quantidade, mas não diz o material. O que você faz?",
             "opcoes": [
-              "Usa o material que já está na máquina.",
-              "Usa o mesmo material da última peça parecida.",
-              "Procura na ficha e no Valente OS. Se não achar, pergunta ao responsável antes de preparar."
+              "Usa o material que já está na máquina, para não perder tempo de preparo.",
+              "Usa o mesmo material da última peça parecida que você imprimiu antes.",
+              "Procura na ficha e no Valente OS. Se não achar, pergunta ao responsável."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Quando falta informação, você procura na fonte ou pergunta. Não inventa.",
@@ -3376,25 +3382,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: 'A impressora de resina está ocupada e a de FDM está livre. Essa peça é pra resina, mas se eu mandar no FDM sai hoje. Manda ver?'",
             "opcoes": [
               {
-                "label": "Mando no FDM. O importante é entregar no prazo.",
+                "label": "Mando no FDM. O importante é a peça sair hoje e entregar no prazo.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Trocar o processo muda o acabamento e a resistência. Só com decisão autorizada."
               },
               {
-                "label": "Mando no FDM e aviso depois, se ninguém reclamar.",
+                "label": "Mando no FDM e aviso depois, se ninguém reclamar do resultado.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Avisar depois é esconder uma decisão que não era sua."
               },
               {
-                "label": "Espero a resina terminar e imprimo mais tarde, sem falar com ninguém.",
+                "label": "Espero a resina terminar e imprimo mais tarde, sem avisar do prazo.",
                 "correta": false,
                 "erroCritico": false,
-                "feedback": "Esperar pode ser certo. Mas, se o prazo aperta, avise o responsável. Não decida sozinho."
+                "feedback": "Esperar sem avisar deixa o responsável sem saber do prazo. Se o prazo aperta, avise. Não decida sozinho."
               },
               {
-                "label": "A tarefa pede resina, então mantenho resina. Se o prazo é problema, falo com o responsável para ele decidir.",
+                "label": "Mantenho resina, como a tarefa pede, e aviso o responsável do prazo.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. O processo segue a tarefa. Quem muda é quem decide."
@@ -3434,10 +3440,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "processos_fatiamento",
             "pergunta": "Você abriu o fatiamento e viu que uma parte da peça ficou sem suporte, pendurada. O que fazer?",
             "opcoes": [
-              "Enviar assim mesmo e torcer para a parte se segurar.",
+              "Enviar assim mesmo e torcer para a parte se segurar sozinha.",
               "Tirar essa parte do arquivo para a impressão ficar mais rápida.",
               "Aumentar os parâmetros do perfil por conta própria até o suporte parecer forte.",
-              "Ajustar a orientação ou os suportes dentro do que o procedimento permite. Se precisar mexer em parâmetro crítico, consultar o responsável."
+              "Ajustar a orientação ou os suportes, dentro do padrão da Valente."
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Corrija na prévia, dentro do que é autorizado.",
@@ -3494,9 +3500,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Você vai iniciar uma impressão em resina e vê pedaços endurecidos boiando no tanque. Qual é o passo certo?",
             "opcoes": [
               "Iniciar mesmo assim, porque a máquina costuma passar por cima.",
-              "Mexer com uma ferramenta qualquer e iniciar em seguida.",
-              "Não iniciar, avisar o responsável e cuidar do tanque pelo procedimento oficial antes de imprimir.",
-              "Iniciar uma peça menor para testar se funciona."
+              "Tirar os pedaços com uma ferramenta que estiver à mão e iniciar em seguida.",
+              "Não iniciar, avisar o responsável e tratar o tanque pelo procedimento.",
+              "Iniciar uma peça menor primeiro, só para testar se o tanque funciona."
             ],
             "correta": 2,
             "feedbackCerto": "Isso. Máquina fora do normal se resolve antes de iniciar, pelo procedimento.",
@@ -3572,26 +3578,26 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Você iniciou uma impressão FDM. Na primeira camada, o filamento sai mas não gruda na mesa. Os cantos já estão soltando.",
                 "opcoes": [
                   {
-                    "label": "Deixar rodando. As próximas camadas vão compensar.",
+                    "label": "Deixar rodando. Acha que as próximas camadas vão compensar a falha.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "A falha só cresce. Continuar sem agir é seguir com um defeito que você já viu."
                   },
                   {
-                    "label": "Pausar a impressão e procurar a causa (mesa suja, desnivelada) pelo procedimento.",
+                    "label": "Pausar a impressão e procurar a causa, como mesa suja ou desnivelada.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Parar cedo poupa material e horas.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Dar uma pancada na mesa para ajustar.",
+                    "label": "Dar uma pancada na mesa para ajustar o nível e seguir imprimindo.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Isso pode estragar a máquina e não resolve a causa."
                   },
                   {
-                    "label": "Aumentar parâmetros por conta própria durante a impressão.",
+                    "label": "Aumentar parâmetros por conta própria durante a impressão, para grudar.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Não se muda parâmetro crítico sem autorização."
@@ -3602,26 +3608,26 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Você pausou. Limpou a mesa e olhou o nivelamento. Mas ainda não tem certeza do ajuste certo para esse material.",
                 "opcoes": [
                   {
-                    "label": "Chutar um valor e reiniciar.",
+                    "label": "Chutar um valor parecido com o de outro material e reiniciar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Chutar é inventar. O ajuste certo está no procedimento da Valente."
                   },
                   {
-                    "label": "Consultar o procedimento da Valente. Se a dúvida continuar, consultar o responsável.",
+                    "label": "Consultar o procedimento da Valente e, se precisar, o responsável.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Isso. Não saber é normal. Inventar não pode.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Jogar o material fora e trocar de máquina sem avisar.",
+                    "label": "Jogar o material fora e trocar de máquina sem avisar ninguém.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Trocar de máquina sem avisar quebra a ligação da tarefa com a máquina."
                   },
                   {
-                    "label": "Tocar em Concluir tarefa para sair do alerta.",
+                    "label": "Tocar em Concluir tarefa para sair do alerta e começar de novo.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Concluir sem ter produzido é marcar como feito o que não foi feito."
@@ -3629,22 +3635,22 @@ var TREINAMENTO_TRILHAS = {
                 ]
               },
               "c": {
-                "cliente": "O responsável liberou você para reiniciar. Como registrar?",
+                "cliente": "O responsável liberou você para reiniciar. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Reiniciar com Retomar na tarefa e voltar a acompanhar a primeira camada.",
+                    "label": "Tocar em Retomar na tarefa e acompanhar a primeira camada com atenção.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Retome e olhe a primeira camada com atenção."
                   },
                   {
-                    "label": "Reiniciar e não dizer nada, para não parecer que errou.",
+                    "label": "Reiniciar sem dizer nada a ninguém, para não parecer que você errou.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Esconder a falha impede de aprender com ela."
                   },
                   {
-                    "label": "Reiniciar e apagar as anotações da tentativa anterior.",
+                    "label": "Reiniciar e apagar as anotações da tentativa anterior, para ficar limpo.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Apagar o histórico esconde o que aconteceu."
@@ -3697,10 +3703,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "inspecao_falhas",
             "pergunta": "A bandeja tinha 16 lugares. Saíram 15 peças boas e 1 com camada falhada. Como você registra?",
             "opcoes": [
-              "16 concluídas, porque a bandeja estava completa.",
+              "16 concluídas, porque a bandeja tinha todos os lugares preenchidos.",
               "15 boas e 1 falha registrada com o motivo, separada das aprovadas.",
               "15 concluídas, sem falar da falha, já que a quantidade das boas está certa.",
-              "Jogo fora a peça com defeito, sem registro."
+              "Joga fora a peça com defeito, sem registro, para não misturar com as boas."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Quantidade real e falha com o motivo.",
@@ -3729,18 +3735,18 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "inspecao_falhas",
             "pergunta": "A impressão de uma bandeja com 12 lugares terminou: 9 peças boas e 3 com falha. Você toca em Concluir tarefa e a janela da impressão abre. Qual resposta combina com o resultado?",
             "opcoes": [
-              "Tudo certo, porque a máquina terminou sem erro.",
-              "Cancelada, porque nem todas as peças ficaram boas.",
-              "Saiu só parte, informando quantas ficaram boas e o motivo da falha nas outras.",
-              "Falhou, porque houve peças ruins na bandeja."
+              "Tudo certo, porque a máquina terminou sem mostrar erro.",
+              "Cancelada, porque nem todas as 12 peças da bandeja ficaram boas.",
+              "Saiu só parte, com quantas ficaram boas e o motivo da falha.",
+              "Falhou, porque houve 3 peças ruins na bandeja e isso conta como falha."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Só uma parte saiu boa. A resposta e o registro da fornada mostram o que saiu de verdade e por que o resto falhou.",
             "feedbackPorOpcao": [
               "Terminar não é aprovar. Dizer Tudo certo com 3 peças ruins é registrar o que não aconteceu.",
-              "Cancelada é para quando o trabalho foi interrompido. Aqui a bandeja terminou e tem peças boas.",
+              "Cancelada é para quando o trabalho não se completou. Aqui a bandeja terminou e tem peças boas.",
               null,
-              "Falhou é para quando nada se aproveita. Aqui 9 peças saíram boas e isso precisa aparecer."
+              "Falhou é para quando o trabalho não se completou. Aqui 9 peças saíram boas e isso precisa aparecer."
             ],
             "erroCriticoOpcoes": [
               0
@@ -3786,25 +3792,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: 'Deu falha na peça 7, mas sobraram 15 boas. Joga a ruim junto com as outras e a gente vê isso depois, ninguém percebe.'",
             "opcoes": [
               {
-                "label": "Jogo junto e vejo depois se alguém reclama.",
+                "label": "Jogo junto com as outras e vejo depois se alguém reclama.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Misturar peça reprovada com aprovada é erro crítico. A peça ruim pode chegar ao cliente."
               },
               {
-                "label": "Separo e identifico a peça ruim, registro a falha com o motivo e aviso o responsável.",
+                "label": "Separo a peça ruim, registro a falha com o motivo e aviso o responsável.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Isso protege os outros setores e a causa pode ser tratada."
               },
               {
-                "label": "Jogo a ruim fora e não registro nada, para não dar trabalho.",
+                "label": "Jogo a ruim fora e não registro nada, para não dar trabalho ao responsável.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Sem registro, ninguém procura a causa e a falha pode se repetir."
               },
               {
-                "label": "Imprimo a peça de novo logo, sem avisar. Assim o prazo não muda.",
+                "label": "Imprimo a peça de novo logo, sem avisar ninguém. Assim o prazo não muda.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Imprimir de novo sem entender a causa pode repetir a falha e gastar material."
@@ -3816,10 +3822,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "inspecao_falhas",
             "pergunta": "Uma peça saiu com warping (cantos levantados). Qual é o melhor primeiro passo antes de imprimir de novo?",
             "opcoes": [
-              "Procurar a causa (mesa suja ou desnivelada, primeira camada, material) e avisar o responsável.",
-              "Imprimir de novo na mesma máquina, com o mesmo arquivo.",
-              "Esconder a peça e pegar outra da bandeja anterior.",
-              "Passar a tarefa para outra máquina sem avisar."
+              "Procurar a causa, como mesa suja ou desnivelada, e avisar o responsável.",
+              "Imprimir de novo na mesma máquina, com o mesmo arquivo, para ver se melhora.",
+              "Esconder a peça e pegar outra da bandeja anterior, para fechar a contagem.",
+              "Passar a tarefa para outra máquina sem avisar, já que esta deu problema."
             ],
             "correta": 0,
             "feedbackCerto": "Isso. Entender antes de repetir.",
@@ -3880,10 +3886,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "liberacao_pos",
             "pergunta": "Você tem peças de duas tarefas diferentes na mesma bandeja, todas parecidas. O que faz antes de liberar?",
             "opcoes": [
-              "Libera tudo junto. A Pós-impressão separa depois.",
-              "Marca todas com o nome da tarefa mais antiga.",
-              "Libera só uma tarefa e deixa a outra sem registro.",
-              "Separa por tarefa, identifica cada grupo e confere a quantidade de cada um."
+              "Libera tudo junto na mesma bandeja. A Pós-impressão separa depois.",
+              "Marca todas com o nome da tarefa mais antiga, para facilitar.",
+              "Libera só uma tarefa e deixa a outra para depois, sem registro.",
+              "Separa por tarefa, identifica cada grupo e confere a quantidade."
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Cada tarefa vai separada e identificada.",
@@ -3931,7 +3937,7 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Tarefa: 12 peças em resina, versão 3 do arquivo. No fatiador está aberto o arquivo da versão 2, com 10 peças na plataforma.",
                 "opcoes": [
                   {
-                    "label": "Imprimir 10 e depois fazer 2 à parte.",
+                    "label": "Imprimir os 10 do arquivo que está aberto e depois fazer as 2 peças que faltam à parte.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "A versão e a quantidade não batem com a tarefa. Seguir é usar o arquivo errado."
@@ -3944,13 +3950,13 @@ var TREINAMENTO_TRILHAS = {
                     "proximo": "b"
                   },
                   {
-                    "label": "Usar a versão 2, que é a que já está aberta.",
+                    "label": "Usar a versão 2, que já está aberta, e conferir a quantidade depois.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Arquivo ou versão errada é erro crítico."
                   },
                   {
-                    "label": "Mudar a quantidade do arquivo para 12 e usar a versão 2.",
+                    "label": "Mudar a quantidade do arquivo para 12 e seguir usando a versão 2 aberta.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Acerta a quantidade, mas o arquivo continua errado."
@@ -3961,7 +3967,7 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "O arquivo certo foi liberado. Você faz o checklist da máquina e vê resto endurecido no tanque.",
                 "opcoes": [
                   {
-                    "label": "Iniciar mesmo assim para não perder tempo.",
+                    "label": "Iniciar mesmo assim, para não perder tempo de máquina parada.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Máquina fora do normal se trata antes de iniciar."
@@ -3974,13 +3980,13 @@ var TREINAMENTO_TRILHAS = {
                     "proximo": "c"
                   },
                   {
-                    "label": "Limpar com o que tiver à mão e iniciar.",
+                    "label": "Limpar o tanque com o que tiver à mão e iniciar em seguida.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Improvisar pode estragar o FEP."
                   },
                   {
-                    "label": "Tocar em Concluir tarefa para mostrar que há problema.",
+                    "label": "Tocar em Concluir tarefa para deixar registrado que há problema.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Concluir quer dizer que foi feito."
@@ -3991,25 +3997,25 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "A impressão terminou. A bandeja tem 12 lugares: 11 peças boas e 1 com suporte quebrado e parte faltando.",
                 "opcoes": [
                   {
-                    "label": "Registrar 11 boas e 1 falha com o motivo, separar a peça ruim e avisar o responsável antes de liberar.",
+                    "label": "Registrar 11 boas e 1 falha com o motivo, separar a ruim e avisar o responsável.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Registro verdadeiro e falha tratada."
                   },
                   {
-                    "label": "Registrar 12 concluídas.",
+                    "label": "Registrar 12 concluídas, porque a bandeja tinha 12 lugares e a máquina terminou.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Registrar o que não existe é erro crítico."
                   },
                   {
-                    "label": "Liberar as 12 juntas, porque a Pós-impressão vai notar.",
+                    "label": "Liberar as 12 juntas, porque a Pós-impressão vai notar a peça ruim sozinha.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Mistura peça reprovada com aprovada."
                   },
                   {
-                    "label": "Jogar fora a peça ruim sem registro.",
+                    "label": "Jogar fora a peça ruim sem registro, para não misturar com as boas.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Sem registro, ninguém procura a causa."
@@ -4104,10 +4110,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "organizacao_bancada",
             "pergunta": "Você precisa parar um lote de peças para atender o telefone. O que fazer com as peças que estão na bancada?",
             "opcoes": [
-              "Deixar na zona do processo, identificadas com a tarefa, e guardar solventes e resina fechados",
-              "Misturar todas numa caixa para liberar a mesa",
-              "Deixar espalhadas, porque você volta em um minuto",
-              "Jogar um pano por cima para proteger da poeira"
+              "Deixar identificadas com a tarefa e fechar a resina e os solventes",
+              "Misturar todas numa caixa para liberar a mesa e atender sem pressa",
+              "Deixar espalhadas na bancada, porque a ligação é rápida e você volta em um minuto",
+              "Jogar um pano limpo por cima para proteger da poeira"
             ],
             "correta": 0,
             "feedbackCerto": "Certo. Identificação e recipientes fechados evitam troca de peças e acidentes.",
@@ -4155,19 +4161,19 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega da impressão: \"Deixei o corpo do conjunto na sua bancada. A base e os acessórios saem mais tarde. Já pode ir tirando os suportes.\" A tarefa lista corpo, base e dois acessórios.",
             "opcoes": [
               {
-                "label": "Começo agora pelo corpo e junto o resto quando chegar.",
+                "label": "Começo agora pelo corpo, que já chegou, e junto o resto quando chegar para ganhar tempo.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Pode até dar certo. Mas, sem confirmar o resto, você não sabe se os outros componentes existem ou se virão no mesmo estado."
               },
               {
-                "label": "Confiro na tarefa e peço para registrar que o conjunto está incompleto e quando chega o resto, antes de começar.",
+                "label": "Registro a diferença e consulto o responsável antes de começar.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Você confere, deixa a diferença registrada e só então trabalha."
               },
               {
-                "label": "Marco a tarefa como concluída para não perder o prazo.",
+                "label": "Marco a tarefa como concluída para não perder o prazo do pedido.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Marcar como feito o que não foi feito é erro crítico."
@@ -4242,25 +4248,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega novo: \"Não lembro quanto tempo essa resina fica na cura. Coloca uns minutinhos que sempre dá certo, né?\"",
             "opcoes": [
               {
-                "label": "Sim, uns minutos costumam bastar.",
+                "label": "Sim, uns minutos costumam bastar, a resina endurece rápido.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Inventar tempo de cura é erro crítico. Cada material tem seu procedimento."
               },
               {
-                "label": "Melhor deixar bastante tempo. Cura a mais nunca faz mal.",
+                "label": "Melhor deixar um tempo a mais para a peça ficar bem dura.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Cura demais também pode estragar a peça."
               },
               {
-                "label": "Vamos olhar o procedimento da Valente para essa resina ou perguntar ao responsável.",
+                "label": "Vamos ver o procedimento da Valente ou perguntar ao responsável.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Quando falta informação, consulte a fonte."
               },
               {
-                "label": "Vai pelo cheiro: se ainda tem cheiro, curou pouco.",
+                "label": "Vai pelo cheiro: se a peça ainda cheira forte, é porque curou pouco.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Cheiro não serve para saber se curou."
@@ -4327,10 +4333,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "remocao_suportes",
             "pergunta": "Um suporte está colado na ponta de um dedo da peça. Você sente que, se puxar, o dedo vai junto. O que fazer?",
             "opcoes": [
-              "Puxar mais rápido para sair de uma vez",
+              "Puxar mais rápido para o suporte sair de uma vez",
               "Deixar o suporte e mandar para a Pintura assim",
               "Torcer até soltar e colar o dedo se quebrar",
-              "Parar, olhar bem o ponto e consultar o responsável antes de continuar"
+              "Parar e consultar o responsável antes de continuar"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Consultar antes de quebrar é a regra.",
@@ -4349,9 +4355,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "remocao_suportes",
             "pergunta": "Você vai tirar os suportes de uma figura com espada fina, capa e base larga. Qual é o plano certo?",
             "opcoes": [
-              "Começar pela espada, que é a parte mais difícil, e deixar a base para o fim",
+              "Começar pela espada, que é a parte mais difícil, e deixar a base para o fim do trabalho",
               "Começar pela base e, se o suporte da espada não sair, puxar com força",
-              "Com proteção nos olhos, começar pela base, deixar a espada por último e consultar se houver risco de quebrar",
+              "Com proteção nos olhos, começar pela base e deixar a espada por último",
               "Tirar os suportes com a mão, sem ferramenta, para não riscar a peça"
             ],
             "correta": 2,
@@ -4386,9 +4392,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Uma peça FDM tem um pino de encaixe com uma rebarba na base. O que você faz primeiro?",
             "opcoes": [
               "Lixa o pino até ficar liso como o resto",
-              "Vê que é área funcional e confere na ficha ou consulta antes de mexer",
+              "Confere na ficha se é área funcional antes de mexer",
               "Corta o pino fora, porque está feio",
-              "Deixa como está, porque FDM sempre tem rebarba"
+              "Deixa como está, porque FDM costuma ter rebarba"
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Em área funcional, entenda antes de corrigir.",
@@ -4458,25 +4464,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: \"Tem uma linha em relevo no peito dessa figura. Vou lixar tudo para ficar liso, né?\"",
             "opcoes": [
               {
-                "label": "Vai, peça lisa é sempre melhor.",
+                "label": "Vai, peça lisa fica melhor para pintar.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Liso nem sempre é certo. Pode ser detalhe do modelo."
               },
               {
-                "label": "Antes, vamos conferir na foto ou na ficha se essa linha faz parte do modelo.",
+                "label": "Antes, vamos ver na foto ou na ficha se essa linha é do modelo.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. A referência mostra o que é defeito."
               },
               {
-                "label": "Lixa com um grão bem grosso para ser rápido.",
+                "label": "Lixa com um grão bem grosso, para ser rápido e tirar a linha toda.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Grão grosso em detalhe fino destrói o relevo."
               },
               {
-                "label": "Pode lixar. A Pintura refaz o detalhe.",
+                "label": "Pode lixar tudo, a Pintura refaz o detalhe depois.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Passar trabalho com defeito para a Pintura resolver é erro crítico."
@@ -4488,10 +4494,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "acabamento_superficie",
             "pergunta": "Você vai lixar uma marca de suporte perto de um detalhe do uniforme. Qual é o jeito certo?",
             "opcoes": [
-              "Comparar com a referência, usar proteção nos olhos e na respiração, com ventilação, e lixar do grão mais grosso para o mais fino",
-              "Lixar a marca e o detalhe juntos, para tudo ficar liso",
-              "Começar pelo grão mais fino e terminar com o mais grosso",
-              "Lixar sem máscara, porque a marca é pequena e faz pouca poeira"
+              "Comparar com a referência, usar proteção e lixar do grão grosso ao fino",
+              "Lixar a marca e o detalhe juntos, para a peça inteira ficar lisa e uniforme",
+              "Começar pelo grão mais fino, que é mais suave, e terminar com o mais grosso",
+              "Lixar sem máscara nem proteção nos olhos, porque a marca é pequena e faz pouca poeira"
             ],
             "correta": 0,
             "feedbackCerto": "Certo. A referência mostra o que é defeito. Os grãos seguem o procedimento. Na dúvida sobre a tolerância, consulte.",
@@ -4531,8 +4537,8 @@ var TREINAMENTO_TRILHAS = {
             "opcoes": [
               "Dar uma batida leve para entrar de vez",
               "Lixar o pino até entrar fácil, sem medir",
-              "Procurar a causa, como resto de resina, rebarba ou peça trocada, e consultar se não resolver",
-              "Colar assim mesmo, porque a cola preenche"
+              "Procurar a causa, como resto de resina ou rebarba",
+              "Colar assim mesmo, porque a cola preenche o vão"
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Descobrir a causa evita quebrar a peça.",
@@ -4600,25 +4606,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Seu líder de produção: \"Essa peça tem uma rachadura no ombro, mas a Pintura cobre. Manda logo, o prazo está apertado.\"",
             "opcoes": [
               {
-                "label": "Envio e deixo a Pintura resolver.",
+                "label": "Envio como está e deixo a Pintura resolver depois.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Passar adiante peça com defeito estrutural é erro crítico."
               },
               {
-                "label": "Explico que a rachadura é estrutural e peço a decisão sobre correção ou reimpressão antes de seguir.",
+                "label": "Explico que é estrutural e peço a decisão antes de seguir.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Você avisa o defeito e deixa a decisão com o responsável."
               },
               {
-                "label": "Passo massa na rachadura e envio sem avisar.",
+                "label": "Passo massa na rachadura e envio sem avisar, para cumprir o prazo.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Reparo estrutural sem autorização e sem avisar é esconder defeito."
               },
               {
-                "label": "Descarto a peça por conta própria.",
+                "label": "Descarto a peça por conta própria e peço outra impressão.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Descarte e reimpressão seguem a decisão e o procedimento da empresa."
@@ -4630,10 +4636,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "qualidade_entrega",
             "pergunta": "Qual destas peças você classificaria como corrigível dentro da sua competência?",
             "opcoes": [
-              "Pequena marca de suporte que sobrou em área estética",
-              "Braço quebrado ao meio, com a parte faltando",
-              "Corpo deformado e empenado",
-              "Conjunto sem a base"
+              "Marca pequena de suporte em área estética",
+              "Braço quebrado ao meio, com um pedaço faltando",
+              "Corpo deformado e empenado, torto em relação à foto",
+              "Conjunto que chegou sem a base e sem um acessório"
             ],
             "correta": 0,
             "feedbackCerto": "Certo. Uma marca simples se resolve com lixamento, seguindo o procedimento.",
@@ -4708,7 +4714,7 @@ var TREINAMENTO_TRILHAS = {
               "Para dividir a responsabilidade e conferir menos",
               "Para acelerar a entrega",
               "Para a Pintura não precisar conferir o que recebe",
-              "Para uma segunda pessoa confirmar, sozinha, que o kit bate com a tarefa"
+              "Para outra pessoa conferir o kit, sozinha, com a tarefa"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Uma segunda pessoa, olhando sozinha, acha o que a primeira não viu.",
@@ -4731,8 +4737,8 @@ var TREINAMENTO_TRILHAS = {
             "opcoes": [
               "3 prontas, e avisa a rachadura só por conversa",
               "2 prontas e 0 voltando, para não atrasar o pedido",
-              "2 prontas e 1 voltando para a fase anterior, com o motivo",
-              "0 prontas, porque um conjunto tem problema"
+              "2 prontas e 1 voltando para a fase anterior",
+              "0 prontas e 3 voltando, porque um conjunto tem problema"
             ],
             "correta": 2,
             "feedbackCerto": "Certo. O sistema separa o que está pronto do que volta. O motivo fica registrado.",
@@ -4780,28 +4786,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Você recebe a tarefa de 3 conjuntos de resina. Cada um tem figura, base e dois acessórios. Na bancada chegaram 3 figuras, 3 bases e 5 acessórios. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Começa a limpar e lixar as figuras. Os acessórios ficam para depois.",
+                    "label": "Começa a limpar e lixar as figuras e deixa os acessórios para conferir mais tarde.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Trabalhar sem fechar a conta mistura tudo e esconde a falta.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Confere com a tarefa, vê que falta um acessório, registra e consulta antes de seguir.",
+                    "label": "Confere a conta, registra o acessório que falta e consulta antes de seguir.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Conferir antes de trabalhar.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Acha que 5 está perto de 6 e segue.",
+                    "label": "Acha que 5 acessórios está perto de 6 e segue o trabalho.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Supor que está completo é erro crítico.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Junta peças de outros pedidos para completar.",
+                    "label": "Junta um acessório de outro pedido para completar o conjunto.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Misturar peças de outro pedido é erro crítico.",
@@ -4813,28 +4819,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Na hora de lavar a resina, você vê que não tem luvas adequadas à mão e que o exaustor, que puxa o ar, está desligado. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Lava rápido sem luvas e liga o exaustor depois.",
+                    "label": "Lava rápido sem luvas e liga o exaustor só depois de terminar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Deixar de lado EPI e ventilação com resina e IPA é erro crítico.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Para, coloca o EPI, ventila o ambiente, segue o procedimento de lavagem e cura e descarta o IPA sujo no local certo.",
+                    "label": "Para, coloca o EPI, ventila o ambiente e segue o procedimento.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Segurança vem antes da produção.",
+                    "feedback": "Certo. Segurança vem antes da produção. Depois, o IPA sujo vai para o descarte certo.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Pede a um colega para lavar sem proteção.",
+                    "label": "Pede a um colega para lavar no seu lugar, sem proteção.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Pôr outro em risco é erro crítico.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Despeja o IPA sujo na pia no final.",
+                    "label": "Lava com o que tem à mão e despeja o IPA sujo na pia no final.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Descarte tem local próprio.",
@@ -4846,25 +4852,25 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Na inspeção, uma das figuras tem uma rachadura no braço. As outras duas estão limpas. O prazo está apertado. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Passa massa e envia as três para a Pintura sem avisar.",
+                    "label": "Passa massa na rachadura e envia as três para a Pintura sem avisar ninguém.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Esconder defeito é erro crítico."
                   },
                   {
-                    "label": "Envia as duas aprovadas, segura a peça rachada e avisa o defeito para decisão. Em Concluir etapa, informa 2 prontas e 1 que volta para a fase anterior, com o motivo.",
+                    "label": "Segura a peça rachada, avisa o defeito e informa 2 prontas e 1 voltando.",
                     "correta": true,
                     "erroCritico": false,
-                    "feedback": "Certo. Parar diante do defeito e avisar."
+                    "feedback": "Certo. Parar diante do defeito e avisar. Em Concluir etapa, você informa 2 prontas e 1 que volta para a fase anterior, com o motivo."
                   },
                   {
-                    "label": "Envia as três, porque a Pintura cobre.",
+                    "label": "Envia as três para cumprir o prazo, porque a Pintura cobre a rachadura.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Pintura não esconde falha estrutural."
                   },
                   {
-                    "label": "Descarta a figura por conta própria.",
+                    "label": "Descarta a figura rachada por conta própria e segue com as outras duas.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Quem decide é o procedimento da Valente e o responsável."
@@ -4939,10 +4945,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "preparacao_estacao",
             "pergunta": "A referência da tarefa mostra um verde em uma parte da peça. Na prateleira há três potes de verde diferentes. Como escolher o certo?",
             "opcoes": [
-              "Escolher o verde mais parecido com o que aparece na tela",
-              "Misturar os três verdes até chegar perto da imagem",
-              "Usar o pote que tem na etiqueta o mesmo número de Cor indicado para aquela parte",
-              "Usar o verde que você já usou em outra peça parecida"
+              "Escolher o verde que parece mais igual ao que aparece na tela",
+              "Misturar os três verdes até chegar perto da cor da imagem",
+              "Pegar o pote que tem na etiqueta o número de Cor da tarefa",
+              "Usar o verde que você já usou em outra peça parecida com essa"
             ],
             "correta": 2,
             "feedbackCerto": "Isso mesmo. O número é a referência. A cor na tela pode estar diferente.",
@@ -5032,10 +5038,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_pedido",
             "pergunta": "Ontem você pintou uma figura de guerreiro. Hoje chega outro pedido do mesmo modelo. O que você faz para não errar?",
             "opcoes": [
-              "Confiro a referência e as observações do novo pedido, porque a versão pode ser diferente",
-              "Repito as cores de ontem, que eu lembro bem",
-              "Pergunto ao colega do lado qual cor ele usaria",
-              "Começo a pintar e confiro só quando terminar"
+              "Confiro a referência e as observações do novo pedido",
+              "Repito as cores que usei ontem, porque lembro bem de cada uma",
+              "Pergunto ao colega do lado qual cor ele usaria nesse modelo",
+              "Começo a pintar e confiro a referência só quando terminar"
             ],
             "correta": 0,
             "feedbackCerto": "Certo. Cada pedido tem a sua referência, e a versão pode mudar.",
@@ -5054,10 +5060,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_pedido",
             "pergunta": "A caixa SUA MISSÃO diz Pintar 8 de 18 unidades. Logo abaixo aparece Já feitas nesta tarefa: 10. O que isso quer dizer?",
             "opcoes": [
-              "Faltam 18 peças e 8 já foram feitas",
-              "Você deve pintar 8 hoje e 18 amanhã",
-              "Faltam 10 peças, que são as já feitas",
-              "Faltam 8 unidades. A tarefa tem 18 e 10 já foram pintadas"
+              "Faltam 18 peças e só 8 delas já foram feitas",
+              "Você deve pintar 8 peças hoje e as outras 18 amanhã",
+              "Faltam 10 peças, e esse número é o das já feitas",
+              "Faltam 8. Das 18 da tarefa, 10 já estão feitas"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. O primeiro número é o que falta. O segundo é o total da tarefa.",
@@ -5073,10 +5079,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_pedido",
             "pergunta": "Antes de abrir a tinta, o que você precisa confirmar na tarefa e no pedido?",
             "opcoes": [
-              "Só a quantidade, porque as cores você já conhece do modelo",
-              "Só a cor que aparece na foto da tela",
-              "A versão da peça, a quantidade, o número de Cor de cada parte e as observações",
-              "Só o título da tarefa, e o resto você vê no fim"
+              "A quantidade e o título da tarefa, porque as cores você já conhece",
+              "A cor que aparece na foto da tela, que vale como referência",
+              "Versão, quantidade, número de Cor de cada parte e observações",
+              "O título da tarefa, e o resto você confere quando terminar"
             ],
             "correta": 2,
             "feedbackCerto": "Isso mesmo. Versão, quantidade, número de Cor de cada parte e observações. Se algo faltar, consulte o responsável.",
@@ -5116,19 +5122,19 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "Primer grosso apaga detalhe e não tira a marca. Esconder defeito é erro crítico."
               },
               {
-                "label": "Antes de pintar, vou separar a peça e tratar a marca conforme o fluxo, ou consultar o responsável",
+                "label": "Vou separar a peça e tratar a marca conforme o fluxo",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Defeito de etapa anterior é separado e tratado, não escondido."
               },
               {
-                "label": "Passo primer, pinto e vejo se o cliente reclama",
+                "label": "Passo o primer, pinto a peça e vejo se o cliente reclama depois",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Passar adiante uma peça com defeito joga o problema para o cliente."
               },
               {
-                "label": "Pinto direto com a tinta final, que é mais grossa",
+                "label": "Pinto direto com a tinta final, que é mais grossa e cobre",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Tinta grossa também não tira a marca e apaga ainda mais os detalhes."
@@ -5140,10 +5146,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "preparacao_superficie",
             "pergunta": "De modo geral, para que serve o primer?",
             "opcoes": [
-              "Esconder defeitos da impressão",
-              "Ficar no lugar da camada de cor final",
-              "Dispensar a limpeza da peça",
-              "Ajudar a tinta a grudar e deixar a base da peça com a cor igual"
+              "Esconder defeitos da impressão e marcas de suporte",
+              "Fazer o papel da tinta de cor final da peça",
+              "Dispensar a limpeza e o lixamento antes de pintar",
+              "Ajudar a tinta a grudar e igualar a cor da peça"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Sempre em camada fina e seguindo o processo da Valente.",
@@ -5207,10 +5213,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "fidelidade_cor",
             "pergunta": "O lote tem 6 miniaturas. O pote da Cor indicada está no fim e você já pintou 4 peças. As 2 últimas parecem um pouco mais escuras. O que fazer?",
             "opcoes": [
-              "Seguir assim, porque a diferença é pequena",
-              "Comparar as 6 lado a lado, conferir se o pote e a diluição são os mesmos e consultar o responsável se a diferença continuar",
-              "Clarear as 2 com outra tinta que parece combinar",
-              "Repintar as 4 primeiras com o que sobrou do pote"
+              "Seguir assim, porque a diferença é pequena e o cliente nem vai notar",
+              "Comparar as 6 lado a lado e conferir pote e diluição",
+              "Clarear as 2 com outra tinta que parece combinar com o pote",
+              "Repintar as 4 primeiras com o que sobrou do mesmo pote"
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Comparar o conjunto e procurar a causa mantém o padrão do lote.",
@@ -5283,8 +5289,8 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "tecnica_pintura",
             "pergunta": "Hoje você pintou 5 peças boas de uma tarefa de 18. Uma peça caiu e estragou. Ao tocar em Concluir, o que você registra em Produção do dia?",
             "opcoes": [
-              "18 pintadas, para a tarefa sair da fila",
-              "5 pintadas, 1 estragada e uma anotação para amanhã dizendo onde você parou",
+              "18 pintadas, para a tarefa sair da fila de hoje",
+              "5 pintadas, 1 estragada e uma anotação para amanhã",
               "Só as 5 pintadas, sem falar da estragada, para não parecer erro",
               "Nada. O registro é feito só quando o lote inteiro acabar"
             ],
@@ -5306,7 +5312,7 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_pedido",
             "pergunta": "Você vai planejar a pintura de uma peça de treino. Qual plano está certo?",
             "opcoes": [
-              "Base nas áreas grandes, depois sombras e luzes, e detalhes delicados por último, esperando secar antes de pintar a área vizinha",
+              "Base, depois sombras e luzes, e detalhes por último",
               "Olhos e distintivos primeiro, depois a base nas áreas grandes",
               "Base, depois os detalhes, e sombras e luzes no fim",
               "Tudo de uma vez, sem esperar secar, para ganhar tempo"
@@ -5342,10 +5348,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "tecnica_pintura",
             "pergunta": "A tinta do pote está grossa. A peça tem detalhes finos no rosto. O que fazer?",
             "opcoes": [
-              "Passar uma camada grossa para terminar rápido",
-              "Pôr água sem limite até a tinta ficar bem líquida",
-              "Passar camadas finas, com pouca tinta no pincel, e deixar secar entre as camadas, seguindo o procedimento da Valente",
-              "Passar a segunda camada com a primeira ainda úmida"
+              "Passar uma camada grossa de uma vez para terminar rápido",
+              "Pôr água à vontade até a tinta ficar bem líquida",
+              "Passar camadas finas, com pouca tinta, e esperar secar",
+              "Passar a segunda camada logo, com a primeira ainda úmida"
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Camadas finas preservam o detalhe.",
@@ -5398,25 +5404,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: Terminei o decalque do distintivo, mas ficou um pouco torto e já secou. Vamos deixar assim. Ninguém vai notar.",
             "opcoes": [
               {
-                "label": "Sim, já secou, vamos seguir",
+                "label": "Sim, já secou e ninguém vai notar, vamos seguir assim",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Torto continua sendo defeito. Esconder falha é erro crítico."
               },
               {
-                "label": "Comparo com a referência, vejo que tipo de defeito é e consulto o responsável sobre como corrigir",
+                "label": "Comparo com a referência e consulto o responsável",
                 "correta": true,
                 "erroCritico": false,
-                "feedback": "Certo. Comparar, entender o defeito e consultar é o caminho."
+                "feedback": "Certo. Comparar com a referência e consultar é o caminho."
               },
               {
-                "label": "Raspo o decalque com lixa forte",
+                "label": "Raspo o decalque seco com lixa forte e aplico outro",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Lixar forte pode estragar a pintura e a peça."
               },
               {
-                "label": "Cubro com tinta por cima e aplico outro",
+                "label": "Cubro o decalque torto com tinta e aplico outro por cima",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Camadas passadas sem método juntam mais problema e não acertam a posição."
@@ -5489,10 +5495,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "inspecao_liberacao",
             "pergunta": "Uma peça seca com um escorrimento no braço. Qual é o caminho certo?",
             "opcoes": [
-              "Passar mais tinta por cima para nivelar",
+              "Passar mais uma camada de tinta por cima para nivelar",
               "Deixar assim e colocar a peça junto das aprovadas",
-              "Lixar forte até tirar toda a tinta do braço",
-              "Esperar secar, tratar o ponto com o método ensinado e repintar em camada fina, ou consultar se não souber"
+              "Lixar forte até tirar toda a tinta do braço e começar de novo",
+              "Esperar secar, tratar o ponto e repintar em camada fina"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Corrigir com método preserva a textura.",
@@ -5512,9 +5518,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Uma peça secou com uma mancha. Você não conhece o jeito certo de corrigir. O que fazer?",
             "opcoes": [
               "Passar várias camadas de tinta por cima até a mancha sumir",
-              "Consultar o responsável e registrar o que aconteceu, sem juntar camadas por cima",
+              "Consultar o responsável e registrar o que aconteceu",
               "Colocar a peça junto das aprovadas, porque a mancha é pequena",
-              "Corrigir do seu jeito e não contar para ninguém"
+              "Tentar corrigir do seu jeito e só avisar se não der certo"
             ],
             "correta": 1,
             "feedbackCerto": "Isso mesmo. Sem procedimento conhecido, o caso é de consulta. Juntar camadas sem método aumenta o problema.",
@@ -5553,13 +5559,13 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Líder: Seu lote de 8 está pronto? O cliente espera hoje.",
             "opcoes": [
               {
-                "label": "Está pronto. Pelo que vi da última, todas ficaram boas",
+                "label": "Está pronto. Pelo que vi da última peça, todas ficaram boas",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Olhar só a última peça deixa o conjunto sem conferir."
               },
               {
-                "label": "Ainda estou comparando as 8 lado a lado com a referência e a tarefa. Uma ficou diferente e eu separei para correção",
+                "label": "Ainda não. Comparei as 8 e separei uma que ficou diferente",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Compare o conjunto e separe a peça diferente."
@@ -5571,7 +5577,7 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "Liberar peça com defeito é erro crítico."
               },
               {
-                "label": "Conto só a quantidade. Se der 8, está liberado",
+                "label": "Conto só a quantidade de peças. Se der 8, está liberado",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "A quantidade é só um item do checklist."
@@ -5592,9 +5598,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Você pintou as 10 peças da tarefa. Na inspeção do conjunto, 9 passaram e 1 tem defeito de impressão no rosto. Na janela Fechar a pintura, o que você registra?",
             "opcoes": [
               "10 prontas, e corrigir depois se o cliente reclamar",
-              "9 prontas, sem falar da outra, para não atrasar o pedido",
-              "9 prontas e 1 voltando para a fase anterior, com o motivo escrito",
-              "Nenhuma pronta até o cliente avaliar o lote"
+              "9 prontas, sem falar da outra peça, para não atrasar o pedido",
+              "9 prontas e 1 voltando para a fase anterior, com o motivo",
+              "Nenhuma pronta, até o cliente avaliar o lote inteiro"
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Prontas são só as aprovadas. A peça com defeito volta, com o motivo.",
@@ -5656,28 +5662,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Tarefa simulada: pintar 4 soldados, com o uniforme igual ao da referência. Você abre a tarefa e a referência. A referência mostra um verde. Na prateleira há três potes de verde. O que você faz primeiro?",
                 "opcoes": [
                   {
-                    "label": "Confiro o número de Cor da referência e uso o pote com o mesmo número na etiqueta",
+                    "label": "Confiro o número de Cor e uso o pote com esse número",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. O número do pote é a referência que vale.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Uso o verde que parece mais próximo na tela",
+                    "label": "Uso o verde que parece mais próximo da imagem na tela",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "A tela muda o tom da cor. Usar cor parecida quebra o padrão.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Misturo dois verdes até ficar parecido",
+                    "label": "Misturo dois verdes até ficar parecido com a imagem",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Misturar sem receita oficial é improviso.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Começo a pintar e confiro depois",
+                    "label": "Começo a pintar com um dos potes e confiro depois",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Conferir depois pode obrigar você a refazer tudo.",
@@ -5689,28 +5695,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Você inspeciona as peças antes de pintar. Um soldado tem uma marca de suporte e a superfície pegajosa. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Passo primer grosso para esconder",
+                    "label": "Passo uma camada grossa de primer para esconder a marca",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Esconder defeito é erro crítico.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Separo essa peça, trato conforme o fluxo ou consulto o responsável, e sigo com as outras",
+                    "label": "Separo a peça, trato conforme o fluxo e sigo com as outras",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Defeito de etapa anterior é separado e tratado.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Pinto assim mesmo, a tinta resolve",
+                    "label": "Pinto assim mesmo, porque a tinta cobre a marca e o pegajoso",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Tinta não conserta superfície ruim.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Jogo a peça fora sem avisar ninguém",
+                    "label": "Jogo a peça fora e pego outra, sem avisar ninguém",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Toda decisão sobre a peça deve ser avisada e seguir o fluxo.",
@@ -5722,25 +5728,25 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Você pintou os 4 soldados. Um deles tem um escorrimento seco no braço e o tom parece mais escuro. Como liberar?",
                 "opcoes": [
                   {
-                    "label": "Libero os 4, o erro é pequeno",
+                    "label": "Libero os 4, porque o erro é pequeno e o prazo está curto",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Liberar peça com defeito é erro crítico."
                   },
                   {
-                    "label": "Passo mais tinta por cima do escorrimento",
+                    "label": "Passo mais tinta por cima do escorrimento para nivelar o braço",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Camadas passadas sem método aumentam o problema."
                   },
                   {
-                    "label": "Comparo os 4 lado a lado com a referência e a tarefa, separo o que está diferente, corrijo com método ou consulto, e libero só os aprovados",
+                    "label": "Comparo os 4, separo a peça diferente e libero as aprovadas",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Conjunto, método e separação."
                   },
                   {
-                    "label": "Refaço as 4 peças do zero sem avisar",
+                    "label": "Refaço as 4 peças do zero sem avisar o responsável",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Refazer tudo sem consultar desperdiça trabalho."
@@ -5825,9 +5831,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "conferencia_final",
             "pergunta": "Um pedido chega à expedição já dentro da caixa de transporte. A miniatura que está na caixa é de outra versão, diferente da que está no pedido. Como tratar isso?",
             "opcoes": [
-              "É falha leve. A caixa está bonita e bem fechada, e o cliente pode trocar depois.",
+              "É falha leve. A caixa está bonita e bem fechada, então o cliente pode trocar a peça depois.",
               "É falha de quem embalou. Basta refazer a caixa com a mesma peça.",
-              "É falha grave, mesmo com a embalagem perfeita. Você para e leva ao responsável.",
+              "É falha grave, mesmo com a embalagem perfeita. O produto está errado.",
               "Depende do cliente. Se ele não perceber, o envio segue normal."
             ],
             "correta": 2,
@@ -5889,8 +5895,8 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "conferencia_pedido",
             "pergunta": "O pedido tem duas miniaturas e um acessório para cada uma. Na bancada há duas caixas. Qual é a conferência certa?",
             "opcoes": [
-              "Abrir e ver peça por peça e acessório por acessório, comparando com o pedido.",
-              "Contar as caixas. Se são duas, o pedido está completo.",
+              "Abrir e ver cada peça e acessório, comparando com o pedido.",
+              "Contar as caixas na bancada. Se são duas, o pedido está completo.",
               "Confiar na etiqueta das caixas, porque quem fechou já conferiu.",
               "Embalar agora e conferir depois, quando o rastreio for gerado."
             ],
@@ -5940,9 +5946,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "seguranca_produto",
             "pergunta": "A identificação de uma miniatura de resina diz \"brinquedo infantil\". O que você faz?",
             "opcoes": [
-              "Envio, porque a etiqueta já está pronta.",
-              "Apago a informação sem avisar ninguém.",
-              "Paro a expedição e aviso o responsável para corrigir a informação."
+              "Envio assim, porque a etiqueta já veio pronta de outra etapa da fábrica.",
+              "Apago a palavra da etiqueta e sigo, sem avisar ninguém.",
+              "Paro, não embalo e aviso o responsável sobre a identificação."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Não envie uma peça com identificação errada.",
@@ -5964,19 +5970,19 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: A miniatura tem uma rachadura pequena na base. O prazo está apertado. Vamos embalar logo, o cliente nem vai notar.",
             "opcoes": [
               {
-                "label": "Concordo. É pequena e o prazo pesa mais. Embalo e sigo.",
+                "label": "Concordo. A rachadura é pequena e o prazo está apertado. Embalo e sigo.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Embalar um defeito que você já viu é esconder o problema. O cliente vai notar."
               },
               {
-                "label": "Separo a peça, não embalo, registro Encontrei problema na tarefa e aviso o responsável.",
+                "label": "Separo a peça, registro Encontrei problema e aviso o responsável.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Peça quebrada ou rachada não segue. Você registra Encontrei problema, o pedido para e o responsável aciona a correção."
               },
               {
-                "label": "Embalo, mas coloco um bilhete avisando o cliente da rachadura.",
+                "label": "Embalo, mas coloco um bilhete na caixa avisando o cliente da rachadura.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Passar o defeito para o cliente não corrige a falha. Essa decisão não é sua, e não é o cliente quem deve resolver."
@@ -5994,7 +6000,7 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "conferencia_final",
             "pergunta": "O pedido tem três peças. No fim da conferência, você achou uma peça com tinta descascada. O que responder na janela da tarefa?",
             "opcoes": [
-              "Tudo certo, porque duas das três peças estão boas.",
+              "Tudo certo, porque duas das três peças estão boas e a outra é só tinta.",
               "Tudo certo, e aviso o cliente com um bilhete dentro da caixa.",
               "Concluo a tarefa sem responder e deixo a Embalagem decidir.",
               "Encontrei problema, com o motivo e quantas peças têm o problema."
@@ -6109,10 +6115,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "embalagem_protecao",
             "pergunta": "Você coloca uma miniatura delicada, de braços finos, em uma caixa muito maior que ela, sem nada em volta. Qual é o maior risco?",
             "opcoes": [
-              "A caixa ficar cara demais para a peça.",
-              "A peça se mexer e bater nas paredes da caixa, quebrando detalhes finos.",
-              "A peça perder a cor por não encostar na proteção interna.",
-              "A etiqueta não caber na caixa grande."
+              "A caixa ficar cara demais e gastar material sem precisar.",
+              "A peça se mexer e bater na caixa, quebrando detalhes.",
+              "A peça perder a cor por não encostar na proteção da caixa.",
+              "A etiqueta ficar pequena e difícil de colar na caixa grande."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Com folga e sem nada para prender, a peça bate dentro da caixa.",
@@ -6120,7 +6126,7 @@ var TREINAMENTO_TRILHAS = {
               "O maior problema é a proteção da peça, não o preço ou a aparência da caixa.",
               null,
               "Folga não muda a cor. O risco é a batida.",
-              "A etiqueta cabe. O risco de verdade é a peça se mexer lá dentro."
+              "Isso não é o risco. O risco de verdade é a peça se mexer lá dentro."
             ]
           },
           {
@@ -6194,10 +6200,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "identificacao_envio",
             "pergunta": "Você acabou de fechar duas caixas iguais, de pedidos diferentes. Elas ainda estão sem identificação. O que fazer agora?",
             "opcoes": [
-              "Separar as caixas, conferir pedido e cliente no sistema e identificar cada uma na hora.",
-              "Deixar as duas juntas e identificar no fim do dia, com tudo pronto.",
-              "Identificar uma e achar que a outra é a que sobrou.",
-              "Deixar quem for despachar descobrir pelo peso."
+              "Conferir o pedido no sistema e identificar cada caixa na hora.",
+              "Deixar as duas juntas na bancada e identificar só no fim do dia.",
+              "Identificar uma caixa e achar que a outra é a que sobrou.",
+              "Deixar quem for despachar descobrir qual é qual pelo peso."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. Identificar logo depois de fechar mantém a rastreabilidade.",
@@ -6245,25 +6251,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega do Comercial: o endereço do pedido está sem o número da casa. Mas o cliente mora na mesma rua de outro pedido dele, no 120. Usa o 120 aí.",
             "opcoes": [
               {
-                "label": "Uso o 120, porque é a mesma rua e deve ser a mesma casa.",
+                "label": "Uso o 120, porque é a mesma rua do outro pedido e deve ser a mesma casa.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Presumir o número pode mandar o pacote para o lugar errado."
               },
               {
-                "label": "Peço que o número seja confirmado com o cliente pelo canal correto e espero antes de despachar.",
+                "label": "Peço a confirmação pelo canal correto e espero para despachar.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Dado que falta é confirmado, nunca presumido."
               },
               {
-                "label": "Escrevo sem o número e deixo a transportadora procurar.",
+                "label": "Escrevo sem o número e deixo a transportadora procurar a casa na rua.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Endereço incompleto aumenta o risco de o pacote atrasar ou se perder."
               },
               {
-                "label": "Despacho assim mesmo e depois corrijo no sistema.",
+                "label": "Despacho assim mesmo e depois corrijo o número no sistema.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Despachar com dado incompleto vai contra a regra de conferir antes."
@@ -6275,10 +6281,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "dados_envio",
             "pergunta": "Na conferência, o CEP da etiqueta está diferente do CEP do pedido no Valente OS. O que fazer?",
             "opcoes": [
-              "Confiar na etiqueta, porque foi impressa por um sistema.",
-              "Corrigir a etiqueta com o CEP que você lembra da região.",
-              "Parar e comparar com o registro do pedido. Se a diferença continuar, confirmar pelo canal correto.",
-              "Despachar e esperar a transportadora avisar se der problema."
+              "Confiar na etiqueta, porque ela foi impressa por um sistema.",
+              "Corrigir a etiqueta com o CEP que você lembra daquela região.",
+              "Parar, comparar com o registro e confirmar pelo canal correto.",
+              "Despachar e esperar a transportadora avisar se o CEP der problema."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Dado diferente é motivo para parar e confirmar na fonte.",
@@ -6298,10 +6304,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "dados_envio",
             "pergunta": "Você vai conferir os dados de envio de um pedido antes de despachar. Qual é o jeito certo?",
             "opcoes": [
-              "Olhar só o nome do cliente. Se estiver certo, o resto também está.",
-              "Comparar a etiqueta com o endereço que você lembra de outro pedido do cliente.",
-              "Comparar a etiqueta com o pedido no Valente OS. Se faltar um dado, despachar e pedir a confirmação depois.",
-              "Comparar a etiqueta com o pedido no Valente OS, campo por campo. Se faltar um dado, pedir a confirmação pelo canal correto e não despachar até resolver."
+              "Olhar só o nome do cliente na etiqueta. Se estiver certo, o resto também está.",
+              "Comparar a etiqueta com o endereço que você lembra de outro pedido do mesmo cliente.",
+              "Se faltar um dado, despachar e pedir a confirmação depois, para não atrasar o pedido.",
+              "Comparar campo por campo com o pedido no Valente OS e confirmar o que faltar antes de despachar."
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Você compara a etiqueta com o registro, campo por campo, e não despacha com dado faltando.",
@@ -6340,9 +6346,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "A etiqueta de envio foi impressa e o código de rastreio já foi gerado. Mas o pacote ainda está na sua bancada. Você pode marcar o pedido como enviado?",
             "opcoes": [
               "Sim. Com etiqueta e código, está tudo pronto para a transportadora.",
-              "Sim. O rastreio avisa se algo der errado.",
-              "Sim, desde que o Comercial saiba.",
-              "Não. Etiqueta e código não provam que o pacote saiu."
+              "Sim. O código de rastreio avisa se algo der errado no caminho.",
+              "Sim, desde que o Comercial saiba que o pacote ainda vai sair.",
+              "Não. Etiqueta e código gerados não provam que o pacote saiu."
             ],
             "correta": 3,
             "feedbackCerto": "Certo. O registro só vale depois que o pacote saiu de verdade.",
@@ -6418,10 +6424,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "despacho_kanban",
             "pergunta": "Na Pós-compra, o cliente diz que ainda não recebeu o pedido. O que o Comercial consulta primeiro para responder?",
             "opcoes": [
-              "A foto da peça pintada, para provar a qualidade.",
-              "A tarefa de Pintura, para ver quem fez.",
-              "O código de rastreio e a transportadora registrados na Expedição.",
-              "O Kanban de Negociação, para ver o valor do pedido."
+              "A foto da peça pintada, para provar ao cliente a qualidade dela.",
+              "A tarefa de Pintura, para ver quem pintou a peça e quando.",
+              "O rastreio e a transportadora registrados na Expedição.",
+              "A coluna Negociação do Kanban, para ver o valor do pedido."
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Por isso o rastreio registrado na expedição precisa estar certo.",
@@ -6445,10 +6451,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "despacho_kanban",
             "pergunta": "Quando você toca em Marcar como enviado, o que o sistema faz sozinho?",
             "opcoes": [
-              "Só muda a cor do cartão no Kanban, sem criar tarefa nova.",
-              "Leva o pedido para Enviado e cria uma tarefa de Pós-compra para o Comercial, para 5 dias depois.",
-              "Manda para o cliente a foto final da peça tirada pelo tablet.",
-              "Volta o pedido para Pós-impressão para revisão."
+              "Só muda a cor do cartão no Kanban e não cria nenhuma tarefa para o Comercial.",
+              "Move para Enviado e cria a tarefa de Pós-compra para 5 dias depois.",
+              "Manda para o cliente a foto final da peça, tirada pelo tablet.",
+              "Volta o pedido para Pós-impressão, para uma nova revisão da peça."
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Por isso o toque só vale com o envio de verdade.",
@@ -6464,10 +6470,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "despacho_kanban",
             "pergunta": "Por que você só deve marcar um pedido como Enviado depois que o pacote saiu de verdade?",
             "opcoes": [
-              "Porque Enviado é um fato. Se você marca antes, o Comercial pode dizer ao cliente algo que não aconteceu, e a tarefa de Pós-compra é criada contando a partir dessa data.",
-              "Porque o Kanban só atualiza depois que a transportadora confirma a entrega ao cliente.",
-              "Porque marcar antes só atrapalha a expedição. O Comercial e o cliente não são afetados.",
-              "Porque marcar antes apaga o código de rastreio do pedido."
+              "Porque Enviado é um fato. Se marcar antes, o Comercial pode informar o cliente errado.",
+              "Porque o Kanban só deixa marcar depois que a transportadora confirma a entrega ao cliente.",
+              "Porque marcar antes bagunça a fila da expedição. O cliente e o Comercial não são afetados.",
+              "Porque marcar antes apaga o código de rastreio e a transportadora que você registrou."
             ],
             "correta": 0,
             "feedbackCerto": "Certo. Enviado mostra que o pacote saiu de verdade. Marcar antes leva informação errada ao Comercial e ao cliente.",
@@ -6506,21 +6512,21 @@ var TREINAMENTO_TRILHAS = {
                     "feedback": "Esconder a falta é erro crítico. A falta deve ser tratada, não escondida."
                   },
                   {
-                    "label": "Paro a conferência, toco em Encontrei problema, informo o motivo e as peças afetadas e aviso o responsável antes de embalar.",
+                    "label": "Paro, toco em Encontrei problema, informo o motivo e aviso o responsável.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Você achou a falta antes de fechar a caixa.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Conto as caixas, que estão certas, e sigo.",
+                    "label": "Conto as caixas na bancada, vejo que estão certas e sigo para embalar.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Contar caixas não mostra o que há dentro.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Pego um acessório parecido de outro pedido para completar.",
+                    "label": "Pego um acessório parecido de outro pedido para completar a caixa.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Usar item de outro pedido causa troca e faz perder a rastreabilidade.",
@@ -6532,21 +6538,21 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "O responsável resolveu a falta e o pedido está completo. Agora você escolhe a embalagem. As miniaturas têm detalhes finos. São duas peças com acessórios. Como você prepara?",
                 "opcoes": [
                   {
-                    "label": "Uso uma caixa grande e coloco tudo solto. O importante é caber.",
+                    "label": "Uso uma caixa grande e coloco tudo solto, pois o importante é caber.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Com folga, as peças batem umas nas outras.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Uso o padrão aprovado. Protejo cada peça separada e deixo tudo firme, sem balançar.",
+                    "label": "Uso o padrão aprovado, protejo cada peça separada e deixo firme.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Cada peça protegida, tudo firme e com o padrão aprovado.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Aperto bem tudo em uma caixa pequena para não se mexer.",
+                    "label": "Aperto bem as duas peças em uma caixa pequena para não se mexerem.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Aperto demais pode estragar os detalhes frágeis.",
@@ -6565,13 +6571,13 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "A caixa está pronta. Na conferência, você vê que o endereço da etiqueta está sem complemento. O pedido no Valente OS tem uma observação que não esclarece. A transportadora vem buscar daqui a pouco. O que você faz?",
                 "opcoes": [
                   {
-                    "label": "Complemento é detalhe. Despacho assim mesmo e marco como enviado.",
+                    "label": "Complemento é só um detalhe pequeno. Despacho assim e marco como enviado.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Despachar com dado duvidoso é erro. Marcar como enviado nessa situação também."
                   },
                   {
-                    "label": "Invento um complemento comum na região para não atrasar.",
+                    "label": "Invento um complemento comum na região para o pacote não atrasar.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Inventar dado é erro crítico. Conferir, não presumir."
@@ -6583,7 +6589,7 @@ var TREINAMENTO_TRILHAS = {
                     "feedback": "Enviado é um fato. Marcar antes cria informação falsa."
                   },
                   {
-                    "label": "Não despacho. Peço a confirmação pelo canal correto, identifico a caixa e só registro o envio depois que o pacote sair de verdade.",
+                    "label": "Não despacho e peço a confirmação pelo canal correto antes de enviar.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Você conferiu, não presumiu e só registrou o que aconteceu de verdade."
@@ -6667,10 +6673,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "leitura_kanban",
             "pergunta": "A coluna Pintura tem dez cartões. As outras estão quase vazias. Qual é o melhor primeiro passo?",
             "opcoes": [
-              "Conferir na bancada e nas tarefas se as peças estão mesmo em pintura, antes de mudar qualquer coisa",
-              "Cobrar mais rapidez de quem pinta, já que o acúmulo está lá",
-              "Mover os cartões para Preparar p/ envio para esvaziar a coluna",
-              "Pedir ao Comercial que avise os clientes de que todos os pedidos vão atrasar"
+              "Conferir na bancada e nas tarefas se as peças estão mesmo em pintura",
+              "Cobrar mais rapidez de quem pinta, porque o acúmulo está lá",
+              "Mover os cartões para Preparar p/ envio para esvaziar a coluna e limpar o quadro",
+              "Pedir ao Comercial que avise os clientes de que os pedidos vão atrasar"
             ],
             "correta": 0,
             "feedbackCerto": "Isso mesmo. Conferir a bancada mostra se o acúmulo é de verdade ou se o quadro está desatualizado.",
@@ -6750,10 +6756,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "priorizacao",
             "pergunta": "Um pedido está em Aguardando liberação. O Comercial pede para colocar esse pedido na frente da fila. Qual é o melhor primeiro passo?",
             "opcoes": [
-              "Começar a peça só pela conversa, sem liberar, para ganhar tempo",
-              "Mover o cartão à mão para Imprimindo",
-              "Ver se há pagamento ou empenho e usar Liberar. Se o botão avisar pendência, resolver com o Comercial antes de priorizar",
-              "Deixar o pedido parado até alguém lembrar de liberar"
+              "Começar a peça só pela conversa com o Comercial, sem liberar, para ganhar tempo",
+              "Mover o cartão à mão para Imprimindo, já que o Comercial pediu urgência",
+              "Usar o botão Liberar e, se avisar pendência, resolver com o Comercial primeiro",
+              "Deixar o pedido parado em Aguardando liberação até alguém lembrar de liberar"
             ],
             "correta": 2,
             "feedbackCerto": "Certo. Primeiro resolva a pendência. Depois veja a prioridade.",
@@ -6774,19 +6780,19 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Gestor, esse pedido novo é urgente! O cliente quer para ontem. Para tudo e começa ele agora. O lote da outra impressora está quase acabando, mas deixa pra lá.",
             "opcoes": [
               {
-                "label": "Entendo a urgência. Vou olhar a tarefa e ver quanto falta no lote atual, qual é o prazo real do pedido novo e se dá para encaixar sem parar o que está quase pronto.",
+                "label": "Entendo a urgência. Vou ver quanto falta no lote atual e o prazo real do pedido novo, para ver se dá para encaixar.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Boa. Você pensa no custo de interromper e confere o prazo real antes de decidir."
               },
               {
-                "label": "Pode parar o lote agora. Urgente sempre passa na frente.",
+                "label": "Pode parar o lote agora. Pedido urgente passa na frente, e a outra impressora a gente liga de novo depois.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Parar um lote quase pronto pode aumentar o atraso total. A urgência precisa ser conferida."
               },
               {
-                "label": "Vou deixar o pedido novo por último, porque ele entrou depois.",
+                "label": "Vou deixar o pedido novo por último, porque ele entrou depois e a ordem de entrada é o que vale.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "A ordem de entrada conta, mas não é a única regra. Ignorar a urgência real e o que o Comercial prometeu também dá problema."
@@ -6818,10 +6824,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "priorizacao",
             "pergunta": "Quando vale a pena interromper um trabalho que já está em andamento?",
             "opcoes": [
-              "Sempre que alguém disser que outro pedido é urgente",
-              "Só com motivo claro, depois de ver o prazo real e quanto falta, e registrando o motivo",
-              "Nunca, mesmo que exista um motivo claro",
-              "Quando você mesmo decide mudar a regra de prioridade"
+              "Quando alguém disser que outro pedido é urgente, para não atrasar o cliente",
+              "Só com motivo claro, depois de ver o prazo real, e registrando o motivo",
+              "Não interromper, mesmo que o prazo real do outro pedido seja bem menor",
+              "Quando você acha melhor mudar a regra de prioridade para o seu jeito de trabalhar"
             ],
             "correta": 1,
             "feedbackCerto": "Certo. Parar um trabalho quase pronto tem custo. Só interrompa com motivo claro, e registre o motivo.",
@@ -6940,25 +6946,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Fala do Comercial: O cliente quer cinco peças personalizadas para amanhã. Posso confirmar? Você acha que dá, né?",
             "opcoes": [
               {
-                "label": "Deixa eu olhar a fila, a capacidade de cada etapa e o material. Daqui a pouco te digo o que dá para prometer e o que é risco.",
+                "label": "Deixa eu olhar a fila, a capacidade e o material. Já te digo o que dá para prometer.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Boa. Você responde com dados e não promete no escuro."
               },
               {
-                "label": "Confirma. A gente dá um jeito, sempre dá.",
+                "label": "Confirma agora. A gente dá um jeito, como já deu em outras vezes, e o cliente fica contente.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Otimismo sem dados gera prazo que não se cumpre."
               },
               {
-                "label": "Não confirma nada. A fila está sempre cheia.",
+                "label": "Não confirma nada. A fila está cheia e o prazo de amanhã é pouco para peças personalizadas.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Recusar sem olhar os dados também não ajuda. A resposta precisa vir da fila real."
               },
               {
-                "label": "Confirma. Se atrasar, eu aviso depois.",
+                "label": "Confirma. Se atrasar, eu aviso o cliente depois, quando o prazo já tiver passado.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "O aviso de risco tem que vir antes de o prazo vencer, não depois."
@@ -6971,25 +6977,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Comercial: Fechei com a prefeitura. O pagamento é por empenho, mas o número ainda não chegou. A prefeitura quer rápido. Move o cartão para Imprimindo para a gente adiantar?",
             "opcoes": [
               {
-                "label": "Movo. Assim ganhamos tempo e o número chega depois.",
+                "label": "Movo para Imprimindo. Assim a gente ganha tempo e o número do empenho chega depois.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Sem o número do empenho o trabalho não começa. E o Kanban bloqueia essa mudança."
               },
               {
-                "label": "Não dá para começar sem o número. Deixo em Aguardando empenho, mantenho a cobrança andando e aviso que o prazo depende dele.",
+                "label": "Não dá para começar sem o número. Deixo em Aguardando empenho e aviso que o prazo depende dele.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Você respeita o bloqueio e avisa cedo do risco de prazo."
               },
               {
-                "label": "Aviso o cliente de que todos os pedidos vão atrasar.",
+                "label": "Aviso o cliente de que todos os pedidos vão atrasar por causa desse empenho que não chegou.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "O problema é só neste pedido. Avisar sobre todos cria confusão sem ter dados."
               },
               {
-                "label": "Prometo começar em dois dias de qualquer jeito.",
+                "label": "Prometo à prefeitura começar em dois dias, com ou sem o número, para ela ficar tranquila.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "É promessa sem dado e contra a regra do empenho."
@@ -7009,10 +7015,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "capacidade_fluxo",
             "pergunta": "O Comercial pede o prazo de um pedido novo. Você ainda não olhou os dados. O que você faz?",
             "opcoes": [
-              "Dá um prazo curto para agradar o cliente e ajusta depois, se precisar",
+              "Dá um prazo curto para agradar o cliente e ajusta depois, se o pedido atrasar",
               "Soma só o tempo de impressão, sem contar a fila e a espera entre as etapas",
-              "Diz que não dá para atender, porque a fila está sempre cheia",
-              "Diz que precisa confirmar, olha a fila, a capacidade e o material, e avisa do risco antes de o prazo vencer"
+              "Diz que não dá para atender, porque a fila está cheia e o prazo seria curto demais",
+              "Diz que precisa confirmar e olha a fila, a capacidade e o material antes de responder"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. O prazo vem dos dados: fila, tempo e espera das etapas, capacidade, material e arquivo. E o risco se avisa antes de o prazo vencer.",
@@ -7050,9 +7056,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "gargalos",
             "pergunta": "O cliente pediu ajustes na arte. Surgiu a tarefa Modelagem de ajuste e a tarefa Aprovar arte está bloqueada. O que acontece quando a modelagem do ajuste termina?",
             "opcoes": [
-              "Alguém precisa reabrir à mão a tarefa Aprovar arte",
+              "Alguém precisa reabrir à mão a tarefa Aprovar arte para o cliente ver",
               "A arte passa a valer como aprovada e a impressão é liberada",
-              "O pedido volta para Negociação e começa de novo",
+              "O pedido volta para Negociação e todas as tarefas começam de novo",
               "Aprovar arte é liberada sozinha, para o cliente ver a nova versão"
             ],
             "correta": 3,
@@ -7073,9 +7079,9 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Há seis cartões parados em Modelando e o prazo apertou. O que é melhor fazer?",
             "opcoes": [
               "Cobrar do modelador que acelere, porque os cartões estão com ele",
-              "Perguntar ao modelador e olhar os pedidos para ver se falta referência, aprovação ou arquivo, antes de cobrar",
-              "Mover os cartões para Imprimindo para destravar a fila",
-              "Contratar ajuda para modelar, porque está claro que a modelagem é o gargalo"
+              "Perguntar ao modelador e ver nos pedidos se falta referência ou arquivo, antes de cobrar",
+              "Mover os cartões para Imprimindo para destravar a fila e mostrar serviço",
+              "Contratar ajuda para modelar, porque está claro que a modelagem é o gargalo da fábrica"
             ],
             "correta": 1,
             "feedbackCerto": "Isso. O acúmulo é um sinal. Investigar mostra a causa real.",
@@ -7114,10 +7120,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "gargalos",
             "pergunta": "Uma coluna do Kanban está com muitos cartões acumulados. O que isso mostra?",
             "opcoes": [
-              "Que algo segura o trabalho ali. Pode ser máquina, pessoa, informação ou a etapa seguinte, e você precisa conferir",
-              "Que a pessoa daquela etapa está lenta e precisa ser cobrada",
-              "Que falta máquina naquela etapa",
-              "Que o quadro está errado e basta mover os cartões"
+              "Que algo segura o trabalho ali, e você precisa conferir o que é",
+              "Que a pessoa daquela etapa está lenta e precisa ser cobrada hoje",
+              "Que falta máquina naquela etapa e é preciso colocar mais uma",
+              "Que o quadro está errado e basta mover os cartões para a próxima coluna"
             ],
             "correta": 0,
             "feedbackCerto": "Certo. O acúmulo tem várias causas possíveis. Confira com a tarefa, a conversa com quem faz e a peça, sem culpar ninguém antes.",
@@ -7179,25 +7185,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: A peça do lote falhou de novo. Eu só aperto reimprimir e pronto, né? Não vou anotar que falhou, senão vão achar que eu errei.",
             "opcoes": [
               {
-                "label": "Reimprima para atender o pedido. Mas anote o que falhou, onde e com qual material. O registro não é para punir. É para achar a causa e a falha não voltar.",
+                "label": "Reimprima o pedido. Mas anote o que falhou e onde. É para achar a causa, não para punir.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Correção imediata e registro para a ação preventiva, sem culpar ninguém."
               },
               {
-                "label": "Reimprime e esquece. Se anotar, vai dar problema para você.",
+                "label": "Reimprime e esquece o assunto. Se você anotar, vai sobrar para você e o chefe vai cobrar.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Esconder a falha impede de ver o que se repete. E o custo volta."
               },
               {
-                "label": "Para tudo e investiga até ter certeza da causa. Só depois reimprime.",
+                "label": "Para tudo e investiga a falha até ter certeza da causa. Só depois reimprime o pedido.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Parar tudo é exagero. A correção imediata e a prevenção podem andar juntas."
               },
               {
-                "label": "Reimprima e diga ao cliente que a peça foi feita normalmente.",
+                "label": "Reimprima e diga ao cliente que a peça foi feita normalmente, sem falar da falha.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Esconder a falha do cliente e da equipe é passar informação falsa."
@@ -7257,7 +7263,7 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: O tablet ficou com o PIN do Pedro. Vou iniciar essa pintura no nome dele mesmo. Ele está ocupado e nem vai notar.",
             "opcoes": [
               {
-                "label": "Pode usar. O importante é a tarefa andar.",
+                "label": "Pode usar o PIN dele. O importante é a tarefa andar, e o Pedro nem vai notar.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "O responsável gravado seria o Pedro, que não fez o trabalho. O registro fica falso."
@@ -7269,13 +7275,13 @@ var TREINAMENTO_TRILHAS = {
                 "feedback": "Parar o trabalho sem necessidade atrasa tudo. Quem vai fazer deve entrar com o próprio PIN."
               },
               {
-                "label": "Entre com o seu PIN e pegue a tarefa em Outras funções, se for ajudar. Assim fica gravado quem fez de verdade.",
+                "label": "Entre com o seu PIN e pegue a tarefa em Outras funções. Assim fica gravado quem fez de verdade.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. O PIN mostra quem fez. E Outras funções existe para você ajudar."
               },
               {
-                "label": "Inicie com o PIN do Pedro e conclua com o seu. Assim fica dividido.",
+                "label": "Inicie com o PIN do Pedro e conclua com o seu. Assim o trabalho fica dividido entre os dois.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Misturar os PINs mistura os responsáveis e esconde quem fez cada parte."
@@ -7285,19 +7291,19 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "multipla_escolha",
             "competencia": "distribuicao_trabalho",
-            "pergunta": "O Pedro está sem tarefa. Em pintura, o status dele é Em capacitação. Chegou uma peça de pintura com prazo apertado. O que fazer?",
+            "pergunta": "O Pedro está sem tarefa. Em pintura, o status dele é Prática supervisionada. Chegou uma peça de pintura com prazo apertado. O que fazer?",
             "opcoes": [
-              "Dar a ele só a parte que o status permite, com acompanhamento, e deixar a tarefa crítica para quem está Liberado",
-              "Passar a tarefa inteira para ele, porque está livre e assim aprende",
+              "Dar a tarefa a ele, com alguém que esteja Liberado acompanhando de perto o trabalho",
+              "Dar a tarefa a ele sozinho, porque está livre e assim aprende mais rápido",
               "Deixar o Pedro parado e adiar a peça até todos estarem liberados",
-              "Passar a tarefa inteira para a pessoa mais experiente, mesmo que ela esteja ocupada com outra urgente"
+              "Passar a tarefa inteira para a pessoa mais experiente, mesmo ocupada com outra urgente"
             ],
             "correta": 0,
             "feedbackCerto": "Correto. Você equilibra qualificação, acompanhamento e disponibilidade.",
             "feedbackPorOpcao": [
               null,
-              "Livre não é liberado. Tarefa crítica sem qualificação traz retrabalho e risco.",
-              "Existe um meio-termo: uma parte acompanhada, que combine com o status dele.",
+              "Livre não é liberado. Sem acompanhamento, a tarefa traz retrabalho e risco.",
+              "Quem está em Prática supervisionada pode fazer a tarefa com acompanhamento. Parar a peça atrasa à toa.",
               "Sobrecarregar alguém sem olhar disponibilidade e prioridade cria um novo gargalo."
             ],
             "erroCriticoOpcoes": [
@@ -7371,25 +7377,25 @@ var TREINAMENTO_TRILHAS = {
             "cliente": "Colega: Terminei a pintura do lote. Pode marcar como liberado e mandar para a embalagem. Ninguém precisa olhar de novo.",
             "opcoes": [
               {
-                "label": "Que bom que terminou. Vou conferir pelo procedimento da Valente ou chamar quem faz a liberação antes de seguir.",
+                "label": "Que bom que terminou. Vou conferir pelo procedimento da Valente antes de seguir.",
                 "correta": true,
                 "erroCritico": false,
                 "feedback": "Certo. Terminar não é liberar. A conferência vem antes."
               },
               {
-                "label": "Pode seguir, confio em você.",
+                "label": "Pode seguir, confio em você. Seu trabalho costuma ficar bom e o prazo está curto.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Confiança não substitui a validação quando o processo pede."
               },
               {
-                "label": "Marca como liberado agora. A gente confere depois, se der tempo.",
+                "label": "Marca como liberado agora e manda embalar. A gente confere depois, se der tempo.",
                 "correta": false,
                 "erroCritico": true,
                 "feedback": "Seguir sem conferir pode levar defeito ao cliente."
               },
               {
-                "label": "Refaça tudo, por segurança.",
+                "label": "Refaça o lote todo por segurança, antes de mandar para a embalagem.",
                 "correta": false,
                 "erroCritico": false,
                 "feedback": "Refazer sem avaliar gera retrabalho sem necessidade. Confira primeiro."
@@ -7437,10 +7443,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "qualidade_melhoria",
             "pergunta": "O número de cartões movidos por semana subiu. Mas as reimpressões também subiram. Como entender isso?",
             "opcoes": [
-              "A produtividade melhorou, então não há problema",
-              "O retrabalho subiu porque as pessoas estão mais rápidas",
-              "Parar de medir cartões movidos e medir só reimpressões",
-              "Olhar os dois juntos: a produtividade pode ser só aparência e esconder retrabalho"
+              "A produtividade melhorou, então não há problema para investigar",
+              "O retrabalho subiu porque as pessoas estão trabalhando mais rápido",
+              "Parar de medir cartões movidos e passar a medir só as reimpressões da semana",
+              "Olhar os dois juntos, porque a produtividade pode esconder retrabalho"
             ],
             "correta": 3,
             "feedbackCerto": "Certo. Os indicadores são lidos juntos, sempre com dados confiáveis.",
@@ -7475,10 +7481,10 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "qualidade_melhoria",
             "pergunta": "Você vai acompanhar o indicador de retrabalho. Qual é o jeito certo de usar?",
             "opcoes": [
-              "Criar por conta própria uma meta em número para a equipe",
-              "Olhar só o retrabalho, sem comparar com mais nada",
-              "Ligar a uma decisão, usar dados confiáveis e ler junto com outro indicador, como o prazo",
-              "Usar para mostrar quem errou mais"
+              "Criar por conta própria uma meta em número e cobrar a equipe",
+              "Olhar só o retrabalho de cada semana, sem comparar com mais nada",
+              "Ligar a uma decisão e ler junto com outro indicador, como o prazo",
+              "Usar para mostrar quem errou mais e conversar com essa pessoa"
             ],
             "correta": 2,
             "feedbackCerto": "Certo. O indicador serve a uma decisão, precisa de dado confiável e é lido junto com outro.",
@@ -7511,28 +7517,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Logo cedo: a impressora 2 parou com um lote pela metade. Um colega avisou que vai faltar hoje. E o Comercial pede para encaixar um pedido urgente. O que você faz primeiro?",
                 "opcoes": [
                   {
-                    "label": "Levanto os fatos: o que está parado, como está o lote, quem está presente e o que está na fila. Só depois decido.",
+                    "label": "Levanto os fatos: o que parou, quem está presente e o que está na fila. Só depois decido.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Fatos antes das decisões.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Aceito o urgente na hora para não perder o cliente. Depois vejo como resolver.",
+                    "label": "Aceito o urgente na hora para não perder o cliente. Depois vejo como resolver o resto.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Prometer sem dados de capacidade é o erro de otimismo que o curso ensinou.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Peço à equipe para tentar fazer tudo ao mesmo tempo. Hoje tudo é urgente.",
+                    "label": "Peço à equipe para tentar fazer tudo ao mesmo tempo, já que hoje tudo é urgente.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Se tudo é urgente, não existe prioridade. E a equipe fica sobrecarregada.",
                     "proximo": "b"
                   },
                   {
-                    "label": "Troco todo o plano da semana sem olhar o quadro.",
+                    "label": "Troco todo o plano da semana agora, sem olhar o quadro nem conversar com a equipe.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Sem olhar o quadro, a decisão não tem base.",
@@ -7544,28 +7550,28 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "Fatos levantados: a máquina parada precisa de verificação. A pós-impressão está cheia. O colega que faltou era o único liberado em pintura. O urgente chegou. Como redistribuir?",
                 "opcoes": [
                   {
-                    "label": "Defino a prioridade com regra e protejo o que está quase pronto. Passo a pintura só a quem está Liberado, com acompanhamento para quem está em Prática supervisionada.",
+                    "label": "Defino a prioridade com regra e protejo o que está quase pronto. Passo a pintura só a quem está Liberado.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Regra, continuidade e qualificação.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Passo a pintura a quem estiver livre, sem olhar o status de competência.",
+                    "label": "Passo a pintura a quem estiver livre naquela hora, sem olhar o status de competência de ninguém.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Livre não é liberado. Há risco de retrabalho.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Peço que a máquina parada volte a funcionar logo, mesmo sem verificar a causa.",
+                    "label": "Peço que a máquina parada volte a funcionar logo, mesmo sem verificar a causa, para recuperar o tempo.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Voltar sem verificar é ignorar a segurança e a qualidade.",
                     "proximo": "c"
                   },
                   {
-                    "label": "Mando imprimir tudo o que entrou para ocupar as máquinas.",
+                    "label": "Mando imprimir tudo o que entrou para ocupar todas as máquinas disponíveis.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Imprimir mais sem capacidade nas etapas seguintes só muda o gargalo de lugar.",
@@ -7577,25 +7583,25 @@ var TREINAMENTO_TRILHAS = {
                 "cliente": "No fim do dia, o prazo de dois pedidos está em risco. O Comercial pergunta como está. Como você responde?",
                 "opcoes": [
                   {
-                    "label": "Aviso do risco antes de o prazo vencer, com dados da produção: o que mudou, o que continua em risco e a nova previsão, confirmada na fonte.",
+                    "label": "Aviso o risco antes do prazo vencer, com dados e a previsão confirmada na fonte.",
                     "correta": true,
                     "erroCritico": false,
                     "feedback": "Certo. Aviso cedo e com dados."
                   },
                   {
-                    "label": "Digo que está tudo certo e resolvo depois.",
+                    "label": "Digo que está tudo certo para não preocupar o Comercial, e resolvo o problema depois.",
                     "correta": false,
                     "erroCritico": true,
                     "feedback": "Esconder o risco é passar informação falsa."
                   },
                   {
-                    "label": "Digo que atrasou por culpa do colega que faltou.",
+                    "label": "Digo que os pedidos atrasaram por culpa do colega que faltou hoje de manhã.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "Culpar não ajuda e não é fato conferido. Fale do efeito no prazo e do plano."
                   },
                   {
-                    "label": "Não respondo até ter certeza total do prazo.",
+                    "label": "Não respondo nada até ter certeza total do prazo de cada um dos pedidos.",
                     "correta": false,
                     "erroCritico": false,
                     "feedback": "O silêncio atrapalha. Avise do risco e diga o que ainda falta confirmar."
@@ -7688,9 +7694,9 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "responsabilidade",
             "pergunta": "Uma colaboradora entra no Valente OS com o PIN dela e vê menos menus que a administradora. Por que isso acontece?",
             "opcoes": [
-              "O PIN mostra quem é a pessoa, e as permissões do perfil dela definem os menus",
-              "A quantidade de pedidos cadastrados define os menus",
-              "A ordem em que as telas foram abertas define os menus para sempre"
+              "O PIN mostra quem é, e as permissões do perfil definem os menus",
+              "O número de pedidos cadastrados no perfil define os menus",
+              "A ordem em que ela abriu as telas no dia define os menus"
             ],
             "correta": 0,
             "feedbackCerto": "Isso mesmo. O PIN mostra quem é a pessoa. As permissões do perfil definem o que ela pode usar.",
@@ -7700,9 +7706,9 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "multipla_escolha",
             "pergunta": "Qual destas atividades é administrar, e não produzir?",
             "opcoes": [
-              "Imprimir uma miniatura",
-              "Pintar uma peça",
-              "Planejar e acompanhar os pedidos da semana"
+              "Imprimir uma miniatura do pedido de hoje",
+              "Pintar as peças que saíram da impressão",
+              "Acompanhar os pedidos da semana"
             ],
             "correta": 2,
             "feedbackCerto": "Isso mesmo. Administrar é planejar, organizar, acompanhar e corrigir. Produzir é transformar material e trabalho em produto.",
@@ -7754,8 +7760,8 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "decisao_conjunta",
             "pergunta": "Um fornecedor oferece um material diferente, que parece mais barato. O que você faz?",
             "opcoes": [
-              "Compra uma unidade para testar e troca o lote sem registrar",
-              "Vê se o material serve, informa custos e riscos e pede a decisão antes de mudar a compra",
+              "Compra uma unidade para testar e, se servir, troca o lote sem avisar",
+              "Vê se o material serve, informa custos e riscos e pede a decisão",
               "Mantém a compra antiga e só fala da oferta no fechamento do mês"
             ],
             "correta": 1,
@@ -7820,7 +7826,7 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "disciplina",
             "pergunta": "O cliente pede para adiantar o prazo. Qual é a atitude certa?",
             "opcoes": [
-              "Confirmar a nova data com base no prazo médio de pedidos antigos",
+              "Confirmar a nova data pelo prazo médio de pedidos antigos",
               "Consultar a capacidade e os responsáveis antes de confirmar",
               "Confirmar a data se houver impressora livre, sem ver o acabamento"
             ],
@@ -7832,10 +7838,10 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "multipla_escolha",
             "pergunta": "Em um pedido inventado, o cliente pede a entrega dois dias antes. O que você confere antes de responder?",
             "opcoes": [
-              "O prazo combinado, as tarefas em andamento, o acabamento e a capacidade, junto com o responsável",
-              "Só se há uma impressora livre naquele dia",
-              "Só o prazo médio dos pedidos antigos",
-              "Nada. Você confirma a data e avisa a produção depois"
+              "O prazo, as tarefas em andamento, o acabamento e a capacidade, com o responsável",
+              "Só se há uma impressora livre naquele dia e se o material está no estoque",
+              "Só o prazo médio dos pedidos antigos e quanto o cliente costuma comprar",
+              "Nada. Você confirma a data agora para não perder a venda e avisa a produção depois"
             ],
             "correta": 0,
             "feedbackCerto": "Isso mesmo. Você confere os dados com o responsável e só promete a nova data depois da confirmação.",
@@ -7887,8 +7893,8 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "intervencao",
             "pergunta": "Você vê uma peça com medida diferente da tarefa. O que você faz?",
             "opcoes": [
-              "Registra a diferença e continua até a próxima conferência",
-              "Avisa na hora, não deixa a peça seguir e confirma a medida certa com o responsável",
+              "Registra a diferença no sistema e deixa a peça seguir até a próxima conferência",
+              "Avisa na hora, separa a peça e confirma a medida com o responsável",
               "Pede nova impressão antes de confirmar qual é a medida certa"
             ],
             "correta": 1,
@@ -7899,10 +7905,10 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "multipla_escolha",
             "pergunta": "Uma peça inventada mede 13 cm e a tarefa pede 15 cm. Qual é o aviso certo ao responsável e o próximo passo seguro?",
             "opcoes": [
-              "Não avisar e mudar a tarefa para 13 cm",
+              "Não avisar ninguém e mudar a tarefa para 13 cm para bater com a peça",
               "Avisar que a peça saiu errada e já pedir nova impressão",
               "Avisar só na próxima conferência e deixar a peça seguir",
-              "Avisar que a peça mede 13 cm e a tarefa pede 15 cm, separar a peça e esperar a decisão"
+              "Avisar as duas medidas, separar a peça e esperar a decisão"
             ],
             "correta": 3,
             "feedbackCerto": "Isso mesmo. Você informa as duas medidas, não deixa a peça seguir e pede a decisão antes de alterar a tarefa ou imprimir de novo.",
@@ -7966,10 +7972,10 @@ var TREINAMENTO_TRILHAS = {
             "tipo": "multipla_escolha",
             "pergunta": "Você vende 12 miniaturas a R$ 55 cada. Qual é a receita, e esse valor já mostra o lucro?",
             "opcoes": [
-              "R$ 660, e esse valor já é o lucro",
+              "R$ 660, e esse valor já é o lucro, pois é tudo o que entrou",
               "R$ 660, mas ainda falta descontar os custos e as despesas",
               "R$ 600, mas ainda falta descontar os custos e as despesas",
-              "R$ 67, e esse valor já é o lucro"
+              "R$ 67, que é a soma de 12 e 55, e já é o lucro"
             ],
             "correta": 1,
             "feedbackCerto": "Isso mesmo. 12 x 55 = R$ 660 de receita. Para saber o lucro, falta descontar materiais, trabalho, embalagem, taxas, tributos e outros custos e despesas.",
@@ -8034,8 +8040,8 @@ var TREINAMENTO_TRILHAS = {
             "pergunta": "Você planeja um anúncio inventado de miniatura. O que precisa estar feito antes de publicar?",
             "opcoes": [
               "Só escolher o preço, porque os custos aparecem depois da venda",
-              "Só copiar as taxas de um anúncio antigo parecido",
-              "Listar os custos conhecidos e os que falta confirmar, ver prazo e capacidade e pedir aprovação do preço"
+              "Só copiar as taxas de um anúncio antigo parecido e manter o preço",
+              "Listar os custos conhecidos e os que faltam e pedir aprovação do preço"
             ],
             "correta": 2,
             "feedbackCerto": "Isso mesmo. Você considera material, embalagem, frete, taxas atuais, tributos e devoluções. Vê prazo e capacidade e combina o preço antes de publicar.",
