@@ -2319,19 +2319,19 @@ function imprimirFichaOT() {
       var ids = [], i;
       for (i = 0; i < (pls || []).length; i++) { ids.push(pls[i].id); }
       if (!ids.length) { ids.push(ot.plano_id); }
-      sbGet('ordens_trabalho', 'plano_id=in.(' + ids.join(',') + ')&select=id,titulo,quantidade,quantidade_concluida,status,ordem_execucao', function(e4, ots) {
+      sbGet('ordens_trabalho', 'plano_id=in.(' + ids.join(',') + ')&select=id,titulo,quantidade,quantidade_concluida,status,ordem_execucao,componente_id,bandeja_id,tipo_ot_id', function(e4, ots) {
         var etapas = [], j, o;
         ots = ots || [];
         ots.sort(function(a, b) { return (a.ordem_execucao || 0) - (b.ordem_execucao || 0); });
         for (j = 0; j < ots.length; j++) {
           o = ots[j];
           if (o.status === 'cancelada') { continue; }
-          etapas.push({ titulo: String(o.titulo || '').replace(/\s*[×x]\s*\d+\s*$/, ''), qtd: o.quantidade, feitas: o.quantidade_concluida, status: o.status });
+          etapas.push({ titulo: String(o.titulo || '').replace(/\s*[×x]\s*\d+\s*$/, ''), qtd: o.quantidade, feitas: o.quantidade_concluida, status: o.status, tipo: tipoDe(o).codigo, _c: o.componente_id || null, _b: o.bandeja_id || null });
         }
         var montar = function(ped, itens) {
           var qtd = 0, k;
           for (k = 0; k < (itens || []).length; k++) { if (itens[k].entity_type === 'peca') { qtd += parseFloat(itens[k].quantidade) || 0; } }
-          VPrint.imprimir(VPrint.especFichaPedido({
+          fiImprimirFicha(({
             pedido: op.codigo_publico || '', cliente: ped ? ped.cliente : 'PRODUÇÃO PARA ESTOQUE', contato: ped ? (ped.contato || '') : '',
             modelo: (S.peca && S.peca.modelo) || (ped ? (ped.modelo_nome || '') : ''), qtd: qtd || (ped ? ped.quantidade : null),
             entrega: ped ? ped.data_entrega : (op.data_necessidade || ''), prioridade: ped ? ped.prioridade : op.prioridade, obs: ped ? (ped.observacoes || '') : '',
@@ -3418,6 +3418,33 @@ function bdjFichas(box, ots) {
       if (ac) { box.insertBefore(w, ac); } else { box.appendChild(w); }
     });
   });
+}
+
+
+/* v190: completa as etapas da ficha do pedido com pendrive, arquivo e bandeja antes de imprimir */
+function fiImprimirFicha(d) {
+  var et = d.etapas || [], cids = [], bids = [], i, vc = {}, vb = {};
+  for (i = 0; i < et.length; i++) {
+    if (et[i]._c && !vc[et[i]._c]) { vc[et[i]._c] = 1; cids.push(et[i]._c); }
+    if (et[i]._b && !vb[et[i]._b]) { vb[et[i]._b] = 1; bids.push(et[i]._b); }
+  }
+  var fim = function(comps, bjs) {
+    var pc = {}, pb = {}, k;
+    for (k = 0; k < (comps || []).length; k++) { pc[comps[k].id] = comps[k]; }
+    for (k = 0; k < (bjs || []).length; k++) { pb[bjs[k].id] = bjs[k].codigo; }
+    for (k = 0; k < et.length; k++) {
+      var c = pc[et[k]._c];
+      if (c) { et[k].pendrive = c.pendrive || ''; et[k].arquivo = c.arquivo_fatiado || ''; }
+      if (et[k]._b) { et[k].bandeja = pb[et[k]._b] || ''; }
+    }
+    VPrint.imprimir(VPrint.especFichaPedido(d));
+  };
+  var buscaB = function(comps) {
+    if (!bids.length) { fim(comps, []); return; }
+    sbGet('bandejas_impressao', 'id=in.(' + bids.join(',') + ')&select=id,codigo', function(e2, bjs) { fim(comps, e2 ? [] : bjs); });
+  };
+  if (!cids.length) { buscaB([]); return; }
+  sbGet('peca_componentes', 'id=in.(' + cids.join(',') + ')&select=id,pendrive,arquivo_fatiado', function(e1, comps) { buscaB(e1 ? [] : comps); });
 }
 
 </script>
