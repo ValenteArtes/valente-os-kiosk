@@ -2699,7 +2699,7 @@ function bdjCarregar(box) {
       for (i = 0; i < ots.length; i++) { ids.push(ots[i].pedido_id); }
       bdjNomes(ids, function() {
         if (!S.ot || S.ot.id !== atual || !box.parentNode) { return; }
-        BDJ.atual = { b: b, ots: ots };
+        BDJ.atual = { b: b, ots: ots }; setTimeout(function() { try { bdjFichas(box, ots); } catch (eF) {} }, 60);
         var h = '<div class="card-label" style="color:#7dd3fc">🖨 Bandeja ' + esc(b.codigo || '') + '</div>', pecas = 0, mont = (b.status === 'montando');
         for (i = 0; i < ots.length; i++) { pecas += ots[i].quantidade || 0; }
         if (b.status === 'imprimindo' && b.inicio_real) {
@@ -2708,7 +2708,7 @@ function bdjCarregar(box) {
           h += '<div style="font-size:.95rem;color:#bae6fd;margin-bottom:6px">Montando: <b>' + ots.length + '</b> tarefa(s) · <b>' + pecas + '</b> peça(s)</div>';
         }
         for (i = 0; i < ots.length; i++) {
-          h += '<div style="display:flex;align-items:center;gap:8px;padding:8px;margin-bottom:4px;background:#0c4a6e;border-radius:8px;color:#f1f5f9;font-size:.9rem">' +
+          h += '<div id="bdjit-' + ots[i].id + '" style="display:flex;align-items:center;gap:8px;padding:8px;margin-bottom:4px;background:#0c4a6e;border-radius:8px;color:#f1f5f9;font-size:.9rem">' +
             '<div style="flex:1"><b>' + esc(bdjNome(ots[i].pedido_id) || 'Pedido') + '</b> · ' + esc(ots[i].titulo || '') + (ots[i].id === atual ? ' <span style="color:#7dd3fc">(esta)</span>' : '') + '</div>' +
             (mont ? '<button style="padding:6px 10px;background:#7f1d1d;color:#fff;border:0;border-radius:6px;font-size:.8rem" onclick="bdjTirar(\'' + ots[i].id + '\')">tirar</button>' : '') + '</div>';
         }
@@ -3322,6 +3322,103 @@ function bvBotaoTarefa() {
   if (acoes) { cont.insertBefore(b, acoes); } else { cont.appendChild(b); }
 }
 function bvAjudaTarefa() { BV.ot = S.ot; BV.aula = bvAula(codTipo()); BV.ativo = true; bvAjuda(); }
+
+
+/* ─────────────────────────────────────────
+   Ficha de impressão (v189, ES5): na tarefa de impressão mostra o pendrive, o arquivo,
+   a impressora, a resina, quantas cabem por bandeja e o tempo. Na bandeja avisa se pode
+   não caber ou se mistura impressoras. Dados vêm do componente (passo 24).
+───────────────────────────────────────── */
+var FI = { cache: {}, imps: null, mats: null, off: false };
+function fiNomes(cb) {
+  if (FI.imps && FI.mats) { cb(); return; }
+  sbGet('impressoras', 'select=id,nome', function(e1, a) {
+    sbGet('materiais', 'select=id,material,cor', function(e2, b) {
+      var i; FI.imps = {}; FI.mats = {};
+      for (i = 0; i < (a || []).length; i++) { FI.imps[a[i].id] = a[i].nome || ''; }
+      for (i = 0; i < (b || []).length; i++) { FI.mats[b[i].id] = ((b[i].material || '') + ' ' + (b[i].cor || '')).replace(/^\s+|\s+$/g, ''); }
+      cb();
+    });
+  });
+}
+function fiMin(m) { m = parseInt(m, 10) || 0; return m >= 60 ? Math.floor(m / 60) + 'h' + (m % 60 ? (m % 60 < 10 ? '0' : '') + (m % 60) : '') : m + ' min'; }
+function fiHtml(c) {
+  if (!c || !(c.pendrive || c.arquivo_fatiado)) {
+    return '<div class="card" style="border:2px solid #f59e0b;background:#1c1405"><div class="card-label" style="color:#fbbf24">🖨 Como imprimir</div>' +
+      '<div style="font-size:1.1rem;color:#f1f5f9">Este componente ainda não tem ficha de impressão (pendrive e arquivo).</div>' +
+      '<div class="ot-meta" style="margin-top:6px">Avise o responsável antes de imprimir.</div></div>';
+  }
+  var L = 'font-size:1.25rem;color:#f1f5f9;margin:4px 0', h = '<div class="card" style="border:2px solid #22c55e;background:#052e16"><div class="card-label" style="color:#86efac">🖨 Como imprimir</div>';
+  if (c.pendrive) { h += '<div style="' + L + '">💾 Pendrive: <b>' + esc(c.pendrive) + '</b></div>'; }
+  if (c.arquivo_fatiado) { h += '<div style="' + L + '">📄 Arquivo: <b>' + esc(c.arquivo_fatiado) + '</b></div>'; }
+  if (c.impressora_id && FI.imps[c.impressora_id]) { h += '<div style="' + L + '">🖨 Impressora: <b>' + esc(FI.imps[c.impressora_id]) + '</b></div>'; }
+  if (c.material_id && FI.mats[c.material_id]) { h += '<div style="' + L + '">🧪 Resina: <b>' + esc(FI.mats[c.material_id]) + '</b></div>'; }
+  if (c.pecas_por_bandeja > 0 || c.tempo_bandeja_min > 0) {
+    h += '<div style="' + L + '">' + (c.pecas_por_bandeja > 0 ? 'Cabem <b>' + c.pecas_por_bandeja + '</b> por bandeja' : '') + (c.pecas_por_bandeja > 0 && c.tempo_bandeja_min > 0 ? ' · ' : '') + (c.tempo_bandeja_min > 0 ? 'cerca de <b>' + fiMin(c.tempo_bandeja_min) + '</b> por bandeja' : '') + '</div>';
+  }
+  if (c.obs_impressao) { h += '<div class="ot-meta" style="margin-top:6px">' + esc(c.obs_impressao) + '</div>'; }
+  return h + '<div class="ot-meta" style="margin-top:6px">Confira se o nome do arquivo no pendrive é exatamente este.</div></div>';
+}
+var _fiRDB = renderDetalheBase;
+renderDetalheBase = function() { _fiRDB(); try { fiPos(); } catch (eF) {} };
+function fiPos() {
+  var ot = S.ot, cont = document.getElementById('cont');
+  if (!ot || !cont || FI.off || codTipo() !== 'impressao' || ot.status === 'concluida' || ot.status === 'cancelada') { return; }
+  if (document.getElementById('fiBox')) { return; }
+  var box = document.createElement('div'); box.id = 'fiBox';
+  var ref = cont.children.length > 1 ? cont.children[1] : null;
+  if (ref) { cont.insertBefore(box, ref); } else { cont.appendChild(box); }
+  if (FI.cache[ot.id] !== undefined) { box.innerHTML = FI.cache[ot.id]; return; }
+  var id = ot.id;
+  sbGet('ordens_trabalho', 'id=eq.' + id + '&select=componente_id', function(e1, d) {
+    var cid = (!e1 && d && d.length) ? d[0].componente_id : null;
+    if (!cid) { return; }
+    sbGet('peca_componentes', 'id=eq.' + cid + '&select=id,nome,pendrive,arquivo_fatiado,impressora_id,material_id,pecas_por_bandeja,tempo_bandeja_min,obs_impressao', function(e2, cs) {
+      if (e2) { if (/pendrive|arquivo_fatiado|column/i.test(e2.message || '')) { FI.off = true; } return; }
+      fiNomes(function() {
+        FI.cache[id] = fiHtml(cs && cs.length ? cs[0] : null);
+        var b = document.getElementById('fiBox');
+        if (b && S.ot && S.ot.id === id) { b.innerHTML = FI.cache[id]; }
+      });
+    });
+  });
+}
+/* bandeja: em cada item mostra pendrive e arquivo; avisa se pode não caber ou se mistura impressoras */
+function bdjFichas(box, ots) {
+  var ids = [], i;
+  for (i = 0; i < ots.length; i++) { if (ots[i].componente_id) { ids.push(ots[i].componente_id); } }
+  if (!ids.length || FI.off) { return; }
+  sbGet('peca_componentes', 'id=in.(' + ids.join(',') + ')&select=id,pendrive,arquivo_fatiado,impressora_id,pecas_por_bandeja', function(e, cs) {
+    if (e || !cs || !box.parentNode) { return; }
+    fiNomes(function() {
+      var porId = {}, k, uso = 0, conta = 0, imps = {}, nImps = 0, semFicha = 0;
+      for (k = 0; k < cs.length; k++) { porId[cs[k].id] = cs[k]; }
+      for (i = 0; i < ots.length; i++) {
+        var c = porId[ots[i].componente_id], el = document.getElementById('bdjit-' + ots[i].id);
+        if (!c || !(c.pendrive || c.arquivo_fatiado)) { semFicha++; continue; }
+        if (c.pecas_por_bandeja > 0) { uso += (ots[i].quantidade || 0) / c.pecas_por_bandeja; conta++; }
+        if (c.impressora_id && !imps[c.impressora_id]) { imps[c.impressora_id] = 1; nImps++; }
+        if (el && el.firstChild) {
+          var s = document.createElement('div');
+          s.style.cssText = 'font-size:.85rem;color:#bae6fd;margin-top:3px';
+          s.innerHTML = '💾 ' + esc(c.pendrive || '?') + ' · 📄 ' + esc(c.arquivo_fatiado || '?') + (c.impressora_id && FI.imps[c.impressora_id] ? ' · ' + esc(FI.imps[c.impressora_id]) : '');
+          el.firstChild.appendChild(s);
+        }
+      }
+      var av = [];
+      if (conta && uso > 1.001) { av.push('Pode não caber: a bandeja está com cerca de ' + Math.round(uso * 100) + '% da capacidade.'); }
+      else if (conta && uso > 0) { av.push('Ocupação da bandeja: cerca de ' + Math.round(uso * 100) + '%.'); }
+      if (nImps > 1) { av.push('Atenção: estes itens são de impressoras diferentes.'); }
+      if (semFicha) { av.push(semFicha + ' item(ns) sem ficha de impressão. Avise o responsável.'); }
+      if (!av.length) { return; }
+      var w = document.createElement('div');
+      w.style.cssText = 'margin:6px 0;padding:8px;border-radius:8px;font-size:.95rem;' + ((uso > 1.001 || nImps > 1 || semFicha) ? 'background:#451a03;color:#fde68a' : 'background:#0c4a6e;color:#e0f2fe');
+      w.innerHTML = av.join('<br>');
+      var ac = box.querySelector('.acoes');
+      if (ac) { box.insertBefore(w, ac); } else { box.appendChild(w); }
+    });
+  });
+}
 
 </script>
 <script src="etiquetas.js"></script>
