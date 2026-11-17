@@ -112,6 +112,12 @@
 // miniatura de resina (colecionável, não brinquedo) e redação de empenho revisada.
 // Estrutura e gabaritos das questões originais preservados. Todas as trilhas subiram de versao
 // (o progresso anterior fica guardado e o colaborador recomeça).
+//
+// v186 — TEXTOS REESCRITOS em linguagem simples (frases curtas, "tarefa" no lugar de "OT"),
+// respostas escritas (texto_livre) trocadas por múltipla escolha ou ordenar, orientação sobre
+// miniatura de resina (colecionável, não brinquedo) e redação de empenho revisada.
+// Estrutura e gabaritos das questões originais preservados. Todas as trilhas subiram de versao
+// (o progresso anterior fica guardado e o colaborador recomeça).
 
 var TREINAMENTO_TRILHAS = {
   "integracao": {
@@ -505,7 +511,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "A sequência",
-            "texto": "Siga a ordem IDENTIFICAR, CONFERIR, EXECUTAR. Identificar: qual é o pedido, a peça e a tarefa. Conferir: o arquivo, a referência, a quantidade e as instruções batem com o que foi pedido? Executar: só então comece. Se algo não bater, use CONSULTAR RESPONSÁVEL. Na dúvida, perguntar vem antes de executar."
+            "texto": "Siga a ordem IDENTIFICAR, CONFERIR, EXECUTAR. Identificar: qual é o pedido, a peça e a tarefa. Conferir: o arquivo, a referência, a quantidade e as instruções batem com o que foi pedido? Executar: só então comece. Se algo não bater, use CONSULTAR RESPONSÁVEL. Na dúvida, perguntar vem antes de executar. Depois de executar, você ainda confere o resultado. Isso você vai ver melhor no próximo dia."
           },
           {
             "tipo": "ordenar",
@@ -778,7 +784,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que fazer ao achar um problema",
-            "texto": "Siga a ordem: IDENTIFICAR, SEPARAR, REGISTRAR ou COMUNICAR, DECIDIR COM AUTORIZAÇÃO, e só DEPOIS AVANÇAR. Separe a peça para ela não seguir por engano. Conte o que viu, de forma clara e sem culpar ninguém. A decisão de refazer, consertar ou aceitar a peça segue o procedimento da Valente ou a orientação do responsável."
+            "texto": "Siga a ordem: IDENTIFICAR, SEPARAR, REGISTRAR ou COMUNICAR, DECIDIR COM AUTORIZAÇÃO, e só DEPOIS AVANÇAR. Separe a peça para ela não seguir por engano. Conte o que viu, de forma clara e sem culpar ninguém. A decisão de refazer, consertar ou aceitar a peça segue o procedimento da Valente ou a orientação do responsável. Diga qual é o defeito, de qual pedido é a peça e em que etapa ela estava."
           },
           {
             "tipo": "multipla_escolha",
@@ -1559,7 +1565,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Quando não souber",
-            "texto": "Nunca trate dúvida como certeza. Diga: \"Vou confirmar essa informação e retorno para você.\" Isso vale para técnica, prazo, capacidade, desconto ou regra que não esteja clara."
+            "texto": "Nunca trate dúvida como certeza. Diga: \"Vou confirmar essa informação e retorno para você.\" Isso vale para técnica, prazo, capacidade, desconto ou regra que não esteja clara. Desconto você não decide sozinho. Mesmo em pedido grande, consulte o responsável antes de oferecer."
           },
           {
             "tipo": "conteudo",
@@ -2084,7 +2090,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Prospecção",
-            "texto": "Prospecção é procurar novos clientes. O Comercial também faz isso. Escolas, unidades militares, empresas, restaurantes, eventos, clubes, lojas e instituições podem precisar do que a Valente faz. A abordagem deve ter um motivo e fazer sentido para aquele contato."
+            "texto": "Prospecção é procurar novos clientes. O Comercial também faz isso. Escolas, unidades militares, empresas, restaurantes, eventos, clubes, lojas e instituições podem precisar do que a Valente faz. A abordagem deve ter um motivo e fazer sentido para aquele contato. A primeira mensagem tem quatro partes: se apresentar em poucas palavras, dizer o motivo do contato, mostrar para que serve à pessoa e convidar para conversar. Não use promoção com pressa nem mande só uma tabela de preços."
           },
           {
             "tipo": "multipla_escolha",
@@ -2738,7 +2744,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Exportar é uma etapa de qualidade",
-            "texto": "Exportar não é só clicar em salvar. O arquivo entregue precisa ser igual ao modelo aprovado e servir para o processo esperado. Antes de exportar, confirme qual versão do modelo está aberta. Depois de exportar, abra o arquivo de novo ou confira no visualizador. Veja se todas as peças estão lá, se a escala está certa e se o nome está claro. Guarde o arquivo na pasta de saída do trabalho, não em uma pasta qualquer do computador."
+            "texto": "Exportar não é só clicar em salvar. O arquivo entregue precisa ser igual ao modelo aprovado e servir para o processo esperado. Antes de exportar, confirme qual versão do modelo está aberta. Depois de exportar, abra o arquivo de novo ou confira no visualizador. Veja se todas as peças estão lá, se a escala está certa e se o nome está claro. Guarde o arquivo na pasta de saída do trabalho, não em uma pasta qualquer do computador. Antes de exportar, confira também a escala, a unidade e se todas as peças estão no conjunto. Depois de exportar, abra o arquivo e confira de novo."
           },
           {
             "tipo": "multipla_escolha",
@@ -3871,7 +3877,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Concluir e liberar",
-            "texto": "Depois de contar, inspecionar e organizar, toque em Concluir tarefa. Isso registra o fim do trabalho. Só conclua quando o trabalho terminou de verdade e a entrega está identificada. Concluir com peça faltando ou sem conferir passa o problema para o próximo setor. Depois ele não tem como saber de onde veio. As tarefas que dependiam desta são liberadas sozinhas quando ela é concluída."
+            "texto": "Depois de contar, inspecionar e organizar, toque em Concluir tarefa. Ao tocar em Concluir tarefa, o tablet pede quantas peças saíram boas e quantas foram perdidas. É nessa hora que você registra a quantidade e as falhas, e depois confirma. Isso registra o fim do trabalho. Só conclua quando o trabalho terminou de verdade e a entrega está identificada. Concluir com peça faltando ou sem conferir passa o problema para o próximo setor. Depois ele não tem como saber de onde veio. As tarefas que dependiam desta são liberadas sozinhas quando ela é concluída."
           },
           {
             "tipo": "ordenar",
@@ -4232,7 +4238,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Cura UV e descarte",
-            "texto": "A cura usa luz UV em equipamento próprio. Evite olhar para a luz e use a proteção indicada. Tempo e posição seguem o procedimento da Valente para cada resina. Nunca vá no palpite. Descarte: resina líquida, IPA sujo e panos ou luvas contaminados não vão para a pia, o ralo ou o lixo comum. Eles têm destino próprio, conforme o procedimento de descarte da empresa e a lei local. Na dúvida sobre onde jogar, pergunte antes."
+            "texto": "A cura usa luz UV em equipamento próprio. Evite olhar para a luz e use a proteção indicada. Tempo e posição seguem o procedimento da Valente para cada resina. Nunca vá no palpite. Descarte: resina líquida, IPA sujo e panos ou luvas contaminados não vão para a pia, o ralo ou o lixo comum. Eles têm destino próprio, conforme o procedimento de descarte da empresa e a lei local. Na dúvida sobre onde jogar, pergunte antes. O descarte é o último passo: depois de lavar, secar e curar, você leva o que sobrou para o local certo."
           },
           {
             "tipo": "ordenar",
@@ -4659,16 +4665,16 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "multipla_escolha",
             "competencia": "qualidade_entrega",
-            "pergunta": "Três peças chegam à inspeção: uma com rebarba pequena, uma com bolha grande na face e uma sem o acessório. Qual classificação está certa?",
+            "pergunta": "Três peças chegam à inspeção: uma com rebarba pequena, uma com braço quebrado e uma sem o acessório. Qual classificação está certa?",
             "opcoes": [
-              "As três são corrigíveis. Você mesmo resolve e manda para a Pintura",
-              "Rebarba: aprovada. Bolha grande: corrigível. Sem acessório: consulta",
-              "Rebarba: corrigível. Bolha grande: aprovada, a Pintura cobre. Sem acessório: consulta",
-              "Rebarba: corrigível. Bolha grande: consulta. Sem acessório: consulta e registro"
+              "As três são corrigíveis. Você mesmo resolve e manda para a Pintura.",
+              "Rebarba: aprovada. Braço quebrado: corrigível. Sem acessório: consulta.",
+              "Rebarba: corrigível. Braço quebrado: aprovado, a Pintura cobre. Sem acessório: consulta.",
+              "Rebarba: corrigível. Braço quebrado: consulta. Sem acessório: consulta e registro."
             ],
             "correta": 3,
-            "feedbackCerto": "Certo. Você corrige a rebarba pequena. A bolha grande e a falta do acessório vão para consulta. Nada segue para a Pintura com defeito conhecido.",
-            "feedbackErrado": "Rebarba pequena você corrige. Bolha grande na face precisa de consulta. Falta de acessório precisa de consulta e registro. Nada segue para a Pintura com defeito conhecido."
+            "feedbackCerto": "Certo. Rebarba pequena você corrige. Braço quebrado vai para consulta. Peça sem acessório vai para consulta e registro.",
+            "feedbackErrado": "Rebarba pequena você corrige. Braço quebrado vai para consulta. Peça sem acessório vai para consulta e registro."
           }
         ]
       },
@@ -5397,7 +5403,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Decalque em passos",
-            "texto": "Decalque é uma película com desenho que você passa para a peça. Em geral, os passos são estes. Recorte perto do desenho. Molhe o suficiente. Deslize para a posição. Ajuste com pincel macio. Tire o excesso de água com cuidado. Deixe secar. A superfície deve estar lisa e limpa. Um decalque certo, mas aplicado torto, continua sendo defeito. Por isso, teste a posição antes de fixar."
+            "texto": "Decalque é uma película com desenho que você passa para a peça. Em geral, os passos são estes. Recorte perto do desenho. Molhe o suficiente. Deslize para a posição. Ajuste com pincel macio. Tire o excesso de água com cuidado. Deixe secar. A superfície deve estar lisa e limpa. Um decalque certo, mas aplicado torto, continua sendo defeito. Por isso, teste a posição antes de fixar. Decalque torto e já seco? Não esconda e não cubra com tinta. Não junte camadas sem método. Compare com a referência e consulte o responsável."
           },
           {
             "tipo": "conteudo",
@@ -5475,7 +5481,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "Classifique antes de agir",
-            "texto": "Classificar é decidir que tipo de caso é. Pergunte: posso corrigir com um procedimento que eu conheço? Preciso consultar? Ou a peça precisa voltar para uma etapa anterior, como a pós-impressão? Defeito de impressão não se resolve com tinta. Na dúvida, consulte o responsável e registre o que aconteceu."
+            "texto": "Classificar é decidir que tipo de caso é. Pergunte: posso corrigir com um procedimento que eu conheço? Preciso consultar? Ou a peça precisa voltar para uma etapa anterior, como a pós-impressão? Defeito de impressão não se resolve com tinta. Na dúvida, consulte o responsável e registre o que aconteceu. Exemplos de consulta: diferença de tom no lote sem causa clara, cor errada aplicada e dúvida de como tirar, defeito que vem da impressão."
           },
           {
             "tipo": "selecionar_itens",
@@ -6339,7 +6345,7 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "conteudo",
             "titulo": "O que o tablet faz",
-            "texto": "Ainda na tarefa de Expedição, você informa se o saldo está quitado ou combinado. Depois toca em Marcar como enviado. Esse toque move o pedido para Enviado no Kanban. Ele também cria sozinho a tarefa de Pós-compra para o Comercial, para 5 dias depois. Concluir a tarefa sem marcar como enviado não é o caminho. Por isso, só toque quando o pacote saiu de verdade."
+            "texto": "Ainda na tarefa de Expedição, você informa se o saldo está quitado ou combinado. Depois toca em Marcar como enviado. Esse toque move o pedido para Enviado no Kanban. Ele também cria sozinho a tarefa de Pós-compra para o Comercial, para 5 dias depois. Concluir a tarefa sem marcar como enviado não é o caminho. Por isso, só toque quando o pacote saiu de verdade. Na tarefa de Expedição, a ordem é: primeiro a transportadora ou forma de envio e o código de rastreio, depois o saldo, e por último o toque em Marcar como enviado."
           },
           {
             "tipo": "conteudo",
@@ -6814,16 +6820,14 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "ordenar",
             "competencia": "priorizacao",
-            "instrucao": "Chegou um pedido que dizem ser urgente. Coloque na ordem certa os passos de uma boa decisão de prioridade.",
+            "instrucao": "Coloque na ordem certa os passos para decidir a prioridade.",
             "itens": [
-              "Levantar o prazo real do pedido novo e o que o Comercial prometeu",
-              "Ver o que está em andamento e quanto falta para terminar",
-              "Conferir o que precisa estar pronto antes, como arquivo, material e etapa seguinte",
+              "Levantar os fatos: prazo real e promessa do Comercial, o que está em andamento e o que precisa estar pronto antes",
               "Decidir a ordem e registrar o motivo",
               "Avisar a equipe e o Comercial sobre a decisão"
             ],
-            "feedbackCerto": "Isso. Primeiro os fatos, depois a decisão, depois o aviso.",
-            "feedbackErrado": "Comece pelos fatos: o prazo real e o que está em andamento. Depois confira o que precisa estar pronto antes. Só então decida e avise."
+            "feedbackCerto": "Certo. Primeiro os fatos, depois a decisão com o motivo registrado, e por último o aviso.",
+            "feedbackErrado": "Primeiro levante os fatos. Depois decida e registre o motivo. Por último avise a equipe e o Comercial."
           },
           {
             "tipo": "multipla_escolha",
@@ -7219,16 +7223,14 @@ var TREINAMENTO_TRILHAS = {
           {
             "tipo": "ordenar",
             "competencia": "qualidade_melhoria",
-            "instrucao": "Uma falha de impressão se repetiu. Coloque na ordem certa o que fazer.",
+            "instrucao": "Coloque na ordem certa o que fazer depois de uma falha.",
             "itens": [
-              "Cuidar da segurança e parar o que está com risco",
-              "Corrigir o pedido atual (reimprimir ou refazer)",
-              "Registrar o que falhou, onde e em que condição",
-              "Comparar com outras falhas para ver o que se repete",
+              "Corrigir o pedido atual (correção imediata)",
+              "Comparar os motivos registrados com outras falhas",
               "Escolher e aplicar a ação preventiva"
             ],
-            "feedbackCerto": "Isso. Do imediato ao preventivo, sempre com registro.",
-            "feedbackErrado": "Primeiro a segurança e a correção do pedido. Depois o registro, a comparação com outras falhas e a prevenção."
+            "feedbackCerto": "Certo. Primeiro resolve o pedido do cliente. Depois olha os motivos. Só então escolhe a prevenção.",
+            "feedbackErrado": "Primeiro corrija o pedido atual. Depois compare os motivos registrados com outras falhas. Só então escolha a ação preventiva."
           },
           {
             "tipo": "confirmacao_pratica",
