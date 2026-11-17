@@ -106,6 +106,12 @@
 // miniatura de resina (colecionável, não brinquedo) e redação de empenho revisada.
 // Estrutura e gabaritos das questões originais preservados. Todas as trilhas subiram de versao
 // (o progresso anterior fica guardado e o colaborador recomeça).
+//
+// v186 — TEXTOS REESCRITOS em linguagem simples (frases curtas, "tarefa" no lugar de "OT"),
+// respostas escritas (texto_livre) trocadas por múltipla escolha ou ordenar, orientação sobre
+// miniatura de resina (colecionável, não brinquedo) e redação de empenho revisada.
+// Estrutura e gabaritos das questões originais preservados. Todas as trilhas subiram de versao
+// (o progresso anterior fica guardado e o colaborador recomeça).
 
 var TREINAMENTO_TRILHAS = {
   "integracao": {
@@ -1658,12 +1664,12 @@ var TREINAMENTO_TRILHAS = {
             "opcoes": [
               "\"Fazemos sim. Uma peça parecida custa R$70 e fica pronta em uns 10 dias.\"",
               "\"Depende da peça, não sei se dá para fazer uma parecida.\"",
-              "\"Que bom que gostou! Qual peça você viu? Pode mandar a foto ou o link?\"",
+              "\"Que bom que gostou! Qual peça você viu? E ela é para coleção ou para brincar?\"",
               "\"Só fazemos se você já tiver o arquivo 3D da peça pronto.\""
             ],
             "correta": 2,
-            "feedbackCerto": "Certo. A resposta acolhe, descobre qual é a peça e não inventa preço nem prazo.",
-            "feedbackErrado": "A primeira resposta deve acolher e descobrir qual peça o cliente viu. Não dê preço nem prazo antes de entender o pedido."
+            "feedbackCerto": "Certo. A resposta acolhe, descobre qual é a peça e pergunta para que ela será usada. Miniatura de resina não é brinquedo.",
+            "feedbackErrado": "A primeira resposta deve acolher, descobrir qual peça o cliente viu e perguntar para que ela será usada. Não dê preço nem prazo antes de entender o pedido."
           },
           {
             "tipo": "missao",
@@ -1867,13 +1873,13 @@ var TREINAMENTO_TRILHAS = {
             "competencia": "produtos",
             "pergunta": "Os dados do produto são: miniatura personalizada de pet, resina, 10 cm, pintura manual, prazo de 20 dias, preço R$85. Qual anúncio está certo?",
             "opcoes": [
-              "Miniatura personalizada de pet em resina, 10 cm. Pintura manual. Prazo de 20 dias. R$85.",
+              "Miniatura colecionável de pet em resina, 10 cm, frágil, não é brinquedo. Pintura manual. Prazo de 20 dias. R$85.",
               "Miniatura de pet que não quebra, 10 cm, em resina. Entrega em 5 dias. R$85.",
               "Brinquedo de pet em resina para crianças, 10 cm, pintura manual. Prazo de 20 dias. R$85.",
-              "Miniatura de pet linda e personalizada, 10 cm, pintura manual. Preço a combinar."
+              "Miniatura de pet linda e personalizada em resina, 10 cm, com pintura manual feita à mão. Preço a combinar."
             ],
             "correta": 0,
-            "feedbackCerto": "Certo. O anúncio usa só os dados informados e mostra produto, tamanho, prazo e preço.",
+            "feedbackCerto": "Certo. O anúncio usa os dados informados, avisa que a peça é colecionável e frágil, e mostra tamanho, prazo e preço.",
             "feedbackErrado": "O anúncio certo usa só os dados informados. Não invente qualidade, prazo ou uso, e não esconda o preço nem o prazo."
           },
           {
