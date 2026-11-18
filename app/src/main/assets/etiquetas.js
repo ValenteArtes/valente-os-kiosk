@@ -2303,6 +2303,7 @@ var qrcode = function() {
   var LARG = 576;                       // pontos úteis em 80 mm
   var FONTE = 'Roboto, Arial, Helvetica, sans-serif';
   var CHAVE_IP = 'valente_print_ip';
+  var CHAVE_MODO = 'valente_print_modo';   // 'direta' (porta 9100) ou 'central' (LPR 515, TP-LINK)
 
   /* ---------- QR ---------- */
   /* QR que abre o item no sistema: ?q=<codigo> (o app resolve pedido/tarefa/peça/endereço) */
@@ -2411,6 +2412,9 @@ var qrcode = function() {
   /* ---------- configuração do IP e envio ---------- */
   function lerIp() { try { return (root.localStorage.getItem(CHAVE_IP) || '').replace(/\s/g, ''); } catch (e) { return ''; } }
   function gravarIp(v) { try { root.localStorage.setItem(CHAVE_IP, v); } catch (e) {} }
+  function lerModo() { try { return root.localStorage.getItem(CHAVE_MODO) === 'central' ? 'central' : 'direta'; } catch (e) { return 'direta'; } }
+  function gravarModo(v) { try { root.localStorage.setItem(CHAVE_MODO, v === 'central' ? 'central' : 'direta'); } catch (e) {} }
+  function temLpr() { try { return !!(root.ValentePrinter && root.ValentePrinter.printLpr !== undefined); } catch (e) { return false; } }
   function temPonte() { return !!(root.ValentePrinter && root.ValentePrinter.print !== undefined); }
   function aviso(msg, erro) {
     if (typeof root.toast === 'function') { try { root.toast(msg, !!erro); return; } catch (e) {} }
@@ -2437,7 +2441,12 @@ var qrcode = function() {
       var all = [];
       for (i = 0; i < canvases.length; i++) all = all.concat(bytesEscPos(canvases[i]));
       aviso('Enviando para a impressora…');
-      try { root.ValentePrinter.print(ip, 9100, base64(all)); } catch (e2) { aviso('Falha ao enviar: ' + e2.message, true); }
+      try {
+        if (lerModo() === 'central') {
+          if (!temLpr()) { aviso('Este aplicativo ainda não imprime pela central. Instale a versão nova do aplicativo.', true); return; }
+          root.ValentePrinter.printLpr(ip, 'lp1', base64(all));
+        } else { root.ValentePrinter.print(ip, 9100, base64(all)); }
+      } catch (e2) { aviso('Falha ao enviar: ' + e2.message, true); }
     } else { janelaNavegador(canvases); }
   }
   root.ValentePrintEvent = function (ok, msg) { aviso(ok ? 'Impresso.' : ('Impressora: ' + (msg || 'sem resposta') + '. Confira o IP e se ela está ligada.'), !ok); };
@@ -2446,13 +2455,18 @@ var qrcode = function() {
   function configurar(depois) {
     var doc = root.document, ov = doc.createElement('div');
     ov.style.cssText = 'position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,.75);z-index:100001;display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;-webkit-box-pack:center;justify-content:center;padding:16px';
-    ov.innerHTML = '<div style="background:#fff;color:#111;border-radius:12px;padding:18px;max-width:380px;width:100%;font:15px sans-serif"><b style="font-size:17px">Impressora de etiquetas</b><p style="margin:8px 0 10px;color:#444">Digite o IP da Epson na rede (a folha de teste da impressora mostra). Exemplo: 192.168.1.50</p><input id="vpIp" type="text" inputmode="decimal" placeholder="192.168.1.50" value="' + lerIp() + '" style="width:100%;box-sizing:border-box;padding:12px;font-size:18px;border:1px solid #999;border-radius:8px"><div style="display:-webkit-box;display:flex;gap:8px;margin-top:14px"><button id="vpCancela" style="-webkit-box-flex:1;flex:1;padding:12px;font-size:15px;border:1px solid #999;background:#eee;border-radius:8px">Cancelar</button><button id="vpTeste" style="-webkit-box-flex:1;flex:1;padding:12px;font-size:15px;border:none;background:#2e5a1e;color:#fff;border-radius:8px">Salvar e testar</button></div></div>';
+    ov.innerHTML = '<div style="background:#fff;color:#111;border-radius:12px;padding:18px;max-width:380px;width:100%;font:15px sans-serif"><b style="font-size:17px">Impressora de etiquetas</b><p style="margin:8px 0 6px;color:#444">Como a Epson está ligada?</p>' +
+      '<label style="display:block;padding:8px 0;font-size:16px"><input type="radio" name="vpModo" value="central"' + (lerModo() === 'central' ? ' checked' : '') + ' style="width:20px;height:20px;vertical-align:middle"> Na central TP-LINK (192.168.1.18)</label>' +
+      '<label style="display:block;padding:8px 0;font-size:16px"><input type="radio" name="vpModo" value="direta"' + (lerModo() === 'direta' ? ' checked' : '') + ' style="width:20px;height:20px;vertical-align:middle"> Direto (computador ou impressora de rede)</label>' +
+      '<p style="margin:8px 0 10px;color:#444">IP (da central ou da impressora). Exemplo: 192.168.1.18</p><input id="vpIp" type="text" inputmode="decimal" placeholder="192.168.1.50" value="' + lerIp() + '" style="width:100%;box-sizing:border-box;padding:12px;font-size:18px;border:1px solid #999;border-radius:8px"><div style="display:-webkit-box;display:flex;gap:8px;margin-top:14px"><button id="vpCancela" style="-webkit-box-flex:1;flex:1;padding:12px;font-size:15px;border:1px solid #999;background:#eee;border-radius:8px">Cancelar</button><button id="vpTeste" style="-webkit-box-flex:1;flex:1;padding:12px;font-size:15px;border:none;background:#2e5a1e;color:#fff;border-radius:8px">Salvar e testar</button></div></div>';
     doc.body.appendChild(ov);
     ov.querySelector('#vpCancela').onclick = function () { ov.parentNode.removeChild(ov); };
     ov.querySelector('#vpTeste').onclick = function () {
       var v = ov.querySelector('#vpIp').value.replace(/\s/g, '');
       if (!/^[0-9]{1,3}(\.[0-9]{1,3}){3}$/.test(v)) { aviso('IP inválido. Use o formato 192.168.1.50', true); return; }
-      gravarIp(v); ov.parentNode.removeChild(ov);
+      var mm = ov.querySelectorAll('input[name=vpModo]'), k, modo = 'direta';
+      for (k = 0; k < mm.length; k++) { if (mm[k].checked) { modo = mm[k].value; } }
+      gravarModo(modo); gravarIp(v); ov.parentNode.removeChild(ov);
       imprimir(especTeste());
     };
   }
