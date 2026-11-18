@@ -2383,18 +2383,39 @@ var qrcode = function() {
   /* ---------- ESC/POS (imagem raster) ---------- */
   function bytesEscPos(canvas) {
     var ctx = canvas.getContext('2d'), w = canvas.width, h = canvas.height, d = ctx.getImageData(0, 0, w, h).data;
-    var bpl = w >> 3, out = [0x1B, 0x40], y0, y1, y, xb, bit, byte, p, faixa = 128, linhas;
-    for (y0 = 0; y0 < h; y0 += faixa) {
-      y1 = Math.min(h, y0 + faixa); linhas = y1 - y0;
-      out.push(0x1D, 0x76, 0x30, 0, bpl & 255, bpl >> 8, linhas & 255, linhas >> 8);
-      for (y = y0; y < y1; y++) for (xb = 0; xb < bpl; xb++) {
+    // v192: as linhas em branco não vão como imagem, vão como "avance o papel" (ESC J). Menos dados = impressão
+    // contínua pela central TP-LINK. GS P 203 203 faz 1 unidade de avanço = 1 ponto (8 pontos por mm).
+    var bpl = w >> 3, out = [0x1B, 0x40, 0x1D, 0x50, 203, 203], y, xb, bit, byte, p, faixa = 128, linhas = [], vazia = [], i, j, k, n;
+    for (y = 0; y < h; y++) {
+      var lin = [], tem = false;
+      for (xb = 0; xb < bpl; xb++) {
         byte = 0;
         for (bit = 0; bit < 8; bit++) {
           p = (y * w + xb * 8 + bit) * 4;
           if (d[p + 3] > 0 && (d[p] * 0.3 + d[p + 1] * 0.59 + d[p + 2] * 0.11) < 140) byte |= (0x80 >> bit);
         }
-        out.push(byte);
+        if (byte) tem = true;
+        lin.push(byte);
       }
+      linhas.push(lin); vazia.push(!tem);
+    }
+    i = 0;
+    while (i < h) {
+      if (vazia[i]) {
+        j = i; while (j < h && vazia[j]) j++;
+        if (j - i >= 6) {                                   // trecho em branco: só avança o papel
+          n = j - i; while (n > 0) { k = Math.min(255, n); out.push(0x1B, 0x4A, k); n -= k; }
+          i = j; continue;
+        }
+      }
+      j = i;                                                // trecho com desenho (ou branco curto): imagem
+      while (j < h && j - i < faixa) {
+        if (vazia[j]) { k = j; while (k < h && vazia[k]) k++; if (k - j >= 6) break; }
+        j++;
+      }
+      out.push(0x1D, 0x76, 0x30, 0, bpl & 255, bpl >> 8, (j - i) & 255, (j - i) >> 8);
+      for (y = i; y < j; y++) for (xb = 0; xb < bpl; xb++) out.push(linhas[y][xb]);
+      i = j;
     }
     out.push(0x1B, 0x64, 0x03, 0x1D, 0x56, 0x42, 0x00);   // avança 3 linhas e corta
     return out;
