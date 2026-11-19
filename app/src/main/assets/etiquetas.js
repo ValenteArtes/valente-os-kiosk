@@ -2577,6 +2577,11 @@ var qrcode = function() {
         b.push({ t: 'txt', s: 'Pendrive ' + (e.pendrive || '______') + ' · ' + (e.arquivo || 'arquivo ____________'), px: 22, mb: 0 },
           { t: 'txt', s: 'Bandeja ' + (e.bandeja || '__________'), px: 22, mb: 0 },
           { t: 'txt', s: 'Depois de imprimir: Mesa de separação', px: 22, b: 1, mb: 0 });
+      } else if (e.tipo === 'remocao_suporte') {
+        b.push({ t: 'check', s: 'Remover os suportes com o alicate apropriado', px: 22, mb: 2 },
+          { t: 'check', s: 'Lixar as marcas de suporte', px: 22, mb: 2 },
+          { t: 'check', s: 'Tapar furos e corrigir imperfeições com a massa UV', px: 22, mb: 2 },
+          { t: 'check', s: 'Inspecionar a peça em detalhe: rachaduras, avarias e deformações', px: 22, mb: 2 });
       } else if (e.tipo === 'cura') {
         b.push({ t: 'txt', s: 'Curado, guardar em: G1-__________', px: 22, b: 1, mb: 0 }, { t: 'txt', s: '(anote a caixa de cada componente)', px: 20, mb: 0 });
       } else if (e.tipo === 'pintura') {
