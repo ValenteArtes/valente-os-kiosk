@@ -1767,7 +1767,7 @@ function abrirOndePegar(qtdManual) {
     if (bestLen > 0) { for (m0 = 0; m0 < comps.length; m0++) { var n2 = String(comps[m0].nome || '').toLowerCase().replace(/^\s+|\s+$/g, ''); if (n2.length === bestLen && alvoT.indexOf(n2) >= 0) { so.push(comps[m0]); } } if (so.length) { comps = so; } }
     var ids = [], i;
     for (i = 0; i < comps.length; i++) { ids.push(comps[i].id); }
-    sbGet('inventario_fisico', 'entity_type=eq.componente&entity_id=in.(' + ids.join(',') + ')&quantidade=gt.0&select=id,endereco_id,entity_id,quantidade,etapa_id', function(e2, inv) {
+    sbGet('inventario_fisico', 'entity_type=eq.componente&entity_id=in.(' + ids.join(',') + ')&quantidade=gt.0&select=id,endereco_id,entity_id,quantidade,etapa_id,observacao', function(e2, inv) {
       if (e2 || !inv) { fecharJanelaFim(); toast('Estoque guiado ainda não configurado (rodar SQL passo 9).', true); return; }
       sbGet('enderecos', 'select=id,codigo', function(e3, ends) {
         sbGet('etapas_processo', 'select=id,codigo,processos_produtivos(codigo)', function(e4, ets) {
@@ -1799,7 +1799,7 @@ function abrirOndePegar(qtdManual) {
             h += '<div style="padding:8px 0;border-bottom:1px solid #1e293b"><div style="font-weight:700;color:#f1f5f9"><span id="cp_' + comps[i].id + '"></span>' + esc(String(comps[i].nome || '').replace(/\s+$/, '')) + ' — ' + qtd + ' un. <a onclick="imprimirEtiquetaComp(' + i + ')" style="float:right;color:#7ab8f5;font-size:.85rem;padding:6px">🏷 Etiqueta</a></div>';
             if (!pegar.length) { h += '<div style="color:#fbbf24;font-size:.85rem">Sem endereço registrado. Procure e avise o supervisor.</div>'; }
             for (j = 0; j < pegar.length; j++) {
-              h += '<div style="color:#cbd5e1;font-size:.95rem">📍 <b style="color:#4ade80">' + esc(cod[pegar[j].row.endereco_id] || '?') + '</b> · pegue <b>' + pegar[j].qtd + '</b> <span style="color:#64748b;font-size:.75rem">(' + (pegar[j].pintado ? 'pintado' : 'sem pintura') + ')</span></div>';
+              h += '<div style="color:#cbd5e1;font-size:.95rem">📍 <b style="color:#4ade80">' + esc(cod[pegar[j].row.endereco_id] || '?') + '</b>' + (pegar[j].row.observacao ? ' <b style="color:#fbbf24;font-size:1.05rem">· ' + esc(pegar[j].row.observacao) + '</b>' : '') + ' · pegue <b>' + pegar[j].qtd + '</b> <span style="color:#64748b;font-size:.75rem">(' + (pegar[j].pintado ? 'pintado' : 'sem pintura') + ')</span></div>';
             }
             if (falta > 0 && pegar.length) { h += '<div style="color:#fbbf24;font-size:.8rem">Faltam ' + falta + ' sem endereço registrado.</div>'; }
             h += '</div>';
@@ -1879,7 +1879,7 @@ function guardarOndeAposFechar(ot, codigo, qtdBoa) {
     }
     sbGet('peca_componentes', 'peca_id=eq.' + comp.peca_id + '&select=id', function(e2, irmaos) {
       sbGet('enderecos', 'ativo=eq.true&select=id,codigo&order=codigo&limit=1000', function(e3, ends) {
-        sbGet('inventario_fisico', 'quantidade=gt.0&select=id,endereco_id,entity_type,entity_id,quantidade,etapa_id&limit=3000', function(e4, inv) {
+        sbGet('inventario_fisico', 'quantidade=gt.0&select=id,endereco_id,entity_type,entity_id,quantidade,etapa_id,observacao&limit=3000', function(e4, inv) {
           sbGet('etapas_processo', 'select=id,codigo,processos_produtivos(codigo)', function(e5, ets) {
             if (e3 || e4 || !ends || !inv) { toast('Estoque guiado indisponível agora. Guarde e avise o supervisor.', true); return; }
             var brut = null, pint = null, k;
@@ -1898,7 +1898,7 @@ function guardarOndeAposFechar(ot, codigo, qtdBoa) {
               var chave = inv[k].entity_type + ':' + inv[k].entity_id;
               if (!b.itens[chave]) { b.itens[chave] = true; b.nItens++; }
               if (inv[k].entity_type === 'componente') {
-                if (inv[k].entity_id === comp.id) { if ((inv[k].etapa_id || null) === (etapaAlvo || null)) { b.mesmo = true; } else { b.mesmoOutraEtapa = true; } }
+                if (inv[k].entity_id === comp.id) { if ((inv[k].etapa_id || null) === (etapaAlvo || null)) { b.mesmo = true; if (inv[k].observacao) { b.obs = inv[k].observacao; } } else { b.mesmoOutraEtapa = true; } }
                 else if (irm[inv[k].entity_id]) { b.irmao = true; }
               }
             }
@@ -1908,8 +1908,8 @@ function guardarOndeAposFechar(ot, codigo, qtdBoa) {
               var e = porEnd[ends[k].id];
               if (ends[k].id === mesaId || String(ends[k].codigo).indexOf('G1-') !== 0) { continue; }
               var score = e.mesmo ? 0 : (e.mesmoOutraEtapa && e.nItens < 3) ? 1 : (e.irmao && e.nItens < 3) ? 2 : (e.nItens === 0) ? 3 : (e.nItens < 3) ? 4 : 9;
-              var why = e.mesmo ? 'já tem este componente' : e.mesmoOutraEtapa ? 'mesmo componente (outra fase)' : e.irmao ? 'mesma peça' : e.nItens === 0 ? 'caixa vazia' : e.nItens + ' item(ns) lá';
-              lista.push({ id: ends[k].id, codigo: ends[k].codigo, score: score, why: why, n: e.nItens });
+              var why = e.mesmo ? ('já tem este componente' + (e.obs ? ' · ' + e.obs : '')) : e.mesmoOutraEtapa ? 'mesmo componente (outra fase)' : e.irmao ? 'mesma peça' : e.nItens === 0 ? 'caixa vazia' : e.nItens + ' item(ns) lá';
+              lista.push({ obs: e.obs || '', id: ends[k].id, codigo: ends[k].codigo, score: score, why: why, n: e.nItens });
             }
             lista.sort(function(a, b2) { return a.score !== b2.score ? a.score - b2.score : (a.codigo < b2.codigo ? -1 : 1); });
             GO = { ot: ot, comp: comp, qtd: qtdBoa, ehPint: ehPint, ehCura: ehCura, etapa: etapaAlvo, brut: brut, mesaId: mesaId, lista: lista, sel: lista.length ? lista[0].id : null, inv: inv, codPorId: {} };
@@ -1957,12 +1957,12 @@ function abrirGuardarOnde() {
   }
   h += '</div><div style="' + JF_LBL + '">OU OUTRO ENDEREÇO</div><select id="go-sel" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;font-size:1rem"><option value="">— escolher —</option>';
   for (i = 0; i < g.lista.length; i++) { h += '<option value="' + g.lista[i].id + '">' + esc(g.lista[i].codigo) + ' (' + (g.lista[i].n ? g.lista[i].n + ' item(ns)' : 'vazia') + ')</option>'; }
-  h += '</select><div style="font-size:.72rem;color:#64748b;margin-top:8px">' + (g.ehPint ? 'Ao guardar, as peças sem pintura desta tarefa saem do estoque bruto.' : (g.ehCura ? 'Ao guardar, as peças saem da Mesa de separação e vão para a prateleira. Não sabe onde? Toque em Guardar depois.' : 'Cole a etiqueta da caixa se ainda não tiver.')) + '</div>';
+  h += '</select><div style="' + JF_LBL + '">DIVISÃO DA CAIXA (OPCIONAL)</div><input id="go-div" type="text" value="' + esc(g.lista.length ? (g.lista[0].obs || '') : '') + '" placeholder="Ex.: Caixa A, lado esquerdo" style="width:100%;padding:10px;background:#1e293b;color:#f1f5f9;border:1px solid #475569;border-radius:8px;font-size:1rem;box-sizing:border-box"><div style="font-size:.72rem;color:#64748b;margin-top:8px">' + (g.ehPint ? 'Ao guardar, as peças sem pintura desta tarefa saem do estoque bruto.' : (g.ehCura ? 'Ao guardar, as peças saem da Mesa de separação e vão para a prateleira. Não sabe onde? Toque em Guardar depois.' : 'Cole a etiqueta da caixa se ainda não tiver.')) + '</div>';
   janelaFim('GUARDAR ONDE?', esc(g.ot.titulo || ''), h, 'Guardar aqui', guardarOndeConfirmar);
   document.getElementById('jf-cancel').innerHTML = 'Guardar depois';
   var its = document.querySelectorAll('.go-it'), j;
   var marca = function(id) {
-    GO.sel = id;
+    GO.sel = id; var gd = document.getElementById('go-div'), q; if (gd) { for (q = 0; q < GO.lista.length; q++) { if (GO.lista[q].id === id) { gd.value = GO.lista[q].obs || ''; } } }
     for (j = 0; j < its.length; j++) { var on = its[j].getAttribute('data-id') === id; its[j].style.borderColor = on ? '#22c55e' : '#334155'; its[j].style.background = on ? '#052e16' : '#0f172a'; }
   };
   for (j = 0; j < its.length; j++) { its[j].onclick = function() { marca(this.getAttribute('data-id')); document.getElementById('go-sel').value = ''; }; }
@@ -1972,7 +1972,7 @@ function guardarOndeConfirmar() {
   var g = GO; if (!g || !g.sel) { toast('Escolha o endereço.', true); return; }
   var ok = document.getElementById('jf-ok'); if (ok) { ok.disabled = true; }
   var resp = S.colaborador ? S.colaborador.nome : null;
-  var dest = g.sel;
+  var dest = g.sel, div = String(jfVal('go-div') || '').replace(/^\s+|\s+$/g, '');
   var guardar = function() {
     var existente = null, i;
     for (i = 0; i < g.inv.length; i++) {
@@ -1983,11 +1983,11 @@ function guardarOndeConfirmar() {
       sbPostSeguro('movimentacoes_fisicas', { id: uuidT(), entity_type: 'componente', entity_id: g.comp.id, endereco_origem_id: null, endereco_destino_id: dest, quantidade: g.qtd,
         etapa_origem_id: null, etapa_destino_id: g.etapa || null, motivo: 'entrada_producao', responsavel: resp, observacao: 'Guardado ao concluir ' + (g.ehPint ? 'pintura' : (g.ehCura ? 'cura' : 'impressão')) + ' (terminal)' });
       fecharJanelaFim();
-      toast('Guardado em ' + (g.codPorId[dest] || '?') + ' ✅');
+      toast('Guardado em ' + (g.codPorId[dest] || '?') + (div ? ' · ' + div : '') + ' ✅');
       GO = null;
     };
-    if (existente) { sbPatch('inventario_fisico', 'id=eq.' + existente.id, { quantidade: (parseFloat(existente.quantidade) || 0) + g.qtd }, fim); }
-    else { sbPost('inventario_fisico', { id: uuidT(), endereco_id: dest, entity_type: 'componente', entity_id: g.comp.id, quantidade: g.qtd, etapa_id: g.etapa || null }, fim); }
+    if (existente) { sbPatch('inventario_fisico', 'id=eq.' + existente.id, (function() { var pl = { quantidade: (parseFloat(existente.quantidade) || 0) + g.qtd }; if (div) { pl.observacao = div; } return pl; })(), fim); }
+    else { sbPost('inventario_fisico', { id: uuidT(), endereco_id: dest, entity_type: 'componente', entity_id: g.comp.id, quantidade: g.qtd, etapa_id: g.etapa || null, observacao: div || null }, fim); }
   };
   if (!(g.ehPint || g.ehCura) || !g.brut) { guardar(); return; }
   /* pintura: baixa o mesmo tanto do estoque "sem pintura" (mesa primeiro, depois prateleira) */
